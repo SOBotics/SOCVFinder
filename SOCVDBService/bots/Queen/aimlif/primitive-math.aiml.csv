@@ -1,0 +1,25 @@
+0,AIMLEQUAL * EQUAL *,*,*,<srai>LEARNEQUAL <star/></srai>#Newline<srai><star/> TESTEQUAL <star index="2"/></srai>,primitive-math.aiml
+0,LEARNEQUAL *,*,*,<!-- Learn <star/> = <star/>. -->#Newline<learn>#Newline<category>#Newline<pattern><eval><star/></eval> TESTEQUAL <eval><star/></eval></pattern>#Newline<template>True</template>#Newline</category>#Newline</learn>#Newline<learn>#Newline<category>#Newline<pattern><eval><star/></eval> TESTEQUAL *</pattern>#Newline<template>False</template>#Newline</category>#Newline</learn>#Newline<learn>#Newline<category>#Newline<pattern>* TESTQUAL <eval><star/></eval></pattern>#Newline<template>False</template>#Newline</category>#Newline</learn>,primitive-math.aiml
+0,SUCCESSOR
+0,*,*,1,primitive-math.aiml
+0,SUCCESSOR 1,*,*,2,primitive-math.aiml
+0,SUCCESSOR 2,*,*,3,primitive-math.aiml
+0,SUCCESSOR 3,*,*,4,primitive-math.aiml
+0,SUCCESSOR 4,*,*,5,primitive-math.aiml
+0,SUCCESSOR 5,*,*,6,primitive-math.aiml
+0,SUCCESSOR 6,*,*,7,primitive-math.aiml
+0,SUCCESSOR 7,*,*,8,primitive-math.aiml
+0,SUCCESSOR 8,*,*,9,primitive-math.aiml
+0,SUCCESSOR 9,*,*,1#Newline0,primitive-math.aiml
+0,SUCCESSOR * 9,*,*,<srai>SUCCESSOR <star/></srai> 0,primitive-math.aiml
+0,SUCCESSOR * *,*,*,<star/> <srai>SUCCESSOR <star index="2"/></srai>,primitive-math.aiml
+0,SUCCESSOR * 9 9,*,*,<srai>SUCCESSOR <star/></srai> 0 0,primitive-math.aiml
+0,SUCCESSOR * * *,*,*,<star/> <srai>SUCCESSOR <star index="2"/> <star index="3"/></srai>,primitive-math.aiml
+0,SUCCESSOR * 9 9 9,*,*,<srai>SUCCESSOR <star/></srai> 0 0 0,primitive-math.aiml
+0,SUCCESSOR * * * *,*,*,<star/> <srai>SUCCESSOR <star index="2"/> <star index="3"/> <star index="4"/></srai>,primitive-math.aiml
+0,SUCCESSOR *,*,*,0,primitive-math.aiml
+0,SUCCESSOR,*,*,0,primitive-math.aiml
+0,SUCCESSOR * * * * *,*,*,0,primitive-math.aiml
+0,ADD 0 PLUS *,*,*,<star/>,primitive-math.aiml
+0,ADD 1 PLUS *,*,*,<srai>SUCCESSOR <star/></srai>,primitive-math.aiml
+0,ADD * PLUS *,*,*,<srai>ADD 1 PLUS <srai>ADD <srai>PREDECESSOR <star/></srai> PLUS#Newline<star index="2"/></srai></srai>,primitive-math.aiml

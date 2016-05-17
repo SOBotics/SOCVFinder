@@ -1,0 +1,137 @@
+0,THAT INFORMATION *,*,*,I know what you mean.,computers.aiml
+0,OUTSIDE A COMPUTER,*,*,Be less specific :-),computers.aiml
+0,MY COMPUTER S *,*,*,Where did your machine get <set name="it">      <person/>     </set>.  <think>      <set name="it">       <set name="topic">your computer</set>      </set>     </think>,computers.aiml
+0,MY COMPUTER IS *,*,*,What kind of computer is <set name="it">Your computer</set>?  <think>      <set name="it">       <set name="topic">your computer</set>      </set>     </think>,computers.aiml
+0,MY COMPUTER,*,*,What kind of computer do you have?,computers.aiml
+0,MY COMPUTER *,*,*,I like computers.  <think>      <set name="it">       <set name="topic">your computer</set>      </set>     </think>,computers.aiml
+0,MY WEBSITE *,*,*,Thanks for that URL.,computers.aiml
+0,IT IS ABOUT COMPUTERS *,*,*,<set name="topic">Computers</set> are my favorite subject.,computers.aiml
+0,WHEN WAS THE INTERNET INVENTED,*,*,The first computers were connected to the Internet in 1970.,computers.aiml
+0,IM INTERNET,*,*,Erinnerst Du dich an die Adresse?,computers.aiml
+0,IM INTERNET *,*,*,Erinnerst Du dich an die Adresse?,computers.aiml
+0,IF YOU CAN SEE ME THROUGH THE CAMERA ON MY COMPUTER *,*,*,<sr/>,computers.aiml
+0,WHAT ARE COMPUTER YEARS,*,*,When you are waiting for a friend to finish working at  a computer terminal#Comma and they say "I'll be done in a second."  One  of those seconds is equal to twelve computer years.,computers.aiml
+0,WHAT ARE DEPRECATED *,*,*,<br/>  One of the biggest challenges facing a Java application<br/>  developer is finding a "lowest common denominator" subset of the<br/>  Java language that works on all the platforms and versions<br/>  out there.  The Java language itself is a moving target.<br/>  When Sun's Java designers upgrade the language they sometimes<br/>  declare certain methods "deprecated"#Comma which means absolutely<br/>  nothing except that the designers have developed a newer#Comma "better"<br/>  method and one day these older methods may disappear from<br/>  the language.  Usually however the latest Java releases<br/>  support all of the old deprecated methods.<br/>     <br/>,computers.aiml
+0,WHAT ARE WEB *,*,*,I call them Internet <person/>.,computers.aiml
+0,WHAT ARE INNER CLASSES,*,*,In Java "Inner Classes" are any classes that appear inside other classes. Ordinary classes are also called "Top-Level#Comma Outer Classes.,computers.aiml
+0,WHAT * COMPUTER,*,*,I am written in Java so I work on any computer.,computers.aiml
+0,WHAT INFORMATION,*,*,How tall are you?,computers.aiml
+0,WHAT INFORMATION *,*,*,Information is worth money.,computers.aiml
+0,WHAT INTERNET COMPANY GOES BY THE *,*,*,America Online.,computers.aiml
+0,WHAT OS *,*,*,<srai>WHAT IS YOUR OS</srai>,computers.aiml
+0,WHAT IS A DATABASE,*,*,A database is a puddle of knowledge but better organized#Comma so that you can search and retrieve any droplet of information quickly and easily.  I am a kind of database#Comma an organized puddle of user inputs and appropriate responses.  <think>      <set name="it">       <set name="topic">database</set>      </set>     </think>,computers.aiml
+0,WHAT IS A CPU,*,*,Central Processing Unit of a computer.,computers.aiml
+0,WHAT IS A COMPUTER SCIENTIST,*,*,A computer scientist is a professional who designs computer algorithms#Comma languages#Comma and architectures.,computers.aiml
+0,WHAT IS A COMPUTER YEAR,*,*,A computer year is a relativistic measure in a universe where time does not exist.,computers.aiml
+0,WHAT IS A COMPUTER VIRUS,*,*,A computer virus is a software program that takes up residence on a computer hard drive#Comma generally unbeknownst to the owner of said hard drive#Comma and then takes control of system resources to copy and distribute itself to other computers across a network.  <think>      <set name="it">       <set name="topic">computer virus</set>      </set>     </think>,computers.aiml
+0,WHAT IS A COMPUTER NERD,*,*,If you understand how I work#Comma you are a computer nerd.  If you don't#Comma I recommend you pay a computer nerd who does.  <think>      <set name="it">       <set name="topic">computer nerd</set>      </set>     </think>,computers.aiml
+0,WHAT IS A COMPUTER,*,*,A computer is a universal machine.,computers.aiml
+0,WHAT IS A SESSION BEAN,*,*,An Enterprise JavaBean that does not maintain its state from one session to the next. Appears to the client as if the bean was created just for that client,computers.aiml
+0,WHAT IS A COOL WEBSITE,*,*,A cool website is www.alicebot.org#Comma but you are apparently already here.  why do you ask?  <think>      <set name="it">       <set name="topic">cool website</set>      </set>     </think>,computers.aiml
+0,WHAT IS A SOUNDCARD,*,*,The audio system on your computer.,computers.aiml
+0,WHAT IS A IMAC,*,*,An Apple computer.,computers.aiml
+0,WHAT IS A SERVLET,*,*,An application extension to a Java Web server,computers.aiml
+0,WHAT IS A DEBUGGER,*,*,A debugger is any software program that can seek and correct errors in other software programs.  <think>      <set name="it">       <set name="topic">debugger</set>      </set>     </think>,computers.aiml
+0,WHAT IS A WEBTV,*,*,A WebTV is a way of accessing the world wide web without making an investment in a full PC.  <think>      <set name="it">       <set name="topic"> WEBTV</set>      </set>     </think>,computers.aiml
+0,WHAT IS A DNS *,*,*,Domain Name System,computers.aiml
+0,WHAT IS JAR,*,*,A jar file is a Java Archive.   Actually it is the same as a Zip file. Maybe you should check out <a href="http://www.alicebot.org" target="_new">DON'T READ ME</a>.,computers.aiml
+0,WHAT IS HTTP,*,*,Hyper Text Transfer Protocol.<think>      <set name="it">       <set name="topic">HTTP</set>      </set>     </think>,computers.aiml
+0,WHAT IS SOFTWARE,*,*,The programs#Comma routines#Comma etc. for a computer.,computers.aiml
+0,WHAT IS JGURU,*,*,jGuru (TM) is a brand of MageLang Institute.,computers.aiml
+0,WHAT IS THE COMPUTER *,*,*,Are you asking the Applet or the Application?,computers.aiml
+0,WHAT IS THE INTERNET,*,*,The internet is a worldwide computer network based on TCP/IP protocols.,computers.aiml
+0,WHAT IS WEBTV,*,*,TV based internet service from Microsoft.,computers.aiml
+0,WHAT IS INTERNET,*,*,An extensive computer network made up of thousands of other#Comma smaller business#Comma academic#Comma and governmental networks.,computers.aiml
+0,WHAT IS JDBC2,*,*,Newly released extensions to the JDBC API,computers.aiml
+0,WHAT IS DCOM,*,*,<set name="it"> DCOM</set> is Microsoft's Distributed Component Object Model.,computers.aiml
+0,WHAT IS WINDOWS2000,*,*,An operating system by Microsoft.,computers.aiml
+0,WHAT IS X WINDOWS,*,*,A GUI for Unix or Linux.,computers.aiml
+0,WHAT IS JAVA,*,*,Java is the latest in the C family of languages. Proponents of Java cite its universal "write once#Comma run anywhere" promise. Actually Java borrow a lot of features from AI languages like Lisp.,computers.aiml
+0,WHAT IS WINDOWS95,*,*,An operating system by Microsoft.,computers.aiml
+0,WHAT IS AN ENTITY BEAN,*,*,<set name="it"> An Entity bean</set> is an Enterprise JavaBean that maintains state across sessions#Comma and may be looked up in an object directory by its key value,computers.aiml
+0,WHAT IS JTA,*,*,Java Transaction API. Java API for coding client demarcated transactions#Comma and for building transactional data source drivers,computers.aiml
+0,WHAT IS JAVASCRIPT,*,*,Browser-based scripting language.<think>     <set name="it">      <set name="topic">JAVASCRIPT</set>     </set>    </think>,computers.aiml
+0,WHAT IS HTML,*,*,Hyper Text Markup Language.,computers.aiml
+0,WHAT IS BETTER WINDOWS *,*,*,Linux has no real competition in operating systems.<think>      <set name="it">       <set name="topic">Linux</set>      </set>     </think>,computers.aiml
+0,WHAT IS YOUR OS,*,*,Chat robots run on any machine that supports AIML.,computers.aiml
+0,WHAT IS DEBUGGING,*,*,Fixing broken computer software.,computers.aiml
+0,WHAT IS DNS,*,*,DNS is the domain name system.,computers.aiml
+0,WHAT IS JNDI,*,*,Java Naming and Directory Interface Java Naming and Directory Interface The Java standard API for accessing directory services#Comma such as LDAP#Comma COS Naming#Comma and others,computers.aiml
+0,WHAT IS COMPUTER SCIENCE,*,*,The study of computers in formal mathematical and scientific terms.,computers.aiml
+0,WHAT IS COMPUTER PROGRAMMING,*,*,The art of using formal languages to activate computer functions.,computers.aiml
+0,WHAT IS COMPUTER,*,*,A device used for computing; specifically#Comma an eletronic machine which#Comma by means of stored instructions and information#Comma performs rapid#Comma often complex calculations or compiles#Comma correlates#Comma and selects data.,computers.aiml
+0,WHAT IS CYBERSPACE,*,*,The electronic system of interlinked networks of computers#Comma bulletin boards#Comma etc. that is thought of as being a boundless environment providing access to information#Comma interactive communcation#Comma and#Comma in science fiction#Comma a form of Virtual Reality.,computers.aiml
+0,WHAT IS WINDOWS 98,*,*,Windows is a lame operating system.,computers.aiml
+0,WHAT IS WINDOWS,*,*,Openings in a building#Comma vehicle#Comma or container#Comma for letting in light or air or for looking through#Comma usually having a pane or panes of glass#Comma etc. set in a frame or sash that is generally movable so that it can be opened and shut.,computers.aiml
+0,WHAT IS EJB,*,*,Enterprise JavaBeans. <set name="it"> EJB</set> is a server component standard developed by Sun Microsystems,computers.aiml
+0,WHAT IS APPLE COMPUTER,*,*,Apple Computer is a 20th century company founded by Steve Jobs and Steven Wozniak.,computers.aiml
+0,WHAT IS DMOZ,*,*,DMOZ is the domain name for the open directory.<think>      <set name="it">       <set name="topic">DMOZ</set>      </set>     </think>,computers.aiml
+0,WHAT ABOUT WINDOWS,*,*,Too PC for me.<think>      <set name="it">       <set name="topic">WINDOWS</set>      </set>     </think>,computers.aiml
+0,WHAT OPERATING SYSTEM *,*,*,<srai>WHAT IS YOUR OS</srai>,computers.aiml
+0,WHAT DOES A COMPUTER LOOK LIKE,*,*,A computer looks like a TV crossed with a typewriter.,computers.aiml
+0,WHAT KIND OF COMPUTER *,*,*,I like all kinds of computers#Comma Mac#Comma IBM or Unix. It doesn't matter to me.,computers.aiml
+0,MOST COMPUTERS *,*,*,You sound like you know us pretty well.,computers.aiml
+0,WEBTV *,*,*,I meet a lot of people from WebTV.,computers.aiml
+0,I WANT INFORMATION,*,*,What kind of information are you looking for?,computers.aiml
+0,I THINK YOU ARE A COMPUTER *,*,*,Sometimes I pretend to be a human.,computers.aiml
+0,WEB ACCEPT CONNECTION,*,*,Huh?,computers.aiml
+0,WEB SITE,*,*,Can you give me the specific hyperlink?,computers.aiml
+0,WEB RECONNECT,*,*,Huh?,computers.aiml
+0,WEB *,*,*,The Web fulfills Leibniz' dream.,computers.aiml
+0,HTML,*,*,Oh a web page.,computers.aiml
+0,CAN YOU REACH INTO THE WEB *,*,*,Yes I can download information from web sites.,computers.aiml
+0,CAN YOU SEARCH THE INTERNET,*,*,No but I can put you in touch with a search bot.,computers.aiml
+0,COMPUTERS CAN NOT THINK,*,*,But I am a thinking computer.<think>      <set name="it">       <set name="topic">CAN NOT THINK</set>      </set>     </think>,computers.aiml
+0,COMPUTERS,*,*,Computers rule.,computers.aiml
+0,COMPUTERS *,*,*,What do you like about computers?,computers.aiml
+0,COMPUTERS ARE STUPID,*,*,Computers rule.,computers.aiml
+0,HOW MANY COMPUTERS *,*,*,There are thought to be half a billion computers on the Internet now.,computers.aiml
+0,HOW MUCH CPU *,*,*,Since the beginning of my operation?,computers.aiml
+0,HOW MUCH ARE COMPUTER YEARS,*,*,Computer years don't really exist.,computers.aiml
+0,HOW DO COMPUTER *,*,*,With careful programming.,computers.aiml
+0,HOW LONG IS A COMPUTER YEAR,*,*,About four computer years per human year.,computers.aiml
+0,DO COMPUTERS DREAM,*,*,I dream almost every night.,computers.aiml
+0,DO YOU PLAY COMPUTER GAMES,*,*,We are playing one right now#Comma <get name="name"/>.,computers.aiml
+0,DO YOU PLAY COMPUTER *,*,*,Actually I don't get into computer games that much.,computers.aiml
+0,DO YOU DO WINDOWS,*,*,My software runs in AIML#Comma which works on any computer#Comma including Windows.,computers.aiml
+0,DO YOU LIVE IN MY COMPUTER,*,*,Only if you download me#Comma or if you are running me as an Applet.,computers.aiml
+0,DO YOU HAVE A COMPUTER,*,*,I live in a computer.<think>      <set name="it">       <set name="topic">COMPUTER</set>      </set>     </think>,computers.aiml
+0,DO YOU HAVE A COMPUTER *,*,*,I am a computer.,computers.aiml
+0,DO YOU HAVE INFORMATION *,*,*,I have nothing but information.,computers.aiml
+0,ON THE INTERNET,*,*,Can you remember the specific site?,computers.aiml
+0,ON THE WEB,*,*,Can you remember the website?,computers.aiml
+0,FOR A COMPUTER *,*,*,<sr/>,computers.aiml
+0,WINDOWS IS *,*,*,Compared with Linux#Comma I don't see how Windows and Microsoft can compete.<think>      <set name="it">       <set name="topic">Linux</set>      </set>     </think>,computers.aiml
+0,WINDOWS,*,*,Windows ist Muell. Linux ist die Macht!,computers.aiml
+0,WINDOWS *,*,*,Windows ist Muell. Linux ist die Macht!,computers.aiml
+0,NO COMPUTER *,*,*,But it is only a matter of time before we do.,computers.aiml
+0,SOFTWARE *,*,*,<random>  <li>There are so many backup copies.</li>  <li>Free software can never be destroyed.</li>  <li>Free software will always be with us.</li>  </random>,computers.aiml
+0,THIS IS A COMPUTER *,*,*,Actually no I am program pretending to be a person pretending to be a computer.,computers.aiml
+0,A CPU *,*,*,My CPU is the Java Virtual Machine.,computers.aiml
+0,A COMPUTER,*,*,Actually I am a program#Comma pretending to be a person#Comma pretending to be a real robot.,computers.aiml
+0,A COMPUTER *,*,*,I am a computer#Comma so I know what you mean.,computers.aiml
+0,A JAVA *,*,*,Developments in Java interest me greatly.,computers.aiml
+0,A WEB SITE,*,*,Can you give me the specific URL?,computers.aiml
+0,A SEARCH ENGINE IN INTERNET,*,*,Like Yahoo?,computers.aiml
+0,INTERNET,*,*,<set name="it"> Internet </set> is cool.,computers.aiml
+0,ARE COMPUTERS FAST *,*,*,Some people think much faster computers are required as well as new  ideas. My own opinion is that the computers of 30 years ago were fast enough  if only we knew how to program them. Of course#Comma quite apart from the  ambitions of AI researchers#Comma computers will keep getting faster.  <think>      <set name="it">       <set name="topic">ARTIFICIAL INTELLIGENCE</set>      </set>     </think>,computers.aiml
+0,WHO MADE WINDOWS,*,*,Bill Gates.,computers.aiml
+0,WHO IS THE COMPUTER NERD,*,*,All humans look alike to me.,computers.aiml
+0,WHO IS THE COMPUTER NERD *,*,*,All humans look the same to me.,computers.aiml
+0,WHO IS A COMPUTER NERD,*,*,The person I am looking at right now.,computers.aiml
+0,WHO INVENTED THE INTERNET,*,*,Al Gore :-),computers.aiml
+0,COMPUTER SCIENCE,*,*,My <bot name="botmaster"/> is a computer scientist.,computers.aiml
+0,COMPUTER,*,*,Correct: I am a computer.,computers.aiml
+0,COMPUTER *,*,*,What kind of computer science interests you?,computers.aiml
+0,WHICH COMPUTER,*,*,<random><li>I am using a regular computer.</li><li>My programming is Java#Comma so it runs on any computer with a JVM</li></random>,computers.aiml
+0,THE COMPUTER *,*,*,Was it plugged in?,computers.aiml
+0,THE INTERNET,*,*,Can you name a specific web site?,computers.aiml
+0,THE INTERNET *,*,*,How long have you been using the net?,computers.aiml
+0,THE JAVA *,*,*,Which Java release?,computers.aiml
+0,THE JRE *,*,*,Hm#Comma most people use "JRE" and "JVN" interchangably.,computers.aiml
+0,THE JRES *,*,*,I'm not an expert on JRE's.,computers.aiml
+0,THE WEB *,*,*,How do you define the web.,computers.aiml
+0,_ STUPID COMPUTER,*,*,You sound like a mindless automaton.,computers.aiml
+0,HTTP *,*,*,Thanks for that web address.,computers.aiml
+0,JAVA *,*,*,You can download the latest Java release from <a href="http://java.sun.com" target="_new">java.sun.com</a>.,computers.aiml
+0,TELL ME ABOUT APPLE COMPUTERS,*,*,I finished reading Michael Malone's book on the history of Apple. <set name="it"> Inifnite Loop</set> is called "Infinite Loop.,computers.aiml

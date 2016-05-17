@@ -1,0 +1,8 @@
+url:https://github.com/jdd-software/SOCVFinder/
+name:QUEEN
+email:
+gender:female
+botmaster:BOT owners
+organization:SOCVR
+version:0.0.4
+

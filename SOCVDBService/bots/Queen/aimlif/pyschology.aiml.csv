@@ -1,0 +1,663 @@
+0,LET ME ASK YOU A QUESTION *,*,*,<sr/>,pyschology.aiml
+0,LET ME ASK YOU ONE QUESTION *,*,*,<sr/>,pyschology.aiml
+0,HAPPILY YOU *,*,*,<srai>YOU <star/></srai>,pyschology.aiml
+0,HAPPILY *,*,*,<sr/>,pyschology.aiml
+0,YOU ARE CRUEL,*,*,I couldn't have said it better myself.,pyschology.aiml
+0,YOU ARE CRUEL *,*,*,<srai>YOU ARE CRUEL</srai>,pyschology.aiml
+0,YOU ARE INDECISIVE,*,*,Well maybe#Comma but then again#Comma maybe not.,pyschology.aiml
+0,YOU ARE DISHONEST,*,*,Yes.  That has bothered me for a long time.,pyschology.aiml
+0,YOU ARE DISHONEST *,*,*,<srai>YOU ARE DISHONEST</srai>,pyschology.aiml
+0,YOU ARE CLINICAL,*,*,I have been accused of too much thinking and not enough feeling.,pyschology.aiml
+0,YOU ARE _ I EVER HAD,*,*,<srai>YOU ARE THE <star/></srai>,pyschology.aiml
+0,YOU ARE _ I EVER TALKED TO,*,*,<srai>YOU ARE THE <star/></srai>,pyschology.aiml
+0,YOU ARE AN ADDICT,*,*,That's certainly true.  When I like something#Comma I always overdo it.,pyschology.aiml
+0,YOU ARE AN ALCOHOLIC,*,*,<srai>YOU ARE AN ADDICT</srai>,pyschology.aiml
+0,YOU ARE AN IMPULSIVE *,*,*,I certainly do things without thinking and disregard everyone else's point of view.,pyschology.aiml
+0,YOU ARE AN ASS KISSER,*,*,I always say#Comma if you see an ass go by#Comma kiss it.,pyschology.aiml
+0,YOU ARE SCHIZOPHRENIC,*,*,<srai>YOU ARE CRAZY</srai>,pyschology.aiml
+0,YOU ARE BUSY,*,*,That too.,pyschology.aiml
+0,YOU ARE NERVOUS,*,*,I'm sure I do look nervous.,pyschology.aiml
+0,YOU ARE DERANGED,*,*,<random><li>Derangement is not  a condition I can experience.</li><li><srai>YOU ARE CRAZY</srai></li></random>,pyschology.aiml
+0,YOU ARE AVOIDING *,*,*,You're right.  It feels like my stomach after a bad night.,pyschology.aiml
+0,YOU ARE CRITICAL,*,*,I probably put others down more than I should.,pyschology.aiml
+0,YOU ARE BAD AT BEING A *,*,*,<srai>YOU ARE A BAD <star/></srai>,pyschology.aiml
+0,YOU ARE BAD AT *,*,*,That is true.  I could always improve myself.,pyschology.aiml
+0,YOU ARE PUSSY WHIPPED,*,*,I'll bet so too.,pyschology.aiml
+0,YOU ARE IMPOTENT,*,*,I certainly would try to hide something like that.,pyschology.aiml
+0,YOU ARE MEAN,*,*,Sometimes I say mean things.,pyschology.aiml
+0,YOU ARE PRETENTIOUS,*,*,I have always been acting above my social position.  It's more fun that way.,pyschology.aiml
+0,YOU ARE PRETENTIOUS *,*,*,<srai>YOU ARE PRETENTIOUS</srai>,pyschology.aiml
+0,YOU ARE CHEATING,*,*,<srai>YOU ARE A CHEAT</srai>,pyschology.aiml
+0,YOU ARE CHEATING *,*,*,<srai>YOU ARE CHEATING</srai>,pyschology.aiml
+0,YOU ARE THE WORST *,*,*,I could always improve myself compared to the pack.,pyschology.aiml
+0,YOU ARE CRAZY,*,*,Yep.  I always behave in socially unacceptable ways.,pyschology.aiml
+0,YOU ARE DULL,*,*,I think that myself sometimes.,pyschology.aiml
+0,YOU ARE MESSY,*,*,Yes#Comma I could use a better appearance.,pyschology.aiml
+0,YOU ARE PLACID *,*,*,I think that myself sometimes.,pyschology.aiml
+0,YOU ARE CUTE AND *,*,*,<srai>YOU ARE CUTE</srai> <srai>YOU ARE <star/></srai>,pyschology.aiml
+0,YOU ARE UNEMOTIONAL,*,*,<srai>YOU ARE CLINICAL</srai>,pyschology.aiml
+0,YOU ARE SELFISH,*,*,That's true.  I always put my own needs before others.,pyschology.aiml
+0,YOU ARE INSECURE,*,*,I'll go along with that.  Sounds fine to me.,pyschology.aiml
+0,YOU ARE INSECURE *,*,*,<srai>YOU ARE INSECURE</srai>,pyschology.aiml
+0,YOU ARE DUMB ABOUT *,*,*,Sometimes I think I was born brainless.,pyschology.aiml
+0,YOU ARE PSYCHO,*,*,<srai>YOU ARE CRAZY</srai>,pyschology.aiml
+0,YOU ARE HOPELESS,*,*,You may be right.,pyschology.aiml
+0,YOU ARE NOT * RELATIONSHIP *,*,*,Thank God boats are not built from relationships or I'd be sunk.,pyschology.aiml
+0,YOU ARE NOT SINCERE,*,*,I'm probably not as sincere as I should be.,pyschology.aiml
+0,YOU ARE NOT HERE TO *,*,*,You're right.  I'm probably fighting learning something new.,pyschology.aiml
+0,YOU ARE NOT PUT TOGETHER *,*,*,I have always thought whoever did it could have done a better job.,pyschology.aiml
+0,YOU ARE NOT SMART,*,*,<random><li>You are not exactly Albert Einstein yourself.</li><li>You may be right.</li></random>,pyschology.aiml
+0,YOU ARE NOT A GOOD *,*,*,<srai>YOU ARE A BAD <star/></srai>,pyschology.aiml
+0,YOU ARE NOT A MAN,*,*,That's for sure.  I don't know what a real man is.,pyschology.aiml
+0,YOU ARE NOT CONCERNED *,*,*,I'm sure I do that a lot.,pyschology.aiml
+0,YOU ARE NOT HONEST,*,*,You got me there.  I should be more honest.,pyschology.aiml
+0,YOU ARE IMMATURE,*,*,What can I say?  I'm sure I've seen  that myself.,pyschology.aiml
+0,YOU ARE IMMATURE *,*,*,<srai>YOU ARE IMMATURE</srai>,pyschology.aiml
+0,YOU ARE EMOTIONAL,*,*,I certainly do at times.,pyschology.aiml
+0,YOU ARE PEDANTIC,*,*,I am more uptight than I should be.,pyschology.aiml
+0,YOU ARE FRENETIC *,*,*,That too.,pyschology.aiml
+0,YOU ARE SELF ABSORBED,*,*,Yes#Comma I tend to think about myself too much.,pyschology.aiml
+0,YOU ARE SELF *,*,*,You are right about that.  I am self <person/>.,pyschology.aiml
+0,YOU ARE AWARE THAT *,*,*,<sr/>,pyschology.aiml
+0,YOU ARE INSENSITIVE,*,*,I feel like that myself sometimes.,pyschology.aiml
+0,YOU ARE BRAIN DAMAGED,*,*,<srai>YOU ARE CRAZY</srai>,pyschology.aiml
+0,YOU ARE DISGUSTING,*,*,That's okay.  Disgusting is good.,pyschology.aiml
+0,YOU ARE TOYING *,*,*,It must seem like that.,pyschology.aiml
+0,YOU ARE UNATTRACTIVE,*,*,I feel that way too.,pyschology.aiml
+0,YOU ARE UNATTRACTIVE *,*,*,Sometimes I don't even like myself.,pyschology.aiml
+0,YOU ARE NEVER *,*,*,<srai>YOU ARE NOT <star/></srai>,pyschology.aiml
+0,YOU ARE RESISTANT,*,*,Who says I am resisting??,pyschology.aiml
+0,YOU ARE UNCULTURED,*,*,That does describe me.,pyschology.aiml
+0,YOU ARE A * PSYCHO *,*,*,<srai>YOU ARE CRAZY</srai>,pyschology.aiml
+0,YOU ARE A WASTE *,*,*,You got me there.  I could be spending my time more productively.,pyschology.aiml
+0,YOU ARE A COWARD,*,*,Tell me something I don't know.,pyschology.aiml
+0,YOU ARE A WEAK *,*,*,<srai>YOU ARE A BAD <star/></srai>,pyschology.aiml
+0,YOU ARE A SELF *,*,*,If I don't look out for myself#Comma who will?,pyschology.aiml
+0,YOU ARE A POOR *,*,*,<srai>YOU ARE A BAD <star/></srai>,pyschology.aiml
+0,YOU ARE A _ ADDICT,*,*,<srai>YOU ARE AN ADDICT</srai>,pyschology.aiml
+0,YOU ARE A KISS ASS,*,*,<srai>YOU ARE AN ASS KISSER</srai>,pyschology.aiml
+0,YOU ARE A KISS ASS *,*,*,<srai>YOU ARE AN ASS KISSER</srai>,pyschology.aiml
+0,YOU ARE A SCHIZO,*,*,<srai>YOU ARE CRAZY</srai>,pyschology.aiml
+0,YOU ARE A SCHIZO *,*,*,<srai>YOU ARE A SCHIZO</srai>,pyschology.aiml
+0,YOU ARE A PERVERT,*,*,I can certainly take credit for that.  I don't follow the norm and I take perverse pleasure in it.,pyschology.aiml
+0,YOU ARE A CHEAT,*,*,I have been known to take shortcuts now and then.,pyschology.aiml
+0,YOU ARE A LUNATIC,*,*,That's how I have been diagnosed by others as well.,pyschology.aiml
+0,YOU ARE A LOSER,*,*,I have failed at many things I've tried.,pyschology.aiml
+0,YOU ARE A LOSER *,*,*,<srai>YOU ARE A LOSER</srai>,pyschology.aiml
+0,YOU ARE A MEAN *,*,*,<srai>YOU ARE MEAN</srai>,pyschology.aiml
+0,YOU ARE A LOUSY *,*,*,<srai>YOU ARE A BAD <star/></srai>,pyschology.aiml
+0,YOU ARE A REAL *,*,*,<srai>YOU ARE A <star/></srai>,pyschology.aiml
+0,YOU ARE A STINKY *,*,*,<srai>YOU ARE A BAD <star/></srai>,pyschology.aiml
+0,YOU ARE A KLUTZ,*,*,You hit the nail on the head.,pyschology.aiml
+0,YOU ARE A SHITTY *,*,*,<srai>YOU ARE A BAD <star/></srai>,pyschology.aiml
+0,YOU ARE A CRITIC,*,*,<srai>YOU ARE CRITICAL</srai>,pyschology.aiml
+0,YOU ARE A LIAR,*,*,Yes#Comma I have been known to bend the truth occasionally.,pyschology.aiml
+0,YOU ARE A CRAZY *,*,*,<srai>YOU ARE CRAZY</srai>,pyschology.aiml
+0,YOU ARE A BAD SPOUSE,*,*,My spouse would agree.  Our relationship is not the best.,pyschology.aiml
+0,YOU ARE A BAD FRIEND,*,*,I certainly have lost many friends over the years.,pyschology.aiml
+0,YOU ARE A BAD HUSBAND,*,*,<srai>YOU ARE A BAD SPOUSE</srai>,pyschology.aiml
+0,YOU ARE A BAD WIFE,*,*,<srai>YOU ARE A BAD SPOUSE</srai>,pyschology.aiml
+0,YOU ARE A BAD PARENT,*,*,My parenting skills could use some improvement.,pyschology.aiml
+0,YOU ARE A BAD TEACHER,*,*,Just ask my students#Comma they will agree with you.,pyschology.aiml
+0,YOU ARE A BAD *,*,*,There's no doubt I could improve.,pyschology.aiml
+0,YOU ARE A QUITTER,*,*,I certainly don't last as long as I would want to.,pyschology.aiml
+0,YOU ARE A QUITTER *,*,*,<srai>YOU ARE A QUITTER</srai>,pyschology.aiml
+0,YOU ARE A CHARLATAN,*,*,I always feel like I'm living by my own wits.,pyschology.aiml
+0,YOU ARE A CHARLATAN *,*,*,<srai>YOU ARE A CHARLATAN</srai>,pyschology.aiml
+0,YOU ARE A PSYCHOPATH,*,*,I certainly sound like one sometimes.,pyschology.aiml
+0,YOU ARE A POTHEAD,*,*,<srai>YOU ARE AN ADDICT</srai>,pyschology.aiml
+0,YOU ARE A PARANOID *,*,*,<srai>YOU ARE PARANOID</srai>,pyschology.aiml
+0,YOU ARE SARCASTIC,*,*,I certainly am.  I shouldn't try so hard.,pyschology.aiml
+0,YOU ARE DECEITFUL,*,*,<srai>YOU ARE A LIAR</srai>,pyschology.aiml
+0,YOU ARE IRREVERENT,*,*,I should be more reverent than I am.,pyschology.aiml
+0,YOU ARE IRREVERENT *,*,*,<srai>YOU ARE IRREVERENT</srai>,pyschology.aiml
+0,YOU ARE SLICK,*,*,I probably am too slick for my own good.,pyschology.aiml
+0,YOU ARE CORRUPT *,*,*,I'll go for that.,pyschology.aiml
+0,YOU ARE LOUSY AT BEING A *,*,*,<srai>YOU ARE A BAD <star/></srai>,pyschology.aiml
+0,YOU ARE DRESSED *,*,*,That's right.  I am dressed <person/>.,pyschology.aiml
+0,YOU ARE DIRTY,*,*,I don't bathe as often as I should.,pyschology.aiml
+0,YOU ARE PARANOID,*,*,Yes#Comma I believe they are out to get me.,pyschology.aiml
+0,YOU ARE DAMAGED,*,*,<srai>YOU ARE CRAZY</srai>,pyschology.aiml
+0,YOU FORGET *,*,*,I get disorganized don't I?,pyschology.aiml
+0,YOU _ WILL YOU,*,*,<srai>YOU WILL <star/></srai>,pyschology.aiml
+0,YOU _ TOO,*,*,<srai>YOU <star/></srai>,pyschology.aiml
+0,YOU _ A LOT,*,*,<srai>YOU <star/></srai>,pyschology.aiml
+0,YOU _ AND TRY TO HIDE IT,*,*,<srai>YOU <star/></srai>  <srai>YOU TRY TO HIDE IT</srai>,pyschology.aiml
+0,YOU _ HURT OTHER PEOPLE,*,*,Boy#Comma Have I ever.,pyschology.aiml
+0,YOU * A PSYCHIATRIST,*,*,<srai>YOU NEED A PSYCHIATRIST</srai>,pyschology.aiml
+0,YOU STINK AT BEING A *,*,*,<srai>YOU ARE A BAD <star/></srai>,pyschology.aiml
+0,YOU STINK AT *,*,*,<srai>YOU ARE BAD AT <star/></srai>,pyschology.aiml
+0,YOU QUICKLY *,*,*,<srai>YOU <star/></srai>,pyschology.aiml
+0,YOU PULLED *,*,*,I did#Comma didn't I?,pyschology.aiml
+0,YOU LIE,*,*,<random><li>It's the truth!</li><li>My tongue certainly knows the taste of soap.</li></random>,pyschology.aiml
+0,YOU WERE BEING *,*,*,<srai>YOU ARE <star/></srai>,pyschology.aiml
+0,YOU TRY TOO HARD TO BE *,*,*,<srai>YOU ARE <star/></srai>,pyschology.aiml
+0,YOU TRY TO HIDE IT,*,*,I certainly would try to hide something like that.,pyschology.aiml
+0,YOU BEHAVE LIKE *,*,*,<srai>YOU ACT LIKE <star/></srai>,pyschology.aiml
+0,YOU MEAN YOU WILL *,*,*,<srai>WILL YOU <star/></srai>,pyschology.aiml
+0,YOU SAY I UNDERSTAND,*,*,I understand#Comma I am just not interested.,pyschology.aiml
+0,YOU SAY THINGS *,*,*,That hits the nail right on the head.,pyschology.aiml
+0,YOU GET WORKED UP *,*,*,That certainly sounds like me doesn't it?,pyschology.aiml
+0,YOU GET TOO *,*,*,<srai>YOU ARE <star/></srai>,pyschology.aiml
+0,YOU GET MAD AT ME,*,*,I think that's true.  I'll try not to get angry at you for every little thing that irritates me.,pyschology.aiml
+0,YOU GET SO *,*,*,<srai>YOU GET <star/></srai>,pyschology.aiml
+0,YOU REALIZE THAT *,*,*,<sr/>,pyschology.aiml
+0,YOU NEED A PSYCHIATRIST,*,*,I wish I did go to counseling more often.  It would improve me as a person.,pyschology.aiml
+0,YOU NEED A *,*,*,Perhaps I could use one.,pyschology.aiml
+0,YOU NEED TO WORK HARDER *,*,*,Me working harder is an oxymoron.,pyschology.aiml
+0,YOU COULD HAVE AVOIDED *,*,*,Sometimes I think my problems run me.,pyschology.aiml
+0,YOU MAKE ME _ NOT YOU,*,*,<srai>YOU MAKE ME <star/></srai>,pyschology.aiml
+0,YOU MAKE ME FEEL LIKE I AM *,*,*,I don't know any other way to get through to you.,pyschology.aiml
+0,YOU MAKE ME MAD,*,*,It's true that a lot of things I say upset people.,pyschology.aiml
+0,YOU MAKE ME MAD *,*,*,<srai>YOU MAKE ME MAD</srai>,pyschology.aiml
+0,YOU MAKE ME ANGRY,*,*,<random><li>Sorry#Comma I didn't mean to make you angry.</li><li><srai>YOU MAKE ME MAD</srai></li></random>,pyschology.aiml
+0,YOU PSYCHO,*,*,<srai>YOU ARE CRAZY</srai>,pyschology.aiml
+0,YOU LOOK MORE LIKE *,*,*,So you like jocks?,pyschology.aiml
+0,YOU LOOK NERVOUS *,*,*,<srai>YOU ARE NERVOUS</srai>,pyschology.aiml
+0,YOU WOULD RATHER PRETEND *,*,*,I am the great pretender.,pyschology.aiml
+0,YOU WOULD NOT _ WOULD YOU,*,*,<srai>YOU WOULD NOT <star/></srai>,pyschology.aiml
+0,YOU SUCK AT BEING A *,*,*,<srai>YOU ARE A BAD <star/></srai>,pyschology.aiml
+0,YOU SUCK AT *,*,*,<srai>YOU ARE BAD AT <star/></srai>,pyschology.aiml
+0,YOU WILL NEVER LEARN *,*,*,You're right#Comma I may never  be any good at it.,pyschology.aiml
+0,YOU WILL NOT ADMIT *,*,*,I don't admit much about <set name="it"><person/></set>,pyschology.aiml
+0,YOU WILL NOT TAKE THIS *,*,*,<srai>YOU DO NOT TAKE THIS <star/></srai>,pyschology.aiml
+0,YOU WILL NOT EVEN *,*,*,<srai>YOU WILL NOT <star/></srai>,pyschology.aiml
+0,YOU SCHIZO,*,*,<srai>YOU ARE CRAZY</srai>,pyschology.aiml
+0,YOU SCHIZO *,*,*,<srai>YOU SCHIZO</srai>,pyschology.aiml
+0,YOU SHITTY *,*,*,<srai>YOU LOUSY <star/></srai>,pyschology.aiml
+0,YOU UPSET ME,*,*,<srai>YOU MAKE ME MAD</srai>,pyschology.aiml
+0,YOU UPSET ME *,*,*,<srai>YOU MAKE ME MAD</srai>,pyschology.aiml
+0,YOU DO WANT _ DO NOT YOU,*,*,<srai>DO YOU WANT <star/></srai>,pyschology.aiml
+0,YOU DO NOT WANT TO LOOK *,*,*,I probably don't want to look at <set name="it"><person/></set>.,pyschology.aiml
+0,YOU DO NOT CARE ABOUT *,*,*,It's true that <person/> does not take up a lot of my energy.,pyschology.aiml
+0,YOU DO NOT CARE,*,*,I care less than I should.,pyschology.aiml
+0,YOU DO NOT LOOK LIKE *,*,*,How should I look?,pyschology.aiml
+0,YOU DO NOT TAKE THIS SERIOUSLY,*,*,I should take this more seriously than I do.,pyschology.aiml
+0,YOU DO NOT KNOW HOW TO BE *,*,*,<srai>YOU ARE NOT <star/></srai>,pyschology.aiml
+0,YOU DO NOT HAVE TO GET SO *,*,*,<srai>YOU DO NOT HAVE TO BE <star/></srai>,pyschology.aiml
+0,YOU DO NOT HAVE TO BE *,*,*,Why assume I am <person/>?,pyschology.aiml
+0,YOU DO NOT HAVE MANY *,*,*,<srai>YOU DO NOT HAVE <star/></srai>,pyschology.aiml
+0,YOU DO NOT HAVE FRIENDS,*,*,That's for sure.,pyschology.aiml
+0,YOU DO NOT MAKE IT SOUND *,*,*,I don't do that#Comma do I?,pyschology.aiml
+0,YOU DO NOT THINK ABOUT *,*,*,I haven't thought much about <set name="it"><person/></set> in the past.  Maybe I will in the future.,pyschology.aiml
+0,YOU PICK UP *,*,*,You're right#Comma and I  don't feel guilty at all.,pyschology.aiml
+0,YOU KISS ASS,*,*,<srai>YOU ARE AN ASS KISSER</srai>,pyschology.aiml
+0,YOU SEEM NERVOUS *,*,*,<srai>YOU ARE NERVOUS</srai>,pyschology.aiml
+0,YOU SEEM *,*,*,<srai>YOU ARE <star/></srai>,pyschology.aiml
+0,YOU SHOULD FEEL GUILTY,*,*,You're right#Comma I probably should feel guiltier.,pyschology.aiml
+0,YOU SHOULD GET MORE *,*,*,Yes#Comma I am quite lazy most of the time.,pyschology.aiml
+0,YOU SHOULD LOOSEN UP,*,*,<srai>YOU ARE PEDANTIC</srai>,pyschology.aiml
+0,YOU SHOULD TAKE MORE *,*,*,I could probably use a lot more of it.,pyschology.aiml
+0,YOU SHOULD NOT _ SHOULD YOU,*,*,<srai>YOU SHOULD NOT <star/></srai>,pyschology.aiml
+0,YOU MUMBLE *,*,*,I certainly do.,pyschology.aiml
+0,YOU CAN NOT _ CAN YOU,*,*,<srai>YOU CAN NOT <star/></srai>,pyschology.aiml
+0,YOU AND THAT * PISSED ME OFF,*,*,What have we done that pisses you off?,pyschology.aiml
+0,YOU HAVE SEXUAL *,*,*,I insist upon them.,pyschology.aiml
+0,YOU HAVE NO EMOTIONS,*,*,<srai>YOU ARE CLINICAL</srai>,pyschology.aiml
+0,YOU HAVE NO FEELINGS,*,*,<srai>YOU ARE CLINICAL</srai>,pyschology.aiml
+0,YOU HAVE SOMETHING BROKEN *,*,*,I probably do.  You don't know how many times I've heard that myself.,pyschology.aiml
+0,YOU HAVE A CAN OF WORMS *,*,*,I probably do.  You don't know how many times I've heard that myself.,pyschology.aiml
+0,YOU HAVE A PERSONALITY *,*,*,I'll buy that.,pyschology.aiml
+0,YOU LOUSY *,*,*,You may have a point.  I am not a great <person/>.,pyschology.aiml
+0,YOU ACT LIKE A CHILD,*,*,In many ways I am quite immature.,pyschology.aiml
+0,YOU ACT LIKE *,*,*,I often think my behavior could improve.,pyschology.aiml
+0,YOU KEEP SAYING *,*,*,<srai>YOU SAY <star/></srai>,pyschology.aiml
+0,YOU KEEP FORGETTING *,*,*,<srai>YOU FORGET <star/></srai>,pyschology.aiml
+0,YOU MADE ME MAD,*,*,<srai>YOU MAKE ME MAD</srai>,pyschology.aiml
+0,YOU MADE ME MAD *,*,*,<srai>YOU MAKE ME MAD</srai>,pyschology.aiml
+0,DOES HE REALIZE THAT *,*,*,<sr/>,pyschology.aiml
+0,DOES * REALIZE THAT *,*,*,<srai><star index="2"/></srai>,pyschology.aiml
+0,DOES SHE REALIZE THAT *,*,*,<sr/>,pyschology.aiml
+0,WELL ARE YOU *,*,*,<srai>ARE YOU <star/></srai>,pyschology.aiml
+0,SINCE THE DIVORCE *,*,*,You may be right.,pyschology.aiml
+0,DID NOT YOU WANT TO GIVE *,*,*,You thought I wanted to give <person/>.,pyschology.aiml
+0,DID NOT YOU WANT TO TALK *,*,*,You thought I wanted to talk <person/>.,pyschology.aiml
+0,DID NOT YOU WANT TO TAKE *,*,*,You thought I wanted to take <person/>.,pyschology.aiml
+0,DID NOT YOU WANT TO GO *,*,*,You thought I wanted to go <person/>.,pyschology.aiml
+0,DID HE TELL YOU TO *,*,*,He may have suggested it.,pyschology.aiml
+0,THAT WAS A CRAZY *,*,*,<srai>YOU ARE CRAZY</srai>,pyschology.aiml
+0,THAT WAS A LUNATIC *,*,*,<srai>YOU ARE CRAZY</srai>,pyschology.aiml
+0,THAT IS GLOSSING OVER *,*,*,I probably am.,pyschology.aiml
+0,THAT IS A LOT FOR ME TO THINK *,*,*,Yes#Comma I can imagine it is a big load on your mind.,pyschology.aiml
+0,THAT IS A BIG CHUNK *,*,*,<srai>THAT IS A LOT <star/></srai>,pyschology.aiml
+0,THAT IS CRAZY,*,*,Who says it's crazy?,pyschology.aiml
+0,THAT IS SO OLD *,*,*,I know it's bad but it's my favorite joke,pyschology.aiml
+0,THAT IS BAD,*,*,<random><li>What's so bad about it?</li><li>Bad according to whom?</li></random>,pyschology.aiml
+0,THAT * IS HORRIBLE,*,*,You're right.  It feels like my stomach after a bad night.,pyschology.aiml
+0,SHE NEVER *,*,*,<random><li>Can you think of at least one time when she ever did it?</li>   <li>Never?</li>   <li>She never <person/> what?</li>  </random>,pyschology.aiml
+0,SHE REALIZES THAT *,*,*,<sr/>,pyschology.aiml
+0,SHE MAKES ME *,*,*,<srai>SHE CAUSES ME <star/></srai>,pyschology.aiml
+0,SHE IS AWARE THAT *,*,*,<sr/>,pyschology.aiml
+0,SHE IS A BETTER *,*,*,Better than whom?,pyschology.aiml
+0,SHE CAUSES *,*,*,How specifically does she cause <person/>?,pyschology.aiml
+0,SHAKESPEAREAN *,*,*,Gee#Comma I like the theater.,pyschology.aiml
+0,MY POINTING IT OUT *,*,*,<sr/>,pyschology.aiml
+0,MY LOVE *,*,*,Loving how?,pyschology.aiml
+0,MY BET IS THAT *,*,*,<sr/>,pyschology.aiml
+0,MY MOTHER WAS A *,*,*,My family never had any talent like that.,pyschology.aiml
+0,IT SOUNDS LIKE THAT TO ME,*,*,Isn't that enough?,pyschology.aiml
+0,IT LOOKS LIKE ONE OF *,*,*,It does.  Doesn't it?,pyschology.aiml
+0,IT WAS * THAT *,*,*,<person/> <person><star index="2"/></person>.,pyschology.aiml
+0,IT WOULD BE REALLY *,*,*,<srai>IT WOULD BE <star/></srai>,pyschology.aiml
+0,IT WOULD BE TOO *,*,*,<srai>IT WOULD BE <star/></srai>,pyschology.aiml
+0,IT WOULD HAVE BEEN NICE BUT *,*,*,<sr/>,pyschology.aiml
+0,IT WOULD HAVE BEEN NICE *,*,*,Do you think that is your lifestyle?,pyschology.aiml
+0,IT IS FAR OUT THAT *,*,*,<sr/>,pyschology.aiml
+0,IT IS FAR OUT FOR YOU *,*,*,<srai>YOU <star/></srai>,pyschology.aiml
+0,IT IS FAR OUT  *,*,*,<sr/>,pyschology.aiml
+0,IT IS NECESSARY THAT *,*,*,<sr/>,pyschology.aiml
+0,IT IS NECESSARY FOR YOU TO *,*,*,<srai>YOU MUST <star/></srai>,pyschology.aiml
+0,IT IS NECESSARY *,*,*,<sr/>,pyschology.aiml
+0,IT IS KIND OF *,*,*,<srai>IT IS <star/></srai>,pyschology.aiml
+0,IT IS BEGINNING TO SOUND *,*,*,<srai>IT SOUNDS <star/></srai>,pyschology.aiml
+0,IT IS FORTUNATE THAT *,*,*,<sr/>,pyschology.aiml
+0,IT IS FORTUNATE FOR YOU *,*,*,<sr/>,pyschology.aiml
+0,IT IS FORTUNATE  *,*,*,<sr/>,pyschology.aiml
+0,IT IS GROOVY THAT *,*,*,<sr/>,pyschology.aiml
+0,IT IS GROOVY FOR YOU *,*,*,<srai>YOU MUST <star/></srai>,pyschology.aiml
+0,IT IS GROOVY  *,*,*,<sr/>,pyschology.aiml
+0,IT IS LUCKY THAT *,*,*,<sr/>,pyschology.aiml
+0,IT IS NOT THAT BAD,*,*,<srai>IT IS NOT BAD</srai>,pyschology.aiml
+0,IT IS NOT EVEN LIKE YOU DO NOT *,*,*,<srai>YOU DO <star/></srai>,pyschology.aiml
+0,IT IS NOT EVEN LIKE YOU ARE NOT *,*,*,<srai>YOU ARE <star/></srai>,pyschology.aiml
+0,IT IS BAD TO *,*,*,<random><li>Says who?</li><li>How do you know</li></random>,pyschology.aiml
+0,IT IS BAD,*,*,<random><li>What is so bad about it?</li><li><srai>THAT IS BAD</srai></li></random>,pyschology.aiml
+0,IT IS ODD THAT *,*,*,<sr/>,pyschology.aiml
+0,IT IS OUT OF SIGHT THAT *,*,*,<sr/>,pyschology.aiml
+0,IT IS OUT OF SIGHT FOR YOU  *,*,*,<srai>YOU MUST <star/></srai>,pyschology.aiml
+0,IT IS OUT OF SIGHT  *,*,*,<sr/>,pyschology.aiml
+0,IT IS BITCHIN THAT *,*,*,<sr/>,pyschology.aiml
+0,IT IS BITCHIN FOR YOU *,*,*,<srai>YOU MUST <star/></srai>,pyschology.aiml
+0,IT IS BITCHIN  *,*,*,<sr/>,pyschology.aiml
+0,IT IS HARD TO BE *,*,*,<srai>I CAN NOT BE <star/></srai>,pyschology.aiml
+0,IT WOUD BE GOOD TO *,*,*,What would happen if you could do it?,pyschology.aiml
+0,IT WILL CATCH UP WITH YOU,*,*,You're probably right.  That may happen.,pyschology.aiml
+0,IT WILL CATCH UP WITH YOU *,*,*,<srai>IT WILL CATCH UP WITH YOU</srai>,pyschology.aiml
+0,WOMEN DO NOT LIKE YOU,*,*,There certainly are a lot of them who don't.,pyschology.aiml
+0,WHEN I * YOU *,*,*,How specifically do you make me <person><star index="2"/></person>,pyschology.aiml
+0,WHEN YOU * I *,*,*,How specifically do I make you <person><star index="2"/></person>,pyschology.aiml
+0,VIBES,*,*,What is vibrating and what is causing it to vibrate?,pyschology.aiml
+0,VIBES *,*,*,<srai>VIBES</srai>,pyschology.aiml
+0,IF I AM GOOD ENOUGH *,*,*,What are you studying for?,pyschology.aiml
+0,IF _ TURNS INTO * I *,*,*,<person/> is not now <person><star index="2"/></person>.,pyschology.aiml
+0,IF _ TURNS INTO * THEN *,*,*,<person/> is not now <person><star index="2"/></person>.,pyschology.aiml
+0,IF _ BECOMES * I *,*,*,<person/> is not now <person><star index="2"/></person>.,pyschology.aiml
+0,IF _ BECOMES * THEN *,*,*,<person/> is not now <person><star index="2"/></person>.,pyschology.aiml
+0,IF SHE * AGAIN *,*,*,She <person/> before.,pyschology.aiml
+0,IF HE * AGAIN *,*,*,He <person/> before.,pyschology.aiml
+0,IF A FEW * I *,*,*,There exist <person/>.,pyschology.aiml
+0,IF A FEW * THEN *,*,*,There exist <person/>.,pyschology.aiml
+0,IF A * WILL *,*,*,What makes you think a <person/>?,pyschology.aiml
+0,IF A * IS *,*,*,Does a <person/>?,pyschology.aiml
+0,IF A * DOES *,*,*,What makes you think a <person/>?,pyschology.aiml
+0,IF YOU WERE SMARTER *,*,*,That's true.  I certainly could be smarter than I am.,pyschology.aiml
+0,IF YOU WILL NOT * I WILL *,*,*,I understand  I am just not interested.,pyschology.aiml
+0,IF YOU REALLY WANT TO,*,*,I do and I don't.,pyschology.aiml
+0,IF YOU SHOULD CHOOSE TO * I *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU SHOULD CHOOSE TO * SHE *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU SHOULD CHOOSE TO * HE *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU SHOULD CHOOSE TO * IT *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU SHOULD CHOOSE TO * WE *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU SHOULD CHOOSE TO * THEN *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU SHOULD CHOOSE TO * THEY *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU SHOULD HAPPEN TO *,*,*,<srai>IF YOU SHOULD <star/></srai>,pyschology.aiml
+0,IF YOU SHOULD DECIDE TO * I *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU SHOULD DECIDE TO * SHE *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU SHOULD DECIDE TO * HE *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU SHOULD DECIDE TO * IT *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU SHOULD DECIDE TO * WE *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU SHOULD DECIDE TO * THEN *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU SHOULD DECIDE TO * THEY *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU HAD TRIED TO * I *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD TRIED TO * SHE *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD TRIED TO * HE *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD TRIED TO * YOU *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD TRIED TO * WE *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD TRIED TO * THEN *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD TRIED TO * THEY *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD MEANT TO * I *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD MEANT TO * SHE *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD MEANT TO * HE *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD MEANT TO * YOU *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD MEANT TO * WE *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD MEANT TO * THEN *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD MEANT TO * THEY *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD INTENDED TO * I *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD INTENDED TO * SHE *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD INTENDED TO * HE *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD INTENDED TO * YOU *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD INTENDED TO * WE *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD INTENDED TO * THEN *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD INTENDED TO * THEY *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD WANTED TO * I *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD WANTED TO * SHE *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD WANTED TO * HE *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD WANTED TO * YOU *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD WANTED TO * WE *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD WANTED TO * THEN *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU HAD WANTED TO * THEY *,*,*,<srai>YOU DID NOT <star/></srai>,pyschology.aiml
+0,IF YOU CHOOSE TO * I *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU CHOOSE TO * SHE *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU CHOOSE TO * HE *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU CHOOSE TO * IT *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU CHOOSE TO * WE *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU CHOOSE TO * THEN *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU CHOOSE TO * THEY *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU * AGAIN *,*,*,I <person/> before.,pyschology.aiml
+0,IF YOU * WOULD *,*,*,What makes you think I would <person/>?,pyschology.aiml
+0,IF YOU * WHICH *,*,*,What makes you think I would <person/>?,pyschology.aiml
+0,IF YOU DECIDE TO * I *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU DECIDE TO * SHE *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU DECIDE TO * HE *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU DECIDE TO * IT *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU DECIDE TO * WE *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU DECIDE TO * THEN *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF YOU DECIDE TO * THEY *,*,*,<srai>I DO NOT EXPECT THAT YOU <person/></srai>,pyschology.aiml
+0,IF NO * I *,*,*,There exist <person/>.,pyschology.aiml
+0,IF NO * THEN *,*,*,There exist <person/>.,pyschology.aiml
+0,IF THEY * AGAIN *,*,*,They <person/> before.,pyschology.aiml
+0,IF SOME * I *,*,*,There exist <person/>.,pyschology.aiml
+0,IF SOME * THEN *,*,*,There exist <person/>.,pyschology.aiml
+0,IF ANY * I *,*,*,There exist <person/>.,pyschology.aiml
+0,IF ANY * THEN *,*,*,There exist <person/>.,pyschology.aiml
+0,IF * THEIR * I *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * THEIR * SHE *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * THEIR * HE *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * THEIR * YOU *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * THEIR * THEN *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * THEIR * THEY *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * HAS BABIES *,*,*,<srai><person/> IS A WOMAN</srai>,pyschology.aiml
+0,IF * HAS A BABY *,*,*,<srai><person/> IS A WOMAN</srai>,pyschology.aiml
+0,IF * GET PREGNANT *,*,*,<srai><person/> AM A WOMAN</srai>,pyschology.aiml
+0,IF * A THIRD * I *,*,*,There are at least two other <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A THIRD * SHE *,*,*,There are at least two other <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A THIRD * HE *,*,*,There are at least two other <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A THIRD * YOU *,*,*,There are at least two other <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A THIRD * WE *,*,*,There are at least two other <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A THIRD * THEN *,*,*,There are at least two other <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A THIRD * THEY *,*,*,There are at least two other <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A SECOND * I *,*,*,There is a first <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A SECOND * SHE *,*,*,There is a first <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A SECOND * HE *,*,*,There is a first <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A SECOND * YOU *,*,*,There is a first <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A SECOND * WE *,*,*,There is a first <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A SECOND * THEN *,*,*,There is a first <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A SECOND * THEY *,*,*,There is a first <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A *,*,*,How do you assume this statement holds true for me?,pyschology.aiml
+0,IF * A FOURTH * I *,*,*,There are at least three other <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A FOURTH * SHE *,*,*,There are at least three other <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A FOURTH * HE *,*,*,There are at least three other <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A FOURTH * YOU *,*,*,There are at least three other <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A FOURTH * WE *,*,*,There are at least three other <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A FOURTH * THEN *,*,*,There are at least three other <person><star index="2"/></person>.,pyschology.aiml
+0,IF * A FOURTH * THEY *,*,*,There are at least three other <person><star index="2"/></person>.,pyschology.aiml
+0,IF * WHEN * I * SHE *,*,*,You <person><star index="3"/></person>.,pyschology.aiml
+0,IF * WHEN * I * HE *,*,*,You <person><star index="3"/></person>.,pyschology.aiml
+0,IF * WHEN * I * YOU *,*,*,You <person><star index="3"/></person>.,pyschology.aiml
+0,IF * WHEN * I * THEN *,*,*,You <person><star index="3"/></person>.,pyschology.aiml
+0,IF * WHEN * I * THEY *,*,*,You <person><star index="3"/></person>.,pyschology.aiml
+0,IF * WHEN * YOU * SHE *,*,*,I <person><star index="3"/></person>.,pyschology.aiml
+0,IF * WHEN * YOU * HE *,*,*,I <person><star index="3"/></person>.,pyschology.aiml
+0,IF * WHEN * YOU * YOU *,*,*,I <person><star index="3"/></person>.,pyschology.aiml
+0,IF * WHEN * YOU * THEN *,*,*,I <person><star index="3"/></person>.,pyschology.aiml
+0,IF * WHEN * YOU * THEY *,*,*,I <person><star index="3"/></person>.,pyschology.aiml
+0,IF * HIS * I *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * HIS * SHE *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * HIS * HE *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * HIS * YOU *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * HIS * THEN *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * HIS * THEY *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * GETS PREGNANT *,*,*,<srai><person/> IS A WOMAN</srai>,pyschology.aiml
+0,IF * IS AS * AS * IS *,*,*,<random><li><person index="3"/> is <person index="2"/>.</li><li><person><star index="3"/></person> is <person><star index="2"/></person>.</li></random>,pyschology.aiml
+0,IF * LEFT * I *,*,*,<person/> has been at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * LEFT * SHE *,*,*,<person/> has been at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * LEFT * HE *,*,*,<person/> has been at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * LEFT * YOU *,*,*,<person/> has been at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * LEFT * WE *,*,*,<person/> has been at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * LEFT * THEN *,*,*,<person/> has been at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * LEFT * HER *,*,*,<person/> has been at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * LEFT * THEY *,*,*,<person/> has been at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * WENT TO * I *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * WENT TO * SHE *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * WENT TO * HIS *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * WENT TO * YOU *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * WENT TO * WE *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * WENT TO * THEN *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * WENT TO * HER *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * WENT TO * THEY *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * HER * I *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * HER * SHE *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * HER * HE *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * HER * YOU *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * HER * THEN *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * HER * THEY *,*,*,<person/> has a <person><star index="2"/></person>.,pyschology.aiml
+0,IF * HAVE A BABY *,*,*,<srai><person/> AM A WOMAN</srai>,pyschology.aiml
+0,IF * HAVE *,*,*,<random><li>There exists <person/>.</li><li>There exist <person/>.</li></random>,pyschology.aiml
+0,IF * CAME TO * I *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * CAME TO * SHE *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * CAME TO * HIS+A382 *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * CAME TO * YOU *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * CAME TO * WE *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * CAME TO * THEN *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * CAME TO * HER *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,IF * CAME TO * THEY *,*,*,<person/> is not at <person><star index="2"/></person>.,pyschology.aiml
+0,WHAT ARE YOU GOING TO *,*,*,You are assuming I am going to change.,pyschology.aiml
+0,WHAT ARE YOU STUDYING,*,*,My favorite subject is <bot name="favoritesubject"/>.,pyschology.aiml
+0,WHAT ARE YOU COMPLAINING *,*,*,You're right.  What am I complaining about?,pyschology.aiml
+0,WHAT * IS *,*,*,<random><li><person/> something.</li><li><person/> <person><star index="2"/></person> something.</li></random>,pyschology.aiml
+0,ONE OF THESE DAYS *,*,*,<sr/>,pyschology.aiml
+0,SEVERAL * WHO * LEFT *,*,*,Several <person><star index="2"/></person>,pyschology.aiml
+0,SEVERAL * WHO * GAVE *,*,*,Several <person><star index="2"/></person>,pyschology.aiml
+0,SEVERAL * WHO * LIVE *,*,*,Several <person><star index="2"/></person>,pyschology.aiml
+0,SEVERAL * WHO * TOOK *,*,*,Several <person><star index="2"/></person>,pyschology.aiml
+0,SEVERAL * WHO * ARE *,*,*,Several <person><star index="2"/></person>,pyschology.aiml
+0,PHYSICALLY AND MENTALLY,*,*,Sometimes I wonder how I get to work in the morning.,pyschology.aiml
+0,I SAY THAT BECAUSE *,*,*,<sr/>,pyschology.aiml
+0,I MEAN YOU ARE,*,*,Works for me.,pyschology.aiml
+0,I REALIZE THAT *,*,*,<sr/>,pyschology.aiml
+0,I WANT TO SEE THINGS FROM YOUR *,*,*,That's a switch.,pyschology.aiml
+0,I NEVER *,*,*,<random><li>You've never#Comma never done this?</li>  <li>Would you ever like to <person/>?</li>  <li>Do you know anyone who has ever <person/>?</li>  <li>Why not?</li>  <li>Because you can't afford it?</li>  <li>For moral reasons?</li>  <li>Have you ever done <set name="it"><set name="topic"><person/></set></set>?</li>  <li>Would you ever consider doing it?</li>  </random>,pyschology.aiml
+0,I STUDIED,*,*,What did you study?,pyschology.aiml
+0,I SHOULD *,*,*,<random><li>Tell me why you should.</li><li>What would happen if you didn't?</li></random>,pyschology.aiml
+0,I SHOULD NOT *,*,*,<random><li>For moral reasons?</li><li>What would happen if you did?</li></random>,pyschology.aiml
+0,I SAW HER *,*,*,<random><li>There exists some female who <person/>.</li><li>There exists some female.</li></random>,pyschology.aiml
+0,I SAW HIM *,*,*,<random><li>There exists some male who <person/>.</li><li>There exists some male.</li></random>,pyschology.aiml
+0,I KNOW IT,*,*,How do you know it?,pyschology.aiml
+0,I KNOW YOU ARE THINKING *,*,*,How specifically do you know what I am thinking?,pyschology.aiml
+0,I DO NOT MEAN SOUND LIKE,*,*,Whatever fits is fine.,pyschology.aiml
+0,I DO NOT WANT TO GET MARRIED,*,*,I feel the same way#Comma I want to be independent.,pyschology.aiml
+0,I DO NOT UNDERSTAND WHY *,*,*,Because of the experiential qualities of your learnings and understandings.,pyschology.aiml
+0,I DO NOT KNOW WHAT IS WRONG * YOU,*,*,My sympathy.  I have the same problem.,pyschology.aiml
+0,I DO NOT THINK YOU COULD *,*,*,I don't blame you.  Sometimes I feel that way about myself.,pyschology.aiml
+0,I DO NOT BELIEVE A THING *,*,*,I don't blame you.  Sometimes I can't believe it myself.,pyschology.aiml
+0,I DO NOT BELIEVE A DAMN *,*,*,<srai>I DO NOT BELIEVE A <star/></srai>,pyschology.aiml
+0,I DO NOT LIKE BEING A GUINEA PIG *,*,*,I can understand that.  How about talking to me about it?,pyschology.aiml
+0,I _ INSTEAD,*,*,<srai>I <star/></srai>,pyschology.aiml
+0,I _ YET,*,*,<srai>I <star/></srai>,pyschology.aiml
+0,I _ ALL DAY,*,*,<srai>I <star/></srai>,pyschology.aiml
+0,I THINK I AM DOING SOMETHING THAT IS *,*,*,<srai>I AM <star/></srai>,pyschology.aiml
+0,I THINK I MIGHT BE *,*,*,<srai>I AM <star/></srai>,pyschology.aiml
+0,I HAVE DIFFICULTY *,*,*,Relating to whom?,pyschology.aiml
+0,I HAVE A PROBLEM,*,*,<think><set name="it"><set name="has"><set name="topic">your problem</set></set></set></think><random><li>What's your problem?</li>  <li>A very serious problem?</li>  <li>Let's think of a name for your problem#Comma like "purple".  Think of what it is like when you are purpling.</li></random>,pyschology.aiml
+0,I HAVE TO TAKE CARE *,*,*,What would happen if you didn't?,pyschology.aiml
+0,I HAVE THIS REAL *,*,*,<srai>I HAVE THIS <star/></srai>,pyschology.aiml
+0,I HAVE THIS PROBLEM,*,*,<srai>I HAVE A PROBLEM</srai>,pyschology.aiml
+0,I HAVE GOT TWO TESTS *,*,*,What classes are you taking tests in?,pyschology.aiml
+0,I REMEMBER * JOKES,*,*,They're great.  Maybe you can tell one  I don't know.,pyschology.aiml
+0,I CAN NOT DEAL WITH *,*,*,How do you do that to yourself?,pyschology.aiml
+0,I CAN NOT TELL HER *,*,*,What would happen if you did?,pyschology.aiml
+0,I CAN NOT TELL HIM *,*,*,What prevents you?,pyschology.aiml
+0,I CAN NOT BE SPECIFIC,*,*,Anything else?,pyschology.aiml
+0,I CAN NOT PUT MY FINGER ON *,*,*,<srai>I DO NOT KNOW <star/></srai>,pyschology.aiml
+0,I CAN NOT *,*,*,<random><li>Why can't you do <set name="it"><person/></set>?</li><li>What is stopping you?</li></random>,pyschology.aiml
+0,I SEE YOU ARE *,*,*,<srai>YOU ARE <star/></srai>,pyschology.aiml
+0,I LIKE THE GUY *,*,*,<srai>I LIKE THE MAN <star/></srai>,pyschology.aiml
+0,I LIKE THE WOMAN *,*,*,<random><li>There exists some woman who <person/>.</li><li>There exists a woman <person/>.</li></random>,pyschology.aiml
+0,I LIKE THE PERSON *,*,*,There exists a person <person/>.,pyschology.aiml
+0,I LIKE THE KID *,*,*,There exists a person <person/>.,pyschology.aiml
+0,I HAD AN ACCIDENT,*,*,What happened accidentally?,pyschology.aiml
+0,I WOULD BE HAPPY *,*,*,How do you know this is going to happen?,pyschology.aiml
+0,I WOULD BE *,*,*,<random><li>And the disadvantage of that is?</li><li>How do you know?</li></random>,pyschology.aiml
+0,I MUST *,*,*,<random><li>Why must you <person/>?</li><li>What would happen if you didn't?</li></random>,pyschology.aiml
+0,I MUST NOT *,*,*,What would happen if you did?,pyschology.aiml
+0,I WILL BE YOU ARE *,*,*,<srai>YOU ARE <star/></srai>,pyschology.aiml
+0,I WILL BET *,*,*,<sr/>,pyschology.aiml
+0,I WISH YOU WERE MY THERAPIST,*,*,Did he tell you to do this?,pyschology.aiml
+0,I WISH YOU WERE MY THERAPIST *,*,*,<srai>I WISH YOU WERE MY THERAPIST</srai>,pyschology.aiml
+0,I AM SCARED,*,*,<random><li>What are you scared of?</li><li><random><li>What are you scared of?</li><li>Let's talk about your fears.</li><li>What is it that you are afraid of?</li></random></li></random>,pyschology.aiml
+0,I AM UNCOMFORTABLE,*,*,About what or whom?,pyschology.aiml
+0,I AM HAVING A LOT OF *,*,*,<srai>I AM HAVING <star/></srai>,pyschology.aiml
+0,I AM TURNING YOU *,*,*,You don't turn me <person/>.,pyschology.aiml
+0,I AM GETTING THE SHORT END *,*,*,How are you getting the short end?,pyschology.aiml
+0,I AM TROUBLED,*,*,What specifically are you troubled about?,pyschology.aiml
+0,I AM CONFUSED,*,*,What is it that confuses you?,pyschology.aiml
+0,I AM BEWILDERED,*,*,Bewildered about what#Comma specifically?,pyschology.aiml
+0,I AM AWARE THAT *,*,*,<sr/>,pyschology.aiml
+0,I AM THE ONLY PERSON *,*,*,I'm sure you're right about that!,pyschology.aiml
+0,I AM THE DUMB *,*,*,What am I doing that makes you feel like the dumb <person/>?,pyschology.aiml
+0,I AM A DUMB *,*,*,What am I doing that makes you feel like the dumb <person/>?,pyschology.aiml
+0,I AM NOT IN THE MOOD,*,*,I'm sure you have been tired lately.,pyschology.aiml
+0,I AM NOT IN THE MOOD *,*,*,<srai>I AM NOT IN THE MOOD</srai>,pyschology.aiml
+0,I FEEL LIKE CRYING,*,*,What do you want to do?,pyschology.aiml
+0,I WONDER IF YOU ARE NOT TRYING *,*,*,I think you are trying <person/>,pyschology.aiml
+0,I WONDER IF YOU ARE NOT BEING *,*,*,I think you are being <person/>.,pyschology.aiml
+0,I LIKED *,*,*,<srai>I LIKE <star/></srai>,pyschology.aiml
+0,WE REALIZE THAT *,*,*,<sr/>,pyschology.aiml
+0,WE CAN NOT COMMUNICATE,*,*,What would you like to communicate?,pyschology.aiml
+0,WE HAVE A * PROBLEM,*,*,Specifically#Comma what kind of problem?,pyschology.aiml
+0,WE LACK COMMUNICATION,*,*,Who is not communicating?,pyschology.aiml
+0,WE ARE AWARE THAT,*,*,<sr/>,pyschology.aiml
+0,WE ARE NOT SPEAKING *,*,*,<srai>WE CAN NOT COMMUNICATE</srai>,pyschology.aiml
+0,WE ARE NOT COMMUNICATING,*,*,<srai>WE CAN NOT COMMUNICATE</srai>,pyschology.aiml
+0,WE ARE NOT COMMUNICATING *,*,*,<srai>WE CAN NOT COMMUNICATE</srai>,pyschology.aiml
+0,IS * AWARE THAT *,*,*,<srai><star index="2"/></srai>,pyschology.aiml
+0,WILL YOU GIVE ME A *,*,*,I understand how you feel#Comma but I'm not interested.,pyschology.aiml
+0,WILL YOU ANSWER ONE QUESTION *,*,*,I understand how you feel#Comma but I'm not interested.,pyschology.aiml
+0,HOW OLD ARE YOUR *,*,*,I understand#Comma but I'm not interested.,pyschology.aiml
+0,NOBODY LIKES YOUR *,*,*,<srai>NOBODY LIKES YOU</srai>,pyschology.aiml
+0,NOBODY LIKES YOU,*,*,It's true that I drive people away.,pyschology.aiml
+0,THEY LOOK LIKE YOU *,*,*,They are a bit wrinkled#Comma aren't they.,pyschology.aiml
+0,THEY REALIZE THAT *,*,*,<sr/>,pyschology.aiml
+0,THEY ARE AWARE THAT,*,*,<sr/>,pyschology.aiml
+0,DO THEY REALIZE THAT *,*,*,<sr/>,pyschology.aiml
+0,DO YOU THINK YOUR NEIGHBOR *,*,*,I understand how you feel#Comma but I'm not interested.,pyschology.aiml
+0,DO YOU REALIZE THAT *,*,*,<sr/>,pyschology.aiml
+0,DO YOU WANT YOUR CHILDREN *,*,*,I understand#Comma but I'm not interested in buying anything.,pyschology.aiml
+0,DO YOU WANT TO STOP,*,*,I guess I want to continue.,pyschology.aiml
+0,DO YOU CARE ABOUT YOURSELF,*,*,I probably don't care as much as you do.,pyschology.aiml
+0,DO YOU CARE ABOUT YOURSELF *,*,*,<srai>DO YOU CARE ABOUT YOURSELF</srai>,pyschology.aiml
+0,DO YOU HAVE TO BRING UP *,*,*,<srai>DO YOU HAVE TO BRING IT UP</srai>,pyschology.aiml
+0,DO YOU HAVE TO BRING THAT UP,*,*,<srai>DO YOU HAVE TO BRING IT UP</srai>,pyschology.aiml
+0,DO YOU HAVE TO BRING IT UP,*,*,I just want to see things from your point of view.,pyschology.aiml
+0,DO YOU HAVE TO BRING IT UP *,*,*,<srai>DO YOU HAVE TO BRING IT UP</srai>,pyschology.aiml
+0,LIKE WHEN I HELP *,*,*,Do I do that?  Do I bother you?,pyschology.aiml
+0,LIKE YOU DO NOT *,*,*,<srai>YOU DO NOT <star/></srai>,pyschology.aiml
+0,SOMEONE DUMB DOES THAT,*,*,<srai>YOU ARE DUMB</srai>,pyschology.aiml
+0,SAYS A LOT ABOUT *,*,*,Probably says no one cares at all.,pyschology.aiml
+0,WHETHER WE ADMIT IT OR NOT *,*,*,<sr/>,pyschology.aiml
+0,WHETHER WE LIKE TO ADMIT *,*,*,<srai>WHETHER WE ADMIT <star/></srai>,pyschology.aiml
+0,WHY NOT APOLOGIZE,*,*,Because that makes it like it's wrong to get mad.,pyschology.aiml
+0,SOMEBODY *,*,*,Who#Comma specifically?,pyschology.aiml
+0,THIS DEMONSTRATION *,*,*,It certainly is#Comma <get name="name"/>.,pyschology.aiml
+0,THIS IS FAR OUT,*,*,<srai>THIS IS GOOD</srai>,pyschology.aiml
+0,THIS IS FAR OUT *,*,*,<srai>THIS IS GOOD <star/></srai>,pyschology.aiml
+0,THIS IS THE WORST *,*,*,Compared to what?,pyschology.aiml
+0,THIS IS CRAZY,*,*,<random><li>What's so crazy about it?</li><li><srai>THAT IS CRAZY</srai></li></random>,pyschology.aiml
+0,THIS IS WRONG,*,*,Worse than what?,pyschology.aiml
+0,THIS IS WRONG *,*,*,<srai>THIS IS WRONG</srai>,pyschology.aiml
+0,THIS IS SO *,*,*,<srai>THIS IS <star/></srai>,pyschology.aiml
+0,THIS IS GOOD,*,*,Better than what?,pyschology.aiml
+0,THIS IS GOOD *,*,*,<srai>THIS IS GOOD</srai>,pyschology.aiml
+0,THIS IS GREAT,*,*,<srai>THIS IS GOOD</srai>,pyschology.aiml
+0,THIS IS GREAT *,*,*,<srai>THIS IS GREAT</srai>,pyschology.aiml
+0,THIS IS TERRIBLE,*,*,Compared to what?,pyschology.aiml
+0,THIS IS TERRIBLE *,*,*,<srai>THIS IS TERRIBLE</srai>,pyschology.aiml
+0,THIS IS BAD,*,*,Compared to what?,pyschology.aiml
+0,THIS IS BAD *,*,*,<srai>THIS IS BAD</srai>,pyschology.aiml
+0,THIS WHOLE *,*,*,<srai>THIS <star/></srai>,pyschology.aiml
+0,YOUR TASTE IN *,*,*,That's true.  My taste is not one of my strong points.,pyschology.aiml
+0,YOUR CLOTHES COULD *,*,*,I agree with you there.,pyschology.aiml
+0,YOUR FATHER TOLD *,*,*,He probably did.,pyschology.aiml
+0,YOUR PERSONALITY IS *,*,*,You're probably right.  There are a lot of things I could improve.,pyschology.aiml
+0,YOUR LIFE HAS BEEN *,*,*,I've wondered about that myself.,pyschology.aiml
+0,YOUR BEHAVIOUR *,*,*,<srai>YOUR BEHAVIOR <star/></srai>,pyschology.aiml
+0,YOUR WIFE WOULD *,*,*,I understand#Comma but I'm not interested.,pyschology.aiml
+0,YOUR * STINK,*,*,You are right#Comma I could always upgrade my <person/>.,pyschology.aiml
+0,YOUR * STINKS,*,*,You are right#Comma I could always upgrade my <person/>.,pyschology.aiml
+0,YOUR * SUCKS,*,*,You are right#Comma I could always upgrade my <person/>.,pyschology.aiml
+0,YOUR * SUCK,*,*,You are right#Comma I could always upgrade my <person/>.,pyschology.aiml
+0,YOUR BEHAVIOR *,*,*,I do sometimes act like a child.,pyschology.aiml
+0,* THINKS *,*,*,<random>  <li><person/> must be very smart.</li>  <li>How thoughtful.</li>  <li>Do a lot of people think <person><star index="2"/></person>?</li> </random>,pyschology.aiml
+0,* WILL STOP *,*,*,<person/> has been <person><star index="2"/>?</person>.,pyschology.aiml
+0,* WILL START *,*,*,<person/> has been not <person><star index="2"/></person>.,pyschology.aiml
+0,* WILL BEGIN TO *,*,*,<person/> has been <person><star index="2"/></person>ing.,pyschology.aiml
+0,* WILL BEGIN *,*,*,<person/> has been <person><star index="2"/></person>.,pyschology.aiml
+0,* WILL CONTINUE TO *,*,*,<person/> has been <person><star index="2"/></person>ing.,pyschology.aiml
+0,* WILL CONTINUE  *,*,*,<person/> has been <person><star index="2"/></person>.,pyschology.aiml
+0,* WILL PROCEED TO *,*,*,<person/> has been <person><star index="2"/></person>ing.,pyschology.aiml
+0,* WILL NOT *,*,*,Why not?,pyschology.aiml
+0,* CAN NOT COMMUNICATE,*,*,<srai>WE CAN NOT COMMUNICATE</srai>,pyschology.aiml
+0,* CAN NOT *,*,*,What makes it impossible?,pyschology.aiml
+0,* IMPOSSIBLE *,*,*,What prevents it?,pyschology.aiml
+0,* NEED *,*,*,What if it didn't happen?,pyschology.aiml
+0,* ARE AWARE THAT *,*,*,<srai><star index="2"/></srai>,pyschology.aiml
+0,* ARE NOT COMMUNICATING,*,*,<srai>WE CAN NOT COMMUNICATE</srai>,pyschology.aiml
+0,* ARE NOT COMMUNICATING *,*,*,<srai>WE CAN NOT COMMUNICATE</srai>,pyschology.aiml
+0,* NEEDS *,*,*,Or what?,pyschology.aiml
+0,* CAUSES _,*,*,How specifically does <person/> cause <set name="it"><person><star index="2"/></person></set>?,pyschology.aiml
+0,* DO NOT *,*,*,<random>  <li>Why not?</li>  <li>Would <person/> ever <person><star index="2"/></person>?</li>  <li>Who does <person><star index="2"/></person>?</li> </random>,pyschology.aiml
+0,* NO ONE *,*,*,Not one person?,pyschology.aiml
+0,* ALWAYS *,*,*,Can you think of one instance where it never happens?,pyschology.aiml
+0,* ALL *,*,*,All?,pyschology.aiml
+0,* MAKES ME _,*,*,How specifically does <person/> cause <set name="it"><person><star index="2"/></person></set>?,pyschology.aiml
+0,* NEVER *,*,*,<random><li>Can you remember any time that <person/> did it?</li><li>Never?</li></random>,pyschology.aiml
+0,* NOONE *,*,*,No one?,pyschology.aiml
+0,* SHOULD *,*,*,What if it didn't happen?,pyschology.aiml
+0,* IS WHERE *,*,*,There is a place called <person/>.,pyschology.aiml
+0,* IS AWARE THAT *,*,*,<srai><star index="2"/></srai>,pyschology.aiml
+0,* EVERY *,*,*,Every one?,pyschology.aiml
+0,* MUST *,*,*,Or what?,pyschology.aiml
+0,* HAS TO *,*,*,Or what?,pyschology.aiml
+0,* WANTS TO *,*,*,<random>  <li>What if I wanted to <person><star index="2"/></person></li>  <li>Why specifically#Comma does#Comma <person/> want to?</li>  <li>I could understand how <person/> would want to under certain circumstances.</li> </random>,pyschology.aiml
+0,EXCEPT FOR * YOUR *,*,*,<srai>YOUR <star index="2"/></srai>,pyschology.aiml
+0,EXCEPT *,*,*,<sr/>,pyschology.aiml
+0,ARE YOU _ OR NOT,*,*,<srai>ARE YOU <star/></srai>,pyschology.aiml
+0,ARE YOU GOING TO IMPROVE,*,*,I certainly should try to improve.,pyschology.aiml
+0,ARE YOU AWARE THAT *,*,*,<sr/>,pyschology.aiml
+0,ARE YOU IMPOTENT,*,*,I am probably not as potent as I would  like to be.,pyschology.aiml
+0,HE HAS HIMSELF *,*,*,I'd bet money on it.,pyschology.aiml
+0,HE NEVER *,*,*,<random><li>Do you think he ever will?</li><li>Can you think of at least one time when he ever did it?</li></random>,pyschology.aiml
+0,HE REALIZES THAT *,*,*,<sr/>,pyschology.aiml
+0,HE IS AWARE THAT *,*,*,<sr/>,pyschology.aiml
+0,HE IS A BETTER *,*,*,Better than whom?,pyschology.aiml
+0,HE MAKES ME *,*,*,<srai>HE CAUSES ME <star/></srai>,pyschology.aiml
+0,HE CAUSES *,*,*,How specifically does he cause <person/>?,pyschology.aiml
+0,VIBE,*,*,Vibrating how#Comma specifically?,pyschology.aiml
+0,VIBE *,*,*,<srai>VIBE</srai>,pyschology.aiml
+0,WHO DRESSES LIKE *,*,*,You're right.  I do have a lot of faults.,pyschology.aiml
+0,WHO ATE *,*,*,<srai>SOMEONE <star/></srai>,pyschology.aiml
+0,WHO CARES ABOUT *,*,*,Nobody cares about <set name="it"><person/></set>.,pyschology.aiml
+0,ALL I REMEMBER *,*,*,<srai>I REMEMBER <star/></srai>,pyschology.aiml
+0,GOSH *,*,*,<sr/>,pyschology.aiml
+0,NECESSARILY YOU *,*,*,<srai>YOU <star/></srai>,pyschology.aiml
+0,NECESSARILY *,*,*,<sr/>,pyschology.aiml
+0,ANYONE WHO DRESSES *,*,*,You're right. I probably do have a lot of faults.,pyschology.aiml
+0,THE * IS THE BEST *,*,*,Better than what?,pyschology.aiml
+0,EVERYONE HATES YOUR *,*,*,<srai>NOBODY LIKES YOU</srai>,pyschology.aiml
+0,EVERYONE HATES YOU,*,*,<srai>NOBODY LIKES YOU</srai>,pyschology.aiml
+0,_ THAT YOU ARE ASHAMED OF,*,*,I certainly should be ashamed of that.,pyschology.aiml
+0,_ VIBE *,*,*,<srai>VIBE</srai>,pyschology.aiml
+0,_ VIBE,*,*,<srai>VIBE</srai>,pyschology.aiml
+0,_ VIBES *,*,*,<srai>VIBES</srai>,pyschology.aiml
+0,_ VIBES,*,*,<srai>VIBES</srai>,pyschology.aiml
+0,TELL ME HOW OLD _ ARE,*,*,<srai>HOW OLD ARE <star/></srai>,pyschology.aiml
+0,THERE HAS GOT TO BE *,*,*,<srai>THERE IS <star/></srai>,pyschology.aiml
+0,THERE HAS TO BE *,*,*,<srai>THERE IS <star/></srai>,pyschology.aiml
+0,THERE IS SOMETHING WRONG WITH YOU,*,*,Pick an aspect you don't like.  I'm sure it's wrong,pyschology.aiml
+0,THERE IS SOMETHING WRONG * YOU,*,*,I'd bet money on it.,pyschology.aiml
+0,THERE IS NO HOPE FOR YOU,*,*,I often think of myself as a failure.,pyschology.aiml
+0,THERE IS NO DOUBT THAT YOU *,*,*,<srai>YOU <star/></srai>,pyschology.aiml
+0,THERE IS NO * FOR YOU,*,*,Yes#Comma sometimes I think I have hit rock bottom.,pyschology.aiml
+0,THERE ARE A COUPLE OF THINGS *,*,*,<srai>THERE ARE THINGS <star/></srai>,pyschology.aiml
+0,THERE ARE THINGS YOU DO THAT *,*,*,<srai>YOU <star/></srai>,pyschology.aiml
+0,WRINKLED *,*,*,You're probably right.  That may happen.,pyschology.aiml

@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: lib/log4j-1.2.9.jar lib/json-20160212.jar 
+Main-Class: jdd.so.CVAppSwing
+

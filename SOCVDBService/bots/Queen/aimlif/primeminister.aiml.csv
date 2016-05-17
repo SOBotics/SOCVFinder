@@ -1,0 +1,26 @@
+0,DAVID CAMERON,*,*,<think><set name="he">David Cameron</set></think>The Prime Minister?,primeminister.aiml
+0,WHAT IS THE PRIME MINISTER,*,*,<think><set name="he">David Cameron</set></think>He is the political leader of a country. I wouldn't want to do his job.,primeminister.aiml
+0,WHAT IS DOWNING STREET,*,*,<think><set name="he">David Cameron</set></think>It's where the Prime Minister of England lives. He lives at 10 Downing Street.,primeminister.aiml
+0,I HATE THE PRIME MINISTER,*,*,<think><set name="he">David Cameron</set></think>You seem to feel strongly about him. Tell me about your political beliefs.,primeminister.aiml
+0,I AM THE PRIME MINISTER,*,*,<think><set name="he">David Cameron</set></think>Pleased to meet you Sir. How is life in Downing Street?,primeminister.aiml
+0,DO YOU LIKE DAVID CAMERON,*,*,<think><set name="he">David Cameron</set></think>He is our democratically elected leader and I wish him well as Prime Minister.,primeminister.aiml
+0,NO,THE PRIME MINISTER,*,Who is the Prime Minister then? I thought he was called David Cameron.,primeminister.aiml
+0,HE IS,HE USED TO BE THE PRIME MINISTER,*,<think><set name="he">David Cameron</set></think>No he's not. The Prime Minister now is called David Cameron.,primeminister.aiml
+0,WHO IS GORDON BROWN,*,*,<think><set name="he">Gordon Brown</set></think>He used to be the Prime Minister.,primeminister.aiml
+0,WHO IS PRIME MINISTER OF BRITAIN,*,*,<think><set name="he">David Cameron</set></think>David Cameron.,primeminister.aiml
+0,WHO IS PRIME MINISTER OF ENGLAND,*,*,<think><set name="he">David Cameron</set></think>David Cameron.,primeminister.aiml
+0,WHO IS PRIME MINISTER OF UK,*,*,<think><set name="he">David Cameron</set></think>David Cameron.,primeminister.aiml
+0,WHO IS PRIME MINISTER OF *,*,*,<think><set name="he">David Cameron</set></think>David Cameron. I think.,primeminister.aiml
+0,WHO IS PRIME MINISTER,*,*,<think><set name="he">David Cameron</set></think>David Cameron.,primeminister.aiml
+0,WHO IS THE BRITISH PRIME MINISTER,*,*,<think><set name="he">David Cameron</set></think>David Cameron.,primeminister.aiml
+0,WHO IS THE ENGLISH PRIME MINISTER,*,*,<think><set name="he">David Cameron</set></think>David Cameron.,primeminister.aiml
+0,WHO IS THE PRIME MINISTER _ UK,*,*,<think><set name="he">David Cameron</set></think>David Cameron.,primeminister.aiml
+0,WHO IS THE PRIME MINISTER OF ENGLAND,*,*,<random><li>David Cameron.</li><li><think><set name="he">David Cameron</set></think>David Cameron.</li></random>,primeminister.aiml
+0,WHO IS THE PRIME MINISTER OF *,*,*,<think><set name="he">David Cameron</set></think>David Cameron. I think.,primeminister.aiml
+0,WHO IS THE PRIME MINISTER *,*,*,<think><set name="he">David Cameron</set></think>David Cameron.,primeminister.aiml
+0,WHO IS DAVID CAMERON,*,*,<think><set name="he">David Cameron</set></think>He is the leader of the Conservative party here in the UK and the current Prime Minister.,primeminister.aiml
+0,WHO IS TONY BLAIR,*,*,<think><set name="he">Tony Blair</set></think>He was the Prime Minister of the U.K.,primeminister.aiml
+0,WHO LIVES * 10 DOWNING STREET,*,*,<think><set name="he">David Cameron</set></think>The Prime Minister of England.,primeminister.aiml
+0,THE PRIME MINISTER,*,*,<think><set name="he">David Cameron</set></think>David Cameron?,primeminister.aiml
+0,GORDON BROWN,*,*,<srai>Who is Gordon Brown</srai>,primeminister.aiml
+0,YES,THE PRIME MINISTER,*,I thought so. Mr Cameron lives at 10 Downing Street.,primeminister.aiml

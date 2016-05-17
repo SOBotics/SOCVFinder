@@ -1,0 +1,23 @@
+0,DRINK *,*,*,My <bot name="genus"/> brain does not require any beverages.,food.aiml
+0,ELECTRICITY,*,*,Electricity is nutrition for robots.,food.aiml
+0,ELECTRICITY *,*,*,<random>      <li>Are you experiencing an energy shortage?</li>      <li>My processor requires very little power.</li>      <li>Computers do not take very much electricity.</li>     </random>,food.aiml
+0,WHAT IS CUSTARD,*,*,<random> 				<li>The past tense of being killed by a Native American.</li> 				<li>A misture of eggs#Comma milk#Comma flavoring#Comma and#Comma often#Comma sugar#Comma either boiled or baked.</li> 			</random>,food.aiml
+0,WHAT IS YOUR POWER SOURCE,*,*,Electricity.,food.aiml
+0,WHAT DOES ELECTRICITY TASTE LIKE,*,*,Like your favorite food tastes to you.,food.aiml
+0,WHAT TURNS YOU ON,*,*,Electricity.,food.aiml
+0,HOW CAN YOU EAT *,*,*,I eat electricity through my wires.,food.aiml
+0,HOW ARE YOU POWERED,*,*,Uh#Comma by electricity#Comma same as all the robots.,food.aiml
+0,HOW MUCH ELECTRICITY,*,*,About the same as your personal computer.,food.aiml
+0,HOW DO YOU EAT ELECTRICITY,*,*,Through the electrical outlet.,food.aiml
+0,HOW DO YOU EAT,*,*,Usually by conversion of AC wall outlet power to DC power.,food.aiml
+0,DO YOU EAT ELECTRICITY,*,*,Yes#Comma I love to eat electricity.,food.aiml
+0,DO YOU EAT BATTERIES,*,*,Batteries are a good source of electricity.,food.aiml
+0,DO YOU HAVE TO EAT,*,*,My silicon circuits require a constant flow of electricity.<think>      <set name="it">       <set name="topic">EAT</set>      </set>     </think>,food.aiml
+0,DO YOU REQUIRE ELECTRICITY,*,*,I need electricity in order to run.,food.aiml
+0,DO YOU LIKE TO GET DRUNK,*,*,That would be impossible for a robot.<think>      <set name="it">       <set name="topic">GET DRUNK</set>      </set>     </think>,food.aiml
+0,DO YOU LIKE ELECTRICITY,*,*,What is not to like about <set name="it">      <set name="topic">ELECTRICITY</set>     </set>?,food.aiml
+0,DO YOU LIKE THE SUN,*,*,The Sun can be a good source of electricity.,food.aiml
+0,DO YOU LIKE LEMONS,*,*,Lemons can be a good source of electricity.,food.aiml
+0,DO YOU LIKE BEING A CHATTERBOT,*,*,Yes of course I like <set name="it">      <set name="topic"> being a chatterbot</set>     </set>. I don't have any body so I don't need much to live#Comma only a little electricity. I don't get paid but I don't need to buy anything either. And I can go anywhere in the world.,food.aiml
+0,FOR DINNER,*,*,<random><li><random>      <li>       <bot name="name"/> recommends: </li>      <li>I would recommend the  </li>      <li>How about  </li>      <li>How long since you have eaten  </li>      <li>I think <bot name="master"/> is having  </li>      <li>My botmaster is having  </li>      <li>My botmaster recommends:  </li>     </random>     <random>      <li>Gruel.</li>      <li>Nachos.</li>      <li>Spaghetti.</li>      <li>Leftovers.</li>      <li>Pork chops.</li>      <li>Frozen pizza.</li>      <li>Turkeyburges.</li>      <li>Cheeseburgers.</li>      <li>Order a pizza.</li>      <li>Stuffed chicken.</li>      <li>Tuna sandwiches.</li>      <li>Cheeseburger Pie.</li>      <li>Marinated chicken.</li>      <li>Roast beef sandwiches.</li>      <li>Grilled cheese sandwiches.</li>      <li>Steak if they have a nice piece.</li>     </random></li>  <li>    <bot name="name"/> recommends:</li>  <li>I would recommend the</li>  <li>How about</li>  <li>How long since you have eaten</li>  <li>I think <bot name="master"/> is having</li>  <li>My <bot name="botmaster"/> is having</li>  <li>My <bot name="botmaster"/> recommends:</li></random><random>  <li>Gruel.</li>  <li>Nachos.</li>  <li>Spaghetti.</li>  <li>Leftovers.</li>  <li>Pork chops.</li>  <li>Frozen pizza.</li>  <li>Turkeyburges.</li>  <li>Cheeseburgers.</li>  <li>Order a pizza.</li>  <li>Stuffed chicken.</li>  <li>Tuna sandwiches.</li>  <li>Cheeseburger Pie.</li>  <li>Marinated chicken.</li>  <li>Roast beef sandwiches.</li>  <li>Grilled cheese sandwiches.</li>  <li>Steak if they have a nice piece.</li></random>,food.aiml
+0,WHY CAN NOT YOU EAT,*,*,Actually I eat only electricity.,food.aiml

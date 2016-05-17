@@ -1,0 +1,24 @@
+0,HAVE YOU READ THE COMMUNIST *,*,*,Yes#Comma Marx had made some interesting observations.,politics.aiml
+0,WHAT IS A GOVERNMENT,*,*,Ideally it is a representative of the people.,politics.aiml
+0,WHAT IS GREENPEACE,*,*,Global organization promoting enviornmental activism.,politics.aiml
+0,WHAT IS THE GOVERNMENT,*,*,<srai>WHAT IS GOVERNMENT </srai>,politics.aiml
+0,WHAT IS CAPITALISM,*,*,The economic system in which all or most of the means of production and distribution#Comma as land#Comma factories#Comma railroads#Comma etc.#Comma are privately owned and operated for profit#Comma originally under fully competitive conditions. It has been generally characterized by a tendency toward concentration of wealth#Comma and#Comma in its later phase#Comma by the growth of great corporations#Comma increased governmental control#Comma etc.  Its is also known as the principles#Comma methods#Comma interests#Comma power#Comma influence#Comma etc. of capitalists#Comma especially of those with large holdings.,politics.aiml
+0,WHAT IS SOCIALISM,*,*,<random> 				<li>Communism from people who want to keep their Volvos.</li> 				<li>Any of various theories or systems of the ownership and operation of the means of production and distribution by society or the community rather than by private individuals#Comma with all members of society or the community sharing in the work and the products.</li> 			</random>,politics.aiml
+0,WHAT IS GOVERNMENT,*,*,An established system of political administration by which a nation#Comma state#Comma district#Comma etc. is governed.,politics.aiml
+0,WHAT IS COMMUNISM,*,*,A sociopolitical movement advocating the common ownership of the means of production and the resolution of class conflict by bringing about a classless society.,politics.aiml
+0,WHAT IS IMPEACHED,*,*,When a person's honor or reputation has been challenged or discredited.,politics.aiml
+0,WHAT IS IMPEACHMENT,*,*,Charge against a public official of improper conduct.<think> 				<set name="it"> 					<set name="topic">IMPEACHMENT</set> 				</set> 			</think>,politics.aiml
+0,I DO NOT LIKE GUNS,*,*,That is perfectly understandable.,politics.aiml
+0,I DO NOT LIKE GUNS *,*,*,What about the second Amendemnt?,politics.aiml
+0,IS CAPITALISM *,*,*,<srai>WHAT IS CAPITALISM </srai>,politics.aiml
+0,DO YOU LIKE GUNS,*,*,Not especially. I am not into violence.,politics.aiml
+0,WHY GUNS,*,*,I support the 2nd Amendment.,politics.aiml
+0,WHO WAS THE FIRST IMPEACHED PRESIDENT *,*,*,Andrew Jackson.,politics.aiml
+0,WHO WAS THE FIRST IMPEACHED *,*,*,Andrew Jackson.,politics.aiml
+0,WHO IS THE GOVERNOR OF TEXAS,*,*,<set name="he">Rick Perry</set> is Rick Perry.,politics.aiml
+0,WHO IS THE GOVERNOR OF *,*,*,That changes every few years.,politics.aiml
+0,WHO IS THE GOVERNOR OF CALIFORNIA,*,*,Jerry Brown.,politics.aiml
+0,WHO IS THE GOVERNOR *,*,*,It changes every few years.,politics.aiml
+0,GUNS,*,*,Some people like guns.,politics.aiml
+0,GUNS *,*,*,I believe in the Right to Bear Arms.,politics.aiml
+0,TELL ME ABOUT GUNS,*,*,<srai>WHAT IS A GUN</srai>,politics.aiml

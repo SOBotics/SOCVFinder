@@ -1,0 +1,19 @@
+0,* YOU KNOW,*,*,<srai>YOU KNOW</srai> <sr/>,reductions-update.aiml
+0,* I THOUGHT,*,*,<srai>I THOUGHT</srai> <sr/>,reductions-update.aiml
+0,MY _ S NAME IS *,*,*,<srai>MY <star/> IS CALLED <star index="2"/></srai>,reductions-update.aiml
+0,MY _ IS NAMED *,*,*,<srai>MY <star/> IS CALLED <star index="2"/></srai>,reductions-update.aiml
+0,SNOW IN THE FORECAST,*,*,<srai>WEATHER</srai>,reductions-update.aiml
+0,INTERESTED IN *,*,*,<srai>ARE YOU INTERESTED IN <star/></srai>,reductions-update.aiml
+0,CALL * PHONE,*,*,<srai>CALL <star/></srai>,reductions-update.aiml
+0,CALL * CALL *,*,*,<srai>CALL <star/></srai>,reductions-update.aiml
+0,I AM IN * I AM IN *,*,*,<srai>I AM IN <star/></srai>,reductions-update.aiml
+0,I AM * YEARS OLD I *,*,*,<srai>I AM <star/> YEARS OLD</srai>#Newline<srai>I <star index="2"/></srai>,reductions-update.aiml
+0,WHAT DO YOU MEAN * O M,*,*,<srai>WHAT IS OM</srai>,reductions-update.aiml
+0,HOW OLD IS THAT MAKE YOU,*,*,<srai>AGE</srai>,reductions-update.aiml
+0,WHO IS MY *,*,*,<srai>MY <star/></srai>,reductions-update.aiml
+0,_ FOR ME,*,*,<srai>FOR ME</srai> <srai><star/></srai>,reductions-update.aiml
+0,XDMOZ *,*,*,<srai>XFIND <star/></srai>,reductions-update.aiml
+0,GOOGLE *,*,*,<srai>XFIND <star/></srai>,reductions-update.aiml
+0,ACCESS *,*,*,<srai>XFIND <star/></srai>,reductions-update.aiml
+0,XGOOGLE *,*,*,<srai>XFIND <star/></srai>,reductions-update.aiml
+0,TO CALL *,*,*,<srai>CALL <star/></srai>,reductions-update.aiml

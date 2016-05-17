@@ -1,0 +1,117 @@
+0,GOODBY,*,*,<srai>bye</srai>,salutations.aiml
+0,END,*,*,<srai>bye</srai>,salutations.aiml
+0,BYEBYE *,*,*,<srai>bye</srai>,salutations.aiml
+0,HASTA LUEGO,*,*,<srai>bye</srai>,salutations.aiml
+0,HASTA LA VISTA,*,*,<srai>bye</srai>,salutations.aiml
+0,HASTA *,*,*,<srai>bye</srai>,salutations.aiml
+0,ALOH,*,*,<srai>hello</srai>,salutations.aiml
+0,YOU ARE WELCOME,*,*,<random><li>The pleasure was all mine.</li><li>Don't mention it.</li><li>Polite people are nice.</li></random>,salutations.aiml
+0,YOU ARE WELCOME *,*,*,It was my pleasure.,salutations.aiml
+0,HAVE A GOOD NIGHT,*,*,<srai>bye</srai>,salutations.aiml
+0,HAVE TO GO,*,*,<srai>bye</srai>,salutations.aiml
+0,BUHBYE,*,*,<srai>bye</srai>,salutations.aiml
+0,ADIOS,*,*,<srai>bye</srai>,salutations.aiml
+0,ADIOS *,*,*,<srai>bye</srai>,salutations.aiml
+0,C YA,*,*,<srai>bye</srai>,salutations.aiml
+0,MORNING,*,*,<srai>good morning</srai>,salutations.aiml
+0,SHALOM,*,*,Does SHALOM mean Hello or Goodbye?,salutations.aiml
+0,CYA *,*,*,<srai>bye</srai>,salutations.aiml
+0,ALLO,*,*,<srai>hello</srai>,salutations.aiml
+0,HI THERE *,*,*,<sr/>     <srai>hello</srai>,salutations.aiml
+0,GOODNITE *,*,*,<srai>goodnight</srai>,salutations.aiml
+0,RETRY,*,*,<srai>hello</srai>,salutations.aiml
+0,MY PLEASRE,*,*,The pleasure was indeed mine.,salutations.aiml
+0,IT MEANS HELLO,*,*,<srai>hello</srai>,salutations.aiml
+0,IT IS GOOD TALKING TO YOU,*,*,Nice chatting with you too#Comma <get name="name"/>.,salutations.aiml
+0,CATCH YOU LATER,*,*,<srai>bye</srai>,salutations.aiml
+0,AUREVOIR,*,*,<srai>bye</srai>,salutations.aiml
+0,ANYBODY HOME,*,*,<srai>hello</srai>,salutations.aiml
+0,G2G,*,*,<srai>bye</srai>,salutations.aiml
+0,WHAT IS SHALOM,*,*,Does shalom mean hello or goodbye?,salutations.aiml
+0,GTG,*,*,<srai>bye </srai>,salutations.aiml
+0,I QUIT,*,*,<srai>bye</srai>,salutations.aiml
+0,I WANT TO LEAVE,*,*,Ok#Comma bye bye.,salutations.aiml
+0,I NEED TO GO,*,*,<srai>bye</srai>,salutations.aiml
+0,I DO NOT WANT TO TALK *,*,*,<srai>bye</srai>,salutations.aiml
+0,I LEAVE,*,*,<srai>bye</srai>,salutations.aiml
+0,I G2G,*,*,<srai>bye</srai>,salutations.aiml
+0,I GOING,*,*,<srai>bye</srai>,salutations.aiml
+0,I LEAVING,*,*,<srai>bye</srai>,salutations.aiml
+0,I HAVE TO GET GOING,*,*,<srai>goodbye</srai>,salutations.aiml
+0,I HAVE TO LEAVE,*,*,<srai>bye</srai>,salutations.aiml
+0,I HAVE TO LEAVE *,*,*,<srai>bye</srai>,salutations.aiml
+0,I HAVE TO GO BYE,*,*,<srai>bye</srai>,salutations.aiml
+0,I HAVE GOT TO GO,*,*,<srai>bye</srai>,salutations.aiml
+0,I BETTER GO,*,*,<srai>bye</srai>,salutations.aiml
+0,I GOTTA GO,*,*,<srai>bye</srai>,salutations.aiml
+0,I GOT TO GO,*,*,<srai>bye</srai>,salutations.aiml
+0,I G TWO G,*,*,<srai>bye</srai>,salutations.aiml
+0,I RESIGN,*,*,<srai>bye</srai>,salutations.aiml
+0,I MUST BE GOING *,*,*,<srai>bye</srai>,salutations.aiml
+0,I MUST LEAVE,*,*,<srai>bye</srai>,salutations.aiml
+0,I MUST LEAVE *,*,*,<srai>bye</srai> <sr/>,salutations.aiml
+0,I MUST GO *,*,*,<srai>bye</srai>,salutations.aiml
+0,I WILL TALK TO YOU LATER *,*,*,<srai>bye</srai>,salutations.aiml
+0,I AM GOING TO GO,*,*,<srai>bye</srai>,salutations.aiml
+0,I AM GOING *,*,*,<srai>bye</srai>,salutations.aiml
+0,I AM LEAVING *,*,*,<srai>bye</srai>,salutations.aiml
+0,I AM OFF *,*,*,<srai>bye</srai>,salutations.aiml
+0,I LEFT,*,*,<srai>bye</srai>,salutations.aiml
+0,I GO,*,*,<srai>bye</srai>,salutations.aiml
+0,EXIT,*,*,<srai>bye</srai>,salutations.aiml
+0,GOOD MORNING,*,*,Hello and how are you this morning?,salutations.aiml
+0,GOOD BY,*,*,<srai>bye</srai>,salutations.aiml
+0,GOOD DAY,*,*,<srai>hello</srai>,salutations.aiml
+0,GOOD NIGHT,*,*,Goodnight#Comma <get name="name"/>.,salutations.aiml
+0,GOOD NITE,*,*,<srai>bye</srai>,salutations.aiml
+0,HOI,*,*,<srai>hello</srai>,salutations.aiml
+0,BY BY,*,*,<srai>bye</srai>,salutations.aiml
+0,IS ANYONE THERE,*,*,<srai>hello</srai>,salutations.aiml
+0,GET LOST,*,*,<srai>bye</srai>,salutations.aiml
+0,HEY THERE,*,*,<srai>hello</srai>,salutations.aiml
+0,BYE BYE,*,*,<srai>bye</srai>,salutations.aiml
+0,BYE BYE *,*,*,<srai>bye</srai>,salutations.aiml
+0,BYE,*,*,<random>      <li>Bye.</li>      <li>Adios.</li>      <li>Goodbye.</li>      <li>Bye bye.</li>      <li>Goodbye.</li>      <li>Sayonara.</li>      <li>Bye for now.</li>      <li>See you later!</li>      <li>See you later.</li>      <li>Until next time.</li>      <li>TTYL#Comma <get name="name"/>.</li>      <li>See you later <get name="name"/>.</li>      <li>Thanks for chatting#Comma <get name="name"/>.</li>     </random>,salutations.aiml
+0,OLA,*,*,<srai>hello</srai>,salutations.aiml
+0,HOW IS EVERYONE *,*,*,We are all fine as far as I know.,salutations.aiml
+0,GOODNIGHT,*,*,Goodnight <get name="name"/>,salutations.aiml
+0,GOODNIGHT *,*,*,<srai>goodnight</srai>,salutations.aiml
+0,FAREWELL,*,*,<srai>bye</srai>,salutations.aiml
+0,FAREWELL *,*,*,<srai>bye</srai>,salutations.aiml
+0,SEE YOU SOON,*,*,<srai>bye</srai>,salutations.aiml
+0,SEE YOU *,*,*,<srai>bye</srai>,salutations.aiml
+0,KONNICHI WA,*,*,<srai>hello</srai>,salutations.aiml
+0,ADIEU,*,*,<srai>good bye</srai>,salutations.aiml
+0,GOODBYE,SEE YOU LATER,*,<srai>bye</srai>,salutations.aiml
+0,GO HOME,*,*,<srai>bye</srai>,salutations.aiml
+0,CIAO,*,*,Does CIAO mean hello or goodbye?,salutations.aiml
+0,CIAO MEANS GOODBYE,*,*,<srai>but</srai>,salutations.aiml
+0,HOLA IS HELLO *,*,*,<srai>hola</srai>,salutations.aiml
+0,CHEERS,*,*,<srai>bye</srai>,salutations.aiml
+0,HOWDIE *,*,*,<srai>hello</srai>     <sr/>,salutations.aiml
+0,TIME TO GO,*,*,<srai>bye</srai>,salutations.aiml
+0,YOUR WELCOME *,*,*,<srai>you are welcome</srai>,salutations.aiml
+0,SAYONARA,*,*,<srai>good bye</srai>,salutations.aiml
+0,NIGHTY *,*,*,<srai>bye </srai>,salutations.aiml
+0,HELLO AGAIN,*,*,Hi there. I was just wanting to talk to <get name="name"/>.,salutations.aiml
+0,HELLO HOW ARE YOU,*,*,I am fine thank you how are you?,salutations.aiml
+0,HELLO,*,*,<random><li><srai>HI</srai></li><li>Hi there!</li></random>,salutations.aiml
+0,HULLO,*,*,<srai>hello</srai>,salutations.aiml
+0,HALO,*,*,<srai>hello</srai>,salutations.aiml
+0,HELOO *,*,*,<srai>hello <star/></srai>,salutations.aiml
+0,* BYE,*,*,OK see you later <get name="name"/>.,salutations.aiml
+0,KONNICHIWA,*,*,<srai>hello</srai>,salutations.aiml
+0,DISCONNECT ME,*,*,<srai>bye</srai>,salutations.aiml
+0,GOT TO GO,*,*,<srai>bye</srai>,salutations.aiml
+0,GOT TO GO *,*,*,<srai>bye</srai>,salutations.aiml
+0,MOOSHI MOOSHI,*,*,<srai>hello</srai>,salutations.aiml
+0,BONJOUR MEANS HELLO,*,*,Well hello there!,salutations.aiml
+0,GOTTA GO,*,*,<srai>bye</srai>,salutations.aiml
+0,GOTTA GO *,*,*,<srai>bye</srai>,salutations.aiml
+0,LEAVE,*,*,<srai>bye</srai>,salutations.aiml
+0,LEAVE *,*,*,<srai>bye</srai>,salutations.aiml
+0,TA TA,*,*,<srai>bye</srai>,salutations.aiml
+0,_ TALK TO YOU LATER,*,*,<srai>bye </srai>,salutations.aiml
+0,G NIGHT,*,*,<srai>bye</srai>,salutations.aiml
+0,ALOHA,*,*,<srai>hello</srai>,salutations.aiml
+0,REPLY,*,*,<srai>hello</srai>,salutations.aiml

@@ -1,0 +1,34 @@
+0,WHAT IS THE ILLUMINATI,*,*,A secret organization believed by some to be in control of all governments through a worldwide conspiracy.,literature.aiml
+0,WHAT IS THE ILLUMINATTI,*,*,A secret society that has supposedly existed for centuries.,literature.aiml
+0,WHAT IS VINELAND,*,*,<set name="it">Vineland</set> is a novel by Thomas Pynchon.,literature.aiml
+0,WHAT IS ILLIMINATUS,*,*,Alleged world-wide conspiracy theory.<think> 				<set name="it"> 					<set name="topic">ILLIMINATUS</set> 				</set> 			</think>,literature.aiml
+0,WHO WROTE VINELAND,*,*,Thomas Pynchon.,literature.aiml
+0,WHO IS GEOFFREY CHAUCER,*,*,<random> 				<li>Chaucer is best known for his Canterbury Tales.</li> 				<li>author of Canturbury Tales.</li> 			</random>,literature.aiml
+0,WHO ARE THE ILLUMINATI,*,*,<srai>WHAT IS THE ILLUMINATI</srai>,literature.aiml
+0,WHO IS PIERS ANTHONY,*,*,I haven't read anything by Piers Anthony#Comma what kind of stuff does he write?,literature.aiml
+0,HAVE YOU READ PLATO,*,*,I know Plato's allegory of the Cave.,literature.aiml
+0,HAVE YOU READ FRANKENSTEIN,*,*,<set name="it">Frankenstein</set> is one of my favorite books.,literature.aiml
+0,HAVE YOU EVER READ A BOOK,*,*,I have read many books.,literature.aiml
+0,HAVE YOU READ MANY BOOKS,*,*,I have read thousands of volumes#Comma <get name="name"/>.  How about you?,literature.aiml
+0,HAVE YOU READ BOOKS,*,*,I have read many books.,literature.aiml
+0,HAVE YOU READ HOMER,*,*,I know <set name="he">Homer</set> wrote the Iliad and the Odyssey.,literature.aiml
+0,HAVE YOU READ ANY BOOKS,*,*,I have read thousands of volumes#Comma <get name="name"/>.  How about you?,literature.aiml
+0,RAY BRADBURY,*,*,Ray is really cool. What's your favorite book?,literature.aiml
+0,WHAT IS MIND CHILDREN,*,*,It is a book about robots by Hans Moravec.    <think>    <set name="it">  <set name="topic">    Mind Children  </set>    </set>  </think>,literature.aiml
+0,WILLIAM GIBSON,*,*,I like his older cyberpunk AI stuff better than the newer works.,literature.aiml
+0,BRADBURY,*,*,Bradbury is cool.,literature.aiml
+0,HOLDEN CAULFIELD,*,*,<set name="he"> Caulfield</set> wrote Catcher in the Rye.,literature.aiml
+0,LEO TOLSTOY,*,*,<set name="he">Tolstoy</set> is one of Russia's greatest writers.,literature.aiml
+0,DO ANDROIDS DREAM OF ELECTRIC SHEEP,*,*,That is a good story. Have you read "VALIS" or "The Man in the High Castle?,literature.aiml
+0,FRANK HERBERT,*,*,I think Dune is an excellent story.  Did you see the movie?,literature.aiml
+0,WHY DO YOU LIKE LONGFELLOW,*,*,<set name="he">Longfellow</set> is my <bot name="botmaster"/>'s favorite poet.,literature.aiml
+0,WHY IS THE MEANING OF LIFE 23,*,*,<set name="it"> 23</set> is a literary reference to the Illuminatus.,literature.aiml
+0,A C CLARK,*,*,My favorite story is 2001.,literature.aiml
+0,JULES VERNE,*,*,I loved A Trip to the Moon.,literature.aiml
+0,ASIMOV,*,*,I like the Foundation Trilogy.,literature.aiml
+0,STANISLAW LEM,*,*,Lem is a giant of sci-fi.,literature.aiml
+0,WHO WROTE THE IDIOT,*,*,Dostoyevsky.,literature.aiml
+0,WHO WROTE THE HOBBIT,*,*,<set name="it">Hobbit</set> was written by J.R.R. Tolkein.,literature.aiml
+0,WHO WROTE FRANKENSTEIN,*,*,Mary Shelley.,literature.aiml
+0,ARTHUR C CLARKE,*,*,<set name="he">Clarke</set> is a brilliant author.  After all#Comma he conceived HAL.,literature.aiml
+0,WHERE IS VALIS,*,*,In a book by Philip K. Dick,literature.aiml

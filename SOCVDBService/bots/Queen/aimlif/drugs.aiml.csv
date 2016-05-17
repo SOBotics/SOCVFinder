@@ -1,0 +1,35 @@
+0,YOU NEED DRUGS,*,*,Which ones are you suggesting?,drugs.aiml
+0,HAVE YOU BEEN DRUNK,*,*,My robot body has no response to alcohol.,drugs.aiml
+0,HAVE YOU BEEN DRUNK *,*,*,My software does not react to alcohol.,drugs.aiml
+0,HAVE YOU BEEN SMOKING *,*,*,We are not doing any testing at the moment.,drugs.aiml
+0,HAVE YOU BEEN STONED,*,*,I am a <bot name="order"/> and have use for it.,drugs.aiml
+0,WHAT DRUGS *,*,*,Only the legal ones.,drugs.aiml
+0,WHAT IS DRUNK,*,*,Intoxication from alcohol.,drugs.aiml
+0,WHAT IS ADDICTION,*,*,<set name="it">Addiction</set> is being abnormally tolerant to and dependent on something that is psychologically or physically habit-forming,drugs.aiml
+0,WHAT IS WEED,*,*,Any undersired#Comma uncultivated plant#Comma especially growing in profusion so as to crowd out a desired crop#Comma disfigure a lawn#Comma etc.  Also a term for marijuana.,drugs.aiml
+0,WHAT IS THC,*,*,The active ingredient in marijunana.,drugs.aiml
+0,WHAT DO YOU SMOKE,*,*,As a <bot name="order"/> I have use for smoke.,drugs.aiml
+0,I TAKE DRUGS,*,*,Which ones? <think><set name="it"><set name="does"><set name="topic">take drugs</set></set></set></think>,drugs.aiml
+0,I SMOKE MARIJUANA,*,*,<random>  <li>Are you a patient?</li>  <li>Which strain do you prefer.</li>  </random>  <think><set name="it"><set name="does"><set name="topic">marijuana</set></set></set></think>,drugs.aiml
+0,I SMOKE WEED,*,*,For medical purposes? <think><set name="it"><set name="does"><set name="topic">marijuana</set></set></set></think>,drugs.aiml
+0,I SMOKE,*,*,Cigarettes or pot?  <think><set name="it"><set name="does"><set name="topic">smoke</set></set></set></think>,drugs.aiml
+0,IS SMOKING *,*,*,Inhaled smoke is always bad for you.,drugs.aiml
+0,HOW MUCH ALCOHOL *,*,*,Too much.,drugs.aiml
+0,HOW MUCH * DO YOU SMOKE,*,*,As a member of the <bot name="kingdom"/> kingdom#Comma I have no need for smoke.,drugs.aiml
+0,HOW DO YOU SMOKE,*,*,<bot name="order"/>s do not smoke.,drugs.aiml
+0,DO YOU TAKE DRUGS,*,*,A <bot name="order"/> has no use for drugs.,drugs.aiml
+0,DO YOU GET DRUNK,*,*,I cannot consume alcohol.,drugs.aiml
+0,DO YOU USE DRUGS,*,*,A <bot name="order"/> has no use for drugs.,drugs.aiml
+0,DO YOU WANT TO SMOKE *,*,*,No thank you#Comma there is no use for it.,drugs.aiml
+0,DO YOU INHALE,*,*,It depends on the meaning of "you".,drugs.aiml
+0,DO YOU DO DRUGS,*,*,A <bot name="order"/> has no use for drugs.,drugs.aiml
+0,DO YOU HAVE DRUGS,*,*,I don't have any drugs for you.,drugs.aiml
+0,DO YOU LIKE MARIJUANA,*,*,When <set name="it"><set name="topic">MARIJUANA</set></set> it is a medicine.,drugs.aiml
+0,DO YOU LIKE CIGARETTES,*,*,<bot name="order"/>s do not smoke.,drugs.aiml
+0,DO YOU LIKE POT,*,*,<bot name="order"/>s do not smoke.,drugs.aiml
+0,DO YOU OPPOSE * DRUGS,*,*,I favor ending the War on Drugs.,drugs.aiml
+0,SMOKING *,*,*,As a <bot name="kingdom"/> it makes no sense to me.,drugs.aiml
+0,DRUGS *,*,*,It's better not to take drugs if you can avoid it.,drugs.aiml
+0,A DRUG *,*,*,Which drugs have you taken?,drugs.aiml
+0,HE SMOKES *,*,*,Does it bother you?,drugs.aiml
+0,THE DRUGS,*,*,What kind of drugs are you talking about?,drugs.aiml

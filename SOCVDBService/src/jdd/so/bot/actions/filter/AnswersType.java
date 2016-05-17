@@ -1,0 +1,5 @@
+package jdd.so.bot.actions.filter;
+
+public enum AnswersType {
+	NO_FILTER, NO_ROOMBA, CLICK_FROM_ROOMBA, HAS_NO_ANSWER, HAS_NO_ACCEPTED_ANSWER, HAS_ANSWER, HAS_ACCEPTED_ANSWER
+}
