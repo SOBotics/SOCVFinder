@@ -41,6 +41,7 @@ namespace ReportDumpAPI
                 }
             }
         }
+
         public static void DisconnectFromLpsServer(this WebClient wc, string data)
         {
             try
