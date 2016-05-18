@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jdd.so.bot.actions.cmd.AddUserCommand;
+import jdd.so.bot.actions.cmd.AiChatCommand;
 import jdd.so.bot.actions.cmd.ApiQuotaCommand;
 import jdd.so.bot.actions.cmd.BatchDoneCommand;
 import jdd.so.bot.actions.cmd.CherryPickCommand;
@@ -12,9 +13,8 @@ import jdd.so.bot.actions.cmd.DeleteCommentCommand;
 import jdd.so.bot.actions.cmd.HelpCommand;
 import jdd.so.bot.actions.cmd.OptInCommand;
 import jdd.so.bot.actions.cmd.OptOutCommand;
-import jdd.so.bot.actions.cmd.PingCommand;
-import jdd.so.bot.actions.cmd.AiChatCommand;
 import jdd.so.bot.actions.cmd.ShutDownCommand;
+import jdd.so.bot.actions.cmd.UserListCommand;
 
 public class BotCommandsRegistry {
 
@@ -50,6 +50,7 @@ public class BotCommandsRegistry {
 		commands.add(new CherryPickCommand());
 		// ...
 
+		commands.add(new UserListCommand());
 		commands.add(new AddUserCommand());
 		commands.add(new DeleteCommentCommand());
 		commands.add(new ShutDownCommand());

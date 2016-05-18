@@ -58,8 +58,8 @@ public class CloseVoteFinder {
 	private String restApi = "http://socvr.org:222/api/socv-finder/dump-report"; 
 
 	private static CloseVoteFinder instance;
-	private static long lastCall;
-	private static int apiCallNrPages = 10;
+	private long lastCall;
+	private int apiCallNrPages = 10;
 	private int apiQuota;
 	private int defaultNumberOfQuestion=20;
 	private Connection dbConnection;
@@ -275,7 +275,7 @@ public class CloseVoteFinder {
 		return restApi;
 	}
 
-	public static int getApiCallNrPages() {
+	public int getApiCallNrPages() {
 		return apiCallNrPages;
 	}
 

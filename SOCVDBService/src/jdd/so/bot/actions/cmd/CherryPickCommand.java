@@ -182,7 +182,7 @@ public class CherryPickCommand extends BotCommand {
 		} else {
 			// Get the latest pages from tag
 			if (questionFilter.getDays()==null||!questionFilter.getDays().isFilterActive()){
-				apiResult = api.getQuestions(tag, CloseVoteFinder.getApiCallNrPages(), true, null);
+				apiResult = api.getQuestions(tag, CloseVoteFinder.getInstance().getApiCallNrPages(), true, null);
 			}else{
 				long fromDate = 0L;
 				long toDate = 0L;
@@ -214,7 +214,7 @@ public class CherryPickCommand extends BotCommand {
 						fromDate = getUnixDate(days);
 						toDate = getUnixDate(days-1);
 				}
-				apiResult = api.getQuestions(null,fromDate,toDate,tag, CloseVoteFinder.getApiCallNrPages(), true, null);
+				apiResult = api.getQuestions(null,fromDate,toDate,tag, CloseVoteFinder.getInstance().getApiCallNrPages(), true, null);
 			}
 		}
 

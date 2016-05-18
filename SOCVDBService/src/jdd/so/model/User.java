@@ -1,6 +1,6 @@
 package jdd.so.model;
 
-public class User {
+public class User implements Comparable<User>{
 	
 	private long userId;
 	private String userName;
@@ -23,6 +23,9 @@ public class User {
 		this.userId = userId;
 	}
 	public String getUserName() {
+		if (userName==null || userName.trim().length()==0){
+			return "Not indicated";
+		}
 		return userName;
 	}
 	public void setUserName(String userName) {
@@ -34,5 +37,18 @@ public class User {
 	public void setAccessLevel(int accessLevel) {
 		this.accessLevel = accessLevel;
 	}
+
+	@Override
+	public int compareTo(User o) {
+		if (o==null){
+			return -1;
+		}
+		int al = getAccessLevel()-o.getAccessLevel();
+		if (al!=0){
+			return al;
+		}
+		return getUserName().compareTo(o.getUserName());
+	}
+	
 
 }

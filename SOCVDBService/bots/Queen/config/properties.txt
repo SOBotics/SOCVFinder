@@ -1,5 +1,5 @@
 url:https://github.com/jdd-software/SOCVFinder/
-name:QUEEN
+name:Queen
 email:
 gender:female
 botmaster:BOT owners

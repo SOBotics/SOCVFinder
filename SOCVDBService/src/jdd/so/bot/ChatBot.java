@@ -41,8 +41,8 @@ public class ChatBot {
 		this.properties = properties;
 		this.messageLatch = messageLatch;
 		Bot bot = new Bot("QUEEN", MagicStrings.root_path, "chat");
+		bot.deleteLearnfCategories();
 		chatSession = new Chat(bot);
-
 		bot.brain.nodeStats();
 	}
 
@@ -77,14 +77,13 @@ public class ChatBot {
 	protected void roomEvent(Room room, PingMessageEvent event, boolean isReply) {
 		System.out.println("Incomming message: " + event.toString());
 		if (event.getEditCount() > 0) {
-			long parentId = event.getParentMessageId();
+			//long parentId = event.getParentMessageId();
 			return; // Ignore edits for now
 		}
 		BotCommand bc = BotCommandsRegistry.getInstance().getCommand(event.getContent(), isReply, event.getEditCount());
 		System.out.println(bc);
 
 		// Check access level
-
 		long userId = event.getUserId();
 		int accessLevel = 0;
 		if (CloseVoteFinder.getInstance().getUsers() != null) {
@@ -126,6 +125,7 @@ public class ChatBot {
 		// Load AI interface
 		AIMLProcessor.extension = new PCAIMLProcessorExtension();
 		MagicStrings.root_path = System.getProperty("user.dir");
+		MagicStrings.default_bot_name = "Queen";
 
 		// load properties file
 		Properties properties = new Properties();

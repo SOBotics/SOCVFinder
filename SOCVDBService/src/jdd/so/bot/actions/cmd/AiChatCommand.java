@@ -78,19 +78,4 @@ public class AiChatCommand extends BotCommand {
 		
 	}
 
-	private String getRandomICantUnderstandCmd() {
-		int r  = (int)(Math.random()*5);
-		switch (r){
-		case 0:
-			return "Sorry, will close that as unclear";
-		case 1:
-			return "He?, I guess POB?";
-		case 2:
-			return "Please clarify your question";
-		case 3:
-			return "Na, that seems strange";
-		}
-		return "What are you trying to tell me honey?";
-	}
-
 }

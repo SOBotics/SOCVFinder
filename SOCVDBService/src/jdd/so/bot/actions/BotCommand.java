@@ -7,7 +7,7 @@ import fr.tunaki.stackoverflow.chat.Room;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.bot.actions.cmd.CherryPickCommand;
 
-public abstract class BotCommand {
+public abstract class BotCommand implements Comparable<BotCommand> {
 
 	public static final int ACCESS_LEVEL_NONE = 0;
 	public static final int ACCESS_LEVEL_REVIEWER = 1;
@@ -67,6 +67,15 @@ public abstract class BotCommand {
 	@Override
 	public String toString() {
 		return getCommandName();
+	}
+	
+	@Override
+	public int compareTo(BotCommand o) {
+		int i = getRequiredAccessLevel() - o.getRequiredAccessLevel();
+		if (i!=0){
+			return i;
+		}
+		return getCommandName().compareTo(o.getCommandName());
 	}
 
 	public static void main(String[] args) {

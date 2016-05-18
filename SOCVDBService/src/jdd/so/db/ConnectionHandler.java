@@ -1,13 +1,13 @@
 package jdd.so.db;
 
-import org.apache.log4j.Logger;
-
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.apache.log4j.Logger;
 
 /**
  * Quick and dirty, but structure to handle pool if we need
