@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Net;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using ReportDumpAPI.RateLimiter;
 
@@ -15,6 +11,7 @@ namespace ReportDumpAPI.WebServer
     class Server
     {
         private const int lpsPort = 87;
+        private readonly string lpsConnectionData = $"http://{Config.FQD} {lpsPort}";
         private readonly bool onMono = Type.GetType("Mono.Runtime") != null;
         private HttpListener socket;
         private ConcurrentDictionary<string, byte[]> content;
@@ -57,20 +54,7 @@ namespace ReportDumpAPI.WebServer
             if (dispose) return;
             dispose = true;
 #if LPS
-            var data = $"http://{Config.FQD} {lpsPort}";
-            string res = null;
-
-            try
-            {
-                res = new WebClient().UploadString("http://localhost:84/stop", data);
-            }
-            catch (WebException ex) when (ex.Response != null && ex.Response.ContentLength > 0)
-            {
-                using (var sr = new StreamReader(ex.Response.GetResponseStream()))
-                {
-                    throw new Exception("Unable to cleanly disconnect from LPS server. Response: " + sr.ReadToEnd(), ex);
-                }
-            }
+            new WebClient().DisconnectFromLpsServer(lpsConnectionData);
 #endif
             socket.Stop();
 
@@ -95,20 +79,7 @@ namespace ReportDumpAPI.WebServer
 #if LPS
             socket.Prefixes.Add($"http://localhost:{lpsPort}/");
 
-            var data = $"http://{Config.FQD} {lpsPort}";
-            string res = null;
-
-            try
-            {
-                res = new WebClient().UploadString("http://localhost:84/start", data);
-            }
-            catch (WebException ex) when (ex.Response != null && ex.Response.ContentLength > 0)
-            {
-                using (var sr = new StreamReader(ex.Response.GetResponseStream()))
-                {
-                    throw new Exception("Unable to connect to LPS server. Response: " + sr.ReadToEnd(), ex);
-                }
-            }
+            new WebClient().ConnectToLpsServer(lpsConnectionData);
 #else
             socket.Prefixes.Add($"http://{Config.FQD}/")
 #endif
