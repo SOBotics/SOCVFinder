@@ -28,7 +28,7 @@ public class OptInCommand extends BotCommand {
 
 	@Override
 	public String getCommandUsage() {
-		return "@Queen opt-in [tag:tagToMonitor]";
+		return "opt-in [[tag]]";
 	}
 
 	@Override

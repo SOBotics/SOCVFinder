@@ -28,12 +28,12 @@ public class BatchDoneCommand extends BotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Reports that you have finished reviwing batch served";
+		return "Reports that you have reviewed last batch served";
 	}
 
 	@Override
 	public String getCommandUsage() {
-		return "reply to batch with done";
+		return "done";
 	}
 
 	@Override

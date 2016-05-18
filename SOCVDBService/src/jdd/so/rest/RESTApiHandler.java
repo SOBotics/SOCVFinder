@@ -47,6 +47,8 @@ public class RESTApiHandler {
 				logger.debug("getRemoteURL(CherryPickResult) - Connecting to: " + url);
 			}
 			conn = (HttpURLConnection) new URL(url).openConnection();
+			conn.setConnectTimeout(10*1000);
+			conn.setReadTimeout(10*1000);
 			conn.setDoOutput(true);
 			conn.setRequestMethod("POST");
 			conn.setRequestProperty("Content-Type", "application/json");

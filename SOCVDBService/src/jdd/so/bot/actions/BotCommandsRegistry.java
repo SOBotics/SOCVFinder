@@ -7,12 +7,13 @@ import jdd.so.bot.actions.cmd.AddUserCommand;
 import jdd.so.bot.actions.cmd.ApiQuotaCommand;
 import jdd.so.bot.actions.cmd.BatchDoneCommand;
 import jdd.so.bot.actions.cmd.CherryPickCommand;
+import jdd.so.bot.actions.cmd.CommandsCommand;
 import jdd.so.bot.actions.cmd.DeleteCommentCommand;
 import jdd.so.bot.actions.cmd.HelpCommand;
 import jdd.so.bot.actions.cmd.OptInCommand;
 import jdd.so.bot.actions.cmd.OptOutCommand;
 import jdd.so.bot.actions.cmd.PingCommand;
-import jdd.so.bot.actions.cmd.RandomChatCommand;
+import jdd.so.bot.actions.cmd.AiChatCommand;
 import jdd.so.bot.actions.cmd.ShutDownCommand;
 
 public class BotCommandsRegistry {
@@ -39,15 +40,16 @@ public class BotCommandsRegistry {
 		 * add manually since we want them in order, the cherry pick only needs
 		 * [tag: run (and this is also use in other commands)
 		 */
-		commands.add(new PingCommand());
+		//commands.add(new PingCommand()); Removing this fun
+		commands.add(new CommandsCommand());
 		commands.add(new HelpCommand());
 		commands.add(new OptInCommand());
 		commands.add(new OptOutCommand());
 		commands.add(new BatchDoneCommand());
 		commands.add(new ApiQuotaCommand());
+		commands.add(new CherryPickCommand());
 		// ...
 
-		commands.add(new CherryPickCommand());
 		commands.add(new AddUserCommand());
 		commands.add(new DeleteCommentCommand());
 		commands.add(new ShutDownCommand());
@@ -61,7 +63,14 @@ public class BotCommandsRegistry {
 				return abc;
 			}
 		}
-		return new RandomChatCommand();
+		return new AiChatCommand();
+	}
+	
+	public List<BotCommand> getCommands(){
+		//return a new list since we do not want commands to be reordered
+		List<BotCommand> commands = new ArrayList<>();
+		commands.addAll(this.commands);
+		return commands;
 	}
 	
 

@@ -23,7 +23,7 @@ public class DeleteCommentCommand extends BotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Remove the chat message";
+		return "Remove last message or message replied to";
 	}
 
 	@Override

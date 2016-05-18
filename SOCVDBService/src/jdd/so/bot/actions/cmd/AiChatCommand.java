@@ -1,11 +1,14 @@
 package jdd.so.bot.actions.cmd;
 
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
+
 import fr.tunaki.stackoverflow.chat.Room;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.bot.ChatBot;
 import jdd.so.bot.actions.BotCommand;
 
-public class RandomChatCommand extends BotCommand {
+public class AiChatCommand extends BotCommand {
 
 	@Override
 	public String getMatchCommandRegex() {
@@ -24,7 +27,7 @@ public class RandomChatCommand extends BotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Just some random stuff";
+		return "Respond to commands I don't understand";
 	}
 
 	@Override
@@ -71,7 +74,7 @@ public class RandomChatCommand extends BotCommand {
 		}
 		
 		String response = ChatBot.getResponse(message.replaceAll("(?i)@qu(\\w+)", "").trim());
-		room.replyTo(event.getMessageId(), response);
+		room.replyTo(event.getMessageId(), Jsoup.clean(response, Whitelist.basic()));
 		
 	}
 

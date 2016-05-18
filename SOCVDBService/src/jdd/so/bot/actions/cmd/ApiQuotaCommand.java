@@ -9,7 +9,7 @@ public class ApiQuotaCommand extends BotCommand {
 
 	@Override
 	public String getMatchCommandRegex() {
-		 return "(?i)(apiquota|api-quota|api quota)";
+		return "(?i)(apiquota|api-quota|api quota)";
 	}
 
 	@Override
@@ -29,12 +29,16 @@ public class ApiQuotaCommand extends BotCommand {
 
 	@Override
 	public String getCommandUsage() {
-		return "api-qouta";
+		return "api-quota";
 	}
 
 	@Override
 	public void runCommand(Room room, PingMessageEvent event) {
-		room.send("The current api quota is: " + CloseVoteFinder.getInstance().getApiQuota());
+		if (CloseVoteFinder.getInstance().getApiQuota() < 0) {
+			room.send("I have not done any api request since start-up so I do not know");
+		} else {
+			room.send("The current api quota is: " + CloseVoteFinder.getInstance().getApiQuota());
+		}
 	}
 
 }

@@ -453,5 +453,20 @@ public class Question {
 	public void setAcceptedAnswerId(long acceptedAnswerId) {
 		this.acceptedAnswerId = acceptedAnswerId;
 	}
+	
+	@Override
+	public boolean equals(Object q){
+		if (q instanceof Question){
+			return this.getQuestionId()==((Question)q).getQuestionId();
+		}
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		return ((Long)getQuestionId()).hashCode();
+	}
+	
+	
 
 }

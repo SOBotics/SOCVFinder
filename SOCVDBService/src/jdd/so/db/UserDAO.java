@@ -5,9 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
 
 import jdd.so.model.User;
 
@@ -15,7 +15,7 @@ public class UserDAO {
 	
 
 	public Map<Long, User> getUsers(Connection connection) throws SQLException{
-		Map<Long,User> users = new HashMap<Long, User>();
+		Map<Long,User> users = Collections.synchronizedMap(new HashMap<Long, User>());
 		String sql = "SELECT user_id,user_name,privilege_level FROM users"; 
 		Statement std = null;
 		ResultSet rs = null;

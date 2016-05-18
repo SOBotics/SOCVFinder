@@ -54,7 +54,7 @@ public class CherryPickCommand extends BotCommand {
 
 	@Override
 	public String getCommandUsage() {
-		return "Pass a tag of your choice to me";
+		return "<max-questions> [[tag]]* <dupes> <cv-count>cv <q-score>s <answerType> <age>d";
 	}
 
 	@Override
@@ -65,6 +65,7 @@ public class CherryPickCommand extends BotCommand {
 		boolean serveSome = false;
 		String retMsg = "Elaborating";
 		CherryPickResult cpr=null;
+		room.send("All right, dear, working on it...");
 		try {
 			if (isDupCommand) {
 				System.out.println("Dupes: " + tags);

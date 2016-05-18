@@ -58,7 +58,9 @@ public class CherryPickResult {
 		filterdQuestions = new ArrayList<Question>(apiResult.getQuestions().size());
 		for (Question q : apiResult.getQuestions()) {
 			if (questionFilter.isAccepted(q)){
-				filterdQuestions.add(q);
+				if (!filterdQuestions.contains(q)){
+					filterdQuestions.add(q);
+				}
 			}
 		}
 		Collections.sort(filterdQuestions,sorter);

@@ -26,12 +26,12 @@ public class PingCommand extends BotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Let the Queen speak to other users";
+		return "Use bot to ping other users";
 	}
 
 	@Override
 	public String getCommandUsage() {
-		return "tell (ping), say (no ping), ping (ping all in list)";
+		return "ping [Username]*";
 	}
 
 	@Override

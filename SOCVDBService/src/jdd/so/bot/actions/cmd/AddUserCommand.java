@@ -28,12 +28,12 @@ public class AddUserCommand extends BotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Adds users and set access level";
+		return "Add a users and set the access level";
 	}
 
 	@Override
 	public String getCommandUsage() {
-		return "add user <id_user> <name> <access_level>";
+		return "add user [id_user] [name] <access_level>";
 	}
 
 	@Override
@@ -52,6 +52,15 @@ public class AddUserCommand extends BotCommand {
 			room.replyTo(event.getMessageId(), "User id is not an int usage: " + getCommandUsage());
 			return;
 		}
+		User userAdding = CloseVoteFinder.getInstance().getUsers().get(event.getUserId());
+		
+		User userToAdd = CloseVoteFinder.getInstance().getUsers().get(idUser);
+		
+		if (userToAdd!=null && userToAdd.getAccessLevel()>=userAdding.getAccessLevel() && (userToAdd.getUserId()!=userAdding.getUserId())){
+			room.replyTo(event.getMessageId(), "You can not modify user " + userToAdd.getUserName() + " with same or higher access level");
+			return;
+		}
+		
 		int accessLevel=0;
 		try {
 			accessLevel = Integer.parseInt(cmdArray[cmdArray.length - 1]);
@@ -59,14 +68,16 @@ public class AddUserCommand extends BotCommand {
 			room.replyTo(event.getMessageId(), "Access level is not an int usage: " + getCommandUsage());
 			return;
 		}
+		
+		
+		
 		if (accessLevel<0 || accessLevel>3){
 			room.replyTo(event.getMessageId(), "Access level should be between 0-2");
 			return;
 		}
 		
-		User ua = CloseVoteFinder.getInstance().getUsers().get(event.getUserId());
-		if (accessLevel>ua.getAccessLevel()){
-			room.replyTo(event.getMessageId(), "Sorry you can only add users with same access level as yours: " + ua.getAccessLevel() + ": " + BotCommand.getAccessLevelName(ua.getAccessLevel()));
+		if (accessLevel>userAdding.getAccessLevel()){
+			room.replyTo(event.getMessageId(), "Sorry you can only add users with same access level as yours: " + userAdding.getAccessLevel() + ": " + BotCommand.getAccessLevelName(userAdding.getAccessLevel()));
 			return;
 		}
 		
@@ -90,7 +101,7 @@ public class AddUserCommand extends BotCommand {
 		try {
 			dao.insertOrUpdate(CloseVoteFinder.getInstance().getConnection(), u);
 			String action = "added";
-			if (CloseVoteFinder.getInstance().getUsers().containsKey(u.getUserId())){
+			if (userToAdd!=null){
 				action="updated";
 			}
 			CloseVoteFinder.getInstance().getUsers().put(u.getUserId(),u);

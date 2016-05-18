@@ -23,12 +23,12 @@ public class ShutDownCommand extends BotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Will terminate the bot";
+		return "Shutdown the bot";
 	}
 
 	@Override
 	public String getCommandUsage() {
-		return "die or shutdown";
+		return "die";
 	}
 
 	@Override

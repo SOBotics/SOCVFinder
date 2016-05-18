@@ -95,7 +95,7 @@ public class ChatBot {
 
 			if (accessLevel < bc.getRequiredAccessLevel()) {
 				room.replyTo(event.getMessageId(),
-						"Sorry you need to be " + BotCommand.getAccessLevelName(bc.getRequiredAccessLevel()) + " to run this command");
+						"Sorry you need to be " + BotCommand.getAccessLevelName(bc.getRequiredAccessLevel()) + " to run this command (@Petter)");
 				return;
 			}
 		}

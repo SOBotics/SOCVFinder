@@ -23,12 +23,12 @@ public class OptOutCommand extends BotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Remove yourself from duplication notifications indicate tag";
+		return "Remove yourself from duplication notifications in tag";
 	}
 
 	@Override
 	public String getCommandUsage() {
-		return "@Queen opt-out [tag:tagToMonitor]";
+		return "opt-out [[tag]]";
 	}
 
 	@Override
