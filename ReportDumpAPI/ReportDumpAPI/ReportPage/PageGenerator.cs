@@ -42,7 +42,7 @@ namespace ReportDumpAPI.ReportPage
                 ver = ver.Substring(0, 5);
             }
 
-            var link = $"https://github.com/ArcticEcho/SOCVRSS/commit/{ThisAssembly.Git.Sha}";
+            var link = $"https://github.com/jdd-software/SOCVFinder/commit/{ThisAssembly.Git.Sha}";
             var html = $"<a href=\"{link}\">{ver}</a>";
 
             return data.Replace("$SERVER_VERSION$", html);
