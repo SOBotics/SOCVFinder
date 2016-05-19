@@ -69,10 +69,32 @@ namespace ReportDumpAPI.ReportPage
 
         private static string PatchReportSearchTag(string html, Dictionary<string, object> json)
         {
-            var tag = json["search_tag"].ToString();
-            tag = tag.Remove(0, 1).Substring(0, tag.Length - 2);
-            tag = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(tag);
-            return html.Replace("$REPORT_TAG$", tag);
+            var tagsStr = json["search_tag"].ToString();
+            tagsStr = tagsStr.Remove(0, 1).Substring(0, tagsStr.Length - 2);
+            tagsStr = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(tagsStr);
+
+            var tagSplit = tagsStr.Split(';');
+            var tags = "";
+
+            if (tagSplit.Length == 1)
+            {
+                tags = tagSplit[0];
+            }
+            else if (tagSplit.Length == 2)
+            {
+                tags = tagSplit[0] + " & " + tagSplit[1];
+            }
+            else
+            {
+                for (var i = 0; i < tagSplit.Length - 2; i++)
+                {
+                    tags += tagSplit[i] + ", ";
+                }
+
+                tags += tagSplit[tagSplit.Length - 2] + " & " + tagSplit[tagSplit.Length - 1];
+            }
+
+            return html.Replace("$REPORT_TAG$", tags);
         }
 
         private static string PatchReportContent(string html, Dictionary<string, object> json)
