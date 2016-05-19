@@ -85,7 +85,7 @@ namespace ReportDumpAPI.ReportPage
             var qID = json["question_id"];
             var title = json["title"].ToString();
             title = title.Remove(0, 1).Substring(0, title.Length - 2);
-            html.AppendLine($"<h3><a href=\"//stackoverflow.com/q/{qID}\">{title}</a></h3>");
+            html.AppendLine($"<h3><a target=\"_blank\" href=\"//stackoverflow.com/q/{qID}\">{title}</a></h3>");
 
             html.AppendLine("</li>");
 
