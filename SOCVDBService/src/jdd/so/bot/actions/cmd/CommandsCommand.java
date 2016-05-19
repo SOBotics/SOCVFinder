@@ -3,8 +3,8 @@ package jdd.so.bot.actions.cmd;
 import java.util.Collections;
 import java.util.List;
 
-import fr.tunaki.stackoverflow.chat.Room;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.bot.actions.BotCommandsRegistry;
 
@@ -36,7 +36,7 @@ public class CommandsCommand extends  BotCommand {
 	}
 
 	@Override
-	public void runCommand(Room room, PingMessageEvent event) {
+	public void runCommand(ChatRoom room, PingMessageEvent event) {
 		List<BotCommand> commands = BotCommandsRegistry.getInstance().getCommands();
 		Collections.sort(commands);
 		room.replyTo(event.getMessageId(), "These are available commands");

@@ -1,8 +1,8 @@
 package jdd.so.bot.actions.cmd;
 
-import fr.tunaki.stackoverflow.chat.Room;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.CloseVoteFinder;
+import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 
 public class ApiQuotaCommand extends BotCommand {
@@ -33,7 +33,7 @@ public class ApiQuotaCommand extends BotCommand {
 	}
 
 	@Override
-	public void runCommand(Room room, PingMessageEvent event) {
+	public void runCommand(ChatRoom room, PingMessageEvent event) {
 		if (CloseVoteFinder.getInstance().getApiQuota() < 0) {
 			room.send("I have not done any api request since start-up so I do not know");
 		} else {

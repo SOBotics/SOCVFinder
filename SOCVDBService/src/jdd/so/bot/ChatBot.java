@@ -3,6 +3,9 @@ package jdd.so.bot;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 
@@ -14,7 +17,6 @@ import org.alicebot.ab.PCAIMLProcessorExtension;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import fr.tunaki.stackoverflow.chat.Room;
 import fr.tunaki.stackoverflow.chat.StackExchangeClient;
 import fr.tunaki.stackoverflow.chat.event.EventType;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
@@ -34,6 +36,8 @@ public class ChatBot {
 	private Properties properties;
 
 	private CountDownLatch messageLatch;
+	
+	private Map<Long, ChatRoom> rooms = Collections.synchronizedMap(new HashMap<>());
 
 	private static Chat chatSession;
 
@@ -62,26 +66,37 @@ public class ChatBot {
 
 	public boolean loginIn() {
 		client = new StackExchangeClient(properties.getProperty("email"), properties.getProperty("password"));
-		System.out.println("Client logged in");
+		if (logger.isDebugEnabled()) {
+			logger.debug("loginIn() - Client logged in");
+		}
 		return (client != null);
 	}
 
 	public boolean joinRoom(String domain, int roomId) {
-		Room room = client.joinRoom(domain, roomId);
-		System.out.println("Client join room: " + roomId);
-		room.addEventListener(EventType.MESSAGE_REPLY, event -> roomEvent(room, event, true));
-		room.addEventListener(EventType.USER_MENTIONED, event -> roomEvent(room, event, false));
-		return room.getRoomId() != 0;
+		ChatRoom room = new ChatRoom(client.joinRoom(domain, roomId));
+		
+		if (logger.isDebugEnabled()) {
+			logger.debug("joinRoom(String, int) - Client join room: " + roomId);
+		}
+		room.getRoom().addEventListener(EventType.MESSAGE_REPLY, event -> roomEvent(room, event, true));
+		room.getRoom().addEventListener(EventType.USER_MENTIONED, event -> roomEvent(room, event, false));
+		long id = room.getRoomId();
+		rooms.put(room.getRoomId(), room);
+		return room.getRoom().getRoomId() != 0;
 	}
 
-	protected void roomEvent(Room room, PingMessageEvent event, boolean isReply) {
-		System.out.println("Incomming message: " + event.toString());
+	protected void roomEvent(ChatRoom room, PingMessageEvent event, boolean isReply) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("roomEvent(ChatRoom, PingMessageEvent, boolean) - Incomming message: " + event.toString());
+		}
 		if (event.getEditCount() > 0) {
 			//long parentId = event.getParentMessageId();
 			return; // Ignore edits for now
 		}
 		BotCommand bc = BotCommandsRegistry.getInstance().getCommand(event.getContent(), isReply, event.getEditCount());
-		System.out.println(bc);
+		if (logger.isDebugEnabled()) {
+			logger.debug("roomEvent(ChatRoom, PingMessageEvent, boolean) - " + bc);
+		}
 
 		// Check access level
 		long userId = event.getUserId();
@@ -90,8 +105,15 @@ public class ChatBot {
 			User u = CloseVoteFinder.getInstance().getUsers().get(userId);
 			if (u != null) {
 				accessLevel = u.getAccessLevel();
+			}else{
+				//TODO: add user
+				fr.tunaki.stackoverflow.chat.User user = room.getUser(userId);
+				if (user.getReputation()>3000){
+					
+				}
 			}
 
+			
 			if (accessLevel < bc.getRequiredAccessLevel()) {
 				room.replyTo(event.getMessageId(),
 						"Sorry you need to be " + BotCommand.getAccessLevelName(bc.getRequiredAccessLevel()) + " to run this command (@Petter)");
@@ -136,7 +158,7 @@ public class ChatBot {
 		try {
 			cb.loginIn();
 			cb.joinRoom("stackoverflow.com", 111347);
-		    cb.joinRoom("stackoverflow.com", 95290);
+		    //cb.joinRoom("stackoverflow.com", 95290);
 
 			try {
 				messageLatch.await();
@@ -144,7 +166,7 @@ public class ChatBot {
 			}
 
 		} catch (Throwable e) {
-			e.printStackTrace();
+			logger.error("main(String[])", e);
 		} finally {
 			CloseVoteFinder.getInstance().shutDown();
 			cb.close();

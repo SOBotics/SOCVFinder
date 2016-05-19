@@ -1,7 +1,7 @@
 package jdd.so.bot.actions.cmd;
 
-import fr.tunaki.stackoverflow.chat.Room;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 
 public class HelpCommand extends  BotCommand{
@@ -32,7 +32,7 @@ public class HelpCommand extends  BotCommand{
 	}
 
 	@Override
-	public void runCommand(Room room, PingMessageEvent event) {
+	public void runCommand(ChatRoom room, PingMessageEvent event) {
 		String retMsg = "This is a chat bot to notify about possibile duplicates and cherry pick questions to review. Reply to bot with `commands` for full command list and see [SOCVFinder](https://github.com/jdd-software/SOCVFinder) for more information";
 		room.send(retMsg);
 	}

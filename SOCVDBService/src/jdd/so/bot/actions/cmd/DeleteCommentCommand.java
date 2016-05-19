@@ -1,7 +1,7 @@
 package jdd.so.bot.actions.cmd;
 
-import fr.tunaki.stackoverflow.chat.Room;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 
 public class DeleteCommentCommand extends BotCommand {
@@ -32,7 +32,7 @@ public class DeleteCommentCommand extends BotCommand {
 	}
 
 	@Override
-	public void runCommand(Room room, PingMessageEvent event) {
+	public void runCommand(ChatRoom room, PingMessageEvent event) {
 		long parentId = event.getParentMessageId();
 		if (parentId > 0) {
 			room.delete(parentId);

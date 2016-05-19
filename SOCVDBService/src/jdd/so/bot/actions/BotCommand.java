@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import fr.tunaki.stackoverflow.chat.Room;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.cmd.CherryPickCommand;
 
 public abstract class BotCommand implements Comparable<BotCommand> {
@@ -62,7 +63,7 @@ public abstract class BotCommand implements Comparable<BotCommand> {
 
 	public abstract String getCommandUsage();
 
-	public abstract void runCommand(Room room, PingMessageEvent event);
+	public abstract void runCommand(ChatRoom room, PingMessageEvent event);
 
 	@Override
 	public String toString() {
