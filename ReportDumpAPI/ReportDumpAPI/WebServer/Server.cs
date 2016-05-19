@@ -81,7 +81,7 @@ namespace ReportDumpAPI.WebServer
 
             new WebClient().ConnectToLpsServer(lpsConnectionData);
 #else
-            socket.Prefixes.Add($"http://{Config.FQD}/")
+            socket.Prefixes.Add($"http://{Config.FQD}/");
 #endif
             socket.Start();
 
@@ -216,8 +216,6 @@ namespace ReportDumpAPI.WebServer
 
         private string GetMimeType(string res)
         {
-            return "text/json"; //TODO: Temporary until I implement PageGenerator.
-
             switch (Path.GetExtension(res).ToUpperInvariant())
             {
                 case "":

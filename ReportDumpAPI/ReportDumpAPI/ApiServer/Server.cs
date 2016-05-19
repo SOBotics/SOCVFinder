@@ -1,10 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ReportDumpAPI.RateLimiter;
-using ServiceStack;
 
 namespace ReportDumpAPI.ApiServer
 {
@@ -134,9 +134,16 @@ namespace ReportDumpAPI.ApiServer
                 else
                 {
                     var sc = 200;
-                    var reqBody = client.Request.InputStream.ReadFully();
+
+                    var reqBytes = new byte[client.Request.ContentLength64];
+
+                    using (var ms = new MemoryStream())
+                    {
+                        client.Request.InputStream.CopyTo(ms);
+                        reqBytes = ms.ToArray();
+                    }
                     var isZipped = client.Request.Headers["Content-Encoding"]?.Contains("gzip") ?? false;
-                    var strData = RequestHandler.HandleReportRequest(reqBody, isZipped, out sc);
+                    var strData = RequestHandler.HandleReportRequest(reqBytes, isZipped, out sc);
 
                     client.Response.StatusCode = sc;
                     data = Encoding.UTF8.GetBytes(strData);

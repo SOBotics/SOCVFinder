@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using ServiceStack.Text;
+using Jil;
+using ReportDumpAPI.ReportPage;
 
 namespace ReportDumpAPI.ApiServer
 {
@@ -27,7 +28,7 @@ namespace ReportDumpAPI.ApiServer
                     json = Encoding.UTF8.GetString(body);
                 }
 
-                var jObj = JsonSerializer.DeserializeFromString<Dictionary<string, object>>(json);
+                var jObj = JSON.Deserialize<Dictionary<string, object>>(json);
                 roomID = jObj["room_id"].ToString();
                 batchID = jObj["batch_nr"].ToString();
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using ServiceStack.Text;
+using Jil;
 
 namespace ReportDumpAPI
 {
@@ -22,10 +22,10 @@ namespace ReportDumpAPI
             }
 
             var json = File.ReadAllText(configFile);
-            var data = JsonSerializer.DeserializeFromString<Dictionary<string, object>>(json);
+            var data = JSON.Deserialize<Dictionary<string, string>>(json);
 
-            ReportDataDir = data["ReportDataDir"].ToString();
-            FQD = data["FQD"].ToString();
+            ReportDataDir = data["ReportDataDir"];
+            FQD = data["FQD"];
 
             if (!Directory.Exists(ReportDataDir))
             {
