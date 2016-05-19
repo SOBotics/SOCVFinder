@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using Jil;
@@ -25,7 +26,9 @@ namespace ReportDumpAPI.ReportPage
             var html = template;
 
             html = PatchReportRoomID(html, json);
+            html = PatchReportType(html, json);
             html = PatchReportID(html, json);
+            html = PatchReportSearchTag(html, json);
             html = PatchReportContent(html, json);
 
             return html;
@@ -48,6 +51,12 @@ namespace ReportDumpAPI.ReportPage
             return data.Replace("$SERVER_VERSION$", html);
         }
 
+        private static string PatchReportType(string html, Dictionary<string, object> json)
+        {
+            var isDupes = bool.Parse(json["is_filtered_duplicates"].ToString());
+            return html.Replace("$REPORT_TYPE$", isDupes ? "Duplicate" : "Cherrypick");
+        }
+
         private static string PatchReportID(string html, Dictionary<string, object> json)
         {
             return html.Replace("$REPORT_ID$", json["batch_nr"].ToString());
@@ -56,6 +65,14 @@ namespace ReportDumpAPI.ReportPage
         private static string PatchReportRoomID(string html, Dictionary<string, object> json)
         {
             return html.Replace("$REPORT_ROOM_ID$", json["room_id"].ToString());
+        }
+
+        private static string PatchReportSearchTag(string html, Dictionary<string, object> json)
+        {
+            var tag = json["search_tag"].ToString();
+            tag = tag.Remove(0, 1).Substring(0, tag.Length - 2);
+            tag = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(tag);
+            return html.Replace("$REPORT_TAG$", tag);
         }
 
         private static string PatchReportContent(string html, Dictionary<string, object> json)
