@@ -60,7 +60,7 @@ public class CloseVoteFinder {
 	private static CloseVoteFinder instance;
 	private long lastCall;
 	private int apiCallNrPages = 10;
-	private int apiQuota;
+	private int apiQuota = -1;
 	private int defaultNumberOfQuestion=20;
 	private Connection dbConnection;
 	

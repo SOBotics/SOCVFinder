@@ -1,7 +1,7 @@
 package jdd.so.bot.actions.cmd;
 
-import fr.tunaki.stackoverflow.chat.Room;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 
 public class BatchDoneCommand extends BotCommand {
@@ -37,7 +37,7 @@ public class BatchDoneCommand extends BotCommand {
 	}
 
 	@Override
-	public void runCommand(Room room, PingMessageEvent event) {
+	public void runCommand(ChatRoom room, PingMessageEvent event) {
 		room.replyTo(event.getMessageId(), "Thank you for your effort");
 	}
 

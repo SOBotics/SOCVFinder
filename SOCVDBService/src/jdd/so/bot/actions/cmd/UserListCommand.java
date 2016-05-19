@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import fr.tunaki.stackoverflow.chat.Room;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.CloseVoteFinder;
+import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.model.User;
 
@@ -38,7 +38,7 @@ public class UserListCommand extends  BotCommand{
 	}
 
 	@Override
-	public void runCommand(Room room, PingMessageEvent event) {
+	public void runCommand(ChatRoom room, PingMessageEvent event) {
 		List<User> users = new ArrayList<>();
 		users.addAll(CloseVoteFinder.getInstance().getUsers().values());
 		Collections.sort(users);

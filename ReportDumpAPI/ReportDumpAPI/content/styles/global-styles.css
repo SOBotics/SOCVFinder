@@ -12,6 +12,10 @@ h1, h2, h3 {
     font-weight: 400;
 }
 
+a:visited {
+    color: #0F4889;
+}
+
 a {
     color: #2D84E8;
 }

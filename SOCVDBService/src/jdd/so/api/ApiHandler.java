@@ -116,7 +116,6 @@ public class ApiHandler {
 		questions = questions.substring(0, questions.length() - 1);
 
 		ApiResult arDupeTarget = getQuestions(questions, null, false, notifyMe);
-		System.out.println(arDupeTarget.toString());
 		for (Question q : arDupeTarget.getQuestions()) {
 			long id = q.getQuestionId();
 			Question org = dupMap.get(id);

@@ -2,9 +2,9 @@ package jdd.so.bot.actions.cmd;
 
 import java.sql.SQLException;
 
-import fr.tunaki.stackoverflow.chat.Room;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.CloseVoteFinder;
+import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.db.UserDAO;
 import jdd.so.model.User;
@@ -37,7 +37,7 @@ public class AddUserCommand extends BotCommand {
 	}
 
 	@Override
-	public void runCommand(Room room, PingMessageEvent event) {
+	public void runCommand(ChatRoom room, PingMessageEvent event) {
 		String message = event.getContent();
 		String data = message.substring(message.toLowerCase().indexOf("user") + 4, message.length());
 		String[] cmdArray = data.trim().split(" ");

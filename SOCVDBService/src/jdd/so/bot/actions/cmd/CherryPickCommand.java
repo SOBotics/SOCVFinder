@@ -7,11 +7,11 @@ import java.util.GregorianCalendar;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
 
-import fr.tunaki.stackoverflow.chat.Room;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.CloseVoteFinder;
 import jdd.so.api.ApiHandler;
 import jdd.so.api.CherryPickResult;
+import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.bot.actions.CommandException;
 import jdd.so.bot.actions.filter.Arithmetics;
@@ -58,7 +58,7 @@ public class CherryPickCommand extends BotCommand {
 	}
 
 	@Override
-	public void runCommand(Room room, PingMessageEvent event) {
+	public void runCommand(ChatRoom room, PingMessageEvent event) {
 		String message = event.getContent();
 		String tags = getTags(message);
 		boolean isDupCommand = message.contains("dup");
@@ -70,7 +70,7 @@ public class CherryPickCommand extends BotCommand {
 			if (isDupCommand) {
 				System.out.println("Dupes: " + tags);
 				cpr = getPossibileDuplicatesBatch(room.getRoomId(), 0L, tags, new QuestionsFilter(message));
-				retMsg = "[tag:dup-hunt] Use you mjolnir wisely ";
+				retMsg = "[tag:dup-hunt] Use your Mjölnir wisely ";
 			} else {
 				System.out.println("Cherry: " + tags);
 				cpr = getCherryPickBatch(room.getRoomId(), event.getUserId(), tags, new QuestionsFilter(message));
