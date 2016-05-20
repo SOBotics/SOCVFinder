@@ -189,7 +189,7 @@ namespace ReportDumpAPI.ReportPage
             }
             else
             {
-                html.AppendLine("<div style=\"color:#00C741\" title=\"This question has an accepted answer\">");
+                html.AppendLine("<div class=\"answerCount\" style=\"color:#00C741\" title=\"This question has an accepted answer\">");
             }
             html.AppendLine("<span class=\"statName\">Answers:</span> ");
             html.AppendLine(answerCount);
