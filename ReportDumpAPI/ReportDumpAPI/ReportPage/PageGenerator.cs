@@ -26,8 +26,8 @@ namespace ReportDumpAPI.ReportPage
             var json = JSON.Deserialize<Dictionary<string, object>>(jsonStr);
             var html = template;
 
-            html = PatchReportRoomID(html, json);
             html = PatchReportType(html, json);
+            html = PatchReportRoomID(html, json);
             html = PatchReportID(html, json);
             html = PatchReportSearchTag(html, json);
             html = PatchReportContent(html, json);
@@ -54,7 +54,8 @@ namespace ReportDumpAPI.ReportPage
 
         private static string PatchReportType(string html, Dictionary<string, object> json)
         {
-            var isDupes = bool.Parse(json["is_filtered_duplicates"].ToString());
+            var isDupesStr = json["is_filtered_duplicates"].ToString();
+            var isDupes = bool.Parse(isDupesStr);
             return html.Replace("$REPORT_TYPE$", isDupes ? "Duplicate" : "Cherrypick");
         }
 
@@ -129,13 +130,15 @@ namespace ReportDumpAPI.ReportPage
         {
             var html = new StringBuilder();
             var qID = json["question_id"];
+            var link = $"//stackoverflow.com/q/{qID}";
             var title = json["title"].ToString();
             title = title.Remove(0, 1).Substring(0, title.Length - 2);
-            var link = $"//stackoverflow.com/q/{qID}";
             var score = json["score"].ToString();
             var cvCount = json["close_vote_count"].ToString();
-            var dvCount = json["delete_vote_count"].ToString();
+            var answerCount = json["answer_count"].ToString();
+            var accecptedAnsID = json["accepted_answer_id"].ToString();
             var views = json["view_count"].ToString();
+            var age = json["creation_date"].ToString();
 
             // Start of report.
             html.AppendLine("<div class=\"report\">");
@@ -161,19 +164,35 @@ namespace ReportDumpAPI.ReportPage
             // Start of report stats.
             html.AppendLine("<div class=\"reportStatsContainer\">");
 
-            // Close vote count;
+            // Question age.
             html.AppendLine("<div>");
-            html.AppendLine($"Views: {views}");
+            html.AppendLine("<span class=\"statName\">Posted:</span> ");
+            html.AppendLine($"<span class=\"postTime\">{age}<span>");
             html.AppendLine("</div>");
 
-            // Close vote count;
+            // View count.
             html.AppendLine("<div>");
-            html.AppendLine($"Delete votes: {dvCount}");
+            html.AppendLine($"<span class=\"statName\">Views:</span> ");
+            html.AppendLine(views);
             html.AppendLine("</div>");
 
-            // Close vote count;
+            // Answer count.
+            if (accecptedAnsID == "0")
+            {
+                html.AppendLine("<div>");
+            }
+            else
+            {
+                html.AppendLine("<div style=\"color:#00C741\" title=\"This question has an accepted answer\">");
+            }
+            html.AppendLine("<span class=\"statName\">Answers:</span> ");
+            html.AppendLine(answerCount);
+            html.AppendLine("</div>");
+
+            // Close vote count.
             html.AppendLine("<div>");
-            html.AppendLine($"Close votes: {cvCount}");
+            html.AppendLine("<span class=\"statName\">Close votes:</span> ");
+            html.AppendLine(cvCount);
             html.AppendLine("</div>");
 
             // End of report stats.

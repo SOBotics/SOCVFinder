@@ -18,6 +18,7 @@ a:visited {
 
 a {
     color: #2D84E8;
+    text-decoration: none;
 }
 
 /* BODY */
@@ -25,6 +26,14 @@ a {
 .bodyLight {
     color: #1A1A1A;
     background-color: #F8F8F8;
+}
+
+.bodyLight a:visited {
+    color: #B7D5F7;
+}
+
+.bodyLight .itemSeparator {
+    border-image: radial-gradient(#1A1A1A 20%, #F8F8F8 75%) 1;
 }
 
 .bodyDark {
@@ -111,6 +120,10 @@ li {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
+}
+
+.statName {
+    font-family: QuickSandBold;
 }
 
 .reportTitle {
