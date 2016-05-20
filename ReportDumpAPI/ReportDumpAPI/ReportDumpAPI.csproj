@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiServer\Server.cs" />
+    <Compile Include="ReportPage\PageDeleter.cs" />
     <Compile Include="ReportPage\PageGenerator.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Extensions.cs" />
@@ -83,7 +84,6 @@
     <Compile Include="RateLimiter\Throttler.Req.cs" />
     <Compile Include="RateLimiter\Throttler.Result.cs" />
     <Compile Include="ApiServer\RequestHandler.cs" />
-    <Compile Include="ReportPage\FilePatcher.cs" />
     <Compile Include="WebServer\Server.cs" />
   </ItemGroup>
   <ItemGroup>

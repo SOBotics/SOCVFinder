@@ -8,7 +8,7 @@ using ReportDumpAPI.RateLimiter;
 
 namespace ReportDumpAPI.WebServer
 {
-    class Server
+    public class Server
     {
         private const int lpsPort = 87;
         private readonly string lpsConnectionData = $"http://{Config.FQD} {lpsPort}";
@@ -25,7 +25,7 @@ namespace ReportDumpAPI.WebServer
 
         public Server()
         {
-            var dirToServe = Config.ReportDataDir;
+            var dirToServe = Config.ContentDir;
 
             if (!Directory.Exists(dirToServe))
             {
@@ -65,10 +65,16 @@ namespace ReportDumpAPI.WebServer
         {
             var pq = new Uri(reportUrl).PathAndQuery;
             var fileName = (pq + ".html").Replace('/', Path.DirectorySeparatorChar).Remove(0, 1);
-            var file = Path.Combine(Config.ReportDataDir, fileName);
+            var file = Path.Combine(Config.ContentDir, fileName);
             var key = pq + ".html";
 
             content[key] = File.ReadAllBytes(file);
+        }
+
+        public void RemoveReport(string contentKey)
+        {
+            byte[] temp;
+            content.TryRemove(contentKey, out temp);
         }
 
 

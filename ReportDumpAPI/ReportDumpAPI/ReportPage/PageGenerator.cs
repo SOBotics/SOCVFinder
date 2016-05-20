@@ -15,7 +15,8 @@ namespace ReportDumpAPI.ReportPage
 
         static PageGenerator()
         {
-            template = File.ReadAllText(Path.Combine(Config.ReportDataDir, "report-template.html"));
+            template = File.ReadAllText(Path.Combine(Config.ContentDir, "report-template.html"));
+            template = PatchReportMaxLife(template);
             template = PatchVersion(template);
         }
 
@@ -37,7 +38,12 @@ namespace ReportDumpAPI.ReportPage
 
 
 
-        private static string PatchVersion(string data)
+        private static string PatchReportMaxLife(string html)
+        {
+            return html.Replace("$REPORT_MAX_LIFE_DAYS$", Config.ReportLifeMaxDays.ToString());
+        }
+
+        private static string PatchVersion(string html)
         {
             var ver = ThisAssembly.Git.Sha.ToUpperInvariant();
 
@@ -47,9 +53,9 @@ namespace ReportDumpAPI.ReportPage
             }
 
             var link = $"https://github.com/jdd-software/SOCVFinder/commit/{ThisAssembly.Git.Sha}";
-            var html = $"<a href=\"{link}\">{ver}</a>";
+            var a = $"<a href=\"{link}\">{ver}</a>";
 
-            return data.Replace("$SERVER_VERSION$", html);
+            return html.Replace("$SERVER_VERSION$", a);
         }
 
         private static string PatchReportType(string html, Dictionary<string, object> json)

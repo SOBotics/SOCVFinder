@@ -42,7 +42,7 @@ namespace ReportDumpAPI.ApiServer
 
             try
             {
-                var dataDir = Path.Combine(Config.ReportDataDir, roomID);
+                var dataDir = Path.Combine(Config.ContentDir, roomID);
 
                 if (!Directory.Exists(dataDir))
                 {

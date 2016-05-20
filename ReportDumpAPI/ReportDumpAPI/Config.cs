@@ -8,9 +8,11 @@ namespace ReportDumpAPI
     {
         private const string configFile = "config.json";
 
-        public static string ReportDataDir { get; set; }
+        public static string ContentDir { get; set; }
 
         public static string FQD { get; set; }
+
+        public static int ReportLifeMaxDays { get; set; }
 
 
 
@@ -24,12 +26,13 @@ namespace ReportDumpAPI
             var json = File.ReadAllText(configFile);
             var data = JSON.Deserialize<Dictionary<string, string>>(json);
 
-            ReportDataDir = data["ReportDataDir"];
+            ContentDir = data["ContentDir"];
             FQD = data["FQD"];
+            ReportLifeMaxDays = int.Parse(data["ReportLifeMaxDays"]);
 
-            if (!Directory.Exists(ReportDataDir))
+            if (!Directory.Exists(ContentDir))
             {
-                Directory.CreateDirectory(ReportDataDir);
+                Directory.CreateDirectory(ContentDir);
             }
         }
     }

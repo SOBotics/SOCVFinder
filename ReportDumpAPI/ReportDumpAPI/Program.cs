@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using ReportDumpAPI.ReportPage;
 
 namespace ReportDumpAPI
 {
@@ -29,12 +30,20 @@ namespace ReportDumpAPI
             };
             apiServer.NewReport += r => webServer.AddNewReport(r);
 
+            Console.Write("done\nStaring report manager...");
+
+            var reportMgr = new PageDeleter(ref webServer, TimeSpan.FromDays(30))
+            {
+                OnException = e => Console.WriteLine(e)
+            };
+
             Console.WriteLine("done\n");
 
             mre.WaitOne();
             Console.Write("Stopping...");
 
             mre.Dispose();
+            reportMgr.Dispose();
             apiServer.Dispose();
             webServer.Dispose();
 
