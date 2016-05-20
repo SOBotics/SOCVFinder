@@ -93,26 +93,42 @@ li {
 }
 
 .itemSeparator {
-    margin: 10px 0px 10px 0px;
+    margin: 25px 0px;
     border-style: solid;
     border-width: 0px 0px 1px 0px;
     border-image: radial-gradient(#F8F8F8 20%, #1A1A1A 75%) 1;
 }
 
-.questionHeader {
+.reportTitleTag {
+    font-family: QuickSandBold;
+}
+
+.report {
     padding: 0px 5%;
-    height: 50px;
 }
 
-.questionTitle {
-    margin: 0px;
-    float: left;
+.reportHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
 }
 
-.questionScore {
-    margin: 0px;
-    float: right;
+.reportTitle {
+    display: inline;
+    text-align: left;
+    margin: 0;
 }
+
+.reportScore {
+    display: inline;
+    text-align: right;
+}
+
+.reportStatsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 /* FOOTER */
 

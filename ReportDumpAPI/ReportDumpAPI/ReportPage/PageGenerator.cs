@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text;
@@ -74,6 +75,12 @@ namespace ReportDumpAPI.ReportPage
             tagsStr = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(tagsStr);
 
             var tagSplit = tagsStr.Split(';');
+
+            for (var i = 0; i < tagSplit.Length; i++)
+            {
+                tagSplit[i] = $"<span class=\"reportTitleTag\">{tagSplit[i]}</span>";
+            }
+
             var tags = "";
 
             if (tagSplit.Length == 1)
@@ -101,32 +108,79 @@ namespace ReportDumpAPI.ReportPage
         {
             var qsJson = json["questions"].ToString();
             var qs = JSON.Deserialize<Dictionary<string, object>[]>(qsJson);
-            var list = new StringBuilder("<ul>");
+            var list = new StringBuilder("<div>");
 
-            for(var i = 0; i < qs.Length; i++)
+            for (var i = 0; i < qs.Length; i++)
             {
                 list.AppendLine(GetQuestionHtml(qs[i]));
 
                 if (i >= 0 && i < qs.Length - 1)
                 {
-                    list.AppendLine("<li class=\"itemSeparator\"></li>");
+                    list.AppendLine("<div class=\"itemSeparator\"></div>");
                 }
             }
 
-            list.AppendLine("</ul>");
+            list.AppendLine("</div>");
 
             return html.Replace("$REPORT_CONTENT$", list.ToString());
         }
 
         private static string GetQuestionHtml(Dictionary<string, object> json)
         {
-            var html = new StringBuilder("<li>");
+            var html = new StringBuilder();
             var qID = json["question_id"];
             var title = json["title"].ToString();
             title = title.Remove(0, 1).Substring(0, title.Length - 2);
-            html.AppendLine($"<h3><a target=\"_blank\" href=\"//stackoverflow.com/q/{qID}\">{title}</a></h3>");
+            var link = $"//stackoverflow.com/q/{qID}";
+            var score = json["score"].ToString();
+            var cvCount = json["close_vote_count"].ToString();
+            var dvCount = json["delete_vote_count"].ToString();
+            var views = json["view_count"].ToString();
 
-            html.AppendLine("</li>");
+            // Start of report.
+            html.AppendLine("<div class=\"report\">");
+
+            // Start of report header.
+            html.AppendLine("<div class=\"reportHeader\">");
+
+            // Report title.
+            html.AppendLine("<h3 class=\"reportTitle\">");
+            html.AppendLine($"<a target=\"_blank\" href=\"{link}\">");
+            html.AppendLine(title);
+            html.AppendLine("</a>");
+            html.AppendLine("</h3>");
+
+            // Report score.
+            html.AppendLine("<div class=\"reportScore\">");
+            html.AppendLine(score);
+            html.AppendLine("</div>");
+
+            // End of report header.
+            html.AppendLine("</div>");
+
+            // Start of report stats.
+            html.AppendLine("<div class=\"reportStatsContainer\">");
+
+            // Close vote count;
+            html.AppendLine("<div>");
+            html.AppendLine($"Views: {views}");
+            html.AppendLine("</div>");
+
+            // Close vote count;
+            html.AppendLine("<div>");
+            html.AppendLine($"Delete votes: {dvCount}");
+            html.AppendLine("</div>");
+
+            // Close vote count;
+            html.AppendLine("<div>");
+            html.AppendLine($"Close votes: {cvCount}");
+            html.AppendLine("</div>");
+
+            // End of report stats.
+            html.AppendLine("</div>");
+
+            // End of report.
+            html.AppendLine("</div>");
 
             return html.ToString();
         }
