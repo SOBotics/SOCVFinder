@@ -16,6 +16,12 @@ import jdd.so.api.model.Comment;
 import jdd.so.api.model.Question;
 import jdd.so.swing.NotifyMe;
 
+/**
+ * Handle the SO API and return result @see CherryPickResult based on
+ * parameters set
+ * @author Petter Friberg
+ *
+ */
 public class ApiHandler {
 	/**
 	 * Logger for this class

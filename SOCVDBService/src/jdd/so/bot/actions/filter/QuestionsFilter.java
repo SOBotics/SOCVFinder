@@ -3,6 +3,11 @@ package jdd.so.bot.actions.filter;
 import jdd.so.CloseVoteFinder;
 import jdd.so.api.model.Question;
 
+/**
+ * The filter to get from API result all desired questions
+ * @author Petter Friberg
+ *
+ */
 public class QuestionsFilter {
 	private String command;
 	private int numberOfQuestions=CloseVoteFinder.getInstance().getDefaultNumberOfQuestion();

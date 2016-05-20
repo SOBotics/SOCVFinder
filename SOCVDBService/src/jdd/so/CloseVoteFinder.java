@@ -1,42 +1,32 @@
 package jdd.so;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Map;
 import java.util.Properties;
 import java.util.ServiceConfigurationError;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import jdd.so.api.ApiHandler;
-import jdd.so.api.model.ApiResult;
 import jdd.so.dao.ConnectionHandler;
 import jdd.so.dao.UserDAO;
 import jdd.so.dao.model.User;
 import jdd.so.swing.NotifyMe;
 
-/**
- * Test application to get questions with close votes from SO Api
- * 
+/** 
+ * Instance class, to keep properties
+ * synchronize calls to SO Api, with throttling
+ * and hold other application things in memory
  * @author Petter Friberg
- * 
  *
  */
 public class CloseVoteFinder {
@@ -94,6 +84,28 @@ public class CloseVoteFinder {
 			}
 		}
 	}
+
+	/**
+	 * Init the instance
+	 * @param properties
+	 */
+	public static void initInstance(Properties properties) {
+		if (instance == null) {
+			instance = new CloseVoteFinder(properties);
+		}
+	}
+	
+	/**
+	 * Get the instance
+	 * @return
+	 */
+	public static CloseVoteFinder getInstance() {
+		if (instance == null) {
+			throw new ServiceConfigurationError("You need to init the instance before using it");
+		}
+		return instance;
+	}
+	
 	
 	public Connection getConnection(){
 		return this.dbConnection;
@@ -101,12 +113,6 @@ public class CloseVoteFinder {
 	
 	public void loadUsers() throws SQLException {
 		users = new UserDAO().getUsers(this.dbConnection);
-	}
-
-	public static void initInstance(Properties properties) {
-		if (instance == null) {
-			instance = new CloseVoteFinder(properties);
-		}
 	}
 	
 	public void shutDown(){
@@ -119,12 +125,7 @@ public class CloseVoteFinder {
 		}
 	}
 
-	public static CloseVoteFinder getInstance() {
-		if (instance == null) {
-			throw new ServiceConfigurationError("You need to init the instance before using it");
-		}
-		return instance;
-	}
+	
 
 	public synchronized boolean isTagMonitored(String tag) {
 		//TODO, load on start up from db and check if its monitored
@@ -228,47 +229,6 @@ public class CloseVoteFinder {
 		} finally {
 			gis.close();
 			bos.close();
-		}
-	}
-
-
-
-	public static void main(String[] args) throws IOException, ParseException {
-		PropertyConfigurator.configure("ini/log4j.properties");
-
-		if (logger.isDebugEnabled()) {
-			logger.debug("main(String[]) - start");
-		}
-
-		// load properties file
-		Properties properties = new Properties();
-		properties.load(new FileInputStream("ini/SOCVService.properties"));
-		CloseVoteFinder.initInstance(properties);
-
-		String date = "20160506";
-		String tag = "java";
-
-		Calendar cal = new GregorianCalendar();
-		cal.setTime(new SimpleDateFormat("yyyyMMdd").parse(date));
-		long fromDate = cal.getTimeInMillis() / 1000;
-		cal.add(Calendar.HOUR_OF_DAY, 24);
-		long toDate = cal.getTimeInMillis() / 1000;
-
-		ApiHandler api = new ApiHandler();
-		ApiResult qr = api.getQuestions(fromDate, toDate, 20, tag,true);
-
-		File f = new File("output/" + tag + "_" + date + ".html");
-		// lets just overwrite
-		PrintWriter out = null;
-		try {
-			out = new PrintWriter(f, "UTF-8");
-			out.write(qr.getHTML(tag + " test (6h)"));
-		} catch (IOException e) {
-			logger.error("main(String[])", e);
-		} finally {
-			if (out != null) {
-				out.close();
-			}
 		}
 	}
 

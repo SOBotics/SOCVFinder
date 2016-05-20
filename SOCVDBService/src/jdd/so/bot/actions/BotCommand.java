@@ -3,11 +3,14 @@ package jdd.so.bot.actions;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import fr.tunaki.stackoverflow.chat.Room;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.bot.ChatRoom;
-import jdd.so.bot.actions.cmd.CherryPickCommand;
 
+/**
+ * Abstract class of a BotCommand
+ * @author Petter Friberg
+ *
+ */
 public abstract class BotCommand implements Comparable<BotCommand> {
 
 	public static final int ACCESS_LEVEL_NONE = 0;
@@ -77,11 +80,5 @@ public abstract class BotCommand implements Comparable<BotCommand> {
 			return i;
 		}
 		return getCommandName().compareTo(o.getCommandName());
-	}
-
-	public static void main(String[] args) {
-		CherryPickCommand cmd = new CherryPickCommand();
-		String test = " [java] asd [php] dupes";
-		System.out.println(cmd.getTags(test));
 	}
 }

@@ -16,6 +16,12 @@ import jdd.so.bot.actions.cmd.OptOutCommand;
 import jdd.so.bot.actions.cmd.ShutDownCommand;
 import jdd.so.bot.actions.cmd.UserListCommand;
 
+
+/**
+ * The registry (instance) of all possibile commands
+ * @author Petter Friberg
+ *
+ */
 public class BotCommandsRegistry {
 
 
@@ -56,8 +62,7 @@ public class BotCommandsRegistry {
 		commands.add(new ShutDownCommand());
 	}
 
-	public synchronized BotCommand getCommand(String content, boolean reply, int messageEdits) {
-		
+	public synchronized BotCommand getCommand(String content, boolean reply, int messageEdits) {	
 		for (BotCommand abc : commands) {
 			// give first on that is ok
 			if (abc.isCommand(content,reply,messageEdits)) {
@@ -73,26 +78,4 @@ public class BotCommandsRegistry {
 		commands.addAll(this.commands);
 		return commands;
 	}
-	
-
-	public static void main(String[] args) {
-		BotCommand bc = BotCommandsRegistry.getInstance().getCommand(" cmd ", false,0);
-		if (bc != null) {
-			System.out.println(bc);
-		}
-
-		BotCommand bc2 = BotCommandsRegistry.getInstance().getCommand("[tag:java] 4c", false,0);
-		if (bc2 != null) {
-			System.out.println(bc2);
-		}
-		BotCommand bc4 = BotCommandsRegistry.getInstance().getCommand("opt-in [tag:java] 4c", false,0);
-		if (bc4 != null) {
-			System.out.println(bc4);
-		}
-		BotCommand bc5 = BotCommandsRegistry.getInstance().getCommand("whats up", false,0);
-		if (bc5 != null) {
-			System.out.println(bc5);
-		}
-	}
-
 }

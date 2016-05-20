@@ -33,18 +33,14 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import com.sun.corba.se.impl.orbutil.RepositoryIdUtility;
-
 import jdd.so.CloseVoteFinder;
 import jdd.so.api.ApiHandler;
 import jdd.so.api.CherryPickResult;
 import jdd.so.api.model.ApiResult;
-import jdd.so.bot.actions.CommandException;
 import jdd.so.bot.actions.filter.QuestionsFilter;
-import jdd.so.rest.RESTApiHandler;
 
 /**
- * Very Simple Swing app, to search for close votes
+ * Very Simple Swing app, to test the application
  * 
  * @author Petter Friberg
  *
@@ -207,11 +203,11 @@ public class CVAppSwing extends JFrame implements NotifyMe {
 
 	@Override
 	public void done(final File exportFile) {
-		if (exportFile != null) {
+		if (exportFile != null && exportFile.exists()) {
 			if (Desktop.isDesktopSupported()) {
 				try {
 					Desktop.getDesktop().open(exportFile);
-				} catch (IOException ex) {
+				} catch (Exception ex) {
 					logger.error("done(File)", ex);
 				}
 			}
@@ -321,9 +317,7 @@ public class CVAppSwing extends JFrame implements NotifyMe {
 
 			String dateName = new SimpleDateFormat("yyyyMMdd_HHmm").format(new Date());
 			File f = new File("output/" + tag + "_" + dateName + "." + ext);
-			if (!f.getParentFile().exists()) {
-				f.mkdir();
-			}
+			f.mkdir();
 			// lets just overwrite
 			try(PrintWriter out=new PrintWriter(f, "UTF-8")) {
 				out.write(output);

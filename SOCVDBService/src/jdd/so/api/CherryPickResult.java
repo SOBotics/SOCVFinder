@@ -16,62 +16,85 @@ import jdd.so.api.model.Question;
 import jdd.so.bot.actions.filter.QuestionsFilter;
 import jdd.so.rest.RESTApiHandler;
 
+/**
+ * Holds the result of the APICalls and lets you filter based on @see
+ * QuestionFilter and if you like push it to the RestApi
+ * 
+ * @author Petter Friberg
+ *
+ */
 public class CherryPickResult {
-	
-	private ApiResult apiResult;
-	
+
+	private ApiResult apiResult; //The api result (all questions)
+
+	private long roomId;
 	private long batchNumber;
 	private String searchTag;
 	private long timestamp;
 
-	private List<Question> filterdQuestions;
-	private boolean filteredOnDuplicates;
+	private QuestionsFilter filter;
+	private List<Question> filterdQuestions; //The filtered and sorted result
+	
 	private String batchUrl;
 
-	private long roomId;
 
-	public CherryPickResult(ApiResult apiResult, long roomId, String tag){
+	public CherryPickResult(ApiResult apiResult, long roomId, String tag) {
 		this.apiResult = apiResult;
-		this.roomId = roomId; 
+		this.roomId = roomId;
 		this.searchTag = tag;
 		this.timestamp = System.currentTimeMillis();
-		//Just some random number for now
-		this.batchNumber = (long) (Math.random()*100);
+		// Just some random number for now
+		this.batchNumber = (long) (Math.random() * 100);
 	}
-	
+
+	/**
+	 * Call the filter and sort with standard Comparator
+	 */
 	public void filter(QuestionsFilter questionFilter) {
-		filteredOnDuplicates = questionFilter.isFilterDupes();
 		Comparator<Question> sorter;
-		if (filteredOnDuplicates){
+		if (questionFilter.isFilterDupes()) {
 			sorter = new PossibileDuplicateComparator();
-		}else{
+		} else {
 			sorter = new CloseVoteComparator();
 		}
-		filter(questionFilter,sorter);
+		filter(questionFilter, sorter);
 	}
-	
-	private void filter(QuestionsFilter questionFilter, Comparator<Question> sorter){
+
+	/**
+	 * Filter and sort
+	 * @param questionFilter
+	 * @param sorter
+	 */
+	public void filter(QuestionsFilter questionFilter, Comparator<Question> sorter) {
 		filterdQuestions = new ArrayList<Question>(apiResult.getQuestions().size());
 		for (Question q : apiResult.getQuestions()) {
-			if (questionFilter.isAccepted(q)){
-				if (!filterdQuestions.contains(q)){
+			if (questionFilter.isAccepted(q)) {
+				if (!filterdQuestions.contains(q)) {
 					filterdQuestions.add(q);
 				}
 			}
 		}
-		Collections.sort(filterdQuestions,sorter);
-		if (filterdQuestions.size()>questionFilter.getNumberOfQuestions()){
-			filterdQuestions.subList(questionFilter.getNumberOfQuestions(),filterdQuestions.size()).clear();
+		Collections.sort(filterdQuestions, sorter);
+		if (filterdQuestions.size() > questionFilter.getNumberOfQuestions()) {
+			filterdQuestions.subList(questionFilter.getNumberOfQuestions(), filterdQuestions.size()).clear();
 		}
 	}
-	
+
+	/**
+	 * Push the result to rest api
+	 * @return, remote url of result
+	 * @throws IOException
+	 */
 	public String pushToRestApi() throws IOException {
 		RESTApiHandler restApi = new RESTApiHandler();
 		this.batchUrl = restApi.getRemoteURL(this);
 		return this.batchUrl;
 	}
-	
-	//Get result as JSON
+
+	/**
+	 * Get the result as JSON object
+	 * @return
+	 */
 	public JSONObject getJSONObject() {
 		JSONObject json = new JSONObject();
 		json.put("timestamp", getTimestamp());
@@ -96,11 +119,12 @@ public class CherryPickResult {
 
 	/**
 	 * Get the result as html
+	 * 
 	 * @return
 	 */
 	public String getHTML() {
-		
-		String title ="Batch " + batchNumber + ": "  + searchTag + " generated at " + new SimpleDateFormat("yyy-MM-dd HH:mm").format(new Date());
+
+		String title = "Batch " + batchNumber + ": " + searchTag + " generated at " + new SimpleDateFormat("yyy-MM-dd HH:mm").format(new Date());
 		StringBuilder html = new StringBuilder();
 		html.append("<html><head><title>" + title + "</title></head><body>\n");
 		html.append("<h1>" + title + "</h1>\n");
@@ -110,13 +134,13 @@ public class CherryPickResult {
 		int nr = 1;
 		for (Question question : filterdQuestions) {
 			html.append(question.getHTML(nr));
-			nr ++;
+			nr++;
 		}
 		html.append("</table>");
 		html.append("</body></html>");
 		return html.toString();
 	}
-	
+
 	public static String getTableHeader() {
 		return "<tr><th align=\"center\">NR</th><th align=\"left\">Question</th><th align=\"center\">Time ago</th><th align=\"center\">CV</th><th align=\"center\">Score</th><th align=\"center\">Answers</th><th>Views</th><th align=\"center\">Comm. cnt</td></tr>\n";
 	}
@@ -125,7 +149,6 @@ public class CherryPickResult {
 		return filterdQuestions;
 	}
 
-
 	public long getBatchNumber() {
 		return batchNumber;
 	}
@@ -133,8 +156,6 @@ public class CherryPickResult {
 	public ApiResult getApiResult() {
 		return apiResult;
 	}
-
-	
 
 	public String getSearchTag() {
 		return searchTag;
@@ -145,7 +166,7 @@ public class CherryPickResult {
 	}
 
 	public boolean isFilteredOnDuplicates() {
-		return filteredOnDuplicates;
+		return filter!=null&&filter.isFilterDupes();
 	}
 
 	public String getBatchUrl() {
@@ -160,7 +181,4 @@ public class CherryPickResult {
 		this.roomId = roomId;
 	}
 
-	
-
-	
 }

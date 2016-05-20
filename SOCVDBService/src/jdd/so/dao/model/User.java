@@ -1,5 +1,10 @@
 package jdd.so.dao.model;
 
+/**
+ * The user table
+ * @author Petter Friberg
+ *
+ */
 public class User implements Comparable<User>{
 	
 	private long userId;

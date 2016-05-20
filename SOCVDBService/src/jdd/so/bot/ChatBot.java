@@ -26,16 +26,21 @@ import jdd.so.bot.actions.BotCommandsRegistry;
 import jdd.so.bot.actions.cmd.ShutDownCommand;
 import jdd.so.dao.model.User;
 
+/**
+ * The main ChatBot handling the ChatRoom's
+ * 
+ * @author Petter Friberg
+ *
+ */
 public class ChatBot {
+	
 	private static final Logger logger = Logger.getLogger(ChatBot.class);
-
-	public static final int EVENT_REPLY = 18;
 
 	private StackExchangeClient client;
 
 	private Properties properties;
 
-	private CountDownLatch messageLatch;
+	private CountDownLatch messageLatch; //Wait before exiting
 	
 	private Map<Long, ChatRoom> rooms = Collections.synchronizedMap(new HashMap<>());
 
@@ -44,20 +49,20 @@ public class ChatBot {
 	public ChatBot(Properties properties, CountDownLatch messageLatch) {
 		this.properties = properties;
 		this.messageLatch = messageLatch;
-		Bot bot = new Bot("QUEEN", MagicStrings.root_path, "chat");
-		bot.deleteLearnfCategories();
-		chatSession = new Chat(bot);
-		bot.brain.nodeStats();
+		Bot aiBot = new Bot("QUEEN", MagicStrings.root_path, "chat");
+		aiBot.deleteLearnfCategories();
+		chatSession = new Chat(aiBot);
+		aiBot.brain.nodeStats();
 	}
 
 	public static synchronized String getResponse(String message) {
 		String msg = chatSession.multisentenceRespond(message);
 		
-		if (msg != null && (msg.toLowerCase().contains("google")||msg.contains("<search>"))){
+		if (msg == null || (msg.toLowerCase().contains("google")||msg.contains("<search>"))){
 			return "Sorry, I do not know";
 		}
 
-		if (msg != null && msg.length() > 400 && !msg.contains("\n")) {
+		if (msg.length() > 400 && !msg.contains("\n")) {
 			msg = "Well\n" + msg;
 		}
 		return msg.replaceAll("<br/>", "\n");
@@ -82,7 +87,7 @@ public class ChatBot {
 		room.getRoom().addEventListener(EventType.USER_MENTIONED, event -> roomEvent(room, event, false));
 		long id = room.getRoomId();
 		rooms.put(room.getRoomId(), room);
-		return room.getRoom().getRoomId() != 0;
+		return id != 0;
 	}
 
 	protected void roomEvent(ChatRoom room, PingMessageEvent event, boolean isReply) {
@@ -149,16 +154,18 @@ public class ChatBot {
 		MagicStrings.root_path = System.getProperty("user.dir");
 		MagicStrings.default_bot_name = "Queen";
 
-		// load properties file
+		// Load properties file an instance the CloseVoteFinder
 		Properties properties = new Properties();
 		properties.load(new FileInputStream("ini/SOCVService.properties"));
 		CloseVoteFinder.initInstance(properties);
+		
+		//Start the bot
 		CountDownLatch messageLatch = new CountDownLatch(1);
 		ChatBot cb = new ChatBot(properties, messageLatch);
 		try {
 			cb.loginIn();
 			cb.joinRoom("stackoverflow.com", 111347);
-		    //cb.joinRoom("stackoverflow.com", 95290);
+		    cb.joinRoom("stackoverflow.com", 95290);
 
 			try {
 				messageLatch.await();

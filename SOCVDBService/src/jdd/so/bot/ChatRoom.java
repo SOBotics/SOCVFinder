@@ -2,11 +2,16 @@ package jdd.so.bot;
 
 import fr.tunaki.stackoverflow.chat.Room;
 
+/**
+ * The wrapped, ChatRoom, holding info on room
+ * @author Petter Friberg
+ *
+ */
 public class ChatRoom {
 	
 	private Room room;
 	private int currentBatchNumber;
-	private long lastPossibileDupComment;
+	private long lastPossibileDupComment; //unix time stamp of last comment
 
 	public ChatRoom(Room room){
 		this.room = room;

@@ -11,6 +11,11 @@ import java.util.Map;
 
 import jdd.so.dao.model.User;
 
+/**
+ * Manually mapping table users, to avoid hibernate and other crap
+ * @author Petter Friberg
+ *
+ */
 public class UserDAO {
 	
 
@@ -26,8 +31,6 @@ public class UserDAO {
 				User u = new User(rs.getLong(1), rs.getString(2), rs.getInt(3));
 				users.put(u.getUserId(), u);
 			}
-		} catch (SQLException e) {
-			throw e;
 		} finally {
 			ConnectionHandler.cleanUpQuery(std, rs);
 		}

@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
@@ -14,7 +16,12 @@ import org.apache.log4j.Logger;
 import jdd.so.CloseVoteFinder;
 import jdd.so.api.CherryPickResult;
 
-
+/**
+ * Class the send the the json to server and get the
+ * the link to page back as result
+ * @author Petter Friberg
+ *
+ */
 public class RESTApiHandler {
 	/**
 	 * Logger for this class
@@ -36,14 +43,7 @@ public class RESTApiHandler {
 			if (logger.isDebugEnabled()) {
 				logger.debug("getRemoteURL(CherryPickResult) - Connecting to: " + url);
 			}
-			conn = (HttpURLConnection) new URL(url).openConnection();
-			conn.setConnectTimeout(10*1000);
-			conn.setReadTimeout(10*1000);
-			conn.setDoOutput(true);
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Content-Type", "application/json");
-			conn.setRequestProperty("Content-Encoding", "gzip");
-			conn.setRequestProperty("Accept-Encoding", "gzip");
+			conn = getConnection(url);
 
 			String output = result.getJSONObject().toString();
 			
@@ -58,6 +58,7 @@ public class RESTApiHandler {
 			gos.write(output.getBytes("UTF-8"));
 			gos.flush();
 			
+			//close the outstream to get response
 			closeStream(gos);
 
 			if (conn.getResponseCode() != 200) {
@@ -68,7 +69,6 @@ public class RESTApiHandler {
 			if (logger.isDebugEnabled()) {
 				logger.debug("getRemoteURL(CherryPickResult) - Reading gzipped json result");
 			}
-			
 			
 			bos = new ByteArrayOutputStream();
 			byte[] buffer = new byte[1024];
@@ -81,7 +81,6 @@ public class RESTApiHandler {
 			if (logger.isDebugEnabled()) {
 				logger.debug("getRemoteURL(CherryPickResult) - Incomming response: " + response);
 			}
-
 			return response;
 
 		} catch (IOException e) {
@@ -90,11 +89,23 @@ public class RESTApiHandler {
 		} finally {
 			closeStream(bos);
 			closeStream(gis);
-			//closeStream(gos);
 			closeStream(conn);
 
 		}
 
+	}
+
+	private HttpURLConnection getConnection(String url) throws IOException, MalformedURLException, ProtocolException {
+		HttpURLConnection conn;
+		conn = (HttpURLConnection) new URL(url).openConnection();
+		conn.setConnectTimeout(10*1000);
+		conn.setReadTimeout(10*1000);
+		conn.setDoOutput(true);
+		conn.setRequestMethod("POST");
+		conn.setRequestProperty("Content-Type", "application/json");
+		conn.setRequestProperty("Content-Encoding", "gzip");
+		conn.setRequestProperty("Accept-Encoding", "gzip");
+		return conn;
 	}
 
 	private void closeStream(InputStream stream) {
