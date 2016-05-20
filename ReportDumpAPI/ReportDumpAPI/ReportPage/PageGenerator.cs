@@ -185,7 +185,7 @@ namespace ReportDumpAPI.ReportPage
             // Answer count.
             if (accecptedAnsID == "0")
             {
-                html.AppendLine("<div clas=\"answerCount\">");
+                html.AppendLine("<div class=\"answerCount\">");
             }
             else
             {
