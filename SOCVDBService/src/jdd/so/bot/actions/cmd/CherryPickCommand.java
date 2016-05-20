@@ -65,7 +65,7 @@ public class CherryPickCommand extends BotCommand {
 		CherryPickResult cpr = null;
 		try {
 			// Get questions
-			cpr = getCherryPick(room.getRoomId(), event.getUserId(), tags, filter);
+			cpr = getCherryPick(room.getRoomId(), event.getUserId(), room.getNextBatchNumber(),tags, filter);
 			
 			//Filter as requested
 			cpr.filter(filter);
@@ -108,7 +108,7 @@ public class CherryPickCommand extends BotCommand {
 	}
 
 
-	private CherryPickResult getCherryPick(long chatRoomId, long userId, String tag, QuestionsFilter questionFilter) throws JSONException, IOException {
+	private CherryPickResult getCherryPick(long chatRoomId, long userId, int batchNumber, String tag, QuestionsFilter questionFilter) throws JSONException, IOException {
 		ApiResult apiResult = null;
 
 		// 1. Check if tag is avialable in DB.
@@ -155,7 +155,7 @@ public class CherryPickCommand extends BotCommand {
 			apiResult = api.getQuestions(null, fromDate, toDate, tag, CloseVoteFinder.getInstance().getApiCallNrPages(), true, null);
 		}
 
-		return new CherryPickResult(apiResult, chatRoomId, tag);
+		return new CherryPickResult(apiResult, chatRoomId, tag,batchNumber);
 	}
 
 	private long getUnixDate(int daysAgo) {

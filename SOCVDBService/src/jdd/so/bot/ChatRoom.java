@@ -13,8 +13,9 @@ public class ChatRoom {
 	private int currentBatchNumber;
 	private long lastPossibileDupComment; //unix time stamp of last comment
 
-	public ChatRoom(Room room){
+	public ChatRoom(Room room, int startBatchNumber){
 		this.room = room;
+		this.currentBatchNumber = startBatchNumber;
 	}
 
 	public Room getRoom() {
@@ -42,6 +43,11 @@ public class ChatRoom {
 	}
 
 	public int getCurrentBatchNumber() {
+		return currentBatchNumber;
+	}
+	
+	public int getNextBatchNumber() {
+		currentBatchNumber++;
 		return currentBatchNumber;
 	}
 

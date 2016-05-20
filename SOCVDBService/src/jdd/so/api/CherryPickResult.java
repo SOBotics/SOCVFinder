@@ -38,13 +38,12 @@ public class CherryPickResult {
 	private String batchUrl;
 
 
-	public CherryPickResult(ApiResult apiResult, long roomId, String tag) {
+	public CherryPickResult(ApiResult apiResult, long roomId, String tag,int batchNumber) {
 		this.apiResult = apiResult;
 		this.roomId = roomId;
 		this.searchTag = tag;
 		this.timestamp = System.currentTimeMillis();
-		// Just some random number for now
-		this.batchNumber = (long) (Math.random() * 100);
+		this.batchNumber = batchNumber;
 	}
 
 	/**
@@ -179,6 +178,14 @@ public class CherryPickResult {
 
 	public void setRoomId(long roomId) {
 		this.roomId = roomId;
+	}
+
+	public QuestionsFilter getFilter() {
+		return filter;
+	}
+
+	public void setFilter(QuestionsFilter filter) {
+		this.filter = filter;
 	}
 
 }

@@ -78,7 +78,8 @@ public class ChatBot {
 	}
 
 	public boolean joinRoom(String domain, int roomId) {
-		ChatRoom room = new ChatRoom(client.joinRoom(domain, roomId));
+		int batchNumber = 1; //Get it from db
+		ChatRoom room = new ChatRoom(client.joinRoom(domain, roomId),batchNumber);
 		
 		if (logger.isDebugEnabled()) {
 			logger.debug("joinRoom(String, int) - Client join room: " + roomId);

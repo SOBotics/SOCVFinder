@@ -281,7 +281,7 @@ public class CVAppSwing extends JFrame implements NotifyMe {
 			
 			try {
 				ApiResult apiResult = api.getQuestions(null, 0L, 0L, tag, apiCalls, true, notifyMe);
-				result = new CherryPickResult(apiResult, 0L, tag);
+				result = new CherryPickResult(apiResult, 0L, tag,1);
 				QuestionsFilter filter = new QuestionsFilter();
 				filter.setFilterDupes(cherryPickType == CHERRY_TYPE_DUP);
 				result.filter(filter);
