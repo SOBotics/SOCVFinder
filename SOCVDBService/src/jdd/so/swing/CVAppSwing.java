@@ -1,4 +1,4 @@
-package jdd.so;
+package jdd.so.swing;
 
 import java.awt.BorderLayout;
 import java.awt.Desktop;
@@ -33,8 +33,14 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+import com.sun.corba.se.impl.orbutil.RepositoryIdUtility;
+
+import jdd.so.CloseVoteFinder;
+import jdd.so.api.ApiHandler;
 import jdd.so.api.CherryPickResult;
+import jdd.so.api.model.ApiResult;
 import jdd.so.bot.actions.CommandException;
+import jdd.so.bot.actions.filter.QuestionsFilter;
 import jdd.so.rest.RESTApiHandler;
 
 /**
@@ -273,17 +279,17 @@ public class CVAppSwing extends JFrame implements NotifyMe {
 
 		@Override
 		public void run() {
-
-			SwingAppCommands bot = new SwingAppCommands(apiCalls,false);
-			bot.setNotifyMe(notifyMe);
+			
+			ApiHandler api = new ApiHandler();
 			CherryPickResult result;
+			
 			try {
-				if (cherryPickType == CHERRY_TYPE_DUP) {
-					result = bot.getPossibileDuplicatesBatch(0L, 0L, tag, 40);
-				} else {
-					result = bot.getCherryPickBatch(0L, 0L, tag, 40, null, null, null, null);
-				}
-			} catch (CommandException e1) {
+				ApiResult apiResult = api.getQuestions(null, 0L, 0L, tag, apiCalls, true, notifyMe);
+				result = new CherryPickResult(apiResult, 0L, tag);
+				QuestionsFilter filter = new QuestionsFilter();
+				filter.setFilterDupes(cherryPickType == CHERRY_TYPE_DUP);
+				result.filter(filter);
+			} catch (IOException e1) {
 				logger.error("run()", e1);
 				notifyMe.message("Error: " + e1.getMessage());
 				notifyMe.done();
@@ -300,11 +306,8 @@ public class CVAppSwing extends JFrame implements NotifyMe {
 				output = result.getJSONObject().toString(1);
 				break;
 			case OUTPUT_TYPE_REST_API:
-				RESTApiHandler rest = new RESTApiHandler();
 				try {
-					String retVal = rest.getRemoteURL(result);
-					System.out.println(retVal);
-					done(retVal);
+					done(result.pushToRestApi());
 				} catch (IOException e1) {
 					logger.error("run()", e1);
 					notifyMe.message(e1.getMessage());
@@ -322,20 +325,13 @@ public class CVAppSwing extends JFrame implements NotifyMe {
 				f.mkdir();
 			}
 			// lets just overwrite
-			PrintWriter out = null;
-			try {
-				out = new PrintWriter(f, "UTF-8");
+			try(PrintWriter out=new PrintWriter(f, "UTF-8")) {
 				out.write(output);
 			} catch (IOException e) {
 				logger.error("run()", e);
-			} finally {
-				if (out != null) {
-					out.close();
-				}
-			}
+			} 
 
 			notifyMe.done(f);
-
 		}
 	}
 

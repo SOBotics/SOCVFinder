@@ -1,4 +1,4 @@
-package jdd.so.db;
+package jdd.so.dao;
 
 import java.sql.Connection;
 import java.sql.Driver;

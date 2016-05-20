@@ -1,9 +1,9 @@
-package jdd.so.db;
+package jdd.so.dao;
 
 import java.sql.Connection;
 import java.util.List;
 
-import jdd.so.model.Question;
+import jdd.so.api.model.Question;
 
 public class QuestionDAO {
 	

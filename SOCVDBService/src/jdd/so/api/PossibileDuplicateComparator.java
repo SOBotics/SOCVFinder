@@ -1,6 +1,8 @@
-package jdd.so.model;
+package jdd.so.api;
 
 import java.util.Comparator;
+
+import jdd.so.api.model.Question;
 
 /**
  * Order the possibile duplicates before output

@@ -1,7 +1,7 @@
 package jdd.so.bot.actions.filter;
 
 import jdd.so.CloseVoteFinder;
-import jdd.so.model.Question;
+import jdd.so.api.model.Question;
 
 public class QuestionsFilter {
 	private String command;
@@ -12,7 +12,12 @@ public class QuestionsFilter {
 	private NumberFilter days;
 	private boolean filterDupes;
 	
+	public QuestionsFilter(){
+		super();
+	}
+	
 	public QuestionsFilter(String command){
+		super();
 		this.command = command.replace("&lt;", "<").replace("&gt;", ">");
 		init();
 	}
@@ -22,9 +27,17 @@ public class QuestionsFilter {
 		boolean beforeTag = true;
 		for (int i = 0; i < t.length; i++) {
 			String s = t[i].trim();
+			//remove @message
 			if (s.length()==0 || s.contains("@")){
 				continue;
 			}
+			
+			//duplicate
+			if (s.contains("dup")){
+				filterDupes = true;
+			}
+			
+			//if before number is number of question
 			if (s.contains("[")){
 				beforeTag = false;
 				continue;
@@ -51,31 +64,40 @@ public class QuestionsFilter {
 					days.validateDayFilter();
 				}else{
 					//check for answer type
-					switch (s){
-					case "nr":
-						answerType = AnswersType.NO_ROOMBA;
-						break;
-					case "a":
-						answerType = AnswersType.HAS_ANSWER;
-						break;
-					case "cr":
-						answerType = AnswersType.CLICK_FROM_ROOMBA;
-						break;
-					case "aa":
-						answerType = AnswersType.HAS_ACCEPTED_ANSWER;
-						break;
-					case "na":
-						answerType = AnswersType.HAS_NO_ANSWER;
-						break;
-					case "naa":
-						answerType = AnswersType.HAS_NO_ACCEPTED_ANSWER;
-						break;
-					}
+					this.answerType = getAnswerType(s);
 				}
 			}
 		}
 	}
 	
+	private AnswersType getAnswerType(String s) {
+		if (s==null){
+			return null;
+		}
+		switch (s){
+		case "nr":
+			return AnswersType.NO_ROOMBA;
+		case "a":
+			return  AnswersType.HAS_ANSWER;
+		case "cr":
+			return AnswersType.CLICK_FROM_ROOMBA;
+		case "aa":
+			return AnswersType.HAS_ACCEPTED_ANSWER;
+		case "na":
+			return AnswersType.HAS_NO_ANSWER;
+		case "naa":
+			return AnswersType.HAS_NO_ACCEPTED_ANSWER;
+		default:
+			return null;
+		}
+	}
+
+	/**
+	 * Check if question is accpeted by filter
+	 * Note: Day filter is already done on api call
+	 * @param q
+	 * @return true if q is ok
+	 */
 	public boolean isAccepted(Question q){
 		
 		if (filterDupes){
@@ -95,14 +117,6 @@ public class QuestionsFilter {
 			}
 		}
 		
-		
-		//Try only by querying api
-//		if (days!=null && days.isFilterActive()){
-//			int daysAgo =(int) ((System.currentTimeMillis()/1000)-q.getCreationDate())/(60*60*24);
-//			if (!days.inRange(daysAgo)){
-//				return false;
-//			}
-//		}
 		
 		if (answerType!=null){
 			switch (answerType){

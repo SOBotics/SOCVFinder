@@ -1,4 +1,4 @@
-package jdd.so;
+package jdd.so.swing;
 
 import java.io.File;
 

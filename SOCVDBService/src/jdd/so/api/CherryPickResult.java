@@ -11,18 +11,14 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import jdd.so.bot.actions.filter.AnswersType;
+import jdd.so.api.model.ApiResult;
+import jdd.so.api.model.Question;
 import jdd.so.bot.actions.filter.QuestionsFilter;
-import jdd.so.model.ApiResult;
-import jdd.so.model.CloseVoteComparator;
-import jdd.so.model.PossibileDuplicateComparator;
-import jdd.so.model.Question;
 import jdd.so.rest.RESTApiHandler;
 
 public class CherryPickResult {
 	
 	private ApiResult apiResult;
-	
 	
 	private long batchNumber;
 	private String searchTag;
@@ -43,16 +39,16 @@ public class CherryPickResult {
 		this.batchNumber = (long) (Math.random()*100);
 	}
 	
-	public void filterCherry(QuestionsFilter questionFilter) {
-		filteredOnDuplicates = false;
-		filter(questionFilter,new CloseVoteComparator());
+	public void filter(QuestionsFilter questionFilter) {
+		filteredOnDuplicates = questionFilter.isFilterDupes();
+		Comparator<Question> sorter;
+		if (filteredOnDuplicates){
+			sorter = new PossibileDuplicateComparator();
+		}else{
+			sorter = new CloseVoteComparator();
+		}
+		filter(questionFilter,sorter);
 	}
-	
-	public void filterDuplicates(QuestionsFilter questionFilter){
-		filteredOnDuplicates = true;
-		filter(questionFilter,new PossibileDuplicateComparator());
-	}
-	
 	
 	private void filter(QuestionsFilter questionFilter, Comparator<Question> sorter){
 		filterdQuestions = new ArrayList<Question>(apiResult.getQuestions().size());
@@ -69,37 +65,10 @@ public class CherryPickResult {
 		}
 	}
 	
-	@Deprecated
-	public void filterCherry(int maxQuestions, String cvFilter, String scoreFilter, AnswersType answerType){
-		filteredOnDuplicates = false;
-		filterdQuestions = new ArrayList<Question>(apiResult.getQuestions().size());
-		filterdQuestions.addAll(apiResult.getQuestions());
-
-		Collections.sort(filterdQuestions,new CloseVoteComparator());
-		if (filterdQuestions.size()>maxQuestions){
-			filterdQuestions.subList(maxQuestions,filterdQuestions.size()).clear();
-		}
-	}
-
-	@Deprecated
-	public void filterDuplicates(int maxQuestions){
-		filteredOnDuplicates = true;
-		filterdQuestions = new ArrayList<Question>(apiResult.getPossibileDuplicates().size());
-		for (Question question : apiResult.getQuestions()) {
-			if (question.isPossibileDuplicate()){
-				filterdQuestions.add(question);
-			}
-		}
-		//TODO: Implement the comparator that filters
-		Collections.sort(filterdQuestions,new PossibileDuplicateComparator());
-		if (filterdQuestions.size()>maxQuestions){
-			filterdQuestions.subList(maxQuestions,filterdQuestions.size()).clear();
-		}
-	}
-	
-	public void pushToRestApi() throws IOException {
+	public String pushToRestApi() throws IOException {
 		RESTApiHandler restApi = new RESTApiHandler();
 		this.batchUrl = restApi.getRemoteURL(this);
+		return this.batchUrl;
 	}
 	
 	//Get result as JSON
@@ -132,7 +101,6 @@ public class CherryPickResult {
 	public String getHTML() {
 		
 		String title ="Batch " + batchNumber + ": "  + searchTag + " generated at " + new SimpleDateFormat("yyy-MM-dd HH:mm").format(new Date());
-		
 		StringBuilder html = new StringBuilder();
 		html.append("<html><head><title>" + title + "</title></head><body>\n");
 		html.append("<h1>" + title + "</h1>\n");

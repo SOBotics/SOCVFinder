@@ -1,10 +1,12 @@
-package jdd.so.model;
+package jdd.so.api.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import jdd.so.api.CherryPickResult;
+import jdd.so.api.CloseVoteComparator;
+import jdd.so.api.PossibileDuplicateComparator;
 
 /**
  * The result from API call

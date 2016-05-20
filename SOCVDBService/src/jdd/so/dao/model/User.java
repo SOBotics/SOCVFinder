@@ -1,4 +1,4 @@
-package jdd.so.model;
+package jdd.so.dao.model;
 
 public class User implements Comparable<User>{
 	

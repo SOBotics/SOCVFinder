@@ -11,10 +11,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import jdd.so.CloseVoteFinder;
-import jdd.so.NotifyMe;
-import jdd.so.model.ApiResult;
-import jdd.so.model.Comment;
-import jdd.so.model.Question;
+import jdd.so.api.model.ApiResult;
+import jdd.so.api.model.Comment;
+import jdd.so.api.model.Question;
+import jdd.so.swing.NotifyMe;
 
 public class ApiHandler {
 	/**

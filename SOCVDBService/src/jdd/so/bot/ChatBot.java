@@ -24,7 +24,7 @@ import jdd.so.CloseVoteFinder;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.bot.actions.BotCommandsRegistry;
 import jdd.so.bot.actions.cmd.ShutDownCommand;
-import jdd.so.model.User;
+import jdd.so.dao.model.User;
 
 public class ChatBot {
 	private static final Logger logger = Logger.getLogger(ChatBot.class);

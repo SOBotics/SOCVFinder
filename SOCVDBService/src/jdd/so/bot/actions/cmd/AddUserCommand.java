@@ -6,8 +6,8 @@ import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.CloseVoteFinder;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
-import jdd.so.db.UserDAO;
-import jdd.so.model.User;
+import jdd.so.dao.UserDAO;
+import jdd.so.dao.model.User;
 
 public class AddUserCommand extends BotCommand {
 

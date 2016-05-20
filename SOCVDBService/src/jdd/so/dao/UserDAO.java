@@ -1,4 +1,4 @@
-package jdd.so.db;
+package jdd.so.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import jdd.so.model.User;
+import jdd.so.dao.model.User;
 
 public class UserDAO {
 	

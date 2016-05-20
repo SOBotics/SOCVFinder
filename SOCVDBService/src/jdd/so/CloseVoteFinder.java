@@ -26,10 +26,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import jdd.so.api.ApiHandler;
-import jdd.so.db.ConnectionHandler;
-import jdd.so.db.UserDAO;
-import jdd.so.model.ApiResult;
-import jdd.so.model.User;
+import jdd.so.api.model.ApiResult;
+import jdd.so.dao.ConnectionHandler;
+import jdd.so.dao.UserDAO;
+import jdd.so.dao.model.User;
+import jdd.so.swing.NotifyMe;
 
 /**
  * Test application to get questions with close votes from SO Api

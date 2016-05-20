@@ -1,4 +1,4 @@
-package jdd.so.model;
+package jdd.so.api.model;
 
 import java.util.ArrayList;
 import java.util.List;

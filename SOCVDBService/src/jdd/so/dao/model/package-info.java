@@ -5,4 +5,4 @@
  * @author pette
  *
  */
-package jdd.so.model;
+package jdd.so.dao.model;
