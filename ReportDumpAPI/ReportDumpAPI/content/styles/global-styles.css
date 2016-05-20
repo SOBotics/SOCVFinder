@@ -126,6 +126,23 @@ li {
     font-family: QuickSandBold;
 }
 
+.postAge {
+    text-align: left;
+    width: 170px;
+}
+.viewCount {
+    text-align: left;
+    width: 125px;
+}
+.answerCount {
+    text-align: left;
+    width: 105px;
+}
+.closeVotes {
+    text-align: right;
+    width: 110;
+}
+
 .reportTitle {
     display: inline;
     text-align: left;
@@ -135,6 +152,7 @@ li {
 .reportScore {
     display: inline;
     text-align: right;
+    margin-left: 15px;
 }
 
 .reportStatsContainer {

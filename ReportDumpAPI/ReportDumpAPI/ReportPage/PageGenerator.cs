@@ -165,13 +165,13 @@ namespace ReportDumpAPI.ReportPage
             html.AppendLine("<div class=\"reportStatsContainer\">");
 
             // Question age.
-            html.AppendLine("<div>");
+            html.AppendLine("<div class=\"postAge\">");
             html.AppendLine("<span class=\"statName\">Posted:</span> ");
             html.AppendLine($"<span class=\"postTime\">{age}<span>");
             html.AppendLine("</div>");
 
             // View count.
-            html.AppendLine("<div>");
+            html.AppendLine("<div class=\"viewCount\">");
             html.AppendLine($"<span class=\"statName\">Views:</span> ");
             html.AppendLine(views);
             html.AppendLine("</div>");
@@ -179,7 +179,7 @@ namespace ReportDumpAPI.ReportPage
             // Answer count.
             if (accecptedAnsID == "0")
             {
-                html.AppendLine("<div>");
+                html.AppendLine("<div clas=\"answerCount\">");
             }
             else
             {
@@ -190,7 +190,7 @@ namespace ReportDumpAPI.ReportPage
             html.AppendLine("</div>");
 
             // Close vote count.
-            html.AppendLine("<div>");
+            html.AppendLine("<div class=\"closeVotes\">");
             html.AppendLine("<span class=\"statName\">Close votes:</span> ");
             html.AppendLine(cvCount);
             html.AppendLine("</div>");
