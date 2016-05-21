@@ -50,6 +50,7 @@ public class CherryPickResult {
 	 * Call the filter and sort with standard Comparator
 	 */
 	public void filter(QuestionsFilter questionFilter) {
+		this.filter = questionFilter;
 		Comparator<Question> sorter;
 		if (questionFilter.isFilterDupes()) {
 			sorter = new PossibileDuplicateComparator();

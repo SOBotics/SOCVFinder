@@ -40,6 +40,7 @@ public class QuestionsFilter {
 			//duplicate
 			if (s.contains("dup")){
 				filterDupes = true;
+				continue;
 			}
 			
 			//if before number is number of question

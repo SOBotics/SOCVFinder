@@ -3,6 +3,8 @@ package jdd.so.bot.actions.cmd;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 import org.apache.log4j.Logger;
 import org.json.JSONException;
@@ -59,7 +61,7 @@ public class CherryPickCommand extends BotCommand {
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
 		String message = event.getContent();
-		room.send("All right, dear, working on it...");
+		CompletableFuture<Long> sentId = room.send("All right, dear, working on it...");
 		String tags = getTags(message);
 		QuestionsFilter filter = new QuestionsFilter(message);
 		CherryPickResult cpr = null;
@@ -98,7 +100,20 @@ public class CherryPickCommand extends BotCommand {
 					retMsg = "[tag:cherry-pick] Serving you " + tags + " ";
 				}
 				retMsg += "[batch " + cpr.getBatchNumber() + "](" + cpr.getBatchUrl() + ")";
-				room.replyTo(event.getMessageId(), retMsg);
+				if (sentId.isDone()){
+					try {
+						String userName = event.getUserName();
+						if (userName!=null){
+							userName = userName.replaceAll(" ", "");
+						}
+						room.edit(sentId.get(), "@" + userName +  " " +retMsg);
+					} catch (CompletionException e) {
+						room.replyTo(event.getMessageId(), retMsg);
+					}
+				}else{
+					sentId.cancel(true);
+					room.replyTo(event.getMessageId(), retMsg);
+				}
 			}
 		} catch (Exception e) {
 			logger.error("runCommand(Room, String)", e);
