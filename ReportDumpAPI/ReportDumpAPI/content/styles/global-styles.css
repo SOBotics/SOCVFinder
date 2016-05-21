@@ -13,11 +13,11 @@ h1, h2, h3 {
 }
 
 a:visited {
-    color: #0F4889;
+    color: #122BA4;
 }
 
 a {
-    color: #2D84E8;
+    color: #2D4BE8;
     text-decoration: none;
 }
 
@@ -29,7 +29,7 @@ a {
 }
 
 .bodyLight a:visited {
-    color: #B7D5F7;
+    color: #7DB3F1;
 }
 
 .bodyLight .itemSeparator {
