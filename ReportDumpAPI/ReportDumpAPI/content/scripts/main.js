@@ -40,7 +40,7 @@
             $(this).text(days + " day" + (days == 1 ? "" : "s"));
         }
         else if (milliDelta < 1000 * 60 * 60 * 24 * 7 * 30) {
-            var weeks = Math.round(milliDelta / 1000 / 60 / 60 / 60 / 7);
+            var weeks = Math.round(milliDelta / 1000 / 60 / 60 / 24 / 7);
             $(this).text(weeks + " week" + (weeks == 1 ? "" : "s"));
         }
         else {
