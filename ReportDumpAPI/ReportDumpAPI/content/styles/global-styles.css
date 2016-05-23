@@ -116,31 +116,10 @@ li {
     padding: 0px 5%;
 }
 
-.reportHeader {
+.reportSubContainer {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
-}
-
-.statName {
-    font-family: QuickSandBold;
-}
-
-.postAge {
-    text-align: left;
-    width: 170px;
-}
-.viewCount {
-    text-align: left;
-    width: 125px;
-}
-.answerCount {
-    text-align: left;
-    width: 105px;
-}
-.closeVotes {
-    text-align: right;
-    width: 120px;
 }
 
 .reportTitle {
@@ -149,15 +128,46 @@ li {
     margin: 0;
 }
 
-.reportScore {
+.questionScore {
     display: inline;
     text-align: right;
     margin-left: 15px;
 }
 
-.reportStatsContainer {
-    display: flex;
-    justify-content: space-between;
+.valueName {
+    font-family: QuickSandBold;
+}
+
+.postAge {
+    text-align: left;
+    width: 170px;
+}
+
+.viewCount {
+    text-align: left;
+    width: 125px;
+}
+
+.answerCount {
+    text-align: left;
+    width: 105px;
+}
+
+.closeVotes {
+    text-align: right;
+    width: 120px;
+}
+
+.dupeTargetLink {
+    text-align: left;
+}
+
+.opResponseContainer {
+    text-align: left;
+}
+
+.opResponseComment {
+    font-size: 0.8rem;
 }
 
 
