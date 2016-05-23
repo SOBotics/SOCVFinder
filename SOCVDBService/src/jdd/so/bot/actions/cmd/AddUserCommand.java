@@ -18,7 +18,7 @@ public class AddUserCommand extends BotCommand {
 
 	@Override
 	public int getRequiredAccessLevel() {
-		return BotCommand.ACCESS_LEVEL_REVIEWER;
+		return BotCommand.ACCESS_LEVEL_OWNER;
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class AddUserCommand extends BotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Add a users and set the access level";
+		return "User >3k are added automatically, this cmd can add manually a users or set/update the access level";
 	}
 
 	@Override

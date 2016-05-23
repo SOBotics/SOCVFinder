@@ -4,7 +4,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
-import jdd.so.bot.ChatBot;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 
@@ -73,7 +72,7 @@ public class AiChatCommand extends BotCommand {
 			return;
 		}
 		
-		String response = ChatBot.getResponse(message.replaceAll("(?i)@qu(\\w+)", "").trim());
+		String response = room.getUnkownCommandResponse(message.replaceAll("(?i)@qu(\\w+)", "").trim());
 		room.replyTo(event.getMessageId(), Jsoup.clean(response, Whitelist.basic()));
 		
 	}

@@ -94,7 +94,7 @@ public class NumberFilter {
 			setNumber(Math.abs(getNumber()));
 		}
 
-		if (getNumber() == 0) {
+		if (getNumber() != null && getNumber() == 0) {
 			setNumber(1);
 		}
 	}

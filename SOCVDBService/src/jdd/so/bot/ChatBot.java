@@ -3,6 +3,7 @@ package jdd.so.bot;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +25,7 @@ import jdd.so.CloseVoteFinder;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.bot.actions.BotCommandsRegistry;
 import jdd.so.bot.actions.cmd.ShutDownCommand;
+import jdd.so.dao.UserDAO;
 import jdd.so.dao.model.User;
 
 /**
@@ -33,40 +35,27 @@ import jdd.so.dao.model.User;
  *
  */
 public class ChatBot {
-	
+
 	private static final Logger logger = Logger.getLogger(ChatBot.class);
 
 	private StackExchangeClient client;
 
 	private Properties properties;
 
-	private CountDownLatch messageLatch; //Wait before exiting
-	
+	private CountDownLatch messageLatch; // Wait before exiting
+
+	private Bot aiBot;
+
 	private Map<Long, ChatRoom> rooms = Collections.synchronizedMap(new HashMap<>());
 
-	private static Chat chatSession;
+
+	
 
 	public ChatBot(Properties properties, CountDownLatch messageLatch) {
 		this.properties = properties;
 		this.messageLatch = messageLatch;
-		Bot aiBot = new Bot("QUEEN", MagicStrings.root_path, "chat");
+		aiBot = new Bot("QUEEN", MagicStrings.root_path, "chat");
 		aiBot.deleteLearnfCategories();
-		chatSession = new Chat(aiBot);
-		aiBot.brain.nodeStats();
-	}
-
-	public static synchronized String getResponse(String message) {
-		String msg = chatSession.multisentenceRespond(message);
-		
-		if (msg == null || (msg.toLowerCase().contains("google")||msg.contains("<search>"))){
-			return "Sorry, I do not know";
-		}
-
-		if (msg.length() > 400 && !msg.contains("\n")) {
-			msg = "Well\n" + msg;
-		}
-		return msg.replaceAll("<br/>", "\n");
-
 	}
 
 	public boolean loginIn() {
@@ -77,10 +66,10 @@ public class ChatBot {
 		return (client != null);
 	}
 
-	public boolean joinRoom(String domain, int roomId) {
-		int batchNumber = 1; //Get it from db
-		ChatRoom room = new ChatRoom(client.joinRoom(domain, roomId),batchNumber);
-		
+	public boolean joinRoom(String domain, int roomId, boolean enableAi) {
+		int batchNumber = 0; // Get it from db
+		ChatRoom room = new ChatRoom(this,client.joinRoom(domain, roomId), batchNumber,enableAi);
+
 		if (logger.isDebugEnabled()) {
 			logger.debug("joinRoom(String, int) - Client join room: " + roomId);
 		}
@@ -96,7 +85,7 @@ public class ChatBot {
 			logger.debug("roomEvent(ChatRoom, PingMessageEvent, boolean) - Incomming message: " + event.toString());
 		}
 		if (event.getEditCount() > 0) {
-			//long parentId = event.getParentMessageId();
+			// long parentId = event.getParentMessageId();
 			return; // Ignore edits for now
 		}
 		BotCommand bc = BotCommandsRegistry.getInstance().getCommand(event.getContent(), isReply, event.getEditCount());
@@ -111,15 +100,32 @@ public class ChatBot {
 			User u = CloseVoteFinder.getInstance().getUsers().get(userId);
 			if (u != null) {
 				accessLevel = u.getAccessLevel();
-			}else{
-				//TODO: add user
+			} else {
 				fr.tunaki.stackoverflow.chat.User user = room.getUser(userId);
-				if (user.getReputation()>3000){
-					
+				if (logger.isDebugEnabled()) {
+					logger.debug("roomEvent(ChatRoom, PingMessageEvent, boolean) - User rep = " + user.getReputation());
+				}
+				if (user.getReputation() >= 3000) {
+					UserDAO dao = new UserDAO();
+					int al = BotCommand.ACCESS_LEVEL_REVIEWER;
+					if (user.isModerator()){
+						al = BotCommand.ACCESS_LEVEL_OWNER;
+					}
+					u = new User(user.getId(), user.getName(),al);
+					try {
+						dao.insertOrUpdate(CloseVoteFinder.getInstance().getConnection(), u);
+						CloseVoteFinder.getInstance().getUsers().put(u.getUserId(),u);
+						accessLevel = u.getAccessLevel();
+						room.send("Welcome " + u.getUserName() + ", you have been added as " + BotCommand.getAccessLevelName(u.getAccessLevel()) + ", standby executing your command");
+
+					} catch (SQLException e) {
+						logger.error("roomEvent(ChatRoom, PingMessageEvent, boolean)", e);
+						room.send("Error inserting or updating user @Petter");
+					}
+
 				}
 			}
 
-			
 			if (accessLevel < bc.getRequiredAccessLevel()) {
 				room.replyTo(event.getMessageId(),
 						"Sorry you need to be " + BotCommand.getAccessLevelName(bc.getRequiredAccessLevel()) + " to run this command (@Petter)");
@@ -129,7 +135,12 @@ public class ChatBot {
 
 		bc.runCommand(room, event);
 		if (bc instanceof ShutDownCommand) {
-			messageLatch.countDown();
+			if (messageLatch != null) {
+				messageLatch.countDown();
+			}else{
+				close();
+				CloseVoteFinder.getInstance().shutDown();	
+			}
 		}
 	}
 
@@ -159,14 +170,14 @@ public class ChatBot {
 		Properties properties = new Properties();
 		properties.load(new FileInputStream("ini/SOCVService.properties"));
 		CloseVoteFinder.initInstance(properties);
-		
-		//Start the bot
+
+		// Start the bot
 		CountDownLatch messageLatch = new CountDownLatch(1);
 		ChatBot cb = new ChatBot(properties, messageLatch);
 		try {
 			cb.loginIn();
-			cb.joinRoom("stackoverflow.com", 111347);
-		    cb.joinRoom("stackoverflow.com", 95290);
+			cb.joinRoom("stackoverflow.com", 111347,true);
+			cb.joinRoom("stackoverflow.com", 95290,false);
 
 			try {
 				messageLatch.await();
@@ -176,9 +187,13 @@ public class ChatBot {
 		} catch (Throwable e) {
 			logger.error("main(String[])", e);
 		} finally {
-			CloseVoteFinder.getInstance().shutDown();
 			cb.close();
+			CloseVoteFinder.getInstance().shutDown();
 		}
+	}
+
+	public Bot getAiBot() {
+		return aiBot;
 	}
 
 }
