@@ -211,7 +211,10 @@ namespace ReportDumpAPI.ReportPage
             {
                 var comments = JSON.Deserialize<Dictionary<string, object>[]>(json["comments"].ToString());
 
-                if (comments.Length > 0)
+                if (comments.Length > 0 &&
+                    comments[0].ContainsKey("duplicated_target_id") &&
+                    comments[0].ContainsKey("duplicated_target_title") &&
+                    comments[0].ContainsKey("duplicated_target_score"))
                 {
                     var targetID = comments[0]["duplicated_target_id"];
                     var dupeLink = $"//stackoverflow.com/q/{targetID}";
