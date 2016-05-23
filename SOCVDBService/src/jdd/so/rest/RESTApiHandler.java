@@ -47,13 +47,10 @@ public class RESTApiHandler {
 
 			String output = result.getJSONObject().toString();
 			
-			if (logger.isDebugEnabled()) {
-				logger.debug("getRemoteURL(CherryPickResult) - " + output);
-			}
 			gos = new GZIPOutputStream(conn.getOutputStream());
 			
-			if (logger.isDebugEnabled()) {
-				logger.debug("getRemoteURL(CherryPickResult) - Sending gzipped json: " + output);
+			if (logger.isInfoEnabled()) {
+				logger.info("getRemoteURL(CherryPickResult) - Sending gzipped json: " + output);
 			}
 			gos.write(output.getBytes("UTF-8"));
 			gos.flush();

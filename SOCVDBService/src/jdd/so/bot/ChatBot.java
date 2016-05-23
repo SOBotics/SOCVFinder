@@ -138,8 +138,12 @@ public class ChatBot {
 			if (messageLatch != null) {
 				messageLatch.countDown();
 			}else{
-				close();
-				CloseVoteFinder.getInstance().shutDown();	
+				try {
+					close();
+					CloseVoteFinder.getInstance().shutDown();
+				} catch (Exception e) {
+					logger.error("roomEvent() Shutdown error", e);
+				}	
 				System.exit(0);
 			}
 		}
