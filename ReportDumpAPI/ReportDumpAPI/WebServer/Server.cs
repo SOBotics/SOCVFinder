@@ -271,7 +271,7 @@ namespace ReportDumpAPI.WebServer
         {
             var ext = Path.GetExtension(res).ToUpperInvariant();
 
-            if (new[] { ".JS", ".CSS" }.Contains(ext))
+            if (new[] { ".JS", ".CSS", ".HTML" }.Contains(ext))
             {
                 return "max-age=1800"; // 30 mins.
             }

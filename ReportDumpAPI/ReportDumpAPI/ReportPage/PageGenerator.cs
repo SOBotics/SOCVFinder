@@ -64,7 +64,7 @@ namespace ReportDumpAPI.ReportPage
             var isDupesStr = json["is_filtered_duplicates"].ToString();
             var isDupes = bool.Parse(isDupesStr);
             dupes = isDupes;
-            return html.Replace("$REPORT_TYPE$", isDupes ? "Duplicate" : "Cherrypick");
+            return html.Replace("$REPORT_TYPE$", isDupes ? "Duplicate" : "Cherry-pick");
         }
 
         private static string PatchReportID(string html, Dictionary<string, object> json)
@@ -119,14 +119,10 @@ namespace ReportDumpAPI.ReportPage
             var qs = JSON.Deserialize<Dictionary<string, object>[]>(qsJson);
             var list = new StringBuilder("<div>");
 
-            for (var i = 0; i < qs.Length; i++)
+            foreach (var q in qs)
             {
-                list.AppendLine(GetQuestionHtml(qs[i], dupes));
-
-                if (i >= 0 && i < qs.Length - 1)
-                {
-                    list.AppendLine("<div class=\"itemSeparator\"></div>");
-                }
+                var qHtml = GetQuestionHtml(q, dupes);
+                list.AppendLine(qHtml);
             }
 
             list.AppendLine("</div>");
@@ -192,7 +188,7 @@ namespace ReportDumpAPI.ReportPage
             }
             else
             {
-                html.AppendLine("<div class=\"answerCount\" style=\"color:#00C741\" title=\"This question has an accepted answer\">");
+                html.AppendLine("<div class=\"answerCount\" style=\"color:#00AB0B\" title=\"This question has an accepted answer\">");
             }
             html.AppendLine("<span class=\"valueName\">Answers:</span> ");
             html.AppendLine(answerCount);

@@ -13,11 +13,11 @@ h1, h2, h3 {
 }
 
 a:visited {
-    color: #122BA4;
+    color: #3464B7;
 }
 
 a {
-    color: #2D4BE8;
+    color: #5D98ff;
     text-decoration: none;
 }
 
@@ -28,12 +28,16 @@ a {
     background-color: #F8F8F8;
 }
 
+.bodyLight a {
+    color: #0022CC;
+}
+
 .bodyLight a:visited {
     color: #7DB3F1;
 }
 
-.bodyLight .itemSeparator {
-    border-image: radial-gradient(#1A1A1A 20%, #F8F8F8 75%) 1;
+.bodyLight .report {
+    border-image: radial-gradient(#1A1A1A 66%, #F8F8F8 97.5%) 1;
 }
 
 .bodyDark {
@@ -92,28 +96,20 @@ header h1 {
     margin: 0 auto;
 }
 
-ul {
-    margin: 0px;
-    padding: 0px;
-}
-
-li {
-    list-style: none;
-}
-
-.itemSeparator {
-    margin: 25px 0px;
-    border-style: solid;
-    border-width: 0px 0px 1px 0px;
-    border-image: radial-gradient(#F8F8F8 20%, #1A1A1A 75%) 1;
-}
-
 .reportTitleTag {
     font-family: QuickSandBold;
 }
 
 .report {
-    padding: 0px 5%;
+    padding: 0px 5% 25px 5%;
+    margin-bottom: 25px;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-image: radial-gradient(#F8F8F8 66%, #1A1A1A 97.5%) 1;
+}
+
+.report:last-child {
+    border-width: 0;
 }
 
 .reportSubContainer {
