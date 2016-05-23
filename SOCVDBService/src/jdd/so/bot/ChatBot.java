@@ -66,8 +66,8 @@ public class ChatBot {
 		return (client != null);
 	}
 
-	public boolean joinRoom(String domain, int roomId, boolean enableAi) {
-		int batchNumber = 0; // Get it from db
+	public boolean joinRoom(String domain, long roomId, boolean enableAi) {
+		int batchNumber = CloseVoteFinder.getInstance().getBatchNumber(roomId); // Get it from db
 		ChatRoom room = new ChatRoom(this,client.joinRoom(domain, roomId), batchNumber,enableAi);
 
 		if (logger.isDebugEnabled()) {
@@ -140,12 +140,16 @@ public class ChatBot {
 			}else{
 				close();
 				CloseVoteFinder.getInstance().shutDown();	
+				System.exit(0);
 			}
 		}
 	}
 
 	public void close() {
 		if (client != null) {
+			if (logger.isInfoEnabled()) {
+				logger.info("closing client");
+			}
 			client.close();
 		}
 	}

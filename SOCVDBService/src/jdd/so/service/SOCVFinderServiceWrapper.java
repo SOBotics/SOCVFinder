@@ -68,8 +68,8 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 	 */
 	@Override
 	public Integer start(String[] args) {
-		if (logger.isDebugEnabled()) {
-			logger.debug("start(String[]) - start");
+		if (logger.isInfoEnabled()) {
+			logger.info("start(String[]) - start");
 		}
 
 		// Load AI interface
@@ -97,8 +97,8 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 			return 1;
 		} 
 
-		if (logger.isDebugEnabled()) {
-			logger.debug("start(String[]) - end");
+		if (logger.isInfoEnabled()) {
+			logger.info("start(String[]) - end");
 		}
 		return null;
 	}
@@ -108,13 +108,20 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 	 */
 	@Override
 	public int stop(int exitCode) {
-		if (WrapperManager.isDebugEnabled()) {
-			System.out.println("ServiceWrapper: stop(" + exitCode + ")");
+		if (logger.isInfoEnabled()) {
+			logger.info("stop() - exitCode:" + exitCode);
 		}
-		if (cb != null) {
-			cb.close();
+		try {
+			if (cb != null) {
+				cb.close();
+			}
+			CloseVoteFinder.getInstance().shutDown();
+		} catch (Throwable e) {
+			logger.error("stop(int)", e);
 		}
-		CloseVoteFinder.getInstance().shutDown();
+		if (logger.isInfoEnabled()) {
+			logger.info("stop() end");
+		}
 		return exitCode;
 	}
 
@@ -129,12 +136,13 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 	public void controlEvent(int event) {
 		if ((event == WrapperManager.WRAPPER_CTRL_LOGOFF_EVENT) && WrapperManager.isLaunchedAsService()) {
 			// Ignore
-			if (WrapperManager.isDebugEnabled()) {
-				System.out.println("ServiceWrapper: controlEvent(" + event + ") Ignored");
+			if (logger.isInfoEnabled()) {
+				logger.info("ServiceWrapper: controlEvent(" + event + ") Ignored");
 			}
+			
 		} else {
-			if (WrapperManager.isDebugEnabled()) {
-				System.out.println("ServiceWrapper: controlEvent(" + event + ") Stopping");
+			if (logger.isInfoEnabled()) {
+				logger.info("ServiceWrapper: controlEvent(" + event + ") Stopping");
 			}
 			WrapperManager.stop(0);
 			// Will not get here.
@@ -143,6 +151,10 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 	
 	
 	private class SOLoginThread extends Thread{
+		/**
+		 * Logger for this class
+		 */
+		private final Logger logger = Logger.getLogger(SOLoginThread.class);
 		
 		@Override
 		public void run(){

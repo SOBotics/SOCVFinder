@@ -38,19 +38,27 @@ public class UserDAO {
 		return users;
 	}
 	
-	public boolean insertOrUpdate(Connection conn, User u) throws SQLException{
+	public int insertOrUpdate(Connection conn, User u) throws SQLException{
 		
 		String sql = "INSERT INTO users (user_id,user_name,privilege_level) VALUES (?,?,?) " +
 					 "ON DUPLICATE KEY UPDATE user_name=?,privilege_level=?";
 		
-		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setLong(1, u.getUserId());
-		ps.setString(2, u.getUserName());
-		ps.setInt(3, u.getAccessLevel());
-		ps.setString(4, u.getUserName());
-		ps.setInt(5, u.getAccessLevel());
-		ps.executeUpdate();
-		return true;
+		PreparedStatement ps  = null;
+		int retVal = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setLong(1, u.getUserId());
+			ps.setString(2, u.getUserName());
+			ps.setInt(3, u.getAccessLevel());
+			ps.setString(4, u.getUserName());
+			ps.setInt(5, u.getAccessLevel());
+			retVal = ps.executeUpdate();
+		}finally {
+			if (ps!=null){
+				ps.close();
+			}
+		}
+		return retVal;
 		
 	}
 

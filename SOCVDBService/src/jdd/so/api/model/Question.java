@@ -265,7 +265,11 @@ public class Question {
 	}
 
 	public boolean isPossibileDuplicate() {
-		return duplicateCommentIndex >= 0;
+		if (duplicateCommentIndex<0){
+			return false;
+		}
+		Comment c = comments.get(duplicateCommentIndex);
+		return c.getDuplicateQuestionID()>0;
 	}
 
 	public String getPossibibleDuplicateComment() {
@@ -298,6 +302,10 @@ public class Question {
 
 	public void setClosedReason(String closedReason) {
 		this.closedReason = closedReason;
+	}
+	
+	public boolean isClosed(){
+		return closedDate>0;
 	}
 
 	public long getOwnerId() {

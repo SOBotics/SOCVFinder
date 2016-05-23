@@ -22,12 +22,7 @@ public class CloseVoteComparator implements Comparator<Question> {
 				}
 				return -1;
 			}
-			//3. Score (negative)
-			retVal=o1.getScore()-o2.getScore();
-			if (retVal==0){
-				//4. Creation date
-				retVal=(int) (o2.getCreationDate()-o1.getCreationDate());
-			}
+			retVal=(int) (o1.getCreationDate()-o2.getCreationDate());
 		}
 		return retVal;
 	}

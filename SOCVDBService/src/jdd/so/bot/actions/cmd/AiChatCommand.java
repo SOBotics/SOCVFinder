@@ -36,11 +36,14 @@ public class AiChatCommand extends BotCommand {
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
+		if (event.getUserId()==event.getTargetUserId()){ //avoid talking to myself
+			return;
+		}
 		String message = event.getContent();
 		String lm = message.toLowerCase();
 	
-		if (lm.contains("done")){
-			room.replyTo(event.getMessageId(), "Done with what?, if batch reply to the batch you have done");
+		if (lm.contains("[tag:")){
+			room.send("Seems that you like to cherry pick but you should not use [tag:, just indicate the tag within [] example [java]");
 			return;
 		}
 		

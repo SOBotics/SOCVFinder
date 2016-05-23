@@ -64,7 +64,7 @@ public class ChatRoom {
 		return room.send(message);
 	}
 	
-	public CompletableFuture<Void> edit(long messageId, String message){
+	public CompletableFuture<Long> edit(long messageId, String message){
 		return room.edit(messageId,message);
 	}
 

@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import jdd.so.api.model.ApiResult;
 import jdd.so.api.model.Question;
 import jdd.so.bot.actions.filter.QuestionsFilter;
+import jdd.so.dao.model.Batch;
 import jdd.so.rest.RESTApiHandler;
 
 /**
@@ -28,7 +29,7 @@ public class CherryPickResult {
 	private ApiResult apiResult; //The api result (all questions)
 
 	private long roomId;
-	private long batchNumber;
+	private int batchNumber;
 	private String searchTag;
 	private long timestamp;
 
@@ -90,6 +91,27 @@ public class CherryPickResult {
 		this.batchUrl = restApi.getRemoteURL(this);
 		return this.batchUrl;
 	}
+	
+	public Batch getBatch(long messageId, long userId){
+		Batch b = new Batch();
+		b.setMessageId(messageId);
+		b.setBatchDateStart(timestamp/1000);
+		b.setBatchNr(getBatchNumber());
+		b.setRoomId(getRoomId());
+		b.setSearchTags(getSearchTag());
+		b.setUserId(userId);
+		StringBuilder questionIds = new StringBuilder(";");
+		int cvCount = 0;
+		if (filterdQuestions!=null){
+			for (Question q : filterdQuestions) {
+				questionIds.append(q.getQuestionId()+";");
+				cvCount += q.getCloseVoteCount();
+			}
+		}
+		b.setQuestions(questionIds.toString());
+		b.setCvCountBefore(cvCount);
+		return b;
+	}
 
 	/**
 	 * Get the result as JSON object
@@ -149,7 +171,7 @@ public class CherryPickResult {
 		return filterdQuestions;
 	}
 
-	public long getBatchNumber() {
+	public int getBatchNumber() {
 		return batchNumber;
 	}
 

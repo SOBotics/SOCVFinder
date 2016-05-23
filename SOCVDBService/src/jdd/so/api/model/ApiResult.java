@@ -21,6 +21,8 @@ public class ApiResult {
 	private int nrOfPages;
 	private int nrOfQuestionScanned;
 	private int quotaRemaining;
+	private long firstDate;
+	private long lastDate;
 
 	public ApiResult(boolean includeAll) {
 		this.includeAll = includeAll;
@@ -31,7 +33,16 @@ public class ApiResult {
 	
 
 	public boolean addQuestion(Question q) {
+		if (this.questions.contains(q)){
+			return false;
+		}
 		nrOfQuestionScanned++;
+		if (q.getCreationDate()<=firstDate||firstDate==0){
+			firstDate = q.getCreationDate();
+		}
+		if (q.getCreationDate()>=lastDate||lastDate==0){
+			lastDate = q.getCreationDate();
+		}
 		if (includeAll || q.isMonitor()) {
 			return this.questions.add(q);
 		}
@@ -189,6 +200,42 @@ public class ApiResult {
 		html += "</body></html>";
 		return html;
 
+	}
+
+
+
+	public int getNrOfQuestionScanned() {
+		return nrOfQuestionScanned;
+	}
+
+
+
+	public void setNrOfQuestionScanned(int nrOfQuestionScanned) {
+		this.nrOfQuestionScanned = nrOfQuestionScanned;
+	}
+
+
+
+	public long getFirstDate() {
+		return firstDate;
+	}
+
+
+
+	public void setFirstDate(long firstDate) {
+		this.firstDate = firstDate;
+	}
+
+
+
+	public long getLastDate() {
+		return lastDate;
+	}
+
+
+
+	public void setLastDate(long lastDate) {
+		this.lastDate = lastDate;
 	}
 
 	

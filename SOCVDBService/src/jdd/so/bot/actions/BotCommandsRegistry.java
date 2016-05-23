@@ -11,6 +11,7 @@ import jdd.so.bot.actions.cmd.CherryPickCommand;
 import jdd.so.bot.actions.cmd.CommandsCommand;
 import jdd.so.bot.actions.cmd.DeleteCommentCommand;
 import jdd.so.bot.actions.cmd.HelpCommand;
+import jdd.so.bot.actions.cmd.IndexCommand;
 import jdd.so.bot.actions.cmd.OptInCommand;
 import jdd.so.bot.actions.cmd.OptOutCommand;
 import jdd.so.bot.actions.cmd.ShutDownCommand;
@@ -51,8 +52,9 @@ public class BotCommandsRegistry {
 		commands.add(new HelpCommand());
 		commands.add(new OptInCommand());
 		commands.add(new OptOutCommand());
-		commands.add(new BatchDoneCommand());
 		commands.add(new ApiQuotaCommand());
+		commands.add(new BatchDoneCommand());
+		commands.add(new IndexCommand());
 		commands.add(new CherryPickCommand());
 		// ...
 

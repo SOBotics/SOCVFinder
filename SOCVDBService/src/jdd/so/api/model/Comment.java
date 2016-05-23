@@ -31,10 +31,9 @@ public class Comment {
 		}
 		if (duplicateTargetTitle!=null){
 			json.put("duplicated_target_title", duplicateTargetTitle);
-		}
-		if (duplicateTargetScore>0){
 			json.put("duplicated_target_score", duplicateTargetScore);
 		}
+		
 		return json;
 	}
 

@@ -16,6 +16,9 @@ public class QuestionsFilter {
 	private AnswersType answerType;
 	private NumberFilter days;
 	private boolean filterDupes;
+	private int numberOfApiCalls = CloseVoteFinder.getInstance().getApiCallNrPages();
+	private String excludeQuestions;
+	
 	
 	public QuestionsFilter(){
 		super();
@@ -105,6 +108,10 @@ public class QuestionsFilter {
 	 * @return true if q is ok
 	 */
 	public boolean isAccepted(Question q){
+		
+		if (excludeQuestions!=null && excludeQuestions.contains(";"+q.getQuestionId() + ";")){
+			return false;
+		}
 		
 		if (filterDupes){
 			if (!q.isPossibileDuplicate()){
@@ -205,6 +212,22 @@ public class QuestionsFilter {
 
 	public void setFilterDupes(boolean filterDupes) {
 		this.filterDupes = filterDupes;
+	}
+
+	public int getNumberOfApiCalls() {
+		return numberOfApiCalls;
+	}
+
+	public void setNumberOfApiCalls(int numberOfApiCalls) {
+		this.numberOfApiCalls = numberOfApiCalls;
+	}
+
+	public String getExcludeQuestions() {
+		return excludeQuestions;
+	}
+
+	public void setExcludeQuestions(String excludeQuestions) {
+		this.excludeQuestions = excludeQuestions;
 	}
 	
 }

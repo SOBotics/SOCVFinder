@@ -52,7 +52,7 @@ public abstract class BotCommand implements Comparable<BotCommand> {
 		String sep = "";
 		while (matcher.find()) {
 			String tagMark = matcher.group();
-			result += sep + tagMark.substring(1, tagMark.length() - 1).replaceAll(" ", "");
+			result += sep + tagMark.substring(1, tagMark.length() - 1).replaceAll(" ", "").toLowerCase();
 			sep = ";";
 		}
 		return result;

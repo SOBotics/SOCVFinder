@@ -1,6 +1,8 @@
 package jdd.so;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -8,16 +10,28 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.ServiceConfigurationError;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import jdd.so.api.ApiHandler;
+import jdd.so.api.model.ApiResult;
+import jdd.so.api.model.Question;
+import jdd.so.dao.BatchDAO;
 import jdd.so.dao.ConnectionHandler;
+import jdd.so.dao.TagsDao;
 import jdd.so.dao.UserDAO;
 import jdd.so.dao.model.User;
 import jdd.so.swing.NotifyMe;
@@ -37,7 +51,7 @@ public class CloseVoteFinder {
 
 	public static final String API_URL = "http://api.stackexchange.com/2.2/";
 	public static final String API_FILTER = "!-MObZ6A82KZGZ3WvblLvUKz1bWU5_K147";
-	public static final int MAX_PAGES = 100;//Even if application  try it will never do any more then this
+	public static final int MAX_PAGES = 300;//Even if application  try it will never do any more then this
 
 	public static final String API_KEY_PROPERTY = "API_KEY";
 	public static final String THROTTLE_PROPERTY = "THROTTLE";
@@ -59,6 +73,10 @@ public class CloseVoteFinder {
 	//User
 	private Map<Long,User> users;
 
+	private Map<Long, Integer> batchNumbers;
+	
+	private List<String> tagsMonitored;
+
 	private CloseVoteFinder(Properties properties) {
 		if (properties != null) {
 			apiKey = properties.getProperty(API_KEY_PROPERTY, null);
@@ -78,12 +96,20 @@ public class CloseVoteFinder {
 			
 			try {
 				dbConnection = connectionHandler.getConnection();
+				loadTagsMonitored();
 				loadUsers();
+				loadBatchNumbers();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.error("CloseVoteFinder(Properties)", e);
 			}
 		}
 	}
+
+	
+
+	
+
+
 
 	/**
 	 * Init the instance
@@ -111,8 +137,16 @@ public class CloseVoteFinder {
 		return this.dbConnection;
 	}
 	
+	private void loadTagsMonitored() throws SQLException {
+		this.tagsMonitored = new TagsDao(this.dbConnection).getTags();
+	}
+	
 	public void loadUsers() throws SQLException {
 		users = new UserDAO().getUsers(this.dbConnection);
+	}
+	
+	private void loadBatchNumbers() throws SQLException {
+		batchNumbers = new BatchDAO().getBatchNumbers(this.dbConnection);
 	}
 	
 	public void shutDown(){
@@ -120,7 +154,7 @@ public class CloseVoteFinder {
 			try {
 				dbConnection.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.error("shutDown()", e);
 			}
 		}
 	}
@@ -128,8 +162,7 @@ public class CloseVoteFinder {
 	
 
 	public synchronized boolean isTagMonitored(String tag) {
-		//TODO, load on start up from db and check if its monitored
-		return false;
+		return tagsMonitored.contains(tag);
 	}
 	
 	public String getApiUrl(String questions, int page, String tag) throws UnsupportedEncodingException{
@@ -260,4 +293,71 @@ public class CloseVoteFinder {
 		return users;
 	}
 
+
+
+	public int getBatchNumber(long roomId) {
+		if (batchNumbers!=null && batchNumbers.containsKey(roomId)){
+			return batchNumbers.get(roomId);
+		}
+		return 0;
+	}
+
+	
+	public static void main(String[] args) throws Exception {
+		
+		PropertyConfigurator.configure("ini/log4j.properties");
+		
+		// Load properties file an instance the CloseVoteFinder
+		Properties properties = new Properties();
+		properties.load(new FileInputStream("ini/SOCVService.properties"));
+		CloseVoteFinder.initInstance(properties);
+		
+		ApiHandler api = new ApiHandler();
+		
+		Calendar calStart = new GregorianCalendar();
+		long ed = calStart.getTimeInMillis()/1000L;
+		calStart.add(Calendar.DATE, -20);
+		long sd = calStart.getTimeInMillis()/1000L;
+		
+		ApiResult rs = api.getQuestions(sd,ed, 200,"php", false);
+		
+		List<Question> questions = rs.getQuestions();
+		Map<Integer, List<Question>> cMap = new HashMap<>();
+		long now = System.currentTimeMillis()/1000L;
+		int maxDif  = 0;
+		for (Question q : questions) {
+			int dif =(int) (now-q.getCreationDate())/(60*60*24);
+			if (dif>maxDif){
+				maxDif = dif;
+			}
+			List<Question> qd = cMap.get(dif);
+			if (qd==null){
+				qd = new ArrayList<>();
+				cMap.put(dif, qd);
+			}
+			qd.add(q);
+		}
+		
+		for (int i = 0; i <= maxDif; i++) {
+			List<Question> qd = cMap.get(i);
+			if (qd==null){
+				continue;
+			}
+			int[] cvCnt = new int[] { 0, 0, 0, 0, 0 };
+			for (Question question : qd) {
+				int cvs = question.getCloseVoteCount();
+				cvCnt[cvs] += 1;
+			}
+			String res = "Day " + i + " ";
+			for (int n = 1; n < cvCnt.length; n++) {
+				res += " CV" + n + "=" + cvCnt[n];
+			}
+			if (logger.isDebugEnabled()) {
+				logger.debug("main(String[]) - " + res);
+			}
+		}
+		
+		
+		CloseVoteFinder.getInstance().shutDown();
+	}
 }
