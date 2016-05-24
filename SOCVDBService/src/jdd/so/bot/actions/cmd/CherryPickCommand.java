@@ -6,10 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
 import java.util.function.BiConsumer;
 
 import org.apache.log4j.Logger;
@@ -28,6 +26,7 @@ import jdd.so.bot.actions.filter.QuestionsFilter;
 import jdd.so.dao.BatchDAO;
 import jdd.so.dao.QuestionIndexDao;
 import jdd.so.dao.model.Batch;
+import jdk.nashorn.internal.runtime.Context.ThrowErrorManager;
 
 public class CherryPickCommand extends BotCommand {
 
@@ -70,10 +69,17 @@ public class CherryPickCommand extends BotCommand {
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
 		String message = event.getContent();
-		CompletableFuture<Long> sentId = room.send("All right, dear, working on it...");
 		String tags = getTags(message);
-		QuestionsFilter filter = new QuestionsFilter(message);
+		QuestionsFilter filter;
+		try {
+			filter = new QuestionsFilter(message);
+		} catch (Throwable qf) {
+			qf.printStackTrace();
+			room.replyTo(event.getMessageId(), "Sorry could not elaborate your question filter, please check your command");
+			return;
+		}
 
+		CompletableFuture<Long> sentId = room.send("All right, dear, working on it...");
 		// load previous questions displayed
 		if (!message.contains("-all")) {
 			try {
@@ -225,7 +231,7 @@ public class CherryPickCommand extends BotCommand {
 		// If tag is monitored load it from also from db
 		if (tagMonitored && !questionFilter.isFilterDupes()) {
 			try {
-				String oldies = new QuestionIndexDao().getQueryString(tag);
+				String oldies = new QuestionIndexDao().getQueryString(CloseVoteFinder.getInstance().getConnection(),tag);
 				if (oldies != null && oldies.length() > 0) {
 					ApiResult oldQuestions = api.getQuestions(oldies, tag, false, null);
 					for (Question question : oldQuestions.getQuestions()) {

@@ -7,18 +7,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-import jdd.so.CloseVoteFinder;
 import jdd.so.api.model.Question;
 
 public class QuestionIndexDao {
 
-	private Connection connection;
 
 	public QuestionIndexDao() {
-		this.connection = CloseVoteFinder.getInstance().getConnection();
+		super();
 	}
 	
-	public String getQueryString(String tag) throws SQLException{
+	public String getQueryString(Connection connection,String tag) throws SQLException{
 		StringBuilder retVal = new StringBuilder();
 		String sql = "SELECT question_id FROM question_index WHERE tag='" + tag + "' ORDER BY cv_count DESC LIMIT 99"; 
 		Statement std = null;
@@ -38,7 +36,7 @@ public class QuestionIndexDao {
 		return retVal.toString();
 	}
 
-	public int[] updateIndex(List<Question> questions, String tag) throws SQLException {
+	public int[] updateIndex(Connection connection,List<Question> questions, String tag) throws SQLException {
 		long scanDate = System.currentTimeMillis() / 1000L;
 		int[] retVal=null;
 

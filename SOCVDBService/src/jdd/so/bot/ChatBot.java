@@ -148,6 +148,15 @@ public class ChatBot {
 			}
 		}
 	}
+	
+	public String getRoomName(long id){
+		for (ChatRoom cr : rooms.values()) {
+			if (cr.getRoomId()==id){
+				return cr.getRoomName();
+			}
+		}
+		return null;
+	}
 
 	public void close() {
 		if (client != null) {

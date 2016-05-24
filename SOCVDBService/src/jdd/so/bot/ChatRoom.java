@@ -3,6 +3,8 @@ package jdd.so.bot;
 import java.util.concurrent.CompletableFuture;
 
 import org.alicebot.ab.Chat;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
 
 import fr.tunaki.stackoverflow.chat.Room;
 
@@ -40,8 +42,8 @@ public class ChatRoom {
 			return "Sorry, I do not know";
 		}
 
-		if (msg.length() > 400 && !msg.contains("\n")) {
-			msg = "Well\n" + msg;
+		if (msg.length() > 250 && !msg.contains("\n")) {
+			msg = "Well\n" + Jsoup.clean(msg, Whitelist.basic());
 		}
 		return msg.replaceAll("<br/>", "\n");
 
@@ -103,5 +105,13 @@ public class ChatRoom {
 
 	public void setEnableAi(boolean enableAi) {
 		this.enableAi = enableAi;
+	}
+	
+	public String getRoomName(){
+		return room.getThumbs().getName();
+	}
+
+	public ChatBot getBot() {
+		return bot;
 	}
 }

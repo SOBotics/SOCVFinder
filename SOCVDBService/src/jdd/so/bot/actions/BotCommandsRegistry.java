@@ -15,6 +15,9 @@ import jdd.so.bot.actions.cmd.IndexCommand;
 import jdd.so.bot.actions.cmd.OptInCommand;
 import jdd.so.bot.actions.cmd.OptOutCommand;
 import jdd.so.bot.actions.cmd.ShutDownCommand;
+import jdd.so.bot.actions.cmd.StatsMeCommand;
+import jdd.so.bot.actions.cmd.StatsRoomCommand;
+import jdd.so.bot.actions.cmd.StatsTagCommand;
 import jdd.so.bot.actions.cmd.UserListCommand;
 
 
@@ -56,6 +59,9 @@ public class BotCommandsRegistry {
 		commands.add(new BatchDoneCommand());
 		commands.add(new IndexCommand());
 		commands.add(new CherryPickCommand());
+		commands.add(new StatsMeCommand());
+		commands.add(new StatsTagCommand());
+		commands.add(new StatsRoomCommand());
 		// ...
 
 		commands.add(new UserListCommand());

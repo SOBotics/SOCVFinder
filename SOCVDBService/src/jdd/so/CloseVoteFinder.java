@@ -2,7 +2,6 @@ package jdd.so;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -10,7 +9,6 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -70,12 +68,12 @@ public class CloseVoteFinder {
 	private Connection dbConnection;
 	
 	
-	//User
+	//DB Data cached
 	private Map<Long,User> users;
-
-	private Map<Long, Integer> batchNumbers;
-	
+    private Map<Long, Integer> batchNumbers;
 	private List<String> tagsMonitored;
+
+	private ConnectionHandler connectionHandler;
 
 	private CloseVoteFinder(Properties properties) {
 		if (properties != null) {
@@ -92,7 +90,7 @@ public class CloseVoteFinder {
 			if (ra!=null && ra.trim().length()>0){
 				restApi = ra;
 			}
-			ConnectionHandler connectionHandler = new ConnectionHandler(properties.getProperty("db_driver"),properties.getProperty("db_url"), properties.getProperty("db_user"), properties.getProperty("db_password"));
+			connectionHandler = new ConnectionHandler(properties.getProperty("db_driver"),properties.getProperty("db_url"), properties.getProperty("db_user"), properties.getProperty("db_password"));
 			
 			try {
 				dbConnection = connectionHandler.getConnection();
@@ -133,7 +131,26 @@ public class CloseVoteFinder {
 	}
 	
 	
-	public Connection getConnection(){
+	/**
+	 * Get the database connection, we should use a pool if the bot get some 
+	 * heave use, for now a single connection is used with a isValid command 
+	 * @return
+	 * @throws SQLException
+	 */
+	
+	public Connection getConnection() throws SQLException{
+		try {
+			if (!dbConnection.isValid(1000)){
+				dbConnection.close();
+				dbConnection = null;
+			}
+		} catch (SQLException e) {
+			logger.error("getConnection() - Connection is not valid", e);
+			dbConnection = null;
+		}
+		if (dbConnection==null){
+			dbConnection = connectionHandler.getConnection();
+		}
 		return this.dbConnection;
 	}
 	
@@ -359,5 +376,15 @@ public class CloseVoteFinder {
 		
 		
 		CloseVoteFinder.getInstance().shutDown();
+	}
+
+
+
+
+
+
+
+	public List<String> getTagsMonitored() {
+		return tagsMonitored;
 	}
 }

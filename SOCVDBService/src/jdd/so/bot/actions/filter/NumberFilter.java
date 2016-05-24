@@ -79,7 +79,7 @@ public class NumberFilter {
 			if (getNumber() <= 0) {
 				setNumber(null);
 			}
-			if (getNumber() >= 4) {
+			if (getNumber()!=null && getNumber() >= 4) {
 				if (getArithmetics() == Arithmetics.MORE) {
 					setNumber(3);
 				} else {

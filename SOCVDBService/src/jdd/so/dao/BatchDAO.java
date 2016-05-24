@@ -5,10 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import jdd.so.dao.model.Batch;
+import jdd.so.dao.model.MyStats;
+import jdd.so.dao.model.RoomStats;
 
 /**
  * Manually mapping table users, to avoid hibernate and other crap
@@ -155,6 +159,65 @@ public class BatchDAO {
 			ConnectionHandler.cleanUpQuery(std, rs);
 		}
 		return b;
+	}
+	
+	public List<MyStats> getMyStats(Connection connection,long userId) throws SQLException{
+		List<MyStats> retList = new ArrayList<>();
+		String sql = "SELECT searchTags, sum((cv_count_after-cv_count_before)) as cv_count, sum(closed_count) as closed " +
+				"FROM batch " +
+				"WHERE batch_date_end>0 AND user_id = " +userId + " " +
+				"GROUP BY searchTags";
+		Statement std = null;
+		ResultSet rs = null;
+		try {
+			std = connection.createStatement();
+			rs = std.executeQuery(sql);
+			while (rs.next()) {
+				retList.add(new MyStats(rs.getString(1), rs.getInt(2), rs.getInt(3)));
+			}
+		} finally {
+			ConnectionHandler.cleanUpQuery(std, rs);
+		}
+		return retList;
+	}
+
+	public List<RoomStats> getRoomStats(Connection connection) throws SQLException {
+		List<RoomStats> retList = new ArrayList<>();
+		String sql = "SELECT room_id, sum((cv_count_after-cv_count_before)) as cv_count, sum(closed_count) as closed "
+				+ "FROM batch WHERE batch_date_end>0 " 
+				+ "GROUP BY room_id order by cv_count desc";
+		Statement std = null;
+		ResultSet rs = null;
+		try {
+			std = connection.createStatement();
+			rs = std.executeQuery(sql);
+			while (rs.next()) {
+				retList.add(new RoomStats(rs.getLong(1), rs.getInt(2), rs.getInt(3)));
+			}
+		} finally {
+			ConnectionHandler.cleanUpQuery(std, rs);
+		}
+		return retList;
+	}
+	
+	public List<MyStats> getTagsStats(Connection connection) throws SQLException {
+		List<MyStats> retList = new ArrayList<>();
+		String sql = "SELECT searchTags, sum((cv_count_after-cv_count_before)) as cv_count, sum(closed_count) as closed " +
+				"FROM batch " +
+				"WHERE batch_date_end>0 " +
+				"GROUP BY searchTags ORDER BY cv_count desc";
+		Statement std = null;
+		ResultSet rs = null;
+		try {
+			std = connection.createStatement();
+			rs = std.executeQuery(sql);
+			while (rs.next()) {
+				retList.add(new MyStats(rs.getString(1), rs.getInt(2), rs.getInt(3)));
+			}
+		} finally {
+			ConnectionHandler.cleanUpQuery(std, rs);
+		}
+		return retList;
 	}
 
 }

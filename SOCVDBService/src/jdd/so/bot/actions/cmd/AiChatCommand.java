@@ -76,7 +76,7 @@ public class AiChatCommand extends BotCommand {
 		}
 		
 		String response = room.getUnkownCommandResponse(message.replaceAll("(?i)@qu(\\w+)", "").trim());
-		room.replyTo(event.getMessageId(), Jsoup.clean(response, Whitelist.basic()));
+		room.replyTo(event.getMessageId(), response);
 		
 	}
 

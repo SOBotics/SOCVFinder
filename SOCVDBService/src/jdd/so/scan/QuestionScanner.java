@@ -2,11 +2,13 @@ package jdd.so.scan;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.log4j.PropertyConfigurator;
@@ -43,10 +45,11 @@ public class QuestionScanner {
 		CherryPickResult cpr = new CherryPickResult(rs, 0L, tag, 0);
 		cpr.filter(filter);
 		
+		Connection conn = CloseVoteFinder.getInstance().getConnection();
 		
 		QuestionIndexDao qid = new QuestionIndexDao();
 		System.out.println("Number of question found: " + cpr.getFilterdQuestions().size());
-		qid.updateIndex(cpr.getFilterdQuestions(), tag);
+		qid.updateIndex(conn,cpr.getFilterdQuestions(), tag);
 	}
 	
 	
@@ -57,7 +60,11 @@ public class QuestionScanner {
 		Properties properties = new Properties();
 		properties.load(new FileInputStream("ini/SOCVService.properties"));
 		CloseVoteFinder.initInstance(properties);
-		new QuestionScanner().scan("java", 20, 3);
+		List<String> tags = CloseVoteFinder.getInstance().getTagsMonitored();
+		for (String tag : tags) {
+			System.out.println("Scanning: " + tag);
+			new QuestionScanner().scan(tag, 20, 3);
+		}
 		//new QuestionScanner().scan("c", 20, 3);
 		CloseVoteFinder.getInstance().shutDown();
 	
