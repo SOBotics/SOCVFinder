@@ -1,5 +1,7 @@
 package jdd.so.bot.actions.cmd;
 
+import org.apache.log4j.Logger;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -8,9 +10,13 @@ import jdd.so.CloseVoteFinder;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.dao.BatchDAO;
-import jdd.so.dao.model.MyStats;
+import jdd.so.dao.model.Stats;
 
-public class StatsTagCommand extends BotCommand{
+public class StatsTagCommand extends StatsCommandAbstract{
+	/**
+	 * Logger for this class
+	 */
+	private static final Logger logger = Logger.getLogger(StatsTagCommand.class);
 
 	@Override
 	public String getMatchCommandRegex() {
@@ -39,23 +45,18 @@ public class StatsTagCommand extends BotCommand{
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
+		long fromDate = getFromDate(event.getContent());
 		try {
-			List<MyStats> stats = new BatchDAO().getTagsStats(CloseVoteFinder.getInstance().getConnection());
+			
+			List<Stats> stats = new BatchDAO().getTagsStats(CloseVoteFinder.getInstance().getConnection(),fromDate);
 			if (stats.isEmpty()){
-				room.replyTo(event.getMessageId(), "There is no stats available");
+				room.replyTo(event.getMessageId(), "There are no stats available");
 				return;
 			}
-			String retVal = "This is the effort that I have registred\n";
-			int totCv = 0;
-			int totClosed = 0;
-			for (MyStats s : stats) {
-				retVal +=" [" + s.getTag() + "]: " + s.getCvCount() + "CV - " + s.getClosedCount() + " closed\n";
-				totCv +=s.getCvCount();
-				totClosed +=s.getClosedCount();
-			}
-			retVal +=" TOTAL: " + totCv + "CV - " + totClosed + " closed"; 
-			room.replyTo(event.getMessageId(), retVal);
+			String retVal = "    Tag statistics" + getFilteredTitle(event.getContent()) + getStats(stats, false); 
+			room.send(retVal);
 		} catch (SQLException e) {
+			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
 			room.replyTo(event.getMessageId(), "Sorry an error occured while trying to get the stats @Petter");
 		}
 	}

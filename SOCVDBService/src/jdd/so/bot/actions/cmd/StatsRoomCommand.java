@@ -3,15 +3,20 @@ package jdd.so.bot.actions.cmd;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.CloseVoteFinder;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.dao.BatchDAO;
-import jdd.so.dao.model.MyStats;
-import jdd.so.dao.model.RoomStats;
+import jdd.so.dao.model.Stats;
 
-public class StatsRoomCommand extends BotCommand{
+public class StatsRoomCommand extends StatsCommandAbstract{
+	/**
+	 * Logger for this class
+	 */
+	private static final Logger logger = Logger.getLogger(StatsRoomCommand.class);
 
 	@Override
 	public String getMatchCommandRegex() {
@@ -40,24 +45,22 @@ public class StatsRoomCommand extends BotCommand{
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
+		long fromDate = getFromDate(event.getContent());
 		try {
-			List<RoomStats> stats = new BatchDAO().getRoomStats(CloseVoteFinder.getInstance().getConnection());
+			List<Stats> stats = new BatchDAO().getRoomStats(CloseVoteFinder.getInstance().getConnection(),fromDate);
 			if (stats.isEmpty()){
-				room.replyTo(event.getMessageId(), "There is no stats available");
+				room.replyTo(event.getMessageId(), "There are no stats available");
 				return;
 			}
-			String retVal = "This is the effort that I have registred\n";
-			int totCv = 0;
-			int totClosed = 0;
-			for (RoomStats s : stats) {
-				String roomName = room.getBot().getRoomName(s.getRoomId());
-				retVal +=" " + roomName + ": " + s.getCvCount() + "CV - " + s.getClosedCount() + " closed\n";
-				totCv +=s.getCvCount();
-				totClosed +=s.getClosedCount();
+			//set decription
+			for (Stats s : stats) {
+				String roomName = room.getBot().getRoomName(s.getId());
+				s.setDescription(roomName);
 			}
-			retVal +=" TOTAL: " + totCv + "CV - " + totClosed + " closed"; 
-			room.replyTo(event.getMessageId(), retVal);
+			String retVal = "    Room statistics" + getFilteredTitle(event.getContent()) + getStats(stats, true);;
+			room.send(retVal);
 		} catch (SQLException e) {
+			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
 			room.replyTo(event.getMessageId(), "Sorry an error occured while trying to get the stats @Petter");
 		}
 	}
