@@ -44,6 +44,7 @@ public class UserListCommand extends  BotCommand{
 		Collections.sort(users);
 		room.replyTo(event.getMessageId(), "These are current users");
 		StringBuilder retMsg = new StringBuilder("");
+		int maxUserIdLength = users.stream().mapToLong(User::getUserId).mapToInt(l -> (int) Math.log10(l) + 1).max().orElse(0);
 		int al = -1;
 		for (User user : users) {
 			if (user.getAccessLevel()<=0){
@@ -57,7 +58,7 @@ public class UserListCommand extends  BotCommand{
 				
 				retMsg.append("    " + BotCommand.getAccessLevelName(al));
 			}
-			retMsg.append("\n        " +user.getUserId() + " - " + user.getUserName());
+			retMsg.append("\n        " + String.format("%" + maxUserIdLength + "s", user.getUserId()) + " - " + user.getUserName());
 		}
 		retMsg.append("");
 		room.send(retMsg.toString());
