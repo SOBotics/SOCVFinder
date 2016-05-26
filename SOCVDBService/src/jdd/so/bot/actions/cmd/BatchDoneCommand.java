@@ -99,14 +99,19 @@ public class BatchDoneCommand extends BotCommand {
 						cvCount+=q.getCloseVoteCount();
 					}
 				}
+				
 				b.setBatchDateEnd(System.currentTimeMillis()/1000);
 				b.setCvCountAfter(cvCount);
 				b.setClosedCount(closedCount);
 				bd.update(CloseVoteFinder.getInstance().getConnection(), b);
-				double perc = (cvCount-b.getCvCountBefore()) / (double)cpr.getQuestions().size();
-				room.replyTo(event.getMessageId(), "Thank you for your effort, you reviewed " + cpr.getQuestions().size() + " questions,  I counted " +(cvCount-b.getCvCountBefore()) + " (" + NumberFormat.getPercentInstance().format(perc) +  ") close votes and " + closedCount + " questions closed");
+				int cvc = cvCount-b.getCvCountBefore();
+				if (cvc>cpr.getQuestions().size()){
+					cvc = cpr.getQuestions().size();
+				}
+				double perc = (cvc) / (double)cpr.getQuestions().size();
+				room.replyTo(event.getMessageId(), "Thank you for your effort, you reviewed " + cpr.getQuestions().size() + " questions,  I counted " +cvCount + " (" + NumberFormat.getPercentInstance().format(perc) +  ") close votes and " + closedCount + " questions closed");
 			} catch (JSONException | IOException | SQLException e) {
-				e.printStackTrace();
+				logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
 				room.replyTo(event.getMessageId(), "Error while storing your data, I guees you need to review another");		
 			}
 		}

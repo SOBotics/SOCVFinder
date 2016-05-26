@@ -4,6 +4,8 @@ public class Stats {
 	
 	private long id;
 	private String description;
+	private int nrQuestions;
+	private int virtualCvCount;
 	private int cvCount;
 	private int closedCount;
 	
@@ -11,16 +13,20 @@ public class Stats {
 		super();
 	}
 	
-	public Stats(long id, int cvCount, int closedCount) {
+	public Stats(long id, int nrQuestions, int virtualCvCount, int cvCount, int closedCount) {
 		super();
 		this.id = id;
+		this.nrQuestions = nrQuestions;
+		this.virtualCvCount = virtualCvCount;
 		this.cvCount = cvCount;
 		this.closedCount = closedCount;
 	}
 	
-	public Stats(String tag, int cvCount, int closedCount) {
+	public Stats(String tag, int nrQuestions,int virtualCvCount, int cvCount, int closedCount) {
 		super();
 		this.description = tag;
+		this.nrQuestions = nrQuestions;
+		this.virtualCvCount = virtualCvCount;
 		this.cvCount = cvCount;
 		this.closedCount = closedCount;
 	}
@@ -49,6 +55,22 @@ public class Stats {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public int getVirtualCvCount() {
+		return virtualCvCount;
+	}
+
+	public void setVirtualCvCount(int cvEffect) {
+		this.virtualCvCount = cvEffect;
+	}
+
+	public int getNrQuestions() {
+		return nrQuestions;
+	}
+
+	public void setNrQuestions(int nrQuestions) {
+		this.nrQuestions = nrQuestions;
 	}
 
 }

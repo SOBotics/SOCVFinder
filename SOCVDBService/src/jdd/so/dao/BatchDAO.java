@@ -62,13 +62,12 @@ public class BatchDAO {
 
 	public int insert(Connection conn, Batch b) throws SQLException {
 
-		String sql = "INSERT INTO batch (`room_id`,`message_id`, `batch_date_start`,`batch_nr`,`user_id`,`searchTags`,`questions`,`cv_count_before`) "
-				+ " VALUES (?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO batch (`room_id`,`message_id`, `batch_date_start`,`batch_nr`,`user_id`,`searchTags`,`nr_questions`,`questions`,`cv_count_before`) "
+				+ " VALUES (?,?,?,?,?,?,?,?,?)";
 
 		PreparedStatement ps = null;
 		int ret;
 		try {
-
 			ps = conn.prepareStatement(sql);
 			ps.setLong(1, b.getRoomId());
 			ps.setLong(2, b.getMessageId());
@@ -76,8 +75,9 @@ public class BatchDAO {
 			ps.setInt(4, b.getBatchNr());
 			ps.setLong(5, b.getUserId());
 			ps.setString(6, b.getSearchTags());
-			ps.setString(7, b.getQuestions());
-			ps.setInt(8, b.getCvCountBefore());
+			ps.setInt(7,  b.getNumberOfQuestions());
+			ps.setString(8, b.getQuestions());
+			ps.setInt(9, b.getCvCountBefore());
 			ret = ps.executeUpdate();
 		} finally {
 			if (ps != null) {
@@ -143,6 +143,7 @@ public class BatchDAO {
 				b.setUserId(rs.getLong("user_id"));
 				b.setBatchDateStart(rs.getLong("batch_date_start"));
 				b.setSearchTags(rs.getString("searchTags"));
+				b.setNumberOfQuestions(rs.getInt(rs.getInt("nr_questions")));
 				b.setQuestions(rs.getString("questions"));
 				b.setCvCountBefore(rs.getInt("cv_count_before"));
 				b.setBatchDateEnd(rs.getLong("batch_date_end"));
@@ -162,7 +163,7 @@ public class BatchDAO {
 
 	public List<Stats> getTagStats(Connection connection, long userId, long fromDate) throws SQLException {
 		List<Stats> retList = new ArrayList<>();
-		String sql = "SELECT searchTags, sum((cv_count_after-cv_count_before)) as cv_count, sum(closed_count) as closed " + "FROM batch "
+		String sql = "SELECT searchTags, sum(nr_questions) as nrQuestions,sum((cv_count_after-cv_count_before)) as virtual_cv_count, sum(LEAST((cv_count_after-cv_count_before),nr_questions)) as cv_count, sum(closed_count) as closed " + "FROM batch "
 				+ "WHERE batch_date_end>" + fromDate + " ";
 		if (userId > 0) {
 			sql += "AND user_id = " + userId + " ";
@@ -175,7 +176,7 @@ public class BatchDAO {
 			std = connection.createStatement();
 			rs = std.executeQuery(sql);
 			while (rs.next()) {
-				retList.add(new Stats(rs.getString(1), rs.getInt(2), rs.getInt(3)));
+				retList.add(new Stats(rs.getString(1), rs.getInt(2),rs.getInt(3),rs.getInt(4), rs.getInt(5)));
 			}
 		} finally {
 			ConnectionHandler.cleanUpQuery(std, rs);
@@ -185,7 +186,7 @@ public class BatchDAO {
 
 	public List<Stats> getRoomStats(Connection connection, long fromDate) throws SQLException {
 		List<Stats> retList = new ArrayList<>();
-		String sql = "SELECT room_id, sum((cv_count_after-cv_count_before)) as cv_count, sum(closed_count) as closed " 
+		String sql = "SELECT room_id, sum(nr_questions) as nrQuestions, sum((cv_count_after-cv_count_before)) as virtual_cv_count, sum(LEAST((cv_count_after-cv_count_before),nr_questions)) as cv_count, sum(closed_count) as closed " 
 		+ "FROM batch WHERE batch_date_end>" +  fromDate + " " 
 	    + "GROUP BY room_id order by cv_count desc";
 		Statement std = null;
@@ -194,7 +195,7 @@ public class BatchDAO {
 			std = connection.createStatement();
 			rs = std.executeQuery(sql);
 			while (rs.next()) {
-				retList.add(new Stats(rs.getLong(1), rs.getInt(2), rs.getInt(3)));
+				retList.add(new Stats(rs.getLong(1), rs.getInt(2), rs.getInt(3),rs.getInt(4), rs.getInt(5)));
 			}
 		} finally {
 			ConnectionHandler.cleanUpQuery(std, rs);

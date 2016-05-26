@@ -10,6 +10,8 @@ import java.util.Properties;
 
 import org.apache.log4j.PropertyConfigurator;
 
+import com.sun.java_cup.internal.runtime.virtual_parse_stack;
+
 import jdd.so.CloseVoteFinder;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.dao.BatchDAO;
@@ -25,21 +27,25 @@ public abstract class StatsCommandAbstract extends BotCommand {
 		if (isRoom){
 			header = "Room";
 		}
-		formatter.format("%10s%-15s%10s%10s", "    nr ", header, "CV count", "Closed");
-		sb.append("\n    " + new String(new char[45]).replace("\0", "-"));
+		formatter.format("%10s%-15s%10s%10s%10s%10s", "    nr ", header, "Reviews", "CV virt.","CV count", "Closed");
+		sb.append("\n    " + new String(new char[65]).replace("\0", "-"));
 		int n=1;
+		int totaleVirtualCvCount = 0;
 		int totaleCvCount = 0;
 		int totaleCloseCount = 0;
+		int totaleQuestions  =0;
 		for (Stats s : stats) {
 			sb.append("\n");
-			formatter.format("%10s%-15s%10d%10d","    " +n+". ", s.getDescription(), s.getCvCount(), s.getClosedCount());
+			formatter.format("%10s%-15s%10d%10d%10d%10d","    " +n+". ", s.getDescription(), s.getNrQuestions(),s.getVirtualCvCount(),s.getCvCount(), s.getClosedCount());
 			totaleCvCount +=s.getCvCount();
+			totaleVirtualCvCount +=s.getVirtualCvCount();
 			totaleCloseCount +=s.getClosedCount();
+			totaleQuestions +=s.getNrQuestions();
 			n++;
 		}
-		sb.append("\n    " + new String(new char[45]).replace("\0", "-"));
+		sb.append("\n    " + new String(new char[65]).replace("\0", "-"));
 		sb.append("\n");
-		formatter.format("%10s%-15s%10d%10d","    ", "TOTAL", totaleCvCount, totaleCloseCount);
+		formatter.format("%10s%-15s%10d%10d%10d%10d","    ", "TOTAL", totaleQuestions, totaleVirtualCvCount, totaleCvCount, totaleCloseCount);
 		formatter.close();
 		return sb.toString();
 	}

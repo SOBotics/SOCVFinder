@@ -104,6 +104,8 @@ public class CherryPickResult {
 		StringBuilder questionIds = new StringBuilder(";");
 		int cvCount = 0;
 		if (filterdQuestions!=null){
+			int nrOfQuestions = filterdQuestions.size();
+			b.setNumberOfQuestions(nrOfQuestions);
 			for (Question q : filterdQuestions) {
 				questionIds.append(q.getQuestionId()+";");
 				cvCount += q.getCloseVoteCount();

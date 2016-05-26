@@ -1,7 +1,5 @@
 package jdd.so.dao.model;
 
-import jdd.so.api.CherryPickResult;
-
 public class Batch {
 
 	private long roomId;
