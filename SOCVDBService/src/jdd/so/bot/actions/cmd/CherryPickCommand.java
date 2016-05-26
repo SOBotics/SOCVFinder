@@ -181,13 +181,11 @@ public class CherryPickCommand extends BotCommand {
 
 	private CherryPickResult getCherryPick(long chatRoomId, long userId, int batchNumber, String tag, QuestionsFilter questionFilter)
 			throws JSONException, IOException {
-		ApiResult apiResult = null;
-
 		// 1. Check if tag is avialable in DB.
 		boolean tagMonitored = CloseVoteFinder.getInstance().isTagMonitored(tag);
 
 		// set api call
-		if (tagMonitored || questionFilter.isFilterDupes()) {
+		if (tagMonitored && !questionFilter.isFilterDupes()) {
 			questionFilter.setNumberOfApiCalls(10);
 		} else {
 			questionFilter.setNumberOfApiCalls(20);
@@ -226,7 +224,8 @@ public class CherryPickCommand extends BotCommand {
 				toDate = getUnixDate(days - 1);
 			}
 		}
-		apiResult = api.getQuestions(null, fromDate, toDate, tag, questionFilter.getNumberOfApiCalls(), true, null);
+		
+		ApiResult apiResult = api.getQuestions(null, fromDate, toDate, tag, questionFilter.getNumberOfApiCalls(), true, null);
 
 		// If tag is monitored load it from also from db
 		if (tagMonitored && !questionFilter.isFilterDupes()) {

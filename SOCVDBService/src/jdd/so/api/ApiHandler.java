@@ -158,7 +158,7 @@ public class ApiHandler {
 		addQuestions(ar, url, tag, notifyMe);
 	}
 
-	private void addQuestions(ApiResult ar, String url, String mainTag, NotifyMe notifyMe) throws IOException {
+	private void addQuestions(ApiResult ar, String url, String mainTag, NotifyMe notifyMe) throws IOException, JSONException {
 		JSONObject response = CloseVoteFinder.getInstance().getJSONObject(url, notifyMe);
 		ar.setQuotaRemaining(response.getInt("quota_remaining"));
 		CloseVoteFinder.getInstance().setApiQuota(ar.getQuotaRemaining());

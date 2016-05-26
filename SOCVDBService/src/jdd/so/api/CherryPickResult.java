@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import jdd.so.api.model.ApiResult;
@@ -116,8 +117,9 @@ public class CherryPickResult {
 	/**
 	 * Get the result as JSON object
 	 * @return
+	 * @throws JSONException 
 	 */
-	public JSONObject getJSONObject() {
+	public JSONObject getJSONObject() throws JSONException {
 		JSONObject json = new JSONObject();
 		json.put("timestamp", getTimestamp());
 		json.put("room_id", getRoomId());

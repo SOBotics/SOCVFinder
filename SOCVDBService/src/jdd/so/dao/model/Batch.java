@@ -11,6 +11,7 @@ public class Batch {
 	private long userId;
 	private String searchTags;
 	private String questions;
+	private int numberOfQuestions;
 	private int cvCountBefore;
 	private long batchDateEnd;
 	private int cvCountAfter;
@@ -81,6 +82,12 @@ public class Batch {
 	}
 	public void setMessageId(long messageId) {
 		this.messageId = messageId;
+	}
+	public int getNumberOfQuestions() {
+		return numberOfQuestions;
+	}
+	public void setNumberOfQuestions(int numberOfQuestions) {
+		this.numberOfQuestions = numberOfQuestions;
 	}
 
 }

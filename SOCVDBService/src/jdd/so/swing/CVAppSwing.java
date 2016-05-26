@@ -32,12 +32,14 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.json.JSONException;
 
 import jdd.so.CloseVoteFinder;
 import jdd.so.api.ApiHandler;
 import jdd.so.api.CherryPickResult;
 import jdd.so.api.model.ApiResult;
 import jdd.so.bot.actions.filter.QuestionsFilter;
+import netscape.javascript.JSException;
 
 /**
  * Very Simple Swing app, to test the application
@@ -275,17 +277,17 @@ public class CVAppSwing extends JFrame implements NotifyMe {
 
 		@Override
 		public void run() {
-			
+
 			ApiHandler api = new ApiHandler();
 			CherryPickResult result;
-			
+
 			try {
 				ApiResult apiResult = api.getQuestions(null, 0L, 0L, tag, apiCalls, true, notifyMe);
-				result = new CherryPickResult(apiResult, 0L, tag,1);
+				result = new CherryPickResult(apiResult, 0L, tag, 1);
 				QuestionsFilter filter = new QuestionsFilter();
 				filter.setFilterDupes(cherryPickType == CHERRY_TYPE_DUP);
 				result.filter(filter);
-			} catch (IOException e1) {
+			} catch (IOException | JSONException e1) {
 				logger.error("run()", e1);
 				notifyMe.message("Error: " + e1.getMessage());
 				notifyMe.done();
@@ -295,11 +297,15 @@ public class CVAppSwing extends JFrame implements NotifyMe {
 			notifyMe.message("Finished calling api, quota=" + result.getApiResult().getQuotaRemaining());
 
 			String ext;
-			String output;
+			String output=null;
 			switch (outputType) {
 			case OUTPUT_TYPE_JSON:
 				ext = "json";
-				output = result.getJSONObject().toString(1);
+				try {
+					output = result.getJSONObject().toString(1);
+				} catch (JSONException e2) {
+					logger.error("run()", e2);
+				}
 				break;
 			case OUTPUT_TYPE_REST_API:
 				try {
@@ -315,15 +321,19 @@ public class CVAppSwing extends JFrame implements NotifyMe {
 				output = result.getHTML();
 			}
 
-			String dateName = new SimpleDateFormat("yyyyMMdd_HHmm").format(new Date());
-			File f = new File("output/" + tag + "_" + dateName + "." + ext);
-			f.mkdir();
-			// lets just overwrite
-			try(PrintWriter out=new PrintWriter(f, "UTF-8")) {
-				out.write(output);
-			} catch (IOException e) {
-				logger.error("run()", e);
-			} 
+			File f = null;
+			if (output != null) {
+
+				String dateName = new SimpleDateFormat("yyyyMMdd_HHmm").format(new Date());
+				f = new File("output/" + tag + "_" + dateName + "." + ext);
+				f.mkdir();
+				// lets just overwrite
+				try (PrintWriter out = new PrintWriter(f, "UTF-8")) {
+					out.write(output);
+				} catch (IOException e) {
+					logger.error("run()", e);
+				}
+			}
 
 			notifyMe.done(f);
 		}

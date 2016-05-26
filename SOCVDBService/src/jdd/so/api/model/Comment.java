@@ -1,5 +1,6 @@
 package jdd.so.api.model;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -18,7 +19,7 @@ public class Comment {
 	private String duplicateTargetTitle;
 	private int duplicateTargetScore;
 	
-	public JSONObject getJSONObject() {
+	public JSONObject getJSONObject() throws JSONException {
 		JSONObject json = new JSONObject();
 		json.put("creation_date", creationDate);
 		json.put("user_id", userId);
@@ -37,7 +38,7 @@ public class Comment {
 		return json;
 	}
 
-	public static Comment getComment(JSONObject json) {
+	public static Comment getComment(JSONObject json) throws JSONException {
 		Comment c = new Comment();
 		c.setBody(json.getString("body"));
 		c.setScore(json.getInt("score"));

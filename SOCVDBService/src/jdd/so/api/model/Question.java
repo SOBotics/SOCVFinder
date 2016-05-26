@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -40,7 +41,7 @@ public class Question {
 		super();
 	}
 
-	public static Question getQuestion(JSONObject item, String mainTag) {
+	public static Question getQuestion(JSONObject item, String mainTag) throws JSONException {
 		Question q = new Question();
 		q.setQuestionId(item.getLong("question_id"));
 		q.setCreationDate(item.getLong("creation_date"));
@@ -107,7 +108,7 @@ public class Question {
 		return q;
 	}
 
-	public JSONObject getJSONObject(int nr) {
+	public JSONObject getJSONObject(int nr) throws JSONException {
 		JSONObject json = new JSONObject();
 		json.put("nr", nr);
 		json.put("question_id", questionId);

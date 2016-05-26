@@ -12,6 +12,7 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 import org.apache.log4j.Logger;
+import org.json.JSONException;
 
 import jdd.so.CloseVoteFinder;
 import jdd.so.api.CherryPickResult;
@@ -80,9 +81,12 @@ public class RESTApiHandler {
 			}
 			return response;
 
-		} catch (IOException e) {
+		} catch (IOException|JSONException e) {
 			logger.error("getRemoteURL(CherryPickResult)", e);
-			throw e;
+			if (e instanceof IOException){
+				throw (IOException)e;
+			}
+			throw new IOException(e.getMessage(),e.getCause());
 		} finally {
 			closeStream(bos);
 			closeStream(gis);
