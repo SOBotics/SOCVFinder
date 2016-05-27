@@ -4,10 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
@@ -165,10 +163,7 @@ public class ChatBot {
     }
 
     public void startDupeHunter() {
-        List<String> tags = new ArrayList<>();
-        tags.add("java");
-        tags.add("python");
-        dupeHunter = new DupeHunter(this, tags);
+        dupeHunter = new DupeHunter(this);
         dupeHunter.start();
     }
 

@@ -20,7 +20,7 @@ public class IndexCommand extends BotCommand {
 
 	@Override
 	public int getRequiredAccessLevel() {
-		return BotCommand.ACCESS_LEVEL_OWNER;
+		return BotCommand.ACCESS_LEVEL_RO;
 	}
 
 	@Override
