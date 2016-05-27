@@ -22,7 +22,7 @@ public class LastCommentComparator implements Comparator<Question> {
 		if (c1 == null) {
 			return -1;
 		}
-		return (int)(c1.getCreationDate()-c2.getCreationDate());
+		return (int)(c2.getCreationDate()-c1.getCreationDate());
 	}
 
 }

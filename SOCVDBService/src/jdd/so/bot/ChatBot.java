@@ -197,6 +197,7 @@ public class ChatBot {
     public void close() {
         if (dupeHunter != null) {
             dupeHunter.setShutDown(true);
+            dupeHunter.interrupt();
         }
 
         if (client != null) {

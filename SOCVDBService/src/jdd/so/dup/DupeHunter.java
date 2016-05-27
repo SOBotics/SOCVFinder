@@ -28,7 +28,7 @@ public class DupeHunter extends Thread {
 	 */
 	private static final Logger logger = Logger.getLogger(DupeHunter.class);
 
-	public static long INTERUPT = 1000*60*10; //10 minutes 
+	public static long INTERUPT = 1000*60*10L; //10 minutes 
 	private boolean shutDown = false;
 	private ApiHandler apiHandler;
 	private ChatBot cb;
@@ -85,7 +85,7 @@ public class DupeHunter extends Thread {
 						ChatRoom cr = cb.getChatRoom(111347);
 						if (cr!=null){
 							for (Question q : notifyTheseQuestions) {
-								cr.send("[tag:possibile-duplicate] [tag:" + tag + "] [" + q.getTitle() + "](http://stackoverflow.com/questions/" + q.getQuestionId() + ")");
+								cr.send("[tag:possible-duplicate] [tag:" + tag + "] [" + q.getTitle() + "](http://stackoverflow.com/questions/" + q.getQuestionId() + ")");
 							}
 						}
 					}
