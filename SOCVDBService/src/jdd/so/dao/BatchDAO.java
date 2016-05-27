@@ -143,7 +143,7 @@ public class BatchDAO {
 				b.setUserId(rs.getLong("user_id"));
 				b.setBatchDateStart(rs.getLong("batch_date_start"));
 				b.setSearchTags(rs.getString("searchTags"));
-				b.setNumberOfQuestions(rs.getInt(rs.getInt("nr_questions")));
+				b.setNumberOfQuestions(rs.getInt("nr_questions"));
 				b.setQuestions(rs.getString("questions"));
 				b.setCvCountBefore(rs.getInt("cv_count_before"));
 				b.setBatchDateEnd(rs.getLong("batch_date_end"));

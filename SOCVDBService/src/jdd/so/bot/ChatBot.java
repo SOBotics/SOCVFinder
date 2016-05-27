@@ -4,15 +4,16 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 
 import org.alicebot.ab.AIMLProcessor;
 import org.alicebot.ab.Bot;
-import org.alicebot.ab.Chat;
 import org.alicebot.ab.MagicStrings;
 import org.alicebot.ab.PCAIMLProcessorExtension;
 import org.apache.log4j.Logger;
@@ -27,6 +28,7 @@ import jdd.so.bot.actions.BotCommandsRegistry;
 import jdd.so.bot.actions.cmd.ShutDownCommand;
 import jdd.so.dao.UserDAO;
 import jdd.so.dao.model.User;
+import jdd.so.dup.DupeHunter;
 
 /**
  * The main ChatBot handling the ChatRoom's
@@ -47,6 +49,8 @@ public class ChatBot {
 	private Bot aiBot;
 
 	private Map<Long, ChatRoom> rooms = Collections.synchronizedMap(new HashMap<>());
+	
+	private DupeHunter dupeHunter;
 
 
 	
@@ -149,6 +153,23 @@ public class ChatBot {
 		}
 	}
 	
+	public void startDupeHunter(){
+		List<String> tags = new ArrayList<>();
+		tags.add("java");
+		tags.add("python");
+		dupeHunter = new DupeHunter(this,tags);
+		dupeHunter.start();
+	}
+	
+	public ChatRoom getChatRoom(long id){
+		for (ChatRoom cr : rooms.values()) {
+			if (cr.getRoomId()==id){
+				return cr;
+			}
+		}
+		return null;
+	}
+	
 	public String getRoomName(long id){
 		for (ChatRoom cr : rooms.values()) {
 			if (cr.getRoomId()==id){
@@ -159,6 +180,9 @@ public class ChatBot {
 	}
 
 	public void close() {
+		if (dupeHunter!=null){
+			dupeHunter.setShutDown(true);
+		}
 		if (client != null) {
 			if (logger.isInfoEnabled()) {
 				logger.info("closing client");
@@ -195,7 +219,7 @@ public class ChatBot {
 			cb.loginIn();
 			cb.joinRoom("stackoverflow.com", 111347,true);
 			cb.joinRoom("stackoverflow.com", 95290,false);
-
+			cb.startDupeHunter();
 			try {
 				messageLatch.await();
 			} catch (InterruptedException e) {
