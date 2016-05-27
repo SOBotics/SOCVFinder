@@ -31,210 +31,216 @@ import jdd.so.dao.model.User;
 import jdd.so.dup.DupeHunter;
 
 /**
- * The main ChatBot handling the ChatRoom's
- * 
- * @author Petter Friberg
+ * The main ChatBot handling the ChatRooms
  *
+ * @author Petter Friberg
  */
 public class ChatBot {
 
-	private static final Logger logger = Logger.getLogger(ChatBot.class);
+    private static final String BOT_NAME = "Queen";
 
-	private StackExchangeClient client;
+    private static final Logger logger = Logger.getLogger(ChatBot.class);
 
-	private Properties properties;
+    private StackExchangeClient client;
 
-	private CountDownLatch messageLatch; // Wait before exiting
+    private Properties properties;
 
-	private Bot aiBot;
+    private CountDownLatch messageLatch; // Wait before exiting
 
-	private Map<Long, ChatRoom> rooms = Collections.synchronizedMap(new HashMap<>());
-	
-	private DupeHunter dupeHunter;
+    private Bot aiBot;
 
+    private Map<Long, ChatRoom> rooms = Collections.synchronizedMap(new HashMap<>());
 
-	
+    private DupeHunter dupeHunter;
 
-	public ChatBot(Properties properties, CountDownLatch messageLatch) {
-		this.properties = properties;
-		this.messageLatch = messageLatch;
-		aiBot = new Bot("QUEEN", MagicStrings.root_path, "chat");
-		aiBot.deleteLearnfCategories();
-	}
+    private static final int REPUTATION_CV_REVIEWER = 3000;
 
-	public boolean loginIn() {
-		client = new StackExchangeClient(properties.getProperty("email"), properties.getProperty("password"));
-		if (logger.isDebugEnabled()) {
-			logger.debug("loginIn() - Client logged in");
-		}
-		return (client != null);
-	}
+    public ChatBot(Properties properties, CountDownLatch messageLatch) {
+        this.properties = properties;
+        this.messageLatch = messageLatch;
+        aiBot = new Bot("QUEEN", MagicStrings.root_path, "chat");
+        aiBot.deleteLearnfCategories();
+    }
 
-	public boolean joinRoom(String domain, long roomId, boolean enableAi) {
-		int batchNumber = CloseVoteFinder.getInstance().getBatchNumber(roomId); // Get it from db
-		ChatRoom room = new ChatRoom(this,client.joinRoom(domain, roomId), batchNumber,enableAi);
+    public boolean loginIn() {
+        client = new StackExchangeClient(properties.getProperty("email"), properties.getProperty("password"));
+        if (logger.isDebugEnabled()) {
+            logger.debug("loginIn() - Client logged in");
+        }
+        return (client != null);
+    }
 
-		if (logger.isDebugEnabled()) {
-			logger.debug("joinRoom(String, int) - Client join room: " + roomId);
-		}
-		room.getRoom().addEventListener(EventType.MESSAGE_REPLY, event -> roomEvent(room, event, true));
-		room.getRoom().addEventListener(EventType.USER_MENTIONED, event -> roomEvent(room, event, false));
-		long id = room.getRoomId();
-		rooms.put(room.getRoomId(), room);
-		return id != 0;
-	}
+    public boolean joinRoom(String domain, long roomId, boolean enableAi) {
+        int batchNumber = CloseVoteFinder.getInstance().getBatchNumber(roomId); // Get it from db
+        ChatRoom room = new ChatRoom(this, client.joinRoom(domain, roomId), batchNumber, enableAi);
 
-	protected void roomEvent(ChatRoom room, PingMessageEvent event, boolean isReply) {
-		if (logger.isDebugEnabled()) {
-			logger.debug("roomEvent(ChatRoom, PingMessageEvent, boolean) - Incomming message: " + event.toString());
-		}
-		if (event.getEditCount() > 0) {
-			// long parentId = event.getParentMessageId();
-			return; // Ignore edits for now
-		}
-		BotCommand bc = BotCommandsRegistry.getInstance().getCommand(event.getContent(), isReply, event.getEditCount());
-		if (logger.isDebugEnabled()) {
-			logger.debug("roomEvent(ChatRoom, PingMessageEvent, boolean) - " + bc);
-		}
+        if (logger.isDebugEnabled()) {
+            logger.debug("joinRoom(String, int) - Client joined room: " + roomId);
+        }
 
-		// Check access level
-		long userId = event.getUserId();
-		int accessLevel = 0;
-		if (CloseVoteFinder.getInstance().getUsers() != null) {
-			User u = CloseVoteFinder.getInstance().getUsers().get(userId);
-			if (u != null) {
-				accessLevel = u.getAccessLevel();
-			} else {
-				fr.tunaki.stackoverflow.chat.User user = room.getUser(userId);
-				if (logger.isDebugEnabled()) {
-					logger.debug("roomEvent(ChatRoom, PingMessageEvent, boolean) - User rep = " + user.getReputation());
-				}
-				if (user.getReputation() >= 3000) {
-					UserDAO dao = new UserDAO();
-					int al = BotCommand.ACCESS_LEVEL_REVIEWER;
-					if (user.isModerator()){
-						al = BotCommand.ACCESS_LEVEL_OWNER;
-					}
-					u = new User(user.getId(), user.getName(),al);
-					try {
-						dao.insertOrUpdate(CloseVoteFinder.getInstance().getConnection(), u);
-						CloseVoteFinder.getInstance().getUsers().put(u.getUserId(),u);
-						accessLevel = u.getAccessLevel();
-						room.send("Welcome " + u.getUserName() + ", you have been added as " + BotCommand.getAccessLevelName(u.getAccessLevel()) + ", standby executing your command");
+        room.getRoom().addEventListener(EventType.MESSAGE_REPLY, event -> roomEvent(room, event, true));
+        room.getRoom().addEventListener(EventType.USER_MENTIONED, event -> roomEvent(room, event, false));
 
-					} catch (SQLException e) {
-						logger.error("roomEvent(ChatRoom, PingMessageEvent, boolean)", e);
-						room.send("Error inserting or updating user @Petter");
-					}
+        long id = room.getRoomId();
+        rooms.put(id, room);
 
-				}
-			}
+        return id != 0;
+    }
 
-			if (accessLevel < bc.getRequiredAccessLevel()) {
-				room.replyTo(event.getMessageId(),
-						"Sorry you need to be " + BotCommand.getAccessLevelName(bc.getRequiredAccessLevel()) + " to run this command (@Petter)");
-				return;
-			}
-		}
+    protected void roomEvent(ChatRoom room, PingMessageEvent event, boolean isReply) {
+        if (logger.isDebugEnabled()) {
+            logger.debug("roomEvent(ChatRoom, PingMessageEvent, boolean) - Incomming message: " + event.toString());
+        }
 
-		bc.runCommand(room, event);
-		if (bc instanceof ShutDownCommand) {
-			if (messageLatch != null) {
-				messageLatch.countDown();
-			}else{
-				try {
-					close();
-					CloseVoteFinder.getInstance().shutDown();
-				} catch (Exception e) {
-					logger.error("roomEvent() Shutdown error", e);
-				}	
-				System.exit(0);
-			}
-		}
-	}
-	
-	public void startDupeHunter(){
-		List<String> tags = new ArrayList<>();
-		tags.add("java");
-		tags.add("python");
-		dupeHunter = new DupeHunter(this,tags);
-		dupeHunter.start();
-	}
-	
-	public ChatRoom getChatRoom(long id){
-		for (ChatRoom cr : rooms.values()) {
-			if (cr.getRoomId()==id){
-				return cr;
-			}
-		}
-		return null;
-	}
-	
-	public String getRoomName(long id){
-		for (ChatRoom cr : rooms.values()) {
-			if (cr.getRoomId()==id){
-				return cr.getRoomName();
-			}
-		}
-		return null;
-	}
+        if (event.getEditCount() > 0) {
+            // long parentId = event.getParentMessageId();
+            return; // Ignore edits for now
+        }
 
-	public void close() {
-		if (dupeHunter!=null){
-			dupeHunter.setShutDown(true);
-		}
-		if (client != null) {
-			if (logger.isInfoEnabled()) {
-				logger.info("closing client");
-			}
-			client.close();
-		}
-	}
+        BotCommand bc = BotCommandsRegistry.getInstance().getCommand(event.getContent(), isReply, event.getEditCount());
+        if (logger.isDebugEnabled()) {
+            logger.debug("roomEvent(ChatRoom, PingMessageEvent, boolean) - " + bc);
+        }
 
-	public static void main(String[] args) throws FileNotFoundException, IOException {
-		/**
-		 * Logger for this class
-		 */
+        // Check access level
+        long userId = event.getUserId();
+        int accessLevel = 0;
+        if (CloseVoteFinder.getInstance().getUsers() != null) {
+            User u = CloseVoteFinder.getInstance().getUsers().get(userId);
 
-		PropertyConfigurator.configure("ini/log4j.properties");
+            if (u != null) {
+                accessLevel = u.getAccessLevel();
+            } else {
+                fr.tunaki.stackoverflow.chat.User user = room.getUser(userId);
 
-		if (logger.isDebugEnabled()) {
-			logger.debug("main(String[]) - start");
-		}
+                if (logger.isDebugEnabled()) {
+                    logger.debug("roomEvent(ChatRoom, PingMessageEvent, boolean) - User rep = " + user.getReputation());
+                }
 
-		// Load AI interface
-		AIMLProcessor.extension = new PCAIMLProcessorExtension();
-		MagicStrings.root_path = System.getProperty("user.dir");
-		MagicStrings.default_bot_name = "Queen";
+                if (user.getReputation() >= REPUTATION_CV_REVIEWER) {
+                    UserDAO dao = new UserDAO();
+                    int al = BotCommand.ACCESS_LEVEL_REVIEWER;
 
-		// Load properties file an instance the CloseVoteFinder
-		Properties properties = new Properties();
-		properties.load(new FileInputStream("ini/SOCVService.properties"));
-		CloseVoteFinder.initInstance(properties);
+                    if (user.isModerator()) {
+                        al = BotCommand.ACCESS_LEVEL_OWNER;
+                    }
 
-		// Start the bot
-		CountDownLatch messageLatch = new CountDownLatch(1);
-		ChatBot cb = new ChatBot(properties, messageLatch);
-		try {
-			cb.loginIn();
-			cb.joinRoom("stackoverflow.com", 111347,true);
-			cb.joinRoom("stackoverflow.com", 95290,false);
-			cb.startDupeHunter();
-			try {
-				messageLatch.await();
-			} catch (InterruptedException e) {
-			}
+                    u = new User(user.getId(), user.getName(), al);
 
-		} catch (Throwable e) {
-			logger.error("main(String[])", e);
-		} finally {
-			cb.close();
-			CloseVoteFinder.getInstance().shutDown();
-		}
-	}
+                    try {
+                        dao.insertOrUpdate(CloseVoteFinder.getInstance().getConnection(), u);
+                        CloseVoteFinder.getInstance().getUsers().put(u.getUserId(), u);
+                        accessLevel = u.getAccessLevel();
+                        room.send("Welcome " + u.getUserName() + ", you have been added as " + BotCommand.getAccessLevelName(u.getAccessLevel()) + ", standby executing your command");
 
-	public Bot getAiBot() {
-		return aiBot;
-	}
+                    } catch (SQLException e) {
+                        logger.error("roomEvent(ChatRoom, PingMessageEvent, boolean)", e);
+                        room.send("Error inserting or updating user @Petter");
+                    }
+                }
+            }
 
+            int requiredAccessLevel = bc.getRequiredAccessLevel();
+            if (accessLevel < requiredAccessLevel) {
+                room.replyTo(event.getMessageId(),
+                        "Sorry you need to be " + BotCommand.getAccessLevelName(requiredAccessLevel) + " to run this command (@Petter)");
+                return;
+            }
+        }
+
+        bc.runCommand(room, event);
+        if (bc instanceof ShutDownCommand) {
+            if (messageLatch != null) {
+                messageLatch.countDown();
+            } else {
+                try {
+                    close();
+                    CloseVoteFinder.getInstance().shutDown();
+                } catch (Exception e) {
+                    logger.error("roomEvent() Shutdown error", e);
+                }
+                System.exit(0);
+            }
+        }
+    }
+
+    public void startDupeHunter() {
+        List<String> tags = new ArrayList<>();
+        tags.add("java");
+        tags.add("python");
+        dupeHunter = new DupeHunter(this, tags);
+        dupeHunter.start();
+    }
+
+    public Bot getAiBot() {
+        return aiBot;
+    }
+
+    public ChatRoom getChatRoom(long id) {
+        for (ChatRoom cr : rooms.values()) {
+            if (cr.getRoomId() == id) {
+                return cr;
+            }
+        }
+        return null;
+    }
+
+    public String getRoomName(long id) {
+        for (ChatRoom cr : rooms.values()) {
+            if (cr.getRoomId() == id) {
+                return cr.getRoomName();
+            }
+        }
+        return null;
+    }
+
+    public void close() {
+        if (dupeHunter != null) {
+            dupeHunter.setShutDown(true);
+        }
+
+        if (client != null) {
+            if (logger.isInfoEnabled()) {
+                logger.info("closing client");
+            }
+            client.close();
+        }
+    }
+
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        PropertyConfigurator.configure("ini/log4j.properties");
+
+        if (logger.isDebugEnabled()) {
+            logger.debug("main(String[]) - start");
+        }
+
+        // Load AI interface
+        AIMLProcessor.extension = new PCAIMLProcessorExtension();
+        MagicStrings.root_path = System.getProperty("user.dir");
+        MagicStrings.default_bot_name = BOT_NAME;
+
+        // Load properties file an instance the CloseVoteFinder
+        Properties properties = new Properties();
+        properties.load(new FileInputStream("ini/SOCVService.properties"));
+        CloseVoteFinder.initInstance(properties);
+
+        // Start the bot
+        CountDownLatch messageLatch = new CountDownLatch(1);
+        ChatBot cb = new ChatBot(properties, messageLatch);
+        try {
+            cb.loginIn();
+            cb.joinRoom("stackoverflow.com", 111347, true);
+            cb.joinRoom("stackoverflow.com", 95290, false);
+            cb.startDupeHunter();
+            try {
+                messageLatch.await();
+            } catch (InterruptedException e) {
+            }
+        } catch (Throwable e) {
+            logger.error("main(String[])", e);
+        } finally {
+            cb.close();
+            CloseVoteFinder.getInstance().shutDown();
+        }
+    }
 }
