@@ -26,7 +26,6 @@ import jdd.so.bot.actions.filter.QuestionsFilter;
 import jdd.so.dao.BatchDAO;
 import jdd.so.dao.QuestionIndexDao;
 import jdd.so.dao.model.Batch;
-import jdk.nashorn.internal.runtime.Context.ThrowErrorManager;
 
 public class CherryPickCommand extends BotCommand {
 
@@ -117,7 +116,7 @@ public class CherryPickCommand extends BotCommand {
 				SimpleDateFormat df = new SimpleDateFormat("MMM dd HH:mm", Locale.US);
 				retMsg += "scanned " + cpr.getApiResult().getNrOfQuestionScanned() + " questions between "
 						+ df.format(new Date(cpr.getApiResult().getFirstDate() * 1000)) + " and " + df.format(new Date(cpr.getApiResult().getLastDate() * 1000))
-						+ " filterd and order " + cpr.getFilterdQuestions().size() + " in " + " [batch " + cpr.getBatchNumber() + "](" + cpr.getBatchUrl()
+						+ " filtered and order " + cpr.getFilterdQuestions().size() + " in " + " [batch " + cpr.getBatchNumber() + "](" + cpr.getBatchUrl()
 						+ ")";
 
 				final String editMessage = "@" + event.getUserName().replaceAll(" ", "") + " " + retMsg;
@@ -131,21 +130,6 @@ public class CherryPickCommand extends BotCommand {
 					}).thenAccept(mId -> insertBatch(cpr, event.getUserId(), mId));
 				});
 
-				// CompletableFuture<Long> messageId;
-				// if (sentId.isDone()){
-				// try {
-				// String userName = event.getUserName().replaceAll(" ", "");
-				// room.edit(sentId.get(), "@" + userName + " " +retMsg);
-				// messageId = sentId;
-				// } catch (CompletionException e) {
-				// messageId = room.replyTo(event.getMessageId(), retMsg);
-				// }
-				// }else{
-				// sentId.cancel(true);
-				// messageId = room.replyTo(event.getMessageId(), retMsg);
-				// }
-				// messageId.whenComplete(new InsertBatch(cpr,
-				// event.getUserId()));
 			} else {
 				sendSomeQuestionsIfServerIsDown(room, event, cpr);
 			}

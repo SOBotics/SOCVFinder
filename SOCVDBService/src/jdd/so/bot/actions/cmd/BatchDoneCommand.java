@@ -1,12 +1,11 @@
 package jdd.so.bot.actions.cmd;
 
-import org.apache.log4j.Logger;
-import org.json.JSONException;
-
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.NumberFormat;
+
+import org.apache.log4j.Logger;
+import org.json.JSONException;
 
 import fr.tunaki.stackoverflow.chat.event.MessageReplyEvent;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
@@ -109,7 +108,7 @@ public class BatchDoneCommand extends BotCommand {
 					cvc = cpr.getQuestions().size();
 				}
 				double perc = (cvc) / (double)cpr.getQuestions().size();
-				room.replyTo(event.getMessageId(), "Thank you for your effort, you reviewed " + cpr.getQuestions().size() + " questions,  I counted " +cvCount + " (" + NumberFormat.getPercentInstance().format(perc) +  ") close votes and " + closedCount + " questions closed");
+				room.replyTo(event.getMessageId(), "Thank you for your effort, you reviewed " + cpr.getQuestions().size() + " questions,  I counted " +cvc + " (" + NumberFormat.getPercentInstance().format(perc) +  ") close votes and " + closedCount + " questions closed");
 			} catch (JSONException | IOException | SQLException e) {
 				logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
 				room.replyTo(event.getMessageId(), "Error while storing your data, I guees you need to review another");		

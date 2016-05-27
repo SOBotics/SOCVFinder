@@ -13,12 +13,12 @@ public class AddUserCommand extends BotCommand {
 
 	@Override
 	public String getMatchCommandRegex() {
-		return "(?i)(add user)";
+		return "(?i)(add user|update user)";
 	}
 
 	@Override
 	public int getRequiredAccessLevel() {
-		return BotCommand.ACCESS_LEVEL_OWNER;
+		return BotCommand.ACCESS_LEVEL_RO;
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class AddUserCommand extends BotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "User >3k are added automatically, this cmd can add manually a users or set/update the access level";
+		return "User >3k are added automatically, this cmd can add or update manually a users";
 	}
 
 	@Override

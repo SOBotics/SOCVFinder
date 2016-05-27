@@ -29,15 +29,17 @@ import jdd.so.api.model.ApiResult;
 import jdd.so.api.model.Question;
 import jdd.so.dao.BatchDAO;
 import jdd.so.dao.ConnectionHandler;
+import jdd.so.dao.DuplicateNotificationsDAO;
 import jdd.so.dao.TagsDao;
 import jdd.so.dao.UserDAO;
+import jdd.so.dao.model.DuplicateNotifications;
 import jdd.so.dao.model.User;
 import jdd.so.swing.NotifyMe;
 
-/** 
- * Instance class, to keep properties
- * synchronize calls to SO Api, with throttling
- * and hold other application things in memory
+/**
+ * Instance class, to keep properties synchronize calls to SO Api, with
+ * throttling and hold other application things in memory
+ * 
  * @author Petter Friberg
  *
  */
@@ -49,28 +51,28 @@ public class CloseVoteFinder {
 
 	public static final String API_URL = "http://api.stackexchange.com/2.2/";
 	public static final String API_FILTER = "!-MObZ6A82KZGZ3WvblLvUKz1bWU5_K147";
-	public static final int MAX_PAGES = 300;//Even if application  try it will never do any more then this
+	public static final int MAX_PAGES = 300;// Even if application try it will
+											// never do any more then this
 
 	public static final String API_KEY_PROPERTY = "API_KEY";
 	public static final String THROTTLE_PROPERTY = "THROTTLE";
 	private static final String REST_API_PROPERTY = "REST_API";
 
-	
 	private long throttle = 1L * 1000L; // ms
 	private String apiKey = null;
-	private String restApi = "http://socvr.org:222/api/socv-finder/dump-report"; 
+	private String restApi = "http://socvr.org:222/api/socv-finder/dump-report";
 
 	private static CloseVoteFinder instance;
 	private long lastCall;
 	private int apiCallNrPages = 10;
 	private int apiQuota = -1;
-	private int defaultNumberOfQuestion=20;
+	private int defaultNumberOfQuestion = 20;
 	private Connection dbConnection;
-	
-	
-	//DB Data cached
-	private Map<Long,User> users;
-    private Map<Long, Integer> batchNumbers;
+
+	// DB Data cached
+	private Map<Long, User> users;
+	private Map<Long, Integer> batchNumbers;
+	private List<DuplicateNotifications> dupHunters;
 	private List<String> tagsMonitored;
 
 	private ConnectionHandler connectionHandler;
@@ -86,16 +88,18 @@ public class CloseVoteFinder {
 					logger.error("CloseVoteFinder(Properties)", e);
 				}
 			}
-			String ra =properties.getProperty(REST_API_PROPERTY, null);
-			if (ra!=null && ra.trim().length()>0){
+			String ra = properties.getProperty(REST_API_PROPERTY, null);
+			if (ra != null && ra.trim().length() > 0) {
 				restApi = ra;
 			}
-			connectionHandler = new ConnectionHandler(properties.getProperty("db_driver"),properties.getProperty("db_url"), properties.getProperty("db_user"), properties.getProperty("db_password"));
-			
+			connectionHandler = new ConnectionHandler(properties.getProperty("db_driver"), properties.getProperty("db_url"), properties.getProperty("db_user"),
+					properties.getProperty("db_password"));
+
 			try {
 				dbConnection = connectionHandler.getConnection();
 				loadTagsMonitored();
 				loadUsers();
+				loadDupeHunters();
 				loadBatchNumbers();
 			} catch (SQLException e) {
 				logger.error("CloseVoteFinder(Properties)", e);
@@ -103,14 +107,9 @@ public class CloseVoteFinder {
 		}
 	}
 
-	
-
-	
-
-
-
 	/**
 	 * Init the instance
+	 * 
 	 * @param properties
 	 */
 	public static void initInstance(Properties properties) {
@@ -118,9 +117,10 @@ public class CloseVoteFinder {
 			instance = new CloseVoteFinder(properties);
 		}
 	}
-	
+
 	/**
 	 * Get the instance
+	 * 
 	 * @return
 	 */
 	public static CloseVoteFinder getInstance() {
@@ -129,18 +129,18 @@ public class CloseVoteFinder {
 		}
 		return instance;
 	}
-	
-	
+
 	/**
-	 * Get the database connection, we should use a pool if the bot get some 
-	 * heave use, for now a single connection is used with a isValid command 
+	 * Get the database connection, we should use a pool if the bot get some
+	 * heave use, for now a single connection is used with a isValid command
+	 * 
 	 * @return
 	 * @throws SQLException
 	 */
-	
-	public Connection getConnection() throws SQLException{
+
+	public Connection getConnection() throws SQLException {
 		try {
-			if (!dbConnection.isValid(1000)){
+			if (!dbConnection.isValid(1000)) {
 				dbConnection.close();
 				dbConnection = null;
 			}
@@ -148,26 +148,71 @@ public class CloseVoteFinder {
 			logger.error("getConnection() - Connection is not valid", e);
 			dbConnection = null;
 		}
-		if (dbConnection==null){
+		if (dbConnection == null) {
 			dbConnection = connectionHandler.getConnection();
 		}
 		return this.dbConnection;
 	}
-	
+
 	private void loadTagsMonitored() throws SQLException {
 		this.tagsMonitored = new TagsDao(this.dbConnection).getTags();
 	}
-	
+
 	public void loadUsers() throws SQLException {
 		users = new UserDAO().getUsers(this.dbConnection);
 	}
-	
+
+	private void loadDupeHunters() throws SQLException {
+		dupHunters = new DuplicateNotificationsDAO().getDupeHunters(this.dbConnection);
+	}
+
+	public Map<Long, List<DuplicateNotifications>> getHunterInRooms() {
+		Map<Long, List<DuplicateNotifications>> retMap = new HashMap<>();
+		if (dupHunters != null) {
+			for (DuplicateNotifications dn : dupHunters) {
+				long r = dn.getRoomId();
+				List<DuplicateNotifications> dnl = retMap.get(r);
+				if (dnl == null) {
+					dnl = new ArrayList<>();
+					retMap.put(r, dnl);
+				}
+				dnl.add(dn);
+			}
+		}
+		return retMap;
+	}
+
+	public List<String> getHunterTags() {
+		List<String> tags = new ArrayList<>();
+		if (dupHunters != null) {
+			for (DuplicateNotifications dn : dupHunters) {
+				String tag = dn.getTag().toLowerCase();
+				if (!tags.contains(tag)) {
+					tags.add(tag);
+				}
+			}
+		}
+		return tags;
+	}
+
+	public DuplicateNotifications getHunter(long roomId, long userId, String tag) {
+		if (dupHunters == null) {
+			return null;
+		}
+		for (DuplicateNotifications dn : dupHunters) {
+			if (dn.getRoomId() == roomId && dn.getUserId() == userId && dn.getTag().equals(tag)) {
+				return dn;
+			}
+		}
+		return null;
+	}
+
 	private void loadBatchNumbers() throws SQLException {
 		batchNumbers = new BatchDAO().getBatchNumbers(this.dbConnection);
 	}
-	
-	public void shutDown(){
-		if (dbConnection!=null){
+
+	public void shutDown() {
+		if (dbConnection != null) {
 			try {
 				dbConnection.close();
 			} catch (SQLException e) {
@@ -176,48 +221,52 @@ public class CloseVoteFinder {
 		}
 	}
 
-	
-
 	public synchronized boolean isTagMonitored(String tag) {
 		return tagsMonitored.contains(tag);
 	}
-	
-	public String getApiUrl(String questions, int page, String tag) throws UnsupportedEncodingException{
+
+	public String getApiUrl(String questions, int page, String tag) throws UnsupportedEncodingException {
 		return getApiUrl(questions, page, 0, 0, tag);
 	}
-	
+
 	/**
 	 * Get the url to call
-	 * @param questions, question1;question2 <code>null</code> no filter
-	 * @param page, page to view
-	 * @param fromDate, unixtimestamp date, set 0 to not filter 
-	 * @param toDate, unixtimestamp date, set 0 to not filter
-	 * @param tag, unixtimestamp date, set <code>null</code> to not filter
+	 * 
+	 * @param questions,
+	 *            question1;question2 <code>null</code> no filter
+	 * @param page,
+	 *            page to view
+	 * @param fromDate,
+	 *            unixtimestamp date, set 0 to not filter
+	 * @param toDate,
+	 *            unixtimestamp date, set 0 to not filter
+	 * @param tag,
+	 *            unixtimestamp date, set <code>null</code> to not filter
 	 * @return the url
 	 * @throws UnsupportedEncodingException
 	 */
-	public String getApiUrl(String questions, int page, long fromDate, long toDate, String tag) throws UnsupportedEncodingException{
-		
+	public String getApiUrl(String questions, int page, long fromDate, long toDate, String tag) throws UnsupportedEncodingException {
+
 		StringBuilder url = new StringBuilder(API_URL);
 		url.append("questions");
-		if (questions!=null){
+		if (questions != null) {
 			url.append("/" + questions);
 		}
 		url.append("?");
 		url.append("page=" + page + "&pagesize=100");
-		if (fromDate>0){
+		if (fromDate > 0) {
 			url.append("&fromdate=" + fromDate);
 		}
-		if (toDate>0){
+		if (toDate > 0) {
 			url.append("&todate=" + toDate);
 		}
-		
-		//url.append("&order=desc&sort=activity");
+
+		// url.append("&order=desc&sort=activity");
 		url.append("&order=desc&sort=creation");
-		
-		if (tag!=null){
+
+		if (tag != null) {
 			String tagEncoded = URLEncoder.encode(tag, "UTF-8");
-			url.append("&tagged=" +tagEncoded);
+			url.append("&tagged=" + tagEncoded);
 		}
 		url.append("&site=stackoverflow&filter=" + API_FILTER);
 		if (apiKey != null) {
@@ -258,7 +307,7 @@ public class CloseVoteFinder {
 		if (logger.isInfoEnabled()) {
 			logger.info("getJSONObject - Calling url: " + url);
 		}
-		
+
 		URLConnection connection = new URL(url).openConnection();
 		connection.setRequestProperty("Accept-Encoding", "gzip");
 		GZIPInputStream gis = new GZIPInputStream(connection.getInputStream());
@@ -310,54 +359,51 @@ public class CloseVoteFinder {
 		return users;
 	}
 
-
-
 	public int getBatchNumber(long roomId) {
-		if (batchNumbers!=null && batchNumbers.containsKey(roomId)){
+		if (batchNumbers != null && batchNumbers.containsKey(roomId)) {
 			return batchNumbers.get(roomId);
 		}
 		return 0;
 	}
 
-	
 	public static void main(String[] args) throws Exception {
-		
+
 		PropertyConfigurator.configure("ini/log4j.properties");
-		
+
 		// Load properties file an instance the CloseVoteFinder
 		Properties properties = new Properties();
 		properties.load(new FileInputStream("ini/SOCVService.properties"));
 		CloseVoteFinder.initInstance(properties);
-		
+
 		ApiHandler api = new ApiHandler();
-		
+
 		Calendar calStart = new GregorianCalendar();
-		long ed = calStart.getTimeInMillis()/1000L;
+		long ed = calStart.getTimeInMillis() / 1000L;
 		calStart.add(Calendar.DATE, -20);
-		long sd = calStart.getTimeInMillis()/1000L;
-		
-		ApiResult rs = api.getQuestions(sd,ed, 200,"php", false);
-		
+		long sd = calStart.getTimeInMillis() / 1000L;
+
+		ApiResult rs = api.getQuestions(sd, ed, 200, "php", false);
+
 		List<Question> questions = rs.getQuestions();
 		Map<Integer, List<Question>> cMap = new HashMap<>();
-		long now = System.currentTimeMillis()/1000L;
-		int maxDif  = 0;
+		long now = System.currentTimeMillis() / 1000L;
+		int maxDif = 0;
 		for (Question q : questions) {
-			int dif =(int) (now-q.getCreationDate())/(60*60*24);
-			if (dif>maxDif){
+			int dif = (int) (now - q.getCreationDate()) / (60 * 60 * 24);
+			if (dif > maxDif) {
 				maxDif = dif;
 			}
 			List<Question> qd = cMap.get(dif);
-			if (qd==null){
+			if (qd == null) {
 				qd = new ArrayList<>();
 				cMap.put(dif, qd);
 			}
 			qd.add(q);
 		}
-		
+
 		for (int i = 0; i <= maxDif; i++) {
 			List<Question> qd = cMap.get(i);
-			if (qd==null){
+			if (qd == null) {
 				continue;
 			}
 			int[] cvCnt = new int[] { 0, 0, 0, 0, 0 };
@@ -373,18 +419,15 @@ public class CloseVoteFinder {
 				logger.debug("main(String[]) - " + res);
 			}
 		}
-		
-		
+
 		CloseVoteFinder.getInstance().shutDown();
 	}
 
-
-
-
-
-
-
 	public List<String> getTagsMonitored() {
 		return tagsMonitored;
+	}
+
+	public List<DuplicateNotifications> getDupHunters() {
+		return dupHunters;
 	}
 }

@@ -167,6 +167,7 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 			}
 			cb.joinRoom("stackoverflow.com", 111347,true);
 			cb.joinRoom("stackoverflow.com", 95290,false);
+			cb.startDupeHunter();
 		}
 		
 	}

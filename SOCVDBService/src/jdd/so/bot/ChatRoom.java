@@ -7,6 +7,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
 import fr.tunaki.stackoverflow.chat.Room;
+import fr.tunaki.stackoverflow.chat.User;
 
 /**
  * The wrapped, ChatRoom, holding info on room
@@ -113,5 +114,14 @@ public class ChatRoom {
 
 	public ChatBot getBot() {
 		return bot;
+	}
+
+	public User getPingableUser(long userId) {
+		for (User u : room.getPingableUsers()) {
+			if (u.getId()==userId){
+				return u;
+			}
+		}
+		return null;
 	}
 }
