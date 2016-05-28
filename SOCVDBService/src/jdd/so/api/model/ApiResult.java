@@ -19,14 +19,13 @@ public class ApiResult {
 	private boolean includeAll;
 	private boolean hasMore;
 	private int nrOfPages;
-	private int nrOfQuestionScanned;
 	private int quotaRemaining;
-	private long firstDate;
-	private long lastDate;
+	private ScanStats scanStatistics;
 
 	public ApiResult(boolean includeAll) {
 		this.includeAll = includeAll;
-		questions = new ArrayList<Question>();
+		questions = new ArrayList<>();
+		scanStatistics = new ScanStats();
 		hasMore = true;
 	}
 	
@@ -36,13 +35,7 @@ public class ApiResult {
 		if (this.questions.contains(q)){
 			return false;
 		}
-		nrOfQuestionScanned++;
-		if (q.getCreationDate()<=firstDate||firstDate==0){
-			firstDate = q.getCreationDate();
-		}
-		if (q.getCreationDate()>=lastDate||lastDate==0){
-			lastDate = q.getCreationDate();
-		}
+		scanStatistics.addToStats(q);
 		if (includeAll || q.isMonitor()) {
 			return this.questions.add(q);
 		}
@@ -123,7 +116,7 @@ public class ApiResult {
 	}
 	
 	public List<Question> getPossibileDuplicates(){
-		List<Question> pd = new ArrayList<Question>();
+		List<Question> pd = new ArrayList<>();
 		for (Question question : questions) {
 			if (question.isPossibileDuplicate()){
 				pd.add(question);
@@ -138,7 +131,7 @@ public class ApiResult {
 
 		html += "<h1>" + searchTitle + "</h1>";
 
-		html += "<p>Total api calls: " + nrOfPages + ", questions scanned: " + nrOfQuestionScanned + ", API quota remaing: " + quotaRemaining + "</p>";
+		html += "<p>Total api calls: " + nrOfPages + ", questions scanned: " + scanStatistics.getNumberOfQuestions() + ", API quota remaing: " + quotaRemaining + "</p>";
 
 		html += "<h2>Summary</h2>";
 		int nrDupes = 0;
@@ -146,8 +139,8 @@ public class ApiResult {
 		int[] cvCnt = new int[] { 0, 0, 0, 0, 0 };
 		int[] cvCntNoRoomba = new int[] { 0, 0, 0, 0, 0 };
 		int closeToRoomba = 0;
-		List<Question> pdQ = new ArrayList<Question>();// dup list
-		List<Question> cvQ = new ArrayList<Question>();// cv list
+		List<Question> pdQ = new ArrayList<>();// dup list
+		List<Question> cvQ = new ArrayList<>();// cv list
 
 		for (Question question : questions) {
 			if (question.isAlmostRoomba()) {
@@ -205,41 +198,21 @@ public class ApiResult {
 
 
 	public int getNrOfQuestionScanned() {
-		return nrOfQuestionScanned;
+		return scanStatistics.getNumberOfQuestions();
 	}
-
-
-
-	public void setNrOfQuestionScanned(int nrOfQuestionScanned) {
-		this.nrOfQuestionScanned = nrOfQuestionScanned;
-	}
-
-
 
 	public long getFirstDate() {
-		return firstDate;
+		return scanStatistics.getFirstDate();
 	}
-
-
-
-	public void setFirstDate(long firstDate) {
-		this.firstDate = firstDate;
-	}
-
-
 
 	public long getLastDate() {
-		return lastDate;
+		return scanStatistics.getLastDate();
 	}
 
 
 
-	public void setLastDate(long lastDate) {
-		this.lastDate = lastDate;
+	public ScanStats getScanStatistics() {
+		return scanStatistics;
 	}
-
-	
-
-
 
 }

@@ -62,7 +62,7 @@ public class OptInCommand extends BotCommand {
 			if (logger.isDebugEnabled()) {
 				logger.debug("runCommand(ChatRoom, PingMessageEvent) - " + result);
 			}
-			room.replyTo(event.getMessageId(), "Thanks, you have opted-in to be notifyed if a duplicate is found in tag [tag:" + tag + "] and you are present in room");
+			room.replyTo(event.getMessageId(), "Thanks, you have opted-in to be notified if a duplicate is found in tag [tag:" + tag + "] and you are present in room");
 		} catch (SQLException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
 			room.replyTo(event.getMessageId(),"Sorry problem updating data, tell @Petter to check the stack trace");

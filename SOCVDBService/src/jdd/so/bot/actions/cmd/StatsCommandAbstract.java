@@ -10,8 +10,6 @@ import java.util.Properties;
 
 import org.apache.log4j.PropertyConfigurator;
 
-import com.sun.java_cup.internal.runtime.virtual_parse_stack;
-
 import jdd.so.CloseVoteFinder;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.dao.BatchDAO;

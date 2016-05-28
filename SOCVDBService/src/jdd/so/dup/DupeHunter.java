@@ -31,7 +31,7 @@ public class DupeHunter extends Thread {
 	 */
 	private static final Logger logger = Logger.getLogger(DupeHunter.class);
 
-	public static final long INTERUPT = 1000 * 60 * 5L; // 5 minutes
+	public static final long INTERUPT = 1000 * 60 * 10L; // 10 minutes
 	private boolean shutDown = false;
 	private ApiHandler apiHandler;
 	private ChatBot cb;
@@ -137,7 +137,7 @@ public class DupeHunter extends Thread {
 		for (DuplicateNotifications dn : huntersInTag) {
 			long userId = dn.getUserId();
 			User u = cr.getPingableUser(userId);
-			if (u!=null){
+			if (u!=null && u.isCurrentlyInRoom()){
 				message += " @" + u.getName().replaceAll(" ", "");
 			}
 		}
