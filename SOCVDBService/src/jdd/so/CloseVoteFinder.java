@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.ServiceConfigurationError;
+import java.util.Set;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.log4j.Logger;
@@ -32,6 +33,7 @@ import jdd.so.dao.ConnectionHandler;
 import jdd.so.dao.DuplicateNotificationsDAO;
 import jdd.so.dao.TagsDao;
 import jdd.so.dao.UserDAO;
+import jdd.so.dao.WhitelistDAO;
 import jdd.so.dao.model.DuplicateNotifications;
 import jdd.so.dao.model.User;
 import jdd.so.swing.NotifyMe;
@@ -75,6 +77,7 @@ public class CloseVoteFinder {
 	private Map<Long, Integer> batchNumbers;
 	private List<DuplicateNotifications> dupHunters;
 	private List<String> tagsMonitored;
+	private Set<Long> whiteList;
 
 	private ConnectionHandler connectionHandler;
 
@@ -102,12 +105,14 @@ public class CloseVoteFinder {
 				loadUsers();
 				loadDupeHunters();
 				loadBatchNumbers();
+				loadWhiteList();
 			} catch (SQLException e) {
 				logger.error("CloseVoteFinder(Properties)", e);
 			}
 		}
 	}
 
+	
 	/**
 	 * Init the instance
 	 * 
@@ -181,6 +186,10 @@ public class CloseVoteFinder {
 			}
 		}
 		return retMap;
+	}
+	
+	private void loadWhiteList() throws SQLException {
+		this.whiteList = new WhitelistDAO().getWhiteListedQuestions(dbConnection);
 	}
 
 	public List<String> getHunterTags() {
@@ -452,5 +461,9 @@ public class CloseVoteFinder {
 
 	public void setBackOffUntil(long backoff) {
 		this.backOffUntil = backoff;
+	}
+
+	public Set<Long> getWhiteList() {
+		return whiteList;
 	}
 }

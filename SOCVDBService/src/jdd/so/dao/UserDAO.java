@@ -58,8 +58,7 @@ public class UserDAO {
 				ps.close();
 			}
 		}
-		return retVal;
-		
+		return retVal;	
 	}
 
 }

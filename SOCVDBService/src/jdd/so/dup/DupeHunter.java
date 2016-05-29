@@ -147,7 +147,7 @@ public class DupeHunter extends Thread {
 		String message = "";
 		for (DuplicateNotifications dn : huntersInTag) {
 			long userId = dn.getUserId();
-			User u = cr.getPingableUser(userId);
+			User u = cr.getUser(userId);
 			if (u!=null && u.isCurrentlyInRoom()){
 				message += " @" + u.getName().replaceAll(" ", "");
 			}

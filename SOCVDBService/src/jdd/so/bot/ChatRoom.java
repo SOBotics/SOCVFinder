@@ -22,6 +22,7 @@ public class ChatRoom {
 	private long lastPossibileDupComment; //unix time stamp of last comment
 	private boolean enableAi;
 	private Chat chatSession;
+	private CompletableFuture<Long> lastMessage;
 	
 
 	public ChatRoom(ChatBot bot, Room room, int startBatchNumber, boolean enableAi){
@@ -60,11 +61,13 @@ public class ChatRoom {
 	}
 
 	public CompletableFuture<Long> replyTo(long messageId, String message) {
-		return room.replyTo(messageId, message);
+		this.lastMessage = room.replyTo(messageId, message);
+		return this.lastMessage;
 	}
 
 	public CompletableFuture<Long> send(String message) {
-		return room.send(message);
+		this.lastMessage = room.send(message);
+		return this.lastMessage;
 	}
 	
 	public CompletableFuture<Long> edit(long messageId, String message){
@@ -123,5 +126,9 @@ public class ChatRoom {
 			}
 		}
 		return null;
+	}
+
+	public CompletableFuture<Long> getLastMessage() {
+		return lastMessage;
 	}
 }

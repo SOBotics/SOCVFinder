@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import jdd.so.CloseVoteFinder;
 import jdd.so.api.CherryPickResult;
 import jdd.so.api.CloseVoteComparator;
 import jdd.so.api.PossibileDuplicateComparator;
@@ -38,7 +39,8 @@ public class ApiResult {
 			return false;
 		}
 		scanStatistics.addToStats(q);
-		if (includeAll || q.isMonitor()) {
+		
+		if (includeAll || (q.isMonitor()&&!CloseVoteFinder.getInstance().getWhiteList().contains(q.getQuestionId()))){
 			return this.questions.add(q);
 		}
 		return false;

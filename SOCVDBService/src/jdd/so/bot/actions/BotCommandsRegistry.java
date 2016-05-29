@@ -10,6 +10,8 @@ import jdd.so.bot.actions.cmd.BatchDoneCommand;
 import jdd.so.bot.actions.cmd.CherryPickCommand;
 import jdd.so.bot.actions.cmd.CommandsCommand;
 import jdd.so.bot.actions.cmd.DeleteCommentCommand;
+import jdd.so.bot.actions.cmd.DuplicateConfirmCommand;
+import jdd.so.bot.actions.cmd.DuplicateWhiteListCommand;
 import jdd.so.bot.actions.cmd.HelpCommand;
 import jdd.so.bot.actions.cmd.IndexCommand;
 import jdd.so.bot.actions.cmd.OptInCommand;
@@ -66,6 +68,8 @@ public class BotCommandsRegistry {
 
 		commands.add(new UserListCommand());
 		commands.add(new AddUserCommand());
+		commands.add(new DuplicateWhiteListCommand());
+		commands.add(new DuplicateConfirmCommand());
 		commands.add(new DeleteCommentCommand());
 		commands.add(new ShutDownCommand());
 	}
