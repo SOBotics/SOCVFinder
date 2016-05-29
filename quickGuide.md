@@ -4,18 +4,18 @@
 
 ###Cherry pick
 
-The process of reviweing is **asking for batch** in desired tag, **review** and send **done** command to notify bot that the questions have been reviewed to avoid that questions are included in next (10) batches.
+The process of reviewing is **asking for batch** in desired tag, **review** and send **done** command to notify Queen that the questions have been reviewed to avoid that questions are included in next (10) batches.
 
 **Example**
 
-- `@Queen [java]` - get 20 cherry picked gestions in java
+- `@Queen [java]` - get 20 cherry picked questions in java
 
 - **Review the questions**
 
- - `@Queen done` - report to Queen that you have reviwed the question to avoid them to show up in future batches, note you can see them again with the -all parameter see full commands
+- `@Queen done` - report to Queen that you have reviewed the question to avoid them to show up in future batches, note you can see them again with the -all parameter see full commands
 
 
-These are the additional filters you can apply to your cherry pick
+These are the additional filters reviewer can apply to the cherry pick
 
 
 `@Queen <max-questions> <tag>* "dupes" <cv-count>cv <q-score>s <answers> <age>d -all`
@@ -34,6 +34,7 @@ These are the additional filters you can apply to your cherry pick
   - `aa` Has accepted answers.
   - `na` No answers.
   - `naa` No accepted answer.
+  
  -  **`age`**: Returns questions posted with the specified number of days > (in days) < (before days).
  
  - **`-all`** : Included also question previous reviewed and confirmed with done
@@ -42,16 +43,15 @@ These are the additional filters you can apply to your cherry pick
 
 `@Queen 5 [php] [css] >2cv <=0s na <=2d -all` - get max 5 questions with tags php and css that has more then 2 close vote, the question score is 0 or less, there is no answer and it was posted 2 days ago, include also questions previously reviewed
 
-
-`@Queen 10 [java] dupes nr >2d` - return max 10 questions that are possibile duplicate, will not go to roomba and where posted in last two days.
+`@Queen 10 [java] dupes nr >2d` - return max 10 questions that are possible duplicate, will not go to roomba and where posted in last two days.
 
 **Note** 
 
-Is is important to have space between filters, but not inside and include letters so that queen can understand on what attribute the filter is to be applied, see >2**cv**, <=0**s** <2**d**
+It is important to have space between filters, but not inside and include letters so that queen can understand on what attribute the filter is to be applied, see >2**cv**, <=0**s** <2**d**
 
 ###Statistics
 
-The statistics are gather when reviwer send **done** command and api call is made to check close vote count and number of closed question. Naturally the Queen can not be sure that you closed the question so if multiple people review same batch the **cv virtul count** reflects all closed votes counted (for hammer this can be 5 for 1 question) and **cv count**, is the maximum 1 vote per question count.
+The statistics are gather when the reviewer sends **done** command an api call is made to check close vote count and number of closed question. Naturally the Queen can not be sure that reviewer closed the question so if multiple people review same batch the **cv virtual count** reflects all closed votes counted (for hammer this can be 5 for 1 question) and **cv count**, is the maximum 1 vote per question count.
 
 #### My statistics
 
@@ -81,9 +81,9 @@ The statistics are gather when reviwer send **done** command and api call is mad
 
 ##Moljnir
 
-As user opt in for notification in a tag a background thread starts that scans SO on latest question for possibile duplications and output these in room where the user has opted in. User will only be pinged if **present in room**, hence leaving the room the notification will continue to stream to room but no ping will be sent.
+As user opt in for notification in a tag a background thread starts that scans SO on latest question for possible duplications and output these in room where the user has opted in. User will only be pinged if **present in room**, hence leaving the room the notification will continue to stream to room but no ping will be sent.
 
-###Registrer to notification
+###Register to notification
 
 `@Queen opt-in <tag> <algo-type>`
 
@@ -103,17 +103,17 @@ If no other user in room have opt-in the duplicate notifications stream will sto
 
 ###Report result of notification
 
-User with hammer privledge can reply to notification with (either by reply to message or if last message reply to Queen)
+User with hammer privilege can reply to notification with (either by reply to message or if last message reply to Queen)
 
- - **`k`**: Confirms that the report is indeed a duplicate and if possibile (within 115s) delete message.
+ - **`k`**: Confirms that the report is indeed a duplicate and if possible (within 115s) delete message.
 
- - **`f`**: Whitelist the question (hence it should not be closed for any close reason) and if possibile delete massge.
+ - **`f`**: Whitelist the question (hence it should not be closed for any close reason) and if possible delete message.
  
  - If duplication is not correct but the question can be closed for other reason either leave the message or remove it with the `remove` command
 
 ##Whitelist
 
-The whitelist gives the possbility to exclude one or mulitple questions from future batches (all users).
+The whitelist gives the possibility to exclude one or multiple questions from future batches (all users).
 
 - **`wl <question_id>*`**: Exclude question(s) from all future batches
 
@@ -126,7 +126,7 @@ The whitelist gives the possbility to exclude one or mulitple questions from fut
 
 ###Manage users and set access level
 
-Users above >3K are automatically added to the Reviewer privledge level if not present. Room owner can add or change the level for a single user by executing the add user command
+Users above >3K are automatically added to the Reviewer privilege level if not present. Room owner can add or change the level for a single user by executing the add user command
 
 `@Queen add user <id_user> <Display name> <access_level>`
 
@@ -143,11 +143,11 @@ Users above >3K are automatically added to the Reviewer privledge level if not p
 
 **Example**
 
-- `add users 5292302 Petter Friberg 2`  - Add user 5292302 with hammer privledge 
+- `add users 5292302 Petter Friberg 2`  - Add user 5292302 with hammer privilege 
 
 ###Index tags
 
-The Queen to cherry pick uses api calls (around 10/20) to scan questions, in high traffic tags this means that only last 2 days of questions are covered. Indexing a tag force the the queen to scan all question last 20 days (hence after this most close vote have age away) and saves to database all question that have atleast 3 close votes. After scanning the questions she will also output statistics (not including delete questions) on closed questions and distribution of close vote count.
+The Queen to cherry pick uses api calls (around 10/20) to scan questions, in high traffic tags this means that only last 2 days of questions are covered. Indexing a tag force the the queen to scan all question last 20 days (hence after this most close vote have age away) and saves to database all question that have at least 3 close votes. After scanning the questions she will also output statistics (not including delete questions) on closed questions and distribution of close vote count.
 
 Note: Normally there is no need to index a tag more then 1/2 times a day
 
