@@ -6,7 +6,7 @@
 
 The process of reviewing is **asking for batch** in desired tag, **review** and send **done** command to notify Queen that the questions have been reviewed to avoid that questions are included in next (10) batches.
 
-**Example**
+**Work flow**
 
 - `@Queen [java]` - get 20 cherry picked questions in java
 
