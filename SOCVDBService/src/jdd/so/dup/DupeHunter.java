@@ -86,15 +86,26 @@ public class DupeHunter extends Thread {
 					if (!notifyTheseQuestions.isEmpty()) {
 						notifyRooms(tag, notifyTheseQuestions);
 					}
+					if (ar.getBackoff()>0){
+						try {
+							Thread.sleep(ar.getBackoff()*1000L);
+						} catch (InterruptedException e) {
+							logger.error("run()", e);
+						}
+					}
 
 				} catch (JSONException | IOException e) {
 					logger.error("run()", e);
 				}
 
 				try {
-					Thread.sleep(10 * 1000L); // 10 sec between tags
+					Thread.sleep(30 * 1000L); // 30 sec between tags
 				} catch (InterruptedException e) {
 					logger.error("run()", e);
+				}
+				
+				if (shutDown){
+					return;
 				}
 
 			}
