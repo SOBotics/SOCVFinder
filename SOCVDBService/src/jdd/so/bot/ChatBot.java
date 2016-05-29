@@ -84,7 +84,7 @@ public class ChatBot {
 			logger.debug("joinRoom(String, int) - Client joined room: " + roomId);
 		}
 
-		room.getRoom().addEventListener(EventType.MESSAGE_POSTED, event -> roomPost(room, event));
+		//room.getRoom().addEventListener(EventType.MESSAGE_POSTED, event -> roomPost(room, event));
 
 		room.getRoom().addEventListener(EventType.MESSAGE_REPLY, event -> roomEvent(room, event, true));
 		room.getRoom().addEventListener(EventType.USER_MENTIONED, event -> roomEvent(room, event, false));
@@ -95,26 +95,26 @@ public class ChatBot {
 		return id != 0;
 	}
 
-	private void roomPost(ChatRoom room, MessagePostedEvent event) {
-		System.out.println(event);
-		if (event.getContent().equalsIgnoreCase("que f") || event.getContent().equalsIgnoreCase("que f")) {
-			CompletableFuture<Long> lastMessage = room.getLastMessage();
-			if (lastMessage != null && lastMessage.isDone()) {
-				try {
-					Long mId = lastMessage.get();
-					if (mId != null) {
-						Message lastMesage = room.getRoom().getMessage(mId);
-						if (lastMesage != null) {
-							System.out.println(lastMessage);
-						}
-					}
-				} catch (InterruptedException | ExecutionException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-	}
+//	private void roomPost(ChatRoom room, MessagePostedEvent event) {
+//		System.out.println(event);
+//		if (event.getContent().equalsIgnoreCase("que f") || event.getContent().equalsIgnoreCase("que f")) {
+//			CompletableFuture<Long> lastMessage = room.getLastMessage();
+//			if (lastMessage != null && lastMessage.isDone()) {
+//				try {
+//					Long mId = lastMessage.get();
+//					if (mId != null) {
+//						Message lastMesage = room.getRoom().getMessage(mId);
+//						if (lastMesage != null) {
+//							System.out.println(lastMessage);
+//						}
+//					}
+//				} catch (InterruptedException | ExecutionException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+//	}
 
 	protected void roomEvent(ChatRoom room, PingMessageEvent event, boolean isReply) {
 		if (logger.isDebugEnabled()) {

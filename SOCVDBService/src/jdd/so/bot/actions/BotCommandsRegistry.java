@@ -21,6 +21,7 @@ import jdd.so.bot.actions.cmd.StatsMeCommand;
 import jdd.so.bot.actions.cmd.StatsRoomCommand;
 import jdd.so.bot.actions.cmd.StatsTagCommand;
 import jdd.so.bot.actions.cmd.UserListCommand;
+import jdd.so.bot.actions.cmd.WhiteListCommand;
 
 
 /**
@@ -68,8 +69,10 @@ public class BotCommandsRegistry {
 
 		commands.add(new UserListCommand());
 		commands.add(new AddUserCommand());
+		commands.add(new WhiteListCommand());
 		commands.add(new DuplicateWhiteListCommand());
 		commands.add(new DuplicateConfirmCommand());
+		
 		commands.add(new DeleteCommentCommand());
 		commands.add(new ShutDownCommand());
 	}
