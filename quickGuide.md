@@ -1,0 +1,161 @@
+# QUICK GUIDE
+
+##Reviewer
+
+###Cherry pick
+
+The process of reviweing is **asking for batch** in desired tag, **review** and send **done** command to notify bot that the questions have been reviewed to avoid that questions are included in next (10) batches.
+
+**Example**
+
+- `@Queen [java]` - get 20 cherry picked gestions in java
+
+- **Review the questions**
+
+ - `@Queen done` - report to Queen that you have reviwed the question to avoid them to show up in future batches, note you can see them again with the -all parameter see full commands
+
+
+These are the additional filters you can apply to your cherry pick
+
+
+`@Queen <max-questions> <tag>* "dupes" <cv-count>cv <q-score>s <answers> <age>d -all`
+
+ - **`max-questions`**: The maximum number of questions to return (default 20).
+
+ - **`tag`**: The tag on which the search will be based, supports multiple tags in and
+
+ - **`cv-count`**: The question's close vote count; supports basic mathematical comparison operators: `>`, `<`, and `=`.
+
+ - **`q-score`**: The question's vote count; supports basic mathematical comparison operators: `>`, `<`, and `=`.
+
+ - **`answers`**: Specifies whether the question should have (accepted) answers; possible values are: 
+  - `nr`: No roomba.
+  - `a` Has answer.
+  - `aa` Has accepted answers.
+  - `na` No answers.
+  - `naa` No accepted answer.
+ -  **`age`**: Returns questions posted with the specified number of days > (in days) < (before days).
+ 
+ - **`-all`** : Included also question previous reviewed and confirmed with done
+
+**Examples**
+
+`@Queen 5 [php] [css] >2cv <=0s na <=2d -all` - get max 5 questions with tags php and css that has more then 2 close vote, the question score is 0 or less, there is no answer and it was posted 2 days ago, include also questions previously reviewed
+
+
+`@Queen 10 [java] dupes nr >2d` - return max 10 questions that are possibile duplicate, will not go to roomba and where posted in last two days.
+
+**Note** 
+
+Is is important to have space between filters, but not inside and include letters so that queen can understand on what attribute the filter is to be applied, see >2**cv**, <=0**s** <2**d**
+
+###Statistics
+
+The statistics are gather when reviwer send **done** command and api call is made to check close vote count and number of closed question. Naturally the Queen can not be sure that you closed the question so if multiple people review same batch the **cv virtul count** reflects all closed votes counted (for hammer this can be 5 for 1 question) and **cv count**, is the maximum 1 vote per question count.
+
+#### My statistics
+
+`@Queen stats me <today|week>` - My statistics
+ 
+  - `today`: Show only today
+  - `week` Show this week
+  - `` Show all time
+
+`@Queen stats tags <today|week>` - Statistics on different tags
+ 
+  - `today`: Show only today
+  - `week` Show this week
+  - `` Show all time
+
+
+`@Queen stats rooms <today|week>` - Statistics between different rooms
+ 
+  - `today`: Show only today
+  - `week` Show this week
+  - `` Show all time
+
+#### Remove message
+
+`@Queen remove` - Remove last message or message replied to.
+
+
+##Moljnir
+
+As user opt in for notification in a tag a background thread starts that scans SO on latest question for possibile duplications and output these in room where the user has opted in. User will only be pinged if **present in room**, hence leaving the room the notification will continue to stream to room but no ping will be sent.
+
+###Registrer to notification
+
+`@Queen opt-in <tag> <algo-type>`
+
+ - **`tag`**: The tag in which the duplicate search will be carried out.
+
+ - **`algo-type`**: Duplicate post search algorithm type. Possible values: `pd` = "Possible duplicate" comment search, `sa` = Sam's [UniStack](https://github.com/ArcticEcho/UniStack) algorithm.
+
+*Note: currently only pd is supported*
+
+`@Queen opt-in [java] pd`
+
+###Remove notifications
+
+If no other user in room have opt-in the duplicate notifications stream will stop.
+
+`@Queen opt-out [java] pd`
+
+###Report result of notification
+
+User with hammer privledge can reply to notification with (either by reply to message or if last message reply to Queen)
+
+ - **`k`**: Confirms that the report is indeed a duplicate and if possibile (within 115s) delete message.
+
+ - **`f`**: Whitelist the question (hence it should not be closed for any close reason) and if possibile delete massge.
+ 
+ - If duplication is not correct but the question can be closed for other reason either leave the message or remove it with the `remove` command
+
+##Whitelist
+
+The whitelist gives the possbility to exclude one or mulitple questions from future batches (all users).
+
+- **`wl <question_id>*`**: Exclude question(s) from all future batches
+
+**Example**
+
+- `wl 36306170 35127956`
+
+
+##Room Owner
+
+###Manage users and set access level
+
+Users above >3K are automatically added to the Reviewer privledge level if not present. Room owner can add or change the level for a single user by executing the add user command
+
+`@Queen add user <id_user> <Display name> <access_level>`
+
+ - **`id_user`**: The users id
+
+ - **`Display Name`**: The users display name
+
+ - **`access_level`**: The access level of different commands
+  - `0`: Guest.
+  - `1` Reviewer.
+  - `2` Hammer
+  - `3` Room owner.
+  - `4` Bot owner. (you need to be bot owner to set this level)
+
+**Example**
+
+- `add users 5292302 Petter Friberg 2`  - Add user 5292302 with hammer privledge 
+
+###Index tags
+
+The Queen to cherry pick uses api calls (around 10/20) to scan questions, in high traffic tags this means that only last 2 days of questions are covered. Indexing a tag force the the queen to scan all question last 20 days (hence after this most close vote have age away) and saves to database all question that have atleast 3 close votes. After scanning the questions she will also output statistics (not including delete questions) on closed questions and distribution of close vote count.
+
+Note: Normally there is no need to index a tag more then 1/2 times a day
+
+`@Queen index <tag>`
+
+ - **`tag`**: The tag to scan, it need to be included in our monitored tags
+
+**Example**
+
+- `@Queen index [java]`  - Index the java tag
+
