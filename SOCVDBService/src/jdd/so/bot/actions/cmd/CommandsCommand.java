@@ -39,7 +39,7 @@ public class CommandsCommand extends  BotCommand {
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
 		List<BotCommand> commands = BotCommandsRegistry.getInstance().getCommands();
 		Collections.sort(commands);
-		room.replyTo(event.getMessageId(), "These are available commands");
+		room.replyTo(event.getMessageId(), "These are available commands see also [quick guide](https://github.com/jdd-software/SOCVFinder/blob/master/quickGuide.md) for usage");
 		StringBuilder retMsg = new StringBuilder("");
 		int al = -1;
 		for (BotCommand bc : commands) {

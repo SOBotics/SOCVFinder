@@ -33,7 +33,7 @@ public class HelpCommand extends  BotCommand{
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
-		String retMsg = "This is a chat bot to notify about possibile duplicates and cherry pick questions to review. Reply to bot with `commands` for full command list and see [SOCVFinder](https://github.com/jdd-software/SOCVFinder) for more information";
+		String retMsg = "This is a chat bot to notify about possible duplicates and cherry pick questions to review, see [quick guide](https://github.com/jdd-software/SOCVFinder/blob/master/quickGuide.md) for commands and [SOCVFinder](https://github.com/jdd-software/SOCVFinder) for basic idea of project";
 		room.send(retMsg);
 	}
 	
