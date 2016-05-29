@@ -30,7 +30,7 @@ public abstract class BotCommand implements Comparable<BotCommand> {
 		case ACCESS_LEVEL_RO:
 			return "Room owner";
 		case ACCESS_LEVEL_OWNER:
-			return "Owner";
+			return "Bot owner";
 		default:
 			return "None";
 		}

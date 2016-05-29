@@ -49,7 +49,7 @@ public class AddUserCommand extends BotCommand {
 		try {
 			idUser = Long.parseLong(cmdArray[0]);
 		} catch (NumberFormatException e) {
-			room.replyTo(event.getMessageId(), "User id is not an int usage: " + getCommandUsage());
+			room.replyTo(event.getMessageId(), "User id is not an integer usage: " + getCommandUsage());
 			return;
 		}
 		User userAdding = CloseVoteFinder.getInstance().getUsers().get(event.getUserId());
@@ -71,8 +71,8 @@ public class AddUserCommand extends BotCommand {
 		
 		
 		
-		if (accessLevel<0 || accessLevel>3){
-			room.replyTo(event.getMessageId(), "Access level should be between 0-2");
+		if (accessLevel<BotCommand.ACCESS_LEVEL_NONE || accessLevel>BotCommand.ACCESS_LEVEL_OWNER){
+			room.replyTo(event.getMessageId(), "Access level should be between 0-" + BotCommand.ACCESS_LEVEL_OWNER);
 			return;
 		}
 		
