@@ -59,6 +59,7 @@ public class CloseVoteFinder {
 	private static final String REST_API_PROPERTY = "REST_API";
 
 	private long throttle = 1L * 1000L; // ms
+	private long backOffUntil = 0L;
 	private String apiKey = null;
 	private String restApi = "http://socvr.org:222/api/socv-finder/dump-report";
 
@@ -287,11 +288,25 @@ public class CloseVoteFinder {
 	 * @throws JSONException
 	 */
 	public synchronized JSONObject getJSONObject(String url, NotifyMe notifyMe) throws IOException, JSONException {
+		
+		if (backOffUntil>0){
+			long timeToWait = backOffUntil-System.currentTimeMillis()+1000L; //add a second just to be nice
+			logger.warn("Backing off for " + timeToWait/1000L + "s");
+			try {
+				Thread.sleep(timeToWait);
+			} catch (InterruptedException e) {
+				logger.error("getJSONObject(String, NotifyMe)", e);
+			}
+			backOffUntil = 0L;
+		}
+		
 		long curTime = System.currentTimeMillis();
 		long timeToWait = throttle - (curTime - lastCall);
 		if (logger.isDebugEnabled()) {
 			logger.debug("getJSONObject - Throttle time: " + timeToWait + " ms");
 		}
+		
+		
 		if (timeToWait > 0) {
 			if (notifyMe != null) {
 				notifyMe.message("Throttle for " + timeToWait + " ms to not upset SO");
@@ -429,5 +444,13 @@ public class CloseVoteFinder {
 
 	public List<DuplicateNotifications> getDupHunters() {
 		return dupHunters;
+	}
+
+	public long getBackOffUntil() {
+		return backOffUntil;
+	}
+
+	public void setBackOffUntil(long backoff) {
+		this.backOffUntil = backoff;
 	}
 }

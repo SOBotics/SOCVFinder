@@ -11,21 +11,19 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Properties;
 
-import org.apache.log4j.PropertyConfigurator;
 import org.json.JSONException;
 
 import jdd.so.CloseVoteFinder;
 import jdd.so.api.ApiHandler;
 import jdd.so.api.CherryPickResult;
 import jdd.so.api.model.ApiResult;
-import jdd.so.api.model.ScanStats;
 import jdd.so.bot.actions.filter.NumberFilter;
 import jdd.so.bot.actions.filter.QuestionsFilter;
 import jdd.so.dao.QuestionIndexDao;
 
 public class QuestionScanner {
 	
-	public ScanStats scan(String tag, int nrDays , int minCvCount) throws JSONException, IOException, SQLException{
+	public ApiResult scan(String tag, int nrDays , int minCvCount) throws JSONException, IOException, SQLException{
 		Calendar cal = new GregorianCalendar();
 		cal.add(Calendar.DATE, -1); //lets move back one day...
 		long ed = cal.getTimeInMillis()/1000L;
@@ -52,7 +50,7 @@ public class QuestionScanner {
 		System.out.println("Number of question found: " + cpr.getFilterdQuestions().size());
 		qid.updateIndex(conn,cpr.getFilterdQuestions(), tag);
 		
-		return ar.getScanStatistics();
+		return ar;
 	}
 	
 	

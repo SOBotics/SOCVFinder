@@ -91,6 +91,9 @@ public class CherryPickCommand extends BotCommand {
 		try {
 			// Get questions
 			CherryPickResult cpr = getCherryPick(room.getRoomId(), event.getUserId(), room.getNextBatchNumber(), tags, filter);
+			if (cpr.getApiResult().getBackoff()>0){
+				room.send("SO told me to backoff for " + cpr.getApiResult().getBackoff() + "s, the result is incomplete");
+			}
 			// Filter as requested
 			cpr.filter(filter);
 			if (cpr.getFilterdQuestions().isEmpty()) {
@@ -116,7 +119,7 @@ public class CherryPickCommand extends BotCommand {
 				SimpleDateFormat df = new SimpleDateFormat("MMM dd HH:mm", Locale.US);
 				retMsg += "scanned " + cpr.getApiResult().getNrOfQuestionScanned() + " questions between "
 						+ df.format(new Date(cpr.getApiResult().getFirstDate() * 1000)) + " and " + df.format(new Date(cpr.getApiResult().getLastDate() * 1000))
-						+ " filtered and order " + cpr.getFilterdQuestions().size() + " in " + " [batch " + cpr.getBatchNumber() + "](" + cpr.getBatchUrl()
+						+ " filtered and ordered: " + cpr.getFilterdQuestions().size() + " in " + " [batch " + cpr.getBatchNumber() + "](" + cpr.getBatchUrl()
 						+ ")";
 
 				final String editMessage = "@" + event.getUserName().replaceAll(" ", "") + " " + retMsg;

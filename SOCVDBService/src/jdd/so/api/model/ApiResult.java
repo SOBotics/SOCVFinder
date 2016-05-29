@@ -18,8 +18,10 @@ public class ApiResult {
 	private List<Question> questions;
 	private boolean includeAll;
 	private boolean hasMore;
+	private long backoff;
 	private int nrOfPages;
 	private int quotaRemaining;
+	
 	private ScanStats scanStatistics;
 
 	public ApiResult(boolean includeAll) {
@@ -213,6 +215,18 @@ public class ApiResult {
 
 	public ScanStats getScanStatistics() {
 		return scanStatistics;
+	}
+
+
+
+	public long getBackoff() {
+		return backoff;
+	}
+
+
+
+	public void setBackoff(long backoff) {
+		this.backoff = backoff;
 	}
 
 }
