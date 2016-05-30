@@ -106,7 +106,7 @@ For full command specification based on privilege level see [Quick guide](https:
 
 ## 5. Accounts
 
-This bot is using the [Queen](http://stackoverflow.com/users/6294609/queen) account and is also a registred stack app. The test is currently made in [SOCVFinder](http://chat.stackoverflow.com/rooms/111347/socvfinder) chat room.
+This bot is using the [Queen](http://stackoverflow.com/users/6294609/queen) account and is also a registered stack app. The test is currently made in [SOCVFinder](http://chat.stackoverflow.com/rooms/111347/socvfinder) chat room.
 
 
   [1]: http://i.stack.imgur.com/MrN50.png
