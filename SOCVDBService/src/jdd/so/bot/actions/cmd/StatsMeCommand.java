@@ -53,7 +53,7 @@ public class StatsMeCommand extends StatsCommandAbstract {
 				room.replyTo(event.getMessageId(), "There is no stats available use the done command when you have finished with batch to save review data");
 				return;
 			}
-			String retVal = "    This is your effort that I have registred" + getFilteredTitle(event.getContent()) + getStats(stats,false);
+			String retVal = "    This is your effort that I have registered" + getFilteredTitle(event.getContent()) + getStats(stats,false);
 			room.send(retVal);
 		} catch (SQLException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
