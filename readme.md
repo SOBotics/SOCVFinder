@@ -4,15 +4,15 @@
 
 This bot was develop to address the following issues:
 
-1. The problem of duplicated questions, that not only confuse search engines but also encourage rep hunts with copy and paste answers. SO specifically introduce the [the mighty Mjölnir](http://meta.stackexchange.com/questions/230865/increase-close-vote-weight-for-gold-tag-badge-holders/231212#231212) to address this problem, but to often it is not used for various reasons.
+1. The problem of duplicated questions, that not only confuse search engines but also encourage rep hunts with copy and paste answers. SO specifically introduce the [the mighty MjÃ¶lnir](http://meta.stackexchange.com/questions/230865/increase-close-vote-weight-for-gold-tag-badge-holders/231212#231212) to address this problem, but to often it is not used for various reasons.
 
-2. The inefficiency of current close review que. Their are to many questions in que and to few reviewers, the end result is that the few reviewers often see all their work [age away](http://meta.stackoverflow.com/questions/252584/enough-fuzzying-lets-let-everything-into-the-close-queue-and-age-out-questions) specially if they filter in on low-traffic tags
+2. The inefficiency of current close review que. Their are to many questions and to few reviewers; the end result is that the few reviewers often see all their work [age away](http://meta.stackoverflow.com/questions/252584/enough-fuzzying-lets-let-everything-into-the-close-queue-and-age-out-questions) specially if they filter on low-traffic tags
 
 ## Objectives
 
  1. To provide a means and aids to hammers in finding duplicates faster.
 
- 2. To help users easily identify (and review) questions of certain (customizable) characteristics. A.K.A., "cherry picking", "filtering", etc.
+ 2. To help users easily identify (and review) questions of certain (customizable) characteristics. A.K.A., "cherry picking", "filtering", etc. so that they feel they are making a difference helping the community.
 
 ## 1. Dupe hammer aids
 
@@ -28,24 +28,27 @@ Allow of hammer to search for duplicated questions as they wish indicating max n
 
 ## 2. Enjoyable and targeted reviewing
 
-Leverage the community's work do not let it go to waste if it is good and have some fun doing it. Make your review count!
+**Make your review count!**
+
+Leverage the community's work, if it is good don't let it go to waste and have some fun doing it.
+
 
 ## 2.1 What can make reviewing enjoyable?
 
  - Knowing that your vote counts
- - Talking to a bot,
  - Cherry picking questions,
  - Getting statistics on reviewing (users/tags/rooms).
 
-## 2.2 How can you make your vote count and not let the work of others age away?
+## 2.2 How can you make your vote count.
  
  - Review questions that already have high close vote count.
- - Review questions that will not go to roomba. 
+ - Review questions that will not go to roomba.
+ - Review question togheter with others
 
 
 ## 2.3 Cherry pick your questions
 
-Query the bot for the desired number of questions in tag of choice, with the possibility to specify desired cv count, question score, if not roomba, if has answers, if has accepted answer. 
+Query the bot for the desired number of questions in tag of choice, with the possibility to specify desired cv count, question score, if not roomba, if has answers, if has accepted answer etc. The bot should not return questions already reviewed. 
 
 
 ##2.4 Enjoyable statistics
