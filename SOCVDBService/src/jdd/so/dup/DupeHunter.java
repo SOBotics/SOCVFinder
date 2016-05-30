@@ -131,7 +131,7 @@ public class DupeHunter extends Thread {
 			ChatRoom cr = cb.getChatRoom(roomHunters.getKey());
 			for (int i = 0; i < notifyTheseQuestions.size(); i++) {
 				Question q = notifyTheseQuestions.get(i);
-				String message = "[tag:possible-duplicate] [tag:" + tag + "] [" + q.getTitle() + "](http://stackoverflow.com/questions/"
+				String message = "[tag:possible-duplicate] " + getTags(q) + "[" + q.getTitle() + "](http://stackoverflow.com/questions/"
 						+ q.getQuestionId() + ")";
 				if (i==0){
 					message += getNotifyHunters(cr, huntersInTag);
@@ -141,6 +141,16 @@ public class DupeHunter extends Thread {
 		}
 		
 		
+	}
+
+	private String getTags(Question q) {
+		String retVal = "";
+		if (q!=null && q.getTags()!=null){
+			for (String tag : q.getTags()) {
+				retVal += "[tag:" + tag + "] ";  
+			}
+		}
+		return retVal;
 	}
 
 	private String getNotifyHunters(ChatRoom cr, List<DuplicateNotifications> huntersInTag) {
