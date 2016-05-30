@@ -6,7 +6,7 @@
 
 The process of reviewing is **asking for batch** in desired tag, **review** and send **done** command to notify Queen that the questions have been reviewed to avoid that questions are included in next (10) batches.
 
-**Work flow**
+####Work flow cherry pick on close votes
 
 - `@Queen [java]` - get 20 cherry picked questions in java
 
@@ -14,11 +14,20 @@ The process of reviewing is **asking for batch** in desired tag, **review** and 
 
 - `@Queen done` - report to Queen that you have reviewed the question to avoid them to show up in future batches, note you can see them again with the -all parameter see full commands
 
+####Work flow cherry pick on possible duplicates
 
-These are the additional filters reviewer can apply to the cherry pick
+- `@Queen [c#] dupes` - get 20 possible duplicates in C#
+
+- **Review the questions**
+
+- `@Queen done` - report to Queen that you have reviewed the question to avoid them to show up in future batches.
+
+####Additional filters
+
+These are the filters reviewer can apply to the cherry pick
 
 
-`@Queen <max-questions> <tag>* "dupes" <cv-count>cv <q-score>s <answers> <age>d -all`
+    @Queen <max-questions> <tag>* "dupes" <cv-count>cv <q-score>s <answers> <age>d -all
 
  - **`max-questions`**: The maximum number of questions to return (default 20).
 
@@ -55,20 +64,23 @@ The statistics are gather when the reviewer sends **done** command an api call i
 
 #### My statistics
 
-`@Queen stats me <today|week>` - My statistics
+    @Queen stats me <today|week>
  
   - `today`: Show only today
   - `week` Show this week
   - `` Show all time
 
-`@Queen stats tags <today|week>` - Statistics on different tags
+#### Tag statistics
+
+    @Queen stats tags <today|week>
  
   - `today`: Show only today
   - `week` Show this week
   - `` Show all time
 
+#### Room statistics
 
-`@Queen stats rooms <today|week>` - Statistics between different rooms
+    @Queen stats rooms <today|week>
  
   - `today`: Show only today
   - `week` Show this week
@@ -79,13 +91,13 @@ The statistics are gather when the reviewer sends **done** command an api call i
 `@Queen remove` - Remove last message or message replied to.
 
 
-##Moljnir
+##Hammer/Moljnir
 
 As user opt in for notification in a tag a background thread starts that scans SO on latest question for possible duplications and output these in room where the user has opted in. User will only be pinged if **present in room**, hence leaving the room the notification will continue to stream to room but no ping will be sent.
 
 ###Register to notification
 
-`@Queen opt-in <tag> <algo-type>`
+    @Queen opt-in <tag> <algo-type>
 
  - **`tag`**: The tag in which the duplicate search will be carried out.
 
@@ -93,13 +105,13 @@ As user opt in for notification in a tag a background thread starts that scans S
 
 *Note: currently only pd is supported*
 
-`@Queen opt-in [java] pd`
+    @Queen opt-in [java] pd
 
 ###Remove notifications
 
 If no other user in room have opt-in the duplicate notifications stream will stop.
 
-`@Queen opt-out [java] pd`
+    @Queen opt-out [java] pd
 
 ###Report result of notification
 
@@ -128,7 +140,7 @@ The whitelist gives the possibility to exclude one or multiple questions from fu
 
 Users above >3K are automatically added to the Reviewer privilege level if not present. Room owner can add or change the level for a single user by executing the add user command
 
-`@Queen add user <id_user> <Display name> <access_level>`
+    @Queen add user <id_user> <Display name> <access_level>
 
  - **`id_user`**: The users id
 
@@ -151,7 +163,7 @@ The Queen to cherry pick uses api calls (around 10/20) to scan questions, in hig
 
 Note: Normally there is no need to index a tag more then 1/2 times a day
 
-`@Queen index <tag>`
+    @Queen index <tag>
 
  - **`tag`**: The tag to scan, it need to be included in our monitored tags
 
