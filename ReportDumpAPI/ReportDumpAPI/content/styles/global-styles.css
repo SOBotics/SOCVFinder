@@ -118,6 +118,10 @@ header h1 {
     margin-bottom: 15px;
 }
 
+.reportSubContainer:last-child {
+    margin-bottom: 0;
+}
+
 .reportTitle {
     display: inline;
     text-align: left;

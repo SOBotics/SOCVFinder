@@ -82,7 +82,13 @@ public class CherryPickCommand extends BotCommand {
 		// load previous questions displayed
 		if (!message.contains("-all")) {
 			try {
-				filter.setExcludeQuestions(new BatchDAO().getLastQuestionsReviewed(CloseVoteFinder.getInstance().getConnection(), event.getUserId()));
+				BatchDAO bd = new BatchDAO();
+				StringBuilder sb = new StringBuilder();
+				sb.append(bd.getLastQuestionsReviewed(CloseVoteFinder.getInstance().getConnection(), event.getUserId()));
+				sb.append(bd.getQuestionsInOpenBatches(CloseVoteFinder.getInstance().getConnection(),tags));
+				if (sb.length()>0){
+					filter.setExcludeQuestions(sb.toString());
+				}
 			} catch (SQLException e1) {
 				logger.error("runCommand(ChatRoom, PingMessageEvent) - Error loading previous reviews", e1);
 			}
