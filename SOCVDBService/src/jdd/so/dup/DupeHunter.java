@@ -14,8 +14,7 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.json.JSONException;
-import org.jsoup.Jsoup;
-import org.jsoup.safety.Whitelist;
+import org.jsoup.parser.Parser;
 
 import fr.tunaki.stackoverflow.chat.User;
 import jdd.so.CloseVoteFinder;
@@ -133,7 +132,7 @@ public class DupeHunter extends Thread {
 			ChatRoom cr = cb.getChatRoom(roomHunters.getKey());
 			for (int i = 0; i < notifyTheseQuestions.size(); i++) {
 				Question q = notifyTheseQuestions.get(i);
-				String message = "[tag:possible-duplicate] " + getTags(q) + "[" + Jsoup.clean(q.getTitle(), Whitelist.simpleText()) + "](http://stackoverflow.com/questions/"
+				String message = "[tag:possible-duplicate] " + getTags(q) + "[" + Parser.unescapeEntities(q.getTitle(), false) + "](http://stackoverflow.com/questions/"
 						+ q.getQuestionId() + ")";
 				if (i==0){
 					message += getNotifyHunters(cr, huntersInTag);
