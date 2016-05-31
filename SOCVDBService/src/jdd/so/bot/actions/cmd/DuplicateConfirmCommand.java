@@ -36,26 +36,41 @@ public class DuplicateConfirmCommand extends BotCommand {
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
 		long parentMessage = event.getParentMessageId();
 		Message pdm = room.getRoom().getMessage(parentMessage);
-		if (pdm==null){
+		if (pdm == null) {
 			room.replyTo(event.getMessageId(), "Could not find message your are replying to");
 			return;
 		}
-		String c = pdm.getContent();
-		if (!c.contains("possible-duplicate")){
-			room.replyTo(event.getMessageId(), "Your reply was not direct to a possibile duplicate notification");
+		String c = pdm.getPlainContent();
+		if (!c.contains("[tag:possible-duplicate]")) {
+			room.replyTo(event.getMessageId(), "Your reply was not direct to a possible duplicate notification");
 			return;
 		}
-		
-		confirm(room, event.getMessageId(), parentMessage);
+
+		confirm(room, event, c);
 	}
-	
-	public void confirm(ChatRoom room, long messageId, long parentMessageId){
-		
-		room.delete(parentMessageId).handleAsync((mId, thr) -> {
+
+	public void confirm(ChatRoom room, PingMessageEvent event, String content) {
+
+		String edit = content;
+		if (edit.contains("@")) {
+			edit = edit.substring(0, edit.indexOf('@')).trim();
+		}
+		if (edit.contains("--- f") || edit.contains("--- k")) {
+			edit += ", k" + event.getUserName();
+		} else {
+			int lastTag = edit.lastIndexOf("[tag:");
+			int closeTag = edit.indexOf(']', lastTag);
+			if (closeTag > 0) {
+				edit = edit.substring(0, closeTag + 2) + " ---" + edit.substring(closeTag + 2, edit.length()).trim() + "--- k by " + event.getUserName();
+			}
+		}
+
+		room.edit(event.getParentMessageId(), edit).handleAsync((mId, thr) -> {
 			if (thr != null)
-				room.replyTo(messageId, "Thank you for confirming the duplicate").join();
+				return room.replyTo(event.getMessageId(), "Thank you for confirming the duplicate").join();
 			return mId;
 		});
+
 	}
 
 }

@@ -52,9 +52,9 @@ public class DuplicateWhiteListCommand extends BotCommand {
 			room.replyTo(event.getMessageId(), "Could not find message your are replying to");
 			return;
 		}
-		String c = pdm.getContent();
-		if (!c.contains("possible-duplicate")) {
-			room.replyTo(event.getMessageId(), "Your reply was not direct to a possibile duplicate notification");
+		String c = pdm.getPlainContent();
+		if (!c.contains("[tag:possible-duplicate]")) {
+			room.replyTo(event.getMessageId(), "Your reply was not direct to a possible duplicate notification");
 			return;
 		}
 
@@ -62,20 +62,22 @@ public class DuplicateWhiteListCommand extends BotCommand {
 		try {
 			String match = "stackoverflow.com/questions/";
 			int startPos = c.lastIndexOf(match);
-			String qId = c.substring(startPos + match.length(), c.indexOf("\"", startPos + match.length()));
+			String qId = c.substring(startPos + match.length(), c.indexOf(')', startPos + match.length()));
 			questionId = Long.parseLong(qId);
-			System.out.println(questionId);
+			if (logger.isDebugEnabled()) {
+				logger.debug("runCommand(ChatRoom, PingMessageEvent) - " + questionId);
+			}
 		} catch (RuntimeException e) {
-			e.printStackTrace();
+			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
 			room.replyTo(event.getMessageId(), "Sorry could not retrive question id");
 			return;
 		}
 
-		whiteList(room, questionId, event.getUserId(), event.getMessageId(), parentMessageId);
+		whiteList(room, questionId, event, c);
 	}
 
-	public void whiteList(ChatRoom room, long questionId, long userId, long messageId, long parentMessageId) {
-		WhiteList wl = new WhiteList(questionId, userId, new Date().getTime() / 1000L);
+	public void whiteList(ChatRoom room, long questionId, PingMessageEvent event, String content) {
+		WhiteList wl = new WhiteList(questionId, event.getUserId(), new Date().getTime() / 1000L);
 		try {
 			new WhitelistDAO().insertOrUpdate(CloseVoteFinder.getInstance().getConnection(), wl);
 			CloseVoteFinder.getInstance().getWhiteList().add(questionId);
@@ -85,12 +87,24 @@ public class DuplicateWhiteListCommand extends BotCommand {
 			return;
 		}
 
-		room.delete(parentMessageId).handleAsync((mId, thr) -> {
+		String edit = content;
+		if (edit.contains("@")) {
+			edit = edit.substring(0, edit.indexOf('@')).trim();
+		}
+		if (edit.contains("--- f") || edit.contains("--- k")) {
+			edit += ", f" + event.getUserName();
+		} else {
+			int lastTag = edit.lastIndexOf("[tag:");
+			int closeTag = edit.indexOf(']', lastTag);
+			if (closeTag > 0) {
+				edit = edit.substring(0, closeTag + 1) + " ---" + edit.substring(closeTag + 1, edit.length()).trim() + "--- f by " + event.getUserName();
+			}
+		}
+		room.edit(event.getParentMessageId(), edit).handleAsync((mId, thr) -> {
 			if (thr != null)
-				room.replyTo(messageId, "The possibile duplicate has been white listed").join();
+				return room.replyTo(event.getMessageId(), "The possible duplicate has been white listed").join();
 			return mId;
 		});
-
 	}
 
 }

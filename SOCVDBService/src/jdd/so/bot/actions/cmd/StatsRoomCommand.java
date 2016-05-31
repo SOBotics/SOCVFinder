@@ -20,7 +20,7 @@ public class StatsRoomCommand extends StatsCommandAbstract{
 
 	@Override
 	public String getMatchCommandRegex() {
-		return "(?i)(stats rooms|stats room)";
+		return "(?i)(stats rooms|stats room|room stat|room stats)";
 	}
 
 	@Override

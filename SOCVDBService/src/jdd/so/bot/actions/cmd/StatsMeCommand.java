@@ -20,7 +20,7 @@ public class StatsMeCommand extends StatsCommandAbstract {
 
 	@Override
 	public String getMatchCommandRegex() {
-		return "(?i)(stats me|stat me|stats my|stats mine)";
+		return "(?i)(stats me|stat me|stats my|stats mine|my stats|my stat)";
 	}
 
 	@Override
