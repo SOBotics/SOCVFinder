@@ -40,12 +40,40 @@ public class BatchDAO {
 
 		return batchNumbers;
 	}
+	
+	public String getQuestionsInOpenBatches(Connection connection, String tag) throws SQLException{
+		int timeOffSetMin = 20; //Within 20 minutes
+		long batchStart = System.currentTimeMillis()/1000L - (timeOffSetMin*60);
+		
+		String sql = "SELECT GROUP_CONCAT(questions SEPARATOR '') from batch " +
+					"WHERE batch_date_end=? and batch_date_start>=? and searchTags=?";
+
+		
+		
+		String questions = "";
+		PreparedStatement std = null;
+		ResultSet rs = null;
+		try {
+			std = connection.prepareStatement(sql);
+			std.setLong(1, 0L);
+			std.setLong(2, batchStart);
+			std.setString(3, tag);
+			rs = std.executeQuery();
+			if (rs.next()) {
+				questions = rs.getString(1);
+			}
+		} finally {
+			ConnectionHandler.cleanUpQuery(std, rs);
+		}
+		return questions;
+		
+	}
 
 	public String getLastQuestionsReviewed(Connection connection, long idUser) throws SQLException {
 		String sql = "SELECT GROUP_CONCAT(questions SEPARATOR '') from (select distinct questions " + "FROM batch " + "WHERE user_id = " + idUser
 				+ " AND batch_date_end > 0 " + "ORDER BY batch_date_end desc " + "LIMIT 20) as br";
 
-		String questions = null;
+		String questions = "";
 		Statement std = null;
 		ResultSet rs = null;
 		try {
