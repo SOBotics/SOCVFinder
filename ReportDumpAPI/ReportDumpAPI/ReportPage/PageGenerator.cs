@@ -81,7 +81,6 @@ namespace ReportDumpAPI.ReportPage
         {
             var tagsStr = json["search_tag"].ToString();
             tagsStr = tagsStr.Remove(0, 1).Substring(0, tagsStr.Length - 2);
-            tagsStr = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(tagsStr);
 
             var tagSplit = tagsStr.Split(';');
 
