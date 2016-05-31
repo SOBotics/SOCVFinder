@@ -43,7 +43,7 @@ public class BatchDAO {
 
 	public String getLastQuestionsReviewed(Connection connection, long idUser) throws SQLException {
 		String sql = "SELECT GROUP_CONCAT(questions SEPARATOR '') from (select distinct questions " + "FROM batch " + "WHERE user_id = " + idUser
-				+ " AND batch_date_end > 0 " + "ORDER BY batch_date_end desc " + "LIMIT 10) as br";
+				+ " AND batch_date_end > 0 " + "ORDER BY batch_date_end desc " + "LIMIT 20) as br";
 
 		String questions = null;
 		Statement std = null;
