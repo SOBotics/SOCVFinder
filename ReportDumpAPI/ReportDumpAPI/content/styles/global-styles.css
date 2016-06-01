@@ -21,6 +21,14 @@ a {
     text-decoration: none;
 }
 
+select {
+    border-width: 0;
+    font-family: QuickSand;
+    font-size: 1rem;
+    color: #F8F8F8;
+    background-color: #1A1A1A;
+}
+
 /* BODY */
 
 .bodyLight {
@@ -34,6 +42,15 @@ a {
 
 .bodyLight a:visited {
     color: #7DB3F1;
+}
+
+.bodyLight select {
+    color: #1A1A1A;
+    background-color: #F8F8F8;
+}
+
+.bodyLight #openAllReports {
+    color: #0022CC;
 }
 
 .bodyLight .report {
@@ -96,20 +113,27 @@ header h1 {
     margin: 0 auto;
 }
 
+.reportHeaderFunctions {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 5% 12.5px 5%;
+}
+
+#openAllReports {
+    color: #5DABFF;
+    cursor: pointer;
+}
+
 .reportTitleTag {
     font-family: QuickSandBold;
 }
 
 .report {
-    padding: 0px 5% 25px 5%;
+    padding: 25px 5% 0px 5%;
     margin-bottom: 25px;
     border-style: solid;
-    border-width: 0px 0px 1px 0px;
+    border-width: 1px 0px 0px 0px;
     border-image: radial-gradient(#F8F8F8 66%, #1A1A1A 97.5%) 1;
-}
-
-.report:last-child {
-    border-width: 0;
 }
 
 .reportSubContainer {

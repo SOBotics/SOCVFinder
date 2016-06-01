@@ -118,6 +118,30 @@ namespace ReportDumpAPI.ReportPage
             var qs = JSON.Deserialize<Dictionary<string, object>[]>(qsJson);
             var list = new StringBuilder("<div>");
 
+            // Start of open all/sort by functions.
+            list.AppendLine("<div class=\"reportHeaderFunctions\">");
+
+            // Open all button.
+            list.AppendLine("<span id=\"openAllReports\">Open all</span>");
+
+            // Sort by select.
+            list.AppendLine("<span>");
+            list.AppendLine("Sort by:");
+
+            list.AppendLine("<select id=\"sortBy\">");
+            list.AppendLine("<option>Age</option>");
+            list.AppendLine("<option>Answers</option>");
+            list.AppendLine("<option selected>Close votes</option>");
+            list.AppendLine("<option>Score</option>");
+            list.AppendLine("<option>Views</option>");
+            list.AppendLine("</select>");
+
+            // End of sort by select.
+            list.AppendLine("</span>");
+
+            // End of Report functions.
+            list.AppendLine("</div>");
+
             foreach (var q in qs)
             {
                 var qHtml = GetQuestionHtml(q, dupes);
@@ -171,7 +195,7 @@ namespace ReportDumpAPI.ReportPage
             // Question age.
             html.AppendLine("<div class=\"postAge\">");
             html.AppendLine("<span class=\"valueName\">Posted:</span> ");
-            html.AppendLine($"<span class=\"postTime\">{age}<span>");
+            html.AppendLine($"<span class=\"postTime\" data-unixtime=\"{age}\"><span>");
             html.AppendLine("</div>");
 
             // View count.
