@@ -29,7 +29,7 @@ The users will only be pinged if they're present in the room. It is possible to 
 
 Allow users to search for questions with duplicate flags or close-votes as they wish, possibly indicating filter options, like a max number of questions to review, a date span, a score count etc. This is similar to the tag filter in the `/review` interface but provides more filtering options and abstracts itself from the current review interface.
 
-Screen-shot of an example of iOS duplicate search:
+Screen-shot of an example of Java duplicate search:
 
 [![enter image description here][1]][1]
 
@@ -57,7 +57,7 @@ Leverage the community's work, don't let it go to waste and have some fun doing 
 
 Query the bot for the desired number of questions in tags of choice, with the possibility to specify a desired CV count, question score, if not roomba, if has answers, if has accepted answer etc. The bot won't return questions already reviewed.
 
-Screen-shot of an example of a cherry-pick request with no filters in the Java tag:
+Screen-shot of an example of a cherry-pick request with a filter "3 close-votes" in the Swift tag:
 
 [![enter image description here][2]][2]
 
@@ -67,7 +67,7 @@ Query the bot for some statistics so you can enjoy your efforts and see the stat
 
 Examples:
 
-    This is your effort that I have registred all time
+    This is your effort that I have registered all time
        nr [tag]             Reviews  CV virt.  CV count    Closed
     -----------------------------------------------------------------
        1. java                  370       221       216        87
@@ -108,6 +108,11 @@ For full command specification based on privilege level see [Quick guide](https:
 
 This bot is using the [Queen](http://stackoverflow.com/users/6294609/queen) account and is also a registered stack app. The test is currently made in [SOCVFinder](http://chat.stackoverflow.com/rooms/111347/socvfinder) chat room.
 
+## 6. Source code
 
-  [1]: http://i.stack.imgur.com/MrN50.png
-  [2]: http://i.stack.imgur.com/X4gI8.png
+Source code is available on GitHub at [/jdd-software/SOCVFinder][3].
+
+
+  [1]: http://i.stack.imgur.com/4DxFY.png
+  [2]: http://i.stack.imgur.com/46g0h.png
+  [3]: https://github.com/jdd-software/SOCVFinder
