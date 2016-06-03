@@ -87,7 +87,7 @@ public class Comment {
 		this.reputation = reputation;
 	}
 
-	public boolean isPossibileDuplicateComment() {
+	public boolean isPossibleDuplicateComment() {
 		return body != null && body.toLowerCase().contains("possible duplicate");
 	}
 

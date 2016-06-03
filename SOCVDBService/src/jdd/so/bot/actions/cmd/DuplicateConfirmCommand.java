@@ -24,7 +24,7 @@ public class DuplicateConfirmCommand extends BotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Confirm that possibile duplicate is closed";
+		return "Confirm that possible duplicate is closed";
 	}
 
 	@Override

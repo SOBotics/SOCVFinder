@@ -7,6 +7,7 @@ import jdd.so.bot.actions.cmd.AddUserCommand;
 import jdd.so.bot.actions.cmd.AiChatCommand;
 import jdd.so.bot.actions.cmd.ApiQuotaCommand;
 import jdd.so.bot.actions.cmd.BatchDoneCommand;
+import jdd.so.bot.actions.cmd.BatchIgnoreCommand;
 import jdd.so.bot.actions.cmd.CherryPickCommand;
 import jdd.so.bot.actions.cmd.CommandsCommand;
 import jdd.so.bot.actions.cmd.DeleteCommentCommand;
@@ -25,7 +26,7 @@ import jdd.so.bot.actions.cmd.WhiteListCommand;
 
 
 /**
- * The registry (instance) of all possibile commands
+ * The registry (instance) of all possible commands
  * @author Petter Friberg
  *
  */
@@ -60,6 +61,7 @@ public class BotCommandsRegistry {
 		commands.add(new OptOutCommand());
 		commands.add(new ApiQuotaCommand());
 		commands.add(new BatchDoneCommand());
+		commands.add(new BatchIgnoreCommand());
 		commands.add(new IndexCommand());
 		commands.add(new CherryPickCommand());
 		commands.add(new StatsMeCommand());

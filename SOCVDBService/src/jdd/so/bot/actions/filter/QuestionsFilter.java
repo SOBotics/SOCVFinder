@@ -114,7 +114,7 @@ public class QuestionsFilter {
 		}
 		
 		if (filterDupes){
-			if (!q.isPossibileDuplicate()){
+			if (!q.isPossibleDuplicate()){
 				return false;
 			}
 		}

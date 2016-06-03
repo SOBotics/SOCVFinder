@@ -6,8 +6,8 @@ public class CVStats {
 	private int numberOfClosed;
 	private int[] cvCounts;
 	private int[] cvCountsNoRoomba;
-	private int possibileDupes;
-	private int possibileDupesNoRoomba;
+	private int possibleDupes;
+	private int possibleDupesNoRoomba;
 	private String dayKey;
 	
 	public CVStats(){
@@ -62,23 +62,23 @@ public class CVStats {
 	}
 
 
-	public int getPossibileDupes() {
-		return possibileDupes;
+	public int getPossibleDupes() {
+		return possibleDupes;
 	}
 
 
-	public void setPossibileDupes(int possibileDupes) {
-		this.possibileDupes = possibileDupes;
+	public void setPossibleDupes(int possibleDupes) {
+		this.possibleDupes = possibleDupes;
 	}
 
 
-	public int getPossibileDupesNoRoomba() {
-		return possibileDupesNoRoomba;
+	public int getPossibleDupesNoRoomba() {
+		return possibleDupesNoRoomba;
 	}
 
 
-	public void setPossibileDupesNoRoomba(int possibileDupesNoRoomba) {
-		this.possibileDupesNoRoomba = possibileDupesNoRoomba;
+	public void setPossibleDupesNoRoomba(int possibleDupesNoRoomba) {
+		this.possibleDupesNoRoomba = possibleDupesNoRoomba;
 	}
 
 
@@ -98,8 +98,8 @@ public class CVStats {
 		return cvCounts[cvNr-1] + " (" + cvCountsNoRoomba[cvNr-1] + ")";
 	}
 
-	public String getCVPossibileDupeCount(){
-		return possibileDupes + "(" + possibileDupesNoRoomba + ")";
+	public String getCVPossibleDupeCount(){
+		return possibleDupes + "(" + possibleDupesNoRoomba + ")";
 	}
 	public void addToStats(Question q) {
 		this.numberOfQuestions++;
@@ -114,10 +114,10 @@ public class CVStats {
 				cvCountsNoRoomba[cvCount-1]++;
 			}
 		}
-		if (q.isPossibileDuplicate()){
-			this.possibileDupes++;
+		if (q.isPossibleDuplicate()){
+			this.possibleDupes++;
 			if (!q.isRoomba()){
-				this.possibileDupesNoRoomba++;
+				this.possibleDupesNoRoomba++;
 			}
 		}
 		

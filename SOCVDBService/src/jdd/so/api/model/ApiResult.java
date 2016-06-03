@@ -7,7 +7,7 @@ import java.util.List;
 import jdd.so.CloseVoteFinder;
 import jdd.so.api.CherryPickResult;
 import jdd.so.api.CloseVoteComparator;
-import jdd.so.api.PossibileDuplicateComparator;
+import jdd.so.api.PossibleDuplicateComparator;
 
 /**
  * The result from API call
@@ -98,7 +98,7 @@ public class ApiResult {
 			if (question.isAlmostRoomba()) {
 				roomba++;
 			}
-			if (question.isPossibileDuplicate()) {
+			if (question.isPossibleDuplicate()) {
 				nrDupes++;
 				if (!question.isRoomba()) {
 					nrDupesNoRoomba++;
@@ -119,10 +119,10 @@ public class ApiResult {
 		return retVal;
 	}
 	
-	public List<Question> getPossibileDuplicates(){
+	public List<Question> getPossibleDuplicates(){
 		List<Question> pd = new ArrayList<>();
 		for (Question question : questions) {
-			if (question.isPossibileDuplicate()){
+			if (question.isPossibleDuplicate()){
 				pd.add(question);
 			}
 		}
@@ -150,7 +150,7 @@ public class ApiResult {
 			if (question.isAlmostRoomba()) {
 				closeToRoomba++;
 			}
-			if (question.isPossibileDuplicate()) {
+			if (question.isPossibleDuplicate()) {
 				nrDupes++;
 				if (!question.isRoomba()) {
 					nrDupesNoRoomba++;
@@ -174,8 +174,8 @@ public class ApiResult {
 
 		html += "<h2>Questions</h2>";
 		if (!pdQ.isEmpty()) {
-			Collections.sort(pdQ,new PossibileDuplicateComparator());
-			html += "<h3>Possibile duplicates</h3>";
+			Collections.sort(pdQ,new PossibleDuplicateComparator());
+			html += "<h3>Possible duplicates</h3>";
 			html += "<table width=\"100%\" border=\"1\" style=\"border-collapse: collapse;\">" + CherryPickResult.getTableHeader();
 			int nr = 1;
 			for (Question question : pdQ) {

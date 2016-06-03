@@ -88,7 +88,7 @@ public class Question {
 				Comment c = Comment.getComment(jc);
 				cList.add(c);
 				// index of first duplicate comment
-				if (q.getDuplicateCommentIndex() < 0 && c.isPossibileDuplicateComment()) {
+				if (q.getDuplicateCommentIndex() < 0 && c.isPossibleDuplicateComment()) {
 					q.setDuplicateCommentIndex(n);
 				}
 				// check if any response from op
@@ -265,7 +265,7 @@ public class Question {
 		return acceptedAnswerId > 0;
 	}
 
-	public boolean isPossibileDuplicate() {
+	public boolean isPossibleDuplicate() {
 		if (duplicateCommentIndex<0){
 			return false;
 		}
@@ -399,7 +399,7 @@ public class Question {
 
 	@Override
 	public String toString() {
-		String retVal = questionId + ": CV" + closeVoteCount + " DUP=" + getFixedYesNo(isPossibileDuplicate()) + " DV" + deleteVoteCount + " " + getTimeAgo()
+		String retVal = questionId + ": CV" + closeVoteCount + " DUP=" + getFixedYesNo(isPossibleDuplicate()) + " DV" + deleteVoteCount + " " + getTimeAgo()
 				+ ", " + formatScore(score) + " ";
 		if (isRoomba()) {
 			retVal += "(R) ";

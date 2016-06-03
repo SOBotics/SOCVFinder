@@ -72,7 +72,7 @@ public class DupeHunter extends Thread {
 				ApiResult ar;
 				try {
 					ar = apiHandler.getQuestions(tag, 2, false, null);
-					List<Question> questions = ar.getPossibileDuplicates();
+					List<Question> questions = ar.getPossibleDuplicates();
 					Collections.sort(questions, new LastCommentComparator());
 					List<Question> notifyTheseQuestions = new ArrayList<>();
 					Long currentCommentDate = lastCommentDate.get(tag);
@@ -176,7 +176,7 @@ public class DupeHunter extends Thread {
 		ApiResult ar;
 		try {
 			ar = apiHandler.getQuestions(null, 4, false, null);
-			List<Question> questions = ar.getPossibileDuplicates();
+			List<Question> questions = ar.getPossibleDuplicates();
 			Collections.sort(questions, new LastCommentComparator());
 			List<Question> notifyTheseQuestions = new ArrayList<>();
 			Long currentCommentDate = lastCommentDate.get("all");

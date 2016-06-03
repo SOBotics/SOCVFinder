@@ -185,6 +185,13 @@ public class BatchDAO {
 		return b;
 	}
 	
+	public void delete(Connection connection,long roomId, long messageId) throws SQLException {
+		String sql = "DELETE from batch where room_id=" + roomId + " AND message_id=" + messageId;
+		Statement std = connection.createStatement();
+		std.execute(sql);
+		std.close();
+	}
+	
 	public List<Stats> getTagsStats(Connection connection, long fromDate) throws SQLException {
 		return getTagStats(connection, 0, fromDate);
 	}
@@ -230,5 +237,7 @@ public class BatchDAO {
 		}
 		return retList;
 	}
+
+	
 
 }

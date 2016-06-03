@@ -73,7 +73,7 @@ public class BatchDoneCommand extends BotCommand {
 		}
 
 		if (b == null) {
-			room.replyTo(event.getMessageId(), "Sorry could not undertand which batch you are refeering to");
+			room.replyTo(event.getMessageId(), "Sorry, could not understand the batch that you are referring to.");
 			return;
 		}
 		

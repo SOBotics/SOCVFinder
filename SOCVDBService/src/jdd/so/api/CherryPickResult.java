@@ -55,7 +55,7 @@ public class CherryPickResult {
 		this.filter = questionFilter;
 		Comparator<Question> sorter;
 		if (questionFilter.isFilterDupes()) {
-			sorter = new PossibileDuplicateComparator();
+			sorter = new PossibleDuplicateComparator();
 		} else {
 			sorter = new CloseVoteComparator();
 		}

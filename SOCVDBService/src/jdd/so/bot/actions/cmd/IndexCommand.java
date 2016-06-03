@@ -107,13 +107,13 @@ public class IndexCommand extends BotCommand {
 				// Will not happen... I hope
 			}
 			formatter.format("%10s%15d%10d%10s%10s%10s%10s%10s", "    " + date, ds.getNumberOfQuestions(), ds.getNumberOfClosed(), ds.getCVCountAt(1),
-					ds.getCVCountAt(2), ds.getCVCountAt(3), ds.getCVCountAt(4), ds.getCVPossibileDupeCount());
+					ds.getCVCountAt(2), ds.getCVCountAt(3), ds.getCVCountAt(4), ds.getCVPossibleDupeCount());
 		}
 		sb.append("\n    " + new String(new char[85]).replace("\0", "-"));
 		CVStats ts = ss.getTotalStats();
 		sb.append("\n");
 		formatter.format("%10s%15d%10d%10s%10s%10s%10s%10s", "    TOTAL", ts.getNumberOfQuestions(), ts.getNumberOfClosed(), ts.getCVCountAt(1),
-				ts.getCVCountAt(2), ts.getCVCountAt(3), ts.getCVCountAt(4), ts.getCVPossibileDupeCount());
+				ts.getCVCountAt(2), ts.getCVCountAt(3), ts.getCVCountAt(4), ts.getCVPossibleDupeCount());
 		formatter.close();
 		return sb.toString();
 

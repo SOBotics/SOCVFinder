@@ -5,11 +5,11 @@ import java.util.Comparator;
 import jdd.so.api.model.Question;
 
 /**
- * Order the possibile duplicates before output
+ * Order the possible duplicates before output
  * @author Petter Friberg
  *
  */
-public class PossibileDuplicateComparator implements Comparator<Question> {
+public class PossibleDuplicateComparator implements Comparator<Question> {
 
 	@Override
 	public int compare(Question o1, Question o2) {

@@ -19,7 +19,7 @@ public class ChatRoom {
 	private ChatBot bot;
 	private Room room;
 	private int currentBatchNumber;
-	private long lastPossibileDupComment; //unix time stamp of last comment
+	private long lastPossibleDupComment; //unix time stamp of last comment
 	private boolean enableAi;
 	private Chat chatSession;
 	private CompletableFuture<Long> lastMessage;
@@ -95,12 +95,12 @@ public class ChatRoom {
 		this.currentBatchNumber = currentBatchNumber;
 	}
 
-	public long getLastPossibileDupComment() {
-		return lastPossibileDupComment;
+	public long getLastPossibleDupComment() {
+		return lastPossibleDupComment;
 	}
 
-	public void setLastPossibileDupComment(long lastPossibileDupComment) {
-		this.lastPossibileDupComment = lastPossibileDupComment;
+	public void setLastPossibleDupComment(long lastPossibleDupComment) {
+		this.lastPossibleDupComment = lastPossibleDupComment;
 	}
 
 	public boolean isEnableAi() {

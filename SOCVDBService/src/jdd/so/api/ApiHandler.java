@@ -95,7 +95,7 @@ public class ApiHandler {
 	}
 
 	private void addDuplicationTarget(ApiResult qr, NotifyMe notifyMe) throws JSONException, IOException {
-		List<Question> dupes = qr.getPossibileDuplicates();
+		List<Question> dupes = qr.getPossibleDuplicates();
 		StringBuilder questionQuery = new StringBuilder();
 		Map<Long, Question> dupMap = new HashMap<Long, Question>();
 		int cq = 0;
