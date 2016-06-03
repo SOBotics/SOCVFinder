@@ -80,12 +80,16 @@ public class CherryPickCommand extends BotCommand {
 
 		CompletableFuture<Long> sentId = room.send("All right, dear, working on it...");
 		// load previous questions displayed
+		String openInOtherBatches = null;
 		if (!message.contains("-all")) {
 			try {
 				BatchDAO bd = new BatchDAO();
 				StringBuilder sb = new StringBuilder();
 				sb.append(bd.getLastQuestionsReviewed(CloseVoteFinder.getInstance().getConnection(), event.getUserId()));
-				sb.append(bd.getQuestionsInOpenBatches(CloseVoteFinder.getInstance().getConnection(),tags));
+				openInOtherBatches = bd.getQuestionsInOpenBatches(CloseVoteFinder.getInstance().getConnection(),tags);
+				if (openInOtherBatches!=null){
+					sb.append(openInOtherBatches);
+				}
 				if (sb.length()>0){
 					filter.setExcludeQuestions(sb.toString());
 				}
@@ -103,7 +107,11 @@ public class CherryPickCommand extends BotCommand {
 			// Filter as requested
 			cpr.filter(filter);
 			if (cpr.getFilterdQuestions().isEmpty()) {
-				room.replyTo(event.getMessageId(), "Sorry your query did not produce any result");
+				String rpl = "Sorry your query did not produce any result";
+				if (openInOtherBatches!=null && openInOtherBatches.length()>0){
+					rpl +=", some questions are locked in other batches, try later";
+				}
+				room.replyTo(event.getMessageId(), rpl);
 				return;
 			}
 
@@ -127,6 +135,10 @@ public class CherryPickCommand extends BotCommand {
 						+ df.format(new Date(cpr.getApiResult().getFirstDate() * 1000)) + " and " + df.format(new Date(cpr.getApiResult().getLastDate() * 1000))
 						+ " filtered and ordered: " + cpr.getFilterdQuestions().size() + " in " + " [batch " + cpr.getBatchNumber() + "](" + cpr.getBatchUrl()
 						+ ")";
+				
+				if (openInOtherBatches!=null && openInOtherBatches.length()>0){
+					retMsg +=" There are other questions locked in open batches";
+				}
 
 				final String editMessage = "@" + event.getUserName().replaceAll(" ", "") + " " + retMsg;
 				final String replyMessage = retMsg;

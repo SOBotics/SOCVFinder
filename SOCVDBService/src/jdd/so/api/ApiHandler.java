@@ -175,8 +175,8 @@ public class ApiHandler {
 		}
 		ar.setHasMore(response.getBoolean("has_more"));
 		if (response.has("backoff")){
-			long backOff = response.getLong("backoff")*1000L; //its in seconds
-			CloseVoteFinder.getInstance().setBackOffUntil(System.currentTimeMillis()+backOff);
+			long backOff = response.getLong("backoff"); //its in seconds
+			CloseVoteFinder.getInstance().setBackOffUntil(System.currentTimeMillis()+(backOff*1000L));
 			ar.setBackoff(backOff);
 			ar.setHasMore(false); //we retrun with what we have
 		}

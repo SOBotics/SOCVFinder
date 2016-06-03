@@ -36,12 +36,12 @@ public class DuplicateWhiteListCommand extends BotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Whitelist and remove possibile duplicate notification";
+		return "Indicate as non duplicate if wl add also to white list";
 	}
 
 	@Override
 	public String getCommandUsage() {
-		return "f";
+		return "f <wl>";
 	}
 
 	@Override
@@ -77,14 +77,19 @@ public class DuplicateWhiteListCommand extends BotCommand {
 	}
 
 	public void whiteList(ChatRoom room, long questionId, PingMessageEvent event, String content) {
-		WhiteList wl = new WhiteList(questionId, event.getUserId(), new Date().getTime() / 1000L);
-		try {
-			new WhitelistDAO().insertOrUpdate(CloseVoteFinder.getInstance().getConnection(), wl);
-			CloseVoteFinder.getInstance().getWhiteList().add(questionId);
-		} catch (SQLException e) {
-			logger.error("whiteList(ChatRoom, long, long, long, long)", e);
-			room.send("Whitelist to database faild, check stack trace @Petter");
-			return;
+		boolean wled = false;
+		if (content.toLowerCase().contains(" wl")){
+			WhiteList wl = new WhiteList(questionId, event.getUserId(), new Date().getTime() / 1000L);
+			try {
+				new WhitelistDAO().insertOrUpdate(CloseVoteFinder.getInstance().getConnection(), wl);
+				CloseVoteFinder.getInstance().getWhiteList().add(questionId);
+				room.replyTo(event.getMessageId(), "Question have been whitelisted");
+				wled = true;
+			} catch (SQLException e) {
+				logger.error("whiteList(ChatRoom, long, long, long, long)", e);
+				room.send("Whitelist to database faild, check stack trace @Petter");
+				return;
+			}
 		}
 
 		String edit = content;
@@ -100,9 +105,11 @@ public class DuplicateWhiteListCommand extends BotCommand {
 				edit = edit.substring(0, closeTag + 1) + " ---" + edit.substring(closeTag + 1, edit.length()).trim() + "--- f by " + event.getUserName();
 			}
 		}
+		boolean replyIfNoEdit =!wled;
 		room.edit(event.getParentMessageId(), edit).handleAsync((mId, thr) -> {
-			if (thr != null)
-				return room.replyTo(event.getMessageId(), "The possible duplicate has been white listed").join();
+			if (thr != null&&replyIfNoEdit){
+				return room.replyTo(event.getMessageId(), "Marked as non duplicate").join();
+			}
 			return mId;
 		});
 	}

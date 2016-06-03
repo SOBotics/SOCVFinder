@@ -42,7 +42,7 @@ public class BatchDAO {
 	}
 	
 	public String getQuestionsInOpenBatches(Connection connection, String tag) throws SQLException{
-		int timeOffSetMin = 20; //Within 20 minutes
+		int timeOffSetMin = 10; //Within 10 minutes
 		long batchStart = System.currentTimeMillis()/1000L - (timeOffSetMin*60);
 		
 		String sql = "SELECT GROUP_CONCAT(questions SEPARATOR '') from batch " +

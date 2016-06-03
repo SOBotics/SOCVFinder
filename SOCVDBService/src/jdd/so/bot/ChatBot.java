@@ -1,6 +1,5 @@
 package jdd.so.bot;
 
-import java.awt.image.PixelInterleavedSampleModel;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,9 +8,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutionException;
 
 import org.alicebot.ab.AIMLProcessor;
 import org.alicebot.ab.Bot;
@@ -20,10 +17,8 @@ import org.alicebot.ab.PCAIMLProcessorExtension;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import fr.tunaki.stackoverflow.chat.Message;
 import fr.tunaki.stackoverflow.chat.StackExchangeClient;
 import fr.tunaki.stackoverflow.chat.event.EventType;
-import fr.tunaki.stackoverflow.chat.event.MessagePostedEvent;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.CloseVoteFinder;
 import jdd.so.bot.actions.BotCommand;
