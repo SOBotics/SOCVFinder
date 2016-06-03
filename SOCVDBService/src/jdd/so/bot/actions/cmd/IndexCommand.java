@@ -112,7 +112,7 @@ public class IndexCommand extends BotCommand {
 		sb.append("\n    " + new String(new char[85]).replace("\0", "-"));
 		CVStats ts = ss.getTotalStats();
 		sb.append("\n");
-		formatter.format("%10s%15d%10d%10s%10s%10s%10s%10s", "    TOTALE", ts.getNumberOfQuestions(), ts.getNumberOfClosed(), ts.getCVCountAt(1),
+		formatter.format("%10s%15d%10d%10s%10s%10s%10s%10s", "    TOTAL", ts.getNumberOfQuestions(), ts.getNumberOfClosed(), ts.getCVCountAt(1),
 				ts.getCVCountAt(2), ts.getCVCountAt(3), ts.getCVCountAt(4), ts.getCVPossibileDupeCount());
 		formatter.close();
 		return sb.toString();
