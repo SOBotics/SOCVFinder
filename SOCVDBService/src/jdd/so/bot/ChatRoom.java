@@ -3,6 +3,7 @@ package jdd.so.bot;
 import java.util.concurrent.CompletableFuture;
 
 import org.alicebot.ab.Chat;
+import org.alicebot.ab.MagicStrings;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
@@ -34,10 +35,11 @@ public class ChatRoom {
 		}
 	}
 	
-	public String getUnkownCommandResponse(String message) {
+	public String getUnkownCommandResponse(String message,String userName) {
 		if (chatSession==null){
 			return "Sorry I did not recognize your command and the AI functions are disabled";
 		}
+		MagicStrings.default_Customer_id = userName;
 		String msg = chatSession.multisentenceRespond(message);
 
 		if (msg == null || (msg.toLowerCase().contains("google") || msg.contains("<search>"))) {

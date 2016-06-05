@@ -57,6 +57,7 @@ public class ChatBot {
 		this.properties = properties;
 		this.messageLatch = messageLatch;
 		aiBot = new Bot("QUEEN", MagicStrings.root_path, "chat");
+		MagicStrings.default_bot_name="Queen";
 		aiBot.deleteLearnfCategories();
 	}
 

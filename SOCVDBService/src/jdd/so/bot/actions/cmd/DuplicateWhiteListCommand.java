@@ -11,9 +11,10 @@ import jdd.so.CloseVoteFinder;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.dao.WhitelistDAO;
+import jdd.so.dao.model.DuplicateResponse;
 import jdd.so.dao.model.WhiteList;
 
-public class DuplicateWhiteListCommand extends BotCommand {
+public class DuplicateWhiteListCommand extends DuplicateResponseAbstract {
 	/**
 	 * Logger for this class
 	 */
@@ -58,28 +59,22 @@ public class DuplicateWhiteListCommand extends BotCommand {
 			return;
 		}
 
+		markFalsePositive(room, event, c);
+	}
+
+	public void markFalsePositive(ChatRoom room, PingMessageEvent event, String content) {
 		long questionId;
 		try {
-			String match = "stackoverflow.com/questions/";
-			int startPos = c.lastIndexOf(match);
-			String qId = c.substring(startPos + match.length(), c.indexOf(')', startPos + match.length()));
-			questionId = Long.parseLong(qId);
-			if (logger.isDebugEnabled()) {
-				logger.debug("runCommand(ChatRoom, PingMessageEvent) - " + questionId);
-			}
+			questionId = getQuestionId(content);
 		} catch (RuntimeException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
-			room.replyTo(event.getMessageId(), "Sorry could not retrive question id");
+			room.replyTo(event.getMessageId(), "Sorry could not retrive question id, question is not white listed");
 			return;
 		}
 
-		whiteList(room, questionId, event, c);
-	}
-
-	public void whiteList(ChatRoom room, long questionId, PingMessageEvent event, String content) {
 		boolean wled = false;
-		if (content.toLowerCase().contains(" wl")){
-			WhiteList wl = new WhiteList(questionId, event.getUserId(), new Date().getTime() / 1000L);
+		if (content.toLowerCase().contains(" wl")) {
+			WhiteList wl = new WhiteList(questionId, event.getUserId(), System.currentTimeMillis() / 1000L);
 			try {
 				new WhitelistDAO().insertOrUpdate(CloseVoteFinder.getInstance().getConnection(), wl);
 				CloseVoteFinder.getInstance().getWhiteList().add(questionId);
@@ -89,29 +84,24 @@ public class DuplicateWhiteListCommand extends BotCommand {
 				logger.error("whiteList(ChatRoom, long, long, long, long)", e);
 				room.send("Whitelist to database faild, check stack trace @Petter");
 				return;
+
 			}
+		}
+		
+		try {
+			saveToDatabase(questionId, event.getUserId(), room.getRoomId(), false);
+		} catch (SQLException e) {
+			logger.error("markFalsePositive(ChatRoom, PingMessageEvent, String)", e);
 		}
 
-		String edit = content;
-		if (edit.contains("@")) {
-			edit = edit.substring(0, edit.indexOf('@')).trim();
-		}
-		if (edit.contains("--- f") || edit.contains("--- k")) {
-			edit += ", f" + event.getUserName();
-		} else {
-			int lastTag = edit.lastIndexOf("[tag:");
-			int closeTag = edit.indexOf(']', lastTag);
-			if (closeTag > 0) {
-				edit = edit.substring(0, closeTag + 1) + " ---" + edit.substring(closeTag + 1, edit.length()).trim() + "--- f by " + event.getUserName();
-			}
-		}
-		boolean replyIfNoEdit =!wled;
+		String edit = getEdit(event, content, false);
+		
+		boolean replyIfNoEdit = !wled;
 		room.edit(event.getParentMessageId(), edit).handleAsync((mId, thr) -> {
-			if (thr != null&&replyIfNoEdit){
+			if (thr != null && replyIfNoEdit) {
 				return room.replyTo(event.getMessageId(), "Marked as non duplicate").join();
 			}
 			return mId;
 		});
 	}
-
 }

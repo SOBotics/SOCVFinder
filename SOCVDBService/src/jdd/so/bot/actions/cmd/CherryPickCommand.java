@@ -24,8 +24,10 @@ import jdd.so.bot.actions.BotCommand;
 import jdd.so.bot.actions.filter.Arithmetics;
 import jdd.so.bot.actions.filter.QuestionsFilter;
 import jdd.so.dao.BatchDAO;
+import jdd.so.dao.DuplicateResponseDAO;
 import jdd.so.dao.QuestionIndexDao;
 import jdd.so.dao.model.Batch;
+import jdd.so.dao.model.User;
 
 public class CherryPickCommand extends BotCommand {
 
@@ -86,11 +88,18 @@ public class CherryPickCommand extends BotCommand {
 				BatchDAO bd = new BatchDAO();
 				StringBuilder sb = new StringBuilder();
 				sb.append(bd.getLastQuestionsReviewed(CloseVoteFinder.getInstance().getConnection(), event.getUserId()));
-				openInOtherBatches = bd.getQuestionsInOpenBatches(CloseVoteFinder.getInstance().getConnection(),tags);
-				if (openInOtherBatches!=null){
+				openInOtherBatches = bd.getQuestionsInOpenBatches(CloseVoteFinder.getInstance().getConnection(), tags);
+				if (openInOtherBatches != null) {
 					sb.append(openInOtherBatches);
 				}
-				if (sb.length()>0){
+				User u = CloseVoteFinder.getInstance().getUsers().get(event.getUserId());
+				if (u != null && u.getAccessLevel() >= BotCommand.ACCESS_LEVEL_HAMMER) {
+					String fdupes = new DuplicateResponseDAO().getFalseDupeQuestions(CloseVoteFinder.getInstance().getConnection(), event.getUserId());
+					if (fdupes != null) {
+						sb.append(";" + fdupes + ";");
+					}
+				}
+				if (sb.length() > 0) {
 					filter.setExcludeQuestions(sb.toString());
 				}
 			} catch (SQLException e1) {
@@ -98,18 +107,20 @@ public class CherryPickCommand extends BotCommand {
 			}
 		}
 
-		try {
+		try
+
+		{
 			// Get questions
 			CherryPickResult cpr = getCherryPick(room.getRoomId(), event.getUserId(), room.getNextBatchNumber(), tags, filter);
-			if (cpr.getApiResult().getBackoff()>0){
+			if (cpr.getApiResult().getBackoff() > 0) {
 				room.send("SO told me to backoff for " + cpr.getApiResult().getBackoff() + "s, the result is incomplete");
 			}
 			// Filter as requested
 			cpr.filter(filter);
 			if (cpr.getFilterdQuestions().isEmpty()) {
 				String rpl = "Sorry your query did not produce any result";
-				if (openInOtherBatches!=null && openInOtherBatches.length()>0){
-					rpl +=", some questions are locked in other batches, try later";
+				if (openInOtherBatches != null && openInOtherBatches.length() > 0) {
+					rpl += ", some questions are locked in other batches, try later";
 				}
 				room.replyTo(event.getMessageId(), rpl);
 				return;
@@ -135,9 +146,9 @@ public class CherryPickCommand extends BotCommand {
 						+ df.format(new Date(cpr.getApiResult().getFirstDate() * 1000)) + " and " + df.format(new Date(cpr.getApiResult().getLastDate() * 1000))
 						+ " filtered and ordered: " + cpr.getFilterdQuestions().size() + " in " + " [batch " + cpr.getBatchNumber() + "](" + cpr.getBatchUrl()
 						+ ")";
-				
-				if (openInOtherBatches!=null && openInOtherBatches.length()>0){
-					retMsg +=" There are other questions locked in open batches";
+
+				if (openInOtherBatches != null && openInOtherBatches.length() > 0) {
+					retMsg += " There are other questions locked in open batches";
 				}
 
 				final String editMessage = "@" + event.getUserName().replaceAll(" ", "") + " " + retMsg;
@@ -229,13 +240,13 @@ public class CherryPickCommand extends BotCommand {
 				toDate = getUnixDate(days - 1);
 			}
 		}
-		
+
 		ApiResult apiResult = api.getQuestions(null, fromDate, toDate, tag, questionFilter.getNumberOfApiCalls(), true, null);
 
 		// If tag is monitored load it from also from db
 		if (tagMonitored && !questionFilter.isFilterDupes()) {
 			try {
-				String oldies = new QuestionIndexDao().getQueryString(CloseVoteFinder.getInstance().getConnection(),tag);
+				String oldies = new QuestionIndexDao().getQueryString(CloseVoteFinder.getInstance().getConnection(), tag);
 				if (oldies != null && oldies.length() > 0) {
 					ApiResult oldQuestions = api.getQuestions(oldies, tag, false, null);
 					for (Question question : oldQuestions.getQuestions()) {

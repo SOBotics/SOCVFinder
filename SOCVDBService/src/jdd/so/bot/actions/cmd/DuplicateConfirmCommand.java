@@ -1,11 +1,19 @@
 package jdd.so.bot.actions.cmd;
 
+import org.apache.log4j.Logger;
+
+import java.sql.SQLException;
+
 import fr.tunaki.stackoverflow.chat.Message;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 
-public class DuplicateConfirmCommand extends BotCommand {
+public class DuplicateConfirmCommand extends DuplicateResponseAbstract {
+	/**
+	 * Logger for this class
+	 */
+	private static final Logger logger = Logger.getLogger(DuplicateConfirmCommand.class);
 
 	@Override
 	public String getMatchCommandRegex() {
@@ -50,20 +58,24 @@ public class DuplicateConfirmCommand extends BotCommand {
 	}
 
 	public void confirm(ChatRoom room, PingMessageEvent event, String content) {
+		
+		long questionId;
+		try {
+			questionId = getQuestionId(content);
+		} catch (RuntimeException e) {
+			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
+			room.replyTo(event.getMessageId(), "Sorry could not retrive question id, question is not white listed");
+			return;
+		}
+		
+		try {
+			saveToDatabase(questionId, event.getUserId(), room.getRoomId(), true);
+		} catch (SQLException e) {
+			logger.error("confirm(ChatRoom, PingMessageEvent, String)", e);
+		}
+		
 
-		String edit = content;
-		if (edit.contains("@")) {
-			edit = edit.substring(0, edit.indexOf('@')).trim();
-		}
-		if (edit.contains("--- f") || edit.contains("--- k")) {
-			edit += ", k" + event.getUserName();
-		} else {
-			int lastTag = edit.lastIndexOf("[tag:");
-			int closeTag = edit.indexOf(']', lastTag);
-			if (closeTag > 0) {
-				edit = edit.substring(0, closeTag + 2) + " ---" + edit.substring(closeTag + 2, edit.length()).trim() + "--- k by " + event.getUserName();
-			}
-		}
+		String edit = getEdit(event, content, true);
 
 		room.edit(event.getParentMessageId(), edit).handleAsync((mId, thr) -> {
 			if (thr != null)
@@ -72,5 +84,7 @@ public class DuplicateConfirmCommand extends BotCommand {
 		});
 
 	}
+
+	
 
 }
