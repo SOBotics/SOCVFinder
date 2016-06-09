@@ -18,31 +18,30 @@ public class Comment {
 	private int score;
 	private String duplicateTargetTitle;
 	private int duplicateTargetScore;
-	
-	public JSONObject getJSONObject() throws JSONException {
-		JSONObject json = new JSONObject();
-		json.put("creation_date", creationDate);
-		json.put("user_id", userId);
-		json.put("reputation", reputation);
-		json.put("body", body); 
-		json.put("score", score);
-		long dupQuestionId = getDuplicateQuestionID();
-		if (dupQuestionId>0){
-			json.put("duplicated_target_id", dupQuestionId);	
-		}
-		if (duplicateTargetTitle!=null){
-			json.put("duplicated_target_title", duplicateTargetTitle);
-			json.put("duplicated_target_score", duplicateTargetScore);
-		}
-		
-		return json;
-	}
+
+	// only when searching on comments
+	private long commentId;
+	private long postId;
+	private String postType;
+	private String link;
 
 	public static Comment getComment(JSONObject json) throws JSONException {
 		Comment c = new Comment();
 		c.setBody(json.getString("body"));
 		c.setScore(json.getInt("score"));
 		c.setCreationDate(json.getLong("creation_date"));
+		if (json.has("comment_id")) {
+			c.setCommentId(json.getLong("comment_id"));
+		}
+		if (json.has("post_id")) {
+			c.setPostId(json.getLong("post_id"));
+		}
+		if (json.has("post_type")) {
+			c.setPostType(json.getString("post_type"));
+		}
+		if (json.has("link")) {
+			c.setLink(json.getString("link"));
+		}
 		if (json.has("owner")) {
 			JSONObject o = json.getJSONObject("owner");
 			if (o.has("user_id")) {
@@ -53,6 +52,25 @@ public class Comment {
 			}
 		}
 		return c;
+	}
+
+	public JSONObject getJSONObject() throws JSONException {
+		JSONObject json = new JSONObject();
+		json.put("creation_date", creationDate);
+		json.put("user_id", userId);
+		json.put("reputation", reputation);
+		json.put("body", body);
+		json.put("score", score);
+		long dupQuestionId = getDuplicateQuestionID();
+		if (dupQuestionId > 0) {
+			json.put("duplicated_target_id", dupQuestionId);
+		}
+		if (duplicateTargetTitle != null) {
+			json.put("duplicated_target_title", duplicateTargetTitle);
+			json.put("duplicated_target_score", duplicateTargetScore);
+		}
+
+		return json;
 	}
 
 	public String getBody() {
@@ -88,7 +106,7 @@ public class Comment {
 	}
 
 	public boolean isPossibleDuplicateComment() {
-		return body != null && body.toLowerCase().contains("possible duplicate");
+		return body != null && (body.toLowerCase().contains("possible duplicate") || body.toLowerCase().contains("duplicate of"));
 	}
 
 	public long getCreationDate() {
@@ -114,7 +132,7 @@ public class Comment {
 	public void setDuplicateTargetScore(int duplicateTargetScore) {
 		this.duplicateTargetScore = duplicateTargetScore;
 	}
-	
+
 	public long getDuplicateQuestionID() {
 		if (body == null) {
 			return 0L;
@@ -135,5 +153,46 @@ public class Comment {
 		return 0L;
 	}
 
+	public long getPostId() {
+		return postId;
+	}
 
+	public void setPostId(long postId) {
+		this.postId = postId;
+	}
+
+	public String getPostType() {
+		return postType;
+	}
+
+	public void setPostType(String postType) {
+		this.postType = postType;
+	}
+
+	@Override
+	public boolean equals(Object o2) {
+		if (o2 instanceof Comment) {
+			long dif = this.getCreationDate() - ((Comment) o2).getCreationDate();
+			if (dif == 0) {
+				return this.getUserId() == ((Comment) o2).getUserId();
+			}
+		}
+		return false;
+	}
+
+	public long getCommentId() {
+		return commentId;
+	}
+
+	public void setCommentId(long commentId) {
+		this.commentId = commentId;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
 }

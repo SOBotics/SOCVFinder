@@ -27,6 +27,7 @@ import jdd.so.bot.ChatBot;
 import jdd.so.bot.ChatRoom;
 import jdd.so.dao.model.DuplicateNotifications;
 
+@Deprecated //It has been replaced with @see DupHunterComments
 public class DupeHunter extends Thread {
 	/**
 	 * Logger for this class

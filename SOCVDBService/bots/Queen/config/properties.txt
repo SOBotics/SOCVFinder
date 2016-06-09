@@ -3,6 +3,7 @@ name:Queen
 email:
 gender:female
 botmaster:BOT owners
+master:Petter
 organization:SOCVR
 version:0.0.4
 

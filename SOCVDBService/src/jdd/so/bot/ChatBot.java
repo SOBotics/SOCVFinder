@@ -27,6 +27,7 @@ import jdd.so.bot.actions.cmd.ShutDownCommand;
 import jdd.so.dao.UserDAO;
 import jdd.so.dao.model.User;
 import jdd.so.dup.DupeHunter;
+import jdd.so.dup.DupeHunterComments;
 
 /**
  * The main ChatBot handling the ChatRooms
@@ -49,7 +50,7 @@ public class ChatBot {
 
 	private Map<Long, ChatRoom> rooms = Collections.synchronizedMap(new HashMap<>());
 
-	private DupeHunter dupeHunter;
+	private DupeHunterComments dupeHunter;
 
 	private static final int REPUTATION_CV_REVIEWER = 3000;
 
@@ -191,7 +192,7 @@ public class ChatBot {
 	}
 
 	public void startDupeHunter() {
-		dupeHunter = new DupeHunter(this);
+		dupeHunter = new DupeHunterComments(this);
 		dupeHunter.start();
 	}
 
@@ -255,6 +256,8 @@ public class ChatBot {
 			cb.loginIn();
 			cb.joinRoom("stackoverflow.com", 111347, true);
 			cb.joinRoom("stackoverflow.com", 95290, false);
+			//cb.joinRoom("stackoverflow.com", 92764, true);
+			
 			cb.startDupeHunter();
 			try {
 				messageLatch.await();

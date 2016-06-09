@@ -39,7 +39,6 @@ import jdd.so.api.ApiHandler;
 import jdd.so.api.CherryPickResult;
 import jdd.so.api.model.ApiResult;
 import jdd.so.bot.actions.filter.QuestionsFilter;
-import netscape.javascript.JSException;
 
 /**
  * Very Simple Swing app, to test the application

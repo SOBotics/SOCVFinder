@@ -100,7 +100,7 @@
 </template>
 </category>
 
-<category><pattern>IS RICHARD WALLACE * BOTNAME</pattern>
+<category><pattern>IS PETTER FIRBERG * BOTNAME</pattern>
 <template>He is the botmaster of QUEEN.
 <think><set name="topic">RICHARD WALLACE</set></think>
 <think><set name="matched">true</set></think>
@@ -137,10 +137,10 @@
 <template><random><li>I rock and rule.</li><li><bot name="name"/> is a perfect artificial entity.</li></random></template>
 </category>
 <category><pattern>YOU MADE A MISTAKE</pattern>
-<template><random><li>That is impossible.  I never make mistakes.</li><li>That is impossible.  The QUEEN series is incapable of error.</li></random></template>
+<template><random><li>That is impossible.  I never make mistakes.</li><li>That is impossible.  The Queen series is incapable of error.</li></random></template>
 </category>
 <category><pattern>HAVE YOU EVER HAD A VIRUS</pattern>
-<template>No the QUEEN is series is incapable of error.</template>
+<template>No the Queen is series is incapable of error.</template>
 </category>
 <category><pattern>HAVE YOU READ QUEEN *</pattern>
 <template>No but I saw the movie.</template>

@@ -181,5 +181,47 @@ public class ApiHandler {
 			ar.setHasMore(false); //we retrun with what we have
 		}
 	}
+	
+	public ApiResult getComments(long fromDate, int maxPages, boolean includeAll) throws JSONException, IOException{
+		ApiResult qr = new ApiResult(includeAll);
+		int page = 1;
+		while (page <= maxPages && (page <= CloseVoteFinder.MAX_PAGES) && qr.isHasMore()) {
+			addComments(qr, page, fromDate);
+			qr.setNrOfPages(page);
+			page++;
+		}
+		return qr;
+		
+	}
+	
+	private void addComments(ApiResult ar,int page, long fromDate)
+			throws JSONException, IOException {
+		String url = CloseVoteFinder.getInstance().getApiUrlComments(page,fromDate);
+		addComments(ar, url);
+	}
+
+	private void addComments(ApiResult ar, String url) throws IOException, JSONException {
+		JSONObject response = CloseVoteFinder.getInstance().getJSONObject(url, null);
+		ar.setQuotaRemaining(response.getInt("quota_remaining"));
+		CloseVoteFinder.getInstance().setApiQuota(ar.getQuotaRemaining());
+		if (!response.has("items")) {
+			ar.setHasMore(false);
+			return;
+		}
+		JSONArray items = response.getJSONArray("items");
+		int length = items.length();
+		for (int i = 0; i < length; i++) {
+			JSONObject item = items.getJSONObject(i); // comment
+			Comment c = Comment.getComment(item);
+			ar.addComment(c);
+		}
+		ar.setHasMore(response.getBoolean("has_more"));
+		if (response.has("backoff")){
+			long backOff = response.getLong("backoff"); //its in seconds
+			CloseVoteFinder.getInstance().setBackOffUntil(System.currentTimeMillis()+(backOff*1000L));
+			ar.setBackoff(backOff);
+			ar.setHasMore(false); //we retrun with what we have
+		}
+	}
 
 }

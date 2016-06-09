@@ -17,17 +17,21 @@ import jdd.so.api.PossibleDuplicateComparator;
 public class ApiResult {
 
 	private List<Question> questions;
+	private List<Comment> comments;
 	private boolean includeAll;
 	private boolean hasMore;
 	private long backoff;
 	private int nrOfPages;
 	private int quotaRemaining;
 	
+	private long maxCommentDate;
+	
 	private ScanStats scanStatistics;
 
 	public ApiResult(boolean includeAll) {
 		this.includeAll = includeAll;
 		questions = new ArrayList<>();
+		comments = new ArrayList<>();
 		scanStatistics = new ScanStats();
 		hasMore = true;
 	}
@@ -42,6 +46,20 @@ public class ApiResult {
 		
 		if (includeAll || (q.isMonitor()&&!CloseVoteFinder.getInstance().getWhiteList().contains(q.getQuestionId()))){
 			return this.questions.add(q);
+		}
+		return false;
+	}
+	
+	public boolean addComment(Comment c) {
+		if (c.getCreationDate()>this.maxCommentDate){
+			this.maxCommentDate = c.getCreationDate();
+		}
+		if (this.comments.contains(c)){
+			return false;
+		}
+		
+		if (includeAll || (c.isPossibleDuplicateComment())){
+			return this.comments.add(c);
 		}
 		return false;
 	}
@@ -212,23 +230,36 @@ public class ApiResult {
 	public long getLastDate() {
 		return scanStatistics.getLastDate();
 	}
-
-
-
+	
 	public ScanStats getScanStatistics() {
 		return scanStatistics;
 	}
 
-
-
 	public long getBackoff() {
 		return backoff;
 	}
-
-
-
+	
 	public void setBackoff(long backoff) {
 		this.backoff = backoff;
 	}
+
+
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+
+
+	public long getMaxCommentDate() {
+		return maxCommentDate;
+	}
+
+
+
+	public void setMaxCommentDate(long maxCommentDate) {
+		this.maxCommentDate = maxCommentDate;
+	}
+
 
 }

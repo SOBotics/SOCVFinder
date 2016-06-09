@@ -54,7 +54,7 @@ public class BotCommandsRegistry {
 		 * add manually since we want them in order, the cherry pick only needs
 		 * [tag: run (and this is also use in other commands)
 		 */
-		//commands.add(new PingCommand()); Removing this fun
+//		commands.add(new PingCommand()); //Removing this fun
 		commands.add(new CommandsCommand());
 		commands.add(new HelpCommand());
 		commands.add(new OptInCommand());

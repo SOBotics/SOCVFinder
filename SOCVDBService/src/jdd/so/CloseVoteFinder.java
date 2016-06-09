@@ -53,12 +53,16 @@ public class CloseVoteFinder {
 
 	public static final String API_URL = "http://api.stackexchange.com/2.2/";
 	public static final String API_FILTER = "!-MObZ6A82KZGZ3WvblLvUKz1bWU5_K147";
+	public static final String API_FILTER_COMMENTS = "!1zSsiTYsgwJ0j)szHvCTo";
+	//public static final String API_FILTER_COMMENTS = "!1zSsiTYsgwJ0j)szIgnyJ";
+	
 	public static final int MAX_PAGES = 300;// Even if application try it will
 											// never do any more then this
 
 	public static final String API_KEY_PROPERTY = "API_KEY";
 	public static final String THROTTLE_PROPERTY = "THROTTLE";
 	private static final String REST_API_PROPERTY = "REST_API";
+
 
 	private long throttle = 1L * 1000L; // ms
 	private long backOffUntil = 0L;
@@ -284,6 +288,25 @@ public class CloseVoteFinder {
 		}
 		return url.toString();
 	}
+	
+	public String getApiUrlComments(int page, long fromDate) {
+		StringBuilder url = new StringBuilder(API_URL);
+		url.append("comments");
+		url.append("?");
+		url.append("page=" + page + "&pagesize=100");
+		if (fromDate > 0) {
+			url.append("&fromdate=" + fromDate);
+		}
+		
+		// url.append("&order=desc&sort=activity");
+		url.append("&order=desc&sort=creation");
+		url.append("&site=stackoverflow&filter=" + API_FILTER_COMMENTS);
+		if (apiKey != null) {
+			url.append("&key=" + apiKey);
+		}
+		return url.toString();
+	}
+
 
 	/**
 	 * Get the data from url as a JSON object with trottle implementation to
@@ -466,4 +489,6 @@ public class CloseVoteFinder {
 	public Set<Long> getWhiteList() {
 		return whiteList;
 	}
-}
+
+
+	}
