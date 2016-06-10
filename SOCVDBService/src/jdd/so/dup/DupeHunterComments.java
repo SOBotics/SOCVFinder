@@ -60,7 +60,7 @@ public class DupeHunterComments extends Thread {
 		long start = System.currentTimeMillis() / 1000L - 60 * 1;
 		shutDown = false;
 		
-		String regExTest = "(?i)(cunt|asshole|bitch|nigger|vagina|dick|fuck|(yo)?u('re| are|r)? (an? )?idiot)";
+		String regExTest = "(?i)(cunt|rude|asshole| rape|bitch|whore|gay|nigger|faggot|slut|cock|eat my|dumbass|pussy|vagina|dick|fuck y|(yo)?u('re| are|r)? (an? )?idiot|(yo)?u('re| are|r)? (an? )?retard)";
 		Pattern p = Pattern.compile(regExTest);
 		
 		
@@ -276,8 +276,8 @@ public class DupeHunterComments extends Thread {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		
-		String message = "fuck that was easy!";
-		String regExTest = "(?i)(cunt|asshole|bitch|nigger|vagina|dick|fuck y|(yo)?u('re| are|r)? (an? )?idiot)";
+		String message = "@PadraicCunningham - sorry to miss lead you - this question is not about scraping itself but more the logic on how i would scrape the above";
+		String regExTest = "(?i)(cunt|rude|asshole|rape|bitch|whore|gay|nigger|faggot|slut|cock|eat my|dumbass|pussy|vagina|dick|fuck y|(yo)?u('re| are|r)? (an? )?idiot|(yo)?u('re| are|r)? (an? )?retard)";
 		List<String> list = new ArrayList<String>();
 		Pattern p = Pattern.compile(regExTest);
 		Matcher m = p.matcher(message);
