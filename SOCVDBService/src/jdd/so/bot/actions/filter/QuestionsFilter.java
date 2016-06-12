@@ -66,9 +66,9 @@ public class QuestionsFilter {
 				if (s.contains("cv")){
 					closeVotes = new NumberFilter(s.replace("cv", ""));
 					closeVotes.validateCloseFilter();
-				}else if (s.contains("s")){
+				}else if (s.endsWith("s")){
 					scores = new NumberFilter(s.replace("s", ""));
-				}else if (s.contains("d")){
+				}else if (s.endsWith("d")){
 					days = new NumberFilter(s.replace("d", ""));
 					days.validateDayFilter();
 				}else{

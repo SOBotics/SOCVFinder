@@ -67,6 +67,7 @@ public class BatchDoneCommand extends BotCommand {
 		if (pmId > 0) {
 			try {
 				b = bd.getBatch(CloseVoteFinder.getInstance().getConnection(), pmId);
+				
 			} catch (SQLException e) {
 				logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
 			}
@@ -74,6 +75,11 @@ public class BatchDoneCommand extends BotCommand {
 
 		if (b == null) {
 			room.replyTo(event.getMessageId(), "Sorry, could not understand the batch that you are referring to.");
+			return;
+		}
+		
+		if (b.getUserId()!=event.getUserId()){
+			room.replyTo(event.getMessageId(), "Sorry, this is not your batch, please check your reply message");
 			return;
 		}
 		
