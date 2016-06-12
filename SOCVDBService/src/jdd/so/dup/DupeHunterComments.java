@@ -60,7 +60,8 @@ public class DupeHunterComments extends Thread {
 		long start = System.currentTimeMillis() / 1000L - 60 * 1;
 		shutDown = false;
 		
-		String regExTest = "(?i)(cunt|rude|asshole| rape|bitch|whore|gay|nigger|faggot|slut|cock|eat my|dumbass|pussy|vagina|dick|fuck y|(yo)?u('re| are|r)? (an? )?idiot|(yo)?u('re| are|r)? (an? )?retard)";
+		//String regExTest = "(?i)(cunt|rude|asshole| rape|bitch|whore|gay|nigger|faggot|slut|cock|eat my|dumbass|pussy|vagina|dick|fuck y|(yo)?u('re| are|r)? (an? )?idiot|(yo)?u('re| are|r)? (an? )?retard)";
+		String regExTest = "(?is)\\b((yo)?u suck|8={3,}D|nigg(a|er)|ass ?hole|kiss my ass|dumbass|fag(got)?|slut|moron|daf[au][qk]|(mother)?fuc?k+(ing?|e?(r|d)| off+| y(ou|e)(rself)?| u+|tard)?|shit(t?er|head)|dickhead|pedo|whore|(is a )?cunt|cocksucker|ejaculated?|butthurt|(private|pussy) show|lesbo|bitches|suck\\b.{0,20}\\bdick|dee[sz]e? nut[sz])s?\\b|^.{0,250}\\b(shit face)\\b.{0,100}$";
 		Pattern p = Pattern.compile(regExTest);
 		
 		
@@ -68,12 +69,16 @@ public class DupeHunterComments extends Thread {
 		ChatRoom socvfinder = cb.getChatRoom(111347);
 		
 		long highTrafficTime = 3*30*1000L; //Every 1,5 minute
-		long lowTrafficTime = 3*60*1000L; //Every three minutes
+		long lowTrafficTime = 4*60*1000L; //Every four minutes
 		long sleepTime = highTrafficTime;
 		
 		while (!shutDown) {
 			try {
 				ApiResult ap = apiHandler.getComments(start, 10, true);
+				if (ap.getBackoff() > 0) {
+					logger.warn("run() - Backoff " + ap.getBackoff());
+					Thread.sleep(ap.getBackoff() * 1000L);
+				}
 				if (ap.getMaxCommentDate()>0){
 					start = ap.getMaxCommentDate() + 1;
 				}else{
@@ -276,8 +281,10 @@ public class DupeHunterComments extends Thread {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		
-		String message = "@PadraicCunningham - sorry to miss lead you - this question is not about scraping itself but more the logic on how i would scrape the above";
+		String message = "DICKhead";
 		String regExTest = "(?i)(cunt|rude|asshole|rape|bitch|whore|gay|nigger|faggot|slut|cock|eat my|dumbass|pussy|vagina|dick|fuck y|(yo)?u('re| are|r)? (an? )?idiot|(yo)?u('re| are|r)? (an? )?retard)";
+		regExTest = "(?is)\\b((yo)?u suck|8={3,}D|nigg(a|er)|ass ?hole|kiss my ass|dumbass|fag(got)?|slut|daf[au][qk]|(mother)?fuc?k+(ing?|e?(r|d)| off+| y(ou|e)(rself)?| u+|tard)?|shit(t?er|head)|dickhead|pedo|whore|(is a )?cunt|cocksucker|ejaculated?|butthurt|(private|pussy) show|lesbo|bitches|suck\\b.{0,20}\\bdick|dee[sz]e? nut[sz])s?\\b|^.{0,250}\\b(shit face)\\b.{0,100}$";
+
 		List<String> list = new ArrayList<String>();
 		Pattern p = Pattern.compile(regExTest);
 		Matcher m = p.matcher(message);
@@ -285,27 +292,6 @@ public class DupeHunterComments extends Thread {
 		    list.add(m.group());
 		}
 		System.out.println(list);
-		
-		DupeHunterComments dc = new DupeHunterComments(null);
-		if (!dc.getLastPostIds().contains(111)){
-			dc.addPostIdToQue(111);
-		}
-		if (!dc.getLastPostIds().contains(112)){
-			dc.addPostIdToQue(112);
-		}
-
-		if (!dc.getLastPostIds().contains(112)){
-			dc.addPostIdToQue(112);
-		}
-		
-		if (!dc.getLastPostIds().contains(113)){
-			dc.addPostIdToQue(113);
-		}
-		if (!dc.getLastPostIds().contains(114)){
-			dc.addPostIdToQue(114);
-		}
-		
-		System.out.println(dc.getLastPostIds());
 	}
 
 	

@@ -106,7 +106,7 @@ public class Comment {
 	}
 
 	public boolean isPossibleDuplicateComment() {
-		return body != null && (body.toLowerCase().contains("possible duplicate") || body.toLowerCase().contains("duplicate of"));
+		return body != null && ((body.toLowerCase().contains("possible duplicate") || body.toLowerCase().contains("duplicate of")) && getDuplicateQuestionID()>0);
 	}
 
 	public long getCreationDate() {

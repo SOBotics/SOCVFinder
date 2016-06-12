@@ -54,15 +54,15 @@ public class CloseVoteFinder {
 	public static final String API_URL = "http://api.stackexchange.com/2.2/";
 	public static final String API_FILTER = "!-MObZ6A82KZGZ3WvblLvUKz1bWU5_K147";
 	public static final String API_FILTER_COMMENTS = "!1zSsiTYsgwJ0j)szHvCTo";
-	//public static final String API_FILTER_COMMENTS = "!1zSsiTYsgwJ0j)szIgnyJ";
-	
+	// public static final String API_FILTER_COMMENTS =
+	// "!1zSsiTYsgwJ0j)szIgnyJ";
+
 	public static final int MAX_PAGES = 300;// Even if application try it will
 											// never do any more then this
 
 	public static final String API_KEY_PROPERTY = "API_KEY";
 	public static final String THROTTLE_PROPERTY = "THROTTLE";
 	private static final String REST_API_PROPERTY = "REST_API";
-
 
 	private long throttle = 1L * 1000L; // ms
 	private long backOffUntil = 0L;
@@ -116,7 +116,6 @@ public class CloseVoteFinder {
 		}
 	}
 
-	
 	/**
 	 * Init the instance
 	 * 
@@ -191,7 +190,7 @@ public class CloseVoteFinder {
 		}
 		return retMap;
 	}
-	
+
 	private void loadWhiteList() throws SQLException {
 		this.whiteList = new WhitelistDAO().getWhiteListedQuestions(dbConnection);
 	}
@@ -288,7 +287,7 @@ public class CloseVoteFinder {
 		}
 		return url.toString();
 	}
-	
+
 	public String getApiUrlComments(int page, long fromDate) {
 		StringBuilder url = new StringBuilder(API_URL);
 		url.append("comments");
@@ -297,7 +296,7 @@ public class CloseVoteFinder {
 		if (fromDate > 0) {
 			url.append("&fromdate=" + fromDate);
 		}
-		
+
 		// url.append("&order=desc&sort=activity");
 		url.append("&order=desc&sort=creation");
 		url.append("&site=stackoverflow&filter=" + API_FILTER_COMMENTS);
@@ -306,7 +305,6 @@ public class CloseVoteFinder {
 		}
 		return url.toString();
 	}
-
 
 	/**
 	 * Get the data from url as a JSON object with trottle implementation to
@@ -320,25 +318,26 @@ public class CloseVoteFinder {
 	 * @throws JSONException
 	 */
 	public synchronized JSONObject getJSONObject(String url, NotifyMe notifyMe) throws IOException, JSONException {
-		
-		if (backOffUntil>0){
-			long timeToWait = backOffUntil-System.currentTimeMillis()+1000L; //add a second just to be nice
-			logger.warn("Backing off for " + timeToWait/1000L + "s");
-			try {
-				Thread.sleep(timeToWait);
-			} catch (InterruptedException e) {
-				logger.error("getJSONObject(String, NotifyMe)", e);
+
+		if (backOffUntil > 0) {
+			long timeToWait = backOffUntil - System.currentTimeMillis() + 1000L; 
+			if (timeToWait > 0) {
+				logger.warn("Backing off for " + timeToWait / 1000L + "s");
+				try {
+					Thread.sleep(timeToWait);
+				} catch (InterruptedException e) {
+					logger.error("getJSONObject(String, NotifyMe)", e);
+				}
 			}
 			backOffUntil = 0L;
 		}
-		
+
 		long curTime = System.currentTimeMillis();
 		long timeToWait = throttle - (curTime - lastCall);
 		if (logger.isDebugEnabled()) {
 			logger.debug("getJSONObject - Throttle time: " + timeToWait + " ms");
 		}
-		
-		
+
 		if (timeToWait > 0) {
 			if (notifyMe != null) {
 				notifyMe.message("Throttle for " + timeToWait + " ms to not upset SO");
@@ -490,5 +489,4 @@ public class CloseVoteFinder {
 		return whiteList;
 	}
 
-
-	}
+}
