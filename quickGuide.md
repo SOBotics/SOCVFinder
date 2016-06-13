@@ -127,7 +127,6 @@ User with hammer privilege can reply to notification with (either by reply to me
 
  - **`f <wl>`**: Indicate as false positive (if wl is added question is white listed, hence it will not be showed in batches anymore) and if possible edit message.
  
- - If duplication is not correct but the question can be closed for other reason either leave the message or remove it with the `remove` command
 
 ##Whitelist
 
