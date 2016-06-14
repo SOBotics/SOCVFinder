@@ -54,7 +54,7 @@ public class DupeHunterComments extends Thread {
 		try {
 			Thread.sleep(10*1000); //Give time to login
 		} catch (InterruptedException e1) {
-			e1.printStackTrace();
+			logger.error("run()", e1);
 		}
 		
 		long start = System.currentTimeMillis() / 1000L - 60 * 1;
@@ -108,7 +108,7 @@ public class DupeHunterComments extends Thread {
 						if (logger.isDebugEnabled()) {
 							logger.debug("run() - " + c.getPostId() + ": " + c.getCommentId() + " " + c.getBody());
 						}
-						socvfinder.send("@Petter incomming possibile rude/abusive comment for testing");
+						socvfinder.send("@Petter, @Kyll incomming possibile rude/abusive comment for testing");
 						if (c.getLink()!=null){
 							socvfinder.send(c.getLink());	
 						}else{
@@ -158,7 +158,9 @@ public class DupeHunterComments extends Thread {
 			}
 
 			try {
-				System.out.println("Waiting: " + sleepTime/1000 + "s until next call");
+				if (logger.isDebugEnabled()) {
+					logger.debug("run() - Waiting: " + sleepTime / 1000 + "s until next call");
+				}
 				Thread.sleep(sleepTime);
 			} catch (InterruptedException e) {
 				logger.error("run()", e);
