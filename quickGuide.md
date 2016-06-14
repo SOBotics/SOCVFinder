@@ -1,5 +1,7 @@
 # QUEEN'S QUICK GUIDE
 
+> Note in specific rooms allowed commands can be reduced according to RO's specifications, use @Queen commands, for commands available in specific room
+
 ##Reviewer
 
 ###Cherry pick
@@ -139,7 +141,7 @@ The whitelist gives the possibility to exclude one or multiple questions from fu
 - `wl 36306170 35127956`
 
 
-##Room Owner
+##Tag Owner
 
 ###Manage users and set access level
 
