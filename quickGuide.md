@@ -1,6 +1,6 @@
 # QUEEN'S QUICK GUIDE
 
-> Note in specific rooms allowed commands can be reduced according to RO's specifications, use @Queen commands, for commands available in specific room
+> Note in specific rooms allowed commands can be reduced according to RO's specifications, use `@Queen commands`, for commands available in room.
 
 ##Reviewer
 
