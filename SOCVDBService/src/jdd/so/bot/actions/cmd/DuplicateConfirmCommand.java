@@ -78,8 +78,8 @@ public class DuplicateConfirmCommand extends DuplicateResponseAbstract {
 		String edit = getEdit(event, content, true);
 
 		room.edit(event.getParentMessageId(), edit).handleAsync((mId, thr) -> {
-			if (thr != null)
-				return room.replyTo(event.getMessageId(), "Thank you for confirming the duplicate").join();
+//			if (thr != null)
+//				return room.replyTo(event.getMessageId(), "Thank you for confirming the duplicate").join();
 			return mId;
 		});
 

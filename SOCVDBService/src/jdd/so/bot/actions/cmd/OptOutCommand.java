@@ -50,6 +50,11 @@ public class OptOutCommand extends BotCommand {
 			return;
 		}
 		
+		if (!CloseVoteFinder.getInstance().isRoomTag(room.getRoomId(),tag)){
+			room.replyTo(event.getMessageId(), "The tag [" + tag + "] is not monitored in this room contact RO's for more info");
+			return;
+		}
+		
 		
 		try {
 			DuplicateNotifications dn = CloseVoteFinder.getInstance().getHunter(room.getRoomId(), event.getUserId(), tag);

@@ -17,6 +17,10 @@ import jdd.so.bot.actions.cmd.HelpCommand;
 import jdd.so.bot.actions.cmd.IndexCommand;
 import jdd.so.bot.actions.cmd.OptInCommand;
 import jdd.so.bot.actions.cmd.OptOutCommand;
+import jdd.so.bot.actions.cmd.PingCommand;
+import jdd.so.bot.actions.cmd.RoomTagAdd;
+import jdd.so.bot.actions.cmd.RoomTagList;
+import jdd.so.bot.actions.cmd.RoomTagRemove;
 import jdd.so.bot.actions.cmd.ShutDownCommand;
 import jdd.so.bot.actions.cmd.StatsMeCommand;
 import jdd.so.bot.actions.cmd.StatsRoomCommand;
@@ -54,7 +58,7 @@ public class BotCommandsRegistry {
 		 * add manually since we want them in order, the cherry pick only needs
 		 * [tag: run (and this is also use in other commands)
 		 */
-//		commands.add(new PingCommand()); //Removing this fun
+		commands.add(new PingCommand()); //Removing this fun
 		commands.add(new CommandsCommand());
 		commands.add(new HelpCommand());
 		commands.add(new OptInCommand());
@@ -63,6 +67,9 @@ public class BotCommandsRegistry {
 		commands.add(new BatchDoneCommand());
 		commands.add(new BatchIgnoreCommand());
 		commands.add(new IndexCommand());
+		commands.add(new RoomTagList());
+		commands.add(new RoomTagAdd());
+		commands.add(new RoomTagRemove());
 		commands.add(new CherryPickCommand());
 		commands.add(new StatsMeCommand());
 		commands.add(new StatsTagCommand());
@@ -74,6 +81,8 @@ public class BotCommandsRegistry {
 		commands.add(new WhiteListCommand());
 		commands.add(new DuplicateWhiteListCommand());
 		commands.add(new DuplicateConfirmCommand());
+		
+		
 		
 		commands.add(new DeleteCommentCommand());
 		commands.add(new ShutDownCommand());

@@ -75,7 +75,7 @@ public class CherryPickCommand extends BotCommand {
 		try {
 			filter = new QuestionsFilter(message);
 		} catch (Throwable qf) {
-			qf.printStackTrace();
+			logger.error("runCommand(ChatRoom, PingMessageEvent)", qf);
 			room.replyTo(event.getMessageId(), "Sorry could not elaborate your question filter, please check your command");
 			return;
 		}
@@ -174,7 +174,9 @@ public class CherryPickCommand extends BotCommand {
 
 	private Object insertBatch(CherryPickResult cpr, long userId, Long messageId) {
 		if (messageId != null) {
-			System.out.println(messageId);
+			if (logger.isDebugEnabled()) {
+				logger.debug("insertBatch(CherryPickResult, long, Long) - " + messageId);
+			}
 			Batch b = cpr.getBatch(messageId, userId);
 			try {
 				new BatchDAO().insert(CloseVoteFinder.getInstance().getConnection(), b);
@@ -198,13 +200,12 @@ public class CherryPickCommand extends BotCommand {
 	private CherryPickResult getCherryPick(long chatRoomId, long userId, int batchNumber, String tag, QuestionsFilter questionFilter)
 			throws JSONException, IOException {
 		// 1. Check if tag is avialable in DB.
-		boolean tagMonitored = CloseVoteFinder.getInstance().isTagMonitored(tag);
-
+		
 		// set api call
-		if (tagMonitored && !questionFilter.isFilterDupes()) {
-			questionFilter.setNumberOfApiCalls(10);
-		} else {
+		if (questionFilter.isFilterDupes()) {
 			questionFilter.setNumberOfApiCalls(20);
+		} else {
+			questionFilter.setNumberOfApiCalls(10);
 		}
 
 		// Get the latest pages from tag
@@ -244,7 +245,7 @@ public class CherryPickCommand extends BotCommand {
 		ApiResult apiResult = api.getQuestions(null, fromDate, toDate, tag, questionFilter.getNumberOfApiCalls(), true, null);
 
 		// If tag is monitored load it from also from db
-		if (tagMonitored && !questionFilter.isFilterDupes()) {
+		if (!questionFilter.isFilterDupes()) {
 			try {
 				String oldies = new QuestionIndexDao().getQueryString(CloseVoteFinder.getInstance().getConnection(), tag);
 				if (oldies != null && oldies.length() > 0) {

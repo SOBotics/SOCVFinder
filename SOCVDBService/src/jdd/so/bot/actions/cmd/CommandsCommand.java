@@ -39,22 +39,24 @@ public class CommandsCommand extends  BotCommand {
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
 		List<BotCommand> commands = BotCommandsRegistry.getInstance().getCommands();
 		Collections.sort(commands);
-		room.replyTo(event.getMessageId(), "These are available commands see also [quick guide](https://github.com/jdd-software/SOCVFinder/blob/master/quickGuide.md) for usage");
+		String repMsg = "These are available commands in this room see also [quick guide](https://github.com/jdd-software/SOCVFinder/blob/master/quickGuide.md) for usage.";
+		room.replyTo(event.getMessageId(), repMsg);
 		StringBuilder retMsg = new StringBuilder("");
 		int al = -1;
 		for (BotCommand bc : commands) {
-			if (bc instanceof AiChatCommand){
+			if (!room.isAllowed(bc) || bc instanceof AiChatCommand){
 				continue;//Do not included this
 			}
+			
 			if (bc.getRequiredAccessLevel()!=al){
 				if (al>-1){
 					retMsg.append("\n");	
 				}
 				al = bc.getRequiredAccessLevel();
 				
-				retMsg.append("    " + BotCommand.getAccessLevelName(al));
+				retMsg.append("    ").append(BotCommand.getAccessLevelName(al));
 			}
-			retMsg.append("\n        " +bc.getCommandUsage() + " - " + bc.getCommandDescription());
+			retMsg.append("\n        ").append(bc.getCommandUsage()).append(" - ").append(bc.getCommandDescription());
 			if (bc instanceof CherryPickCommand){
 				retMsg.append("\n              answerType: a=Has answer, aa=Has accepted answer, na=Has no answer, naa=Has no accepted answer, nr=No roomba");
 			}

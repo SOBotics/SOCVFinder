@@ -13,7 +13,7 @@ public class ShutDownCommand extends BotCommand {
 
 	@Override
 	public int getRequiredAccessLevel() {
-		return BotCommand.ACCESS_LEVEL_OWNER;
+		return BotCommand.ACCESS_LEVEL_BOT_OWNER;
 	}
 
 	@Override

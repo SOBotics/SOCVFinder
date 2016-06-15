@@ -1,7 +1,6 @@
 package jdd.so.bot.actions.cmd;
 
 import java.sql.SQLException;
-import java.util.Date;
 
 import org.apache.log4j.Logger;
 
@@ -11,7 +10,6 @@ import jdd.so.CloseVoteFinder;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.dao.WhitelistDAO;
-import jdd.so.dao.model.DuplicateResponse;
 import jdd.so.dao.model.WhiteList;
 
 public class DuplicateWhiteListCommand extends DuplicateResponseAbstract {
@@ -72,14 +70,12 @@ public class DuplicateWhiteListCommand extends DuplicateResponseAbstract {
 			return;
 		}
 
-		boolean wled = false;
 		if (content.toLowerCase().contains(" wl")) {
 			WhiteList wl = new WhiteList(questionId, event.getUserId(), System.currentTimeMillis() / 1000L);
 			try {
 				new WhitelistDAO().insertOrUpdate(CloseVoteFinder.getInstance().getConnection(), wl);
 				CloseVoteFinder.getInstance().getWhiteList().add(questionId);
 				room.replyTo(event.getMessageId(), "Question have been whitelisted");
-				wled = true;
 			} catch (SQLException e) {
 				logger.error("whiteList(ChatRoom, long, long, long, long)", e);
 				room.send("Whitelist to database faild, check stack trace @Petter");
@@ -96,11 +92,11 @@ public class DuplicateWhiteListCommand extends DuplicateResponseAbstract {
 
 		String edit = getEdit(event, content, false);
 		
-		boolean replyIfNoEdit = !wled;
+		//boolean replyIfNoEdit = !wled;
 		room.edit(event.getParentMessageId(), edit).handleAsync((mId, thr) -> {
-			if (thr != null && replyIfNoEdit) {
-				return room.replyTo(event.getMessageId(), "Marked as non duplicate").join();
-			}
+//			if (thr != null && replyIfNoEdit) {
+//				return room.replyTo(event.getMessageId(), "Marked as non duplicate").join();
+//			}
 			return mId;
 		});
 	}

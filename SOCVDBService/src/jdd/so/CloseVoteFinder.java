@@ -31,10 +31,11 @@ import jdd.so.api.model.Question;
 import jdd.so.dao.BatchDAO;
 import jdd.so.dao.ConnectionHandler;
 import jdd.so.dao.DuplicateNotificationsDAO;
-import jdd.so.dao.TagsDao;
+import jdd.so.dao.RoomTagDAO;
 import jdd.so.dao.UserDAO;
 import jdd.so.dao.WhitelistDAO;
 import jdd.so.dao.model.DuplicateNotifications;
+import jdd.so.dao.model.RoomTag;
 import jdd.so.dao.model.User;
 import jdd.so.swing.NotifyMe;
 
@@ -80,8 +81,8 @@ public class CloseVoteFinder {
 	private Map<Long, User> users;
 	private Map<Long, Integer> batchNumbers;
 	private List<DuplicateNotifications> dupHunters;
-	private List<String> tagsMonitored;
 	private Set<Long> whiteList;
+	private Map<Long,List<String>> roomTags;
 
 	private ConnectionHandler connectionHandler;
 
@@ -105,7 +106,7 @@ public class CloseVoteFinder {
 
 			try {
 				dbConnection = connectionHandler.getConnection();
-				loadTagsMonitored();
+				loadRoomTags();
 				loadUsers();
 				loadDupeHunters();
 				loadBatchNumbers();
@@ -163,8 +164,10 @@ public class CloseVoteFinder {
 		return this.dbConnection;
 	}
 
-	private void loadTagsMonitored() throws SQLException {
-		this.tagsMonitored = new TagsDao(this.dbConnection).getTags();
+	
+	
+	private void loadRoomTags() throws SQLException {
+		this.roomTags = new RoomTagDAO().getRoomTags(this.dbConnection);
 	}
 
 	public void loadUsers() throws SQLException {
@@ -173,6 +176,18 @@ public class CloseVoteFinder {
 
 	private void loadDupeHunters() throws SQLException {
 		dupHunters = new DuplicateNotificationsDAO().getDupeHunters(this.dbConnection);
+	}
+	
+	public List<DuplicateNotifications> getHunters(long roomId, List<String> tags){
+		List<DuplicateNotifications> retList = new ArrayList<>();
+		if (dupHunters != null) {
+			for (DuplicateNotifications dn : dupHunters) {
+				if (dn.getRoomId()==roomId && tags.contains(dn.getTag())){
+					retList.add(dn);
+				}
+			}
+		}
+		return retList;
 	}
 
 	public Map<Long, List<DuplicateNotifications>> getHunterInRooms() {
@@ -234,8 +249,33 @@ public class CloseVoteFinder {
 		}
 	}
 
-	public synchronized boolean isTagMonitored(String tag) {
-		return tagsMonitored.contains(tag);
+	
+	
+	public void addRoomTag(RoomTag rt) {
+		List<String> tags = this.roomTags.get(rt.getRoomId());
+		if (tags==null){
+			tags = new ArrayList<>();
+			this.roomTags.put(rt.getRoomId(),tags);
+		}
+		if (!tags.contains(rt.getTag())){
+			tags.add(rt.getTag());
+		}
+	}
+	
+	public void removeRoomTag(RoomTag rt) {
+		List<String> tags = this.roomTags.get(rt.getRoomId());
+		if (tags==null){
+			return;
+		}
+		tags.remove(rt.getTag());
+	}
+	
+	public boolean isRoomTag(long roomId, String tag) {
+		List<String> tags = this.roomTags.get(roomId);
+		if (tags==null||tags.isEmpty()){
+			return true;
+		}
+		return tags.contains(tag);
 	}
 
 	public String getApiUrl(String questions, int page, String tag) throws UnsupportedEncodingException {
@@ -469,10 +509,6 @@ public class CloseVoteFinder {
 		CloseVoteFinder.getInstance().shutDown();
 	}
 
-	public List<String> getTagsMonitored() {
-		return tagsMonitored;
-	}
-
 	public List<DuplicateNotifications> getDupHunters() {
 		return dupHunters;
 	}
@@ -488,5 +524,15 @@ public class CloseVoteFinder {
 	public Set<Long> getWhiteList() {
 		return whiteList;
 	}
+
+	public Map<Long, List<String>> getRoomTags() {
+		return roomTags;
+	}
+
+	public void setRoomTags(Map<Long, List<String>> roomTags) {
+		this.roomTags = roomTags;
+	}
+
+	
 
 }

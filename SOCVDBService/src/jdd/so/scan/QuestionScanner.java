@@ -1,6 +1,5 @@
 package jdd.so.scan;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -8,8 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Properties;
 
 import org.json.JSONException;
 
@@ -51,24 +48,6 @@ public class QuestionScanner {
 		qid.updateIndex(conn,cpr.getFilterdQuestions(), tag);
 		
 		return ar;
-	}
-	
-	
-	public static void main(String[] args) throws JSONException, IOException, SQLException {
-		//PropertyConfigurator.configure("ini/log4j.properties");
-		
-		// Load properties file an instance the CloseVoteFinder
-		Properties properties = new Properties();
-		properties.load(new FileInputStream("ini/SOCVService.properties"));
-		CloseVoteFinder.initInstance(properties);
-		List<String> tags = CloseVoteFinder.getInstance().getTagsMonitored();
-		for (String tag : tags) {
-			System.out.println("Scanning: " + tag);
-			new QuestionScanner().scan(tag, 20, 3);
-		}
-		//new QuestionScanner().scan("c", 20, 3);
-		CloseVoteFinder.getInstance().shutDown();
-	
 	}
 	
 }

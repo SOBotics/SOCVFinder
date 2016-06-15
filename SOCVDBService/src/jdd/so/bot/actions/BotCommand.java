@@ -16,8 +16,9 @@ public abstract class BotCommand implements Comparable<BotCommand> {
 	public static final int ACCESS_LEVEL_NONE = 0;
 	public static final int ACCESS_LEVEL_REVIEWER = 1;
 	public static final int ACCESS_LEVEL_HAMMER = 2;
-	public static final int ACCESS_LEVEL_RO = 3;
-	public static final int ACCESS_LEVEL_OWNER = 4;
+	public static final int ACCESS_LEVEL_TAG_OWNER = 3;
+	public static final int ACCESS_LEVEL_BOT_OWNER = 4;
+	public static final int ACCESS_LEVEL_RO = 6; //Speciall level check actually RO
 
 	public static String getAccessLevelName(int value) {
 		switch (value) {
@@ -27,10 +28,12 @@ public abstract class BotCommand implements Comparable<BotCommand> {
 			return "Reviewer";
 		case ACCESS_LEVEL_HAMMER:
 			return "Hammer";
-		case ACCESS_LEVEL_RO:
-			return "Room owner";
-		case ACCESS_LEVEL_OWNER:
+		case ACCESS_LEVEL_TAG_OWNER:
+			return "Tag owner";
+		case ACCESS_LEVEL_BOT_OWNER:
 			return "Bot owner";
+		case ACCESS_LEVEL_RO:
+			return "Room owner of chat room";
 		default:
 			return "None";
 		}

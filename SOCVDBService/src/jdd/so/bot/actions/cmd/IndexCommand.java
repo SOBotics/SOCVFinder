@@ -36,7 +36,7 @@ public class IndexCommand extends BotCommand {
 
 	@Override
 	public int getRequiredAccessLevel() {
-		return BotCommand.ACCESS_LEVEL_RO;
+		return BotCommand.ACCESS_LEVEL_TAG_OWNER;
 	}
 
 	@Override
@@ -57,27 +57,27 @@ public class IndexCommand extends BotCommand {
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
 		String message = event.getContent();
-		String tags = getTags(message);
-		if (tags == null || tags.contains(";") || tags.trim().length() == 0) {
+		String tag = getTags(message);
+		if (tag == null || tag.contains(";") || tag.trim().length() == 0) {
 			room.send("You should index only on single tag");
 			return;
 		}
-		boolean tagMonitored = CloseVoteFinder.getInstance().isTagMonitored(tags);
+		boolean tagMonitored = CloseVoteFinder.getInstance().isRoomTag(room.getRoomId(),tag);
 		if (!tagMonitored) {
-			room.send("This tag is not monitored it needs to be added manually to database @Petter");
+			room.replyTo(event.getUserId(),"This tag is not monitored in this room, contact RO for more info");
 			return;
 		}
 
-		room.send("Starting to index tag: " + tags);
+		room.send("Starting to index tag: " + tag);
 		try {
-			ApiResult ar = new QuestionScanner().scan(tags, 20, 3);
+			ApiResult ar = new QuestionScanner().scan(tag, 20, 3);
 			ScanStats ss = ar.getScanStatistics();
 			if (ar.getBackoff() > 0) {
-				room.replyTo(event.getMessageId(), "Index of tag " + tags + " incomplete backoff message received " + ar.getBackoff() + " s");
+				room.replyTo(event.getMessageId(), "Index of tag " + tag + " incomplete backoff message received " + ar.getBackoff() + " s");
 			} else {
-				room.replyTo(event.getMessageId(), "Index of tag " + tags + " completed");
+				room.replyTo(event.getMessageId(), "Index of tag " + tag + " completed");
 			}
-			room.send(getScanStats(tags, ss));
+			room.send(getScanStats(tag, ss));
 		} catch (JSONException | IOException | SQLException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
 			room.replyTo(event.getMessageId(), "Error occured while indexing, tell @Petter to check stacktrace");

@@ -18,7 +18,7 @@ public class AddUserCommand extends BotCommand {
 
 	@Override
 	public int getRequiredAccessLevel() {
-		return BotCommand.ACCESS_LEVEL_RO;
+		return BotCommand.ACCESS_LEVEL_TAG_OWNER;
 	}
 
 	@Override
@@ -71,8 +71,8 @@ public class AddUserCommand extends BotCommand {
 		
 		
 		
-		if (accessLevel<BotCommand.ACCESS_LEVEL_NONE || accessLevel>BotCommand.ACCESS_LEVEL_OWNER){
-			room.replyTo(event.getMessageId(), "Access level should be between 0-" + BotCommand.ACCESS_LEVEL_OWNER);
+		if (accessLevel<BotCommand.ACCESS_LEVEL_NONE || accessLevel>BotCommand.ACCESS_LEVEL_BOT_OWNER){
+			room.replyTo(event.getMessageId(), "Access level should be between 0-" + BotCommand.ACCESS_LEVEL_BOT_OWNER);
 			return;
 		}
 		

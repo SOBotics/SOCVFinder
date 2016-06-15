@@ -1,5 +1,6 @@
 package jdd.so.bot;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import org.alicebot.ab.Chat;
@@ -9,6 +10,7 @@ import org.jsoup.safety.Whitelist;
 
 import fr.tunaki.stackoverflow.chat.Room;
 import fr.tunaki.stackoverflow.chat.User;
+import jdd.so.bot.actions.BotCommand;
 
 /**
  * The wrapped, ChatRoom, holding info on room
@@ -17,6 +19,12 @@ import fr.tunaki.stackoverflow.chat.User;
  */
 public class ChatRoom {
 	
+	public static final int DUPLICATION_NOTIFICATIONS_NONE = 0;
+	public static final int DUPLICATION_NOTIFICATIONS_ALL = 1;
+	public static final int DUPLICATION_NOTIFICATIONS_TAGS = 2;
+	public static final int DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM = 3;
+	
+	
 	private ChatBot bot;
 	private Room room;
 	private int currentBatchNumber;
@@ -24,12 +32,16 @@ public class ChatRoom {
 	private boolean enableAi;
 	private Chat chatSession;
 	private CompletableFuture<Long> lastMessage;
+	private List<Class<? extends BotCommand>> allowedCommands;
+	private int dupNotifyStrategy;
 	
 
-	public ChatRoom(ChatBot bot, Room room, int startBatchNumber, boolean enableAi){
+	public ChatRoom(ChatBot bot, Room room, int startBatchNumber, List<Class<? extends BotCommand>> allowedCommands,int dupNotifyStrategy, boolean enableAi){
 		this.bot = bot;
 		this.room = room;
 		this.currentBatchNumber = startBatchNumber;
+		this.allowedCommands = allowedCommands;
+		this.dupNotifyStrategy = dupNotifyStrategy;
 		if (enableAi){
 			chatSession =  new Chat(bot.getAiBot());
 		}
@@ -132,5 +144,28 @@ public class ChatRoom {
 
 	public CompletableFuture<Long> getLastMessage() {
 		return lastMessage;
+	}
+
+	public List<Class<? extends BotCommand>> getAllowedCommands() {
+		return allowedCommands;
+	}
+
+	public void setAllowedCommands(List<Class<? extends BotCommand>> allowedCommands) {
+		this.allowedCommands = allowedCommands;
+	}
+
+	public boolean isAllowed(BotCommand bc) {
+		if (this.allowedCommands==null){
+			return true;
+		}
+		return this.allowedCommands.contains(bc.getClass());
+	}
+
+	public int getDupNotifyStrategy() {
+		return dupNotifyStrategy;
+	}
+
+	public void setDupNotifyStrategy(int duplicationNotifications) {
+		this.dupNotifyStrategy = duplicationNotifications;
 	}
 }

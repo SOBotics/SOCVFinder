@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -33,13 +34,13 @@ public class DupeHunterComments extends Thread {
 	 * Logger for this class
 	 */
 	private static final Logger logger = Logger.getLogger(DupeHunterComments.class);
-	
+
 	private static final int MAX_POST_ID_QUE = 10;
 
 	ApiHandler apiHandler;
 	private ChatBot cb;
 	Queue<Long> lastPostIds;
-	
+
 	private boolean shutDown;
 
 	public DupeHunterComments(ChatBot cb) {
@@ -50,28 +51,29 @@ public class DupeHunterComments extends Thread {
 	}
 
 	public void run() {
-		
+
 		try {
-			Thread.sleep(10*1000); //Give time to login
+			Thread.sleep(10 * 1000); // Give time to login
 		} catch (InterruptedException e1) {
 			logger.error("run()", e1);
 		}
-		
+
 		long start = System.currentTimeMillis() / 1000L - 60 * 1;
 		shutDown = false;
-		
-		//String regExTest = "(?i)(cunt|rude|asshole| rape|bitch|whore|gay|nigger|faggot|slut|cock|eat my|dumbass|pussy|vagina|dick|fuck y|(yo)?u('re| are|r)? (an? )?idiot|(yo)?u('re| are|r)? (an? )?retard)";
+
+		// String regExTest = "(?i)(cunt|rude|asshole|
+		// rape|bitch|whore|gay|nigger|faggot|slut|cock|eat
+		// my|dumbass|pussy|vagina|dick|fuck y|(yo)?u('re| are|r)? (an?
+		// )?idiot|(yo)?u('re| are|r)? (an? )?retard)";
 		String regExTest = "(?is)\\b((yo)?u suck|8={3,}D|nigg(a|er)|ass ?hole|kiss my ass|dumbass|fag(got)?|slut|moron|daf[au][qk]|(mother)?fuc?k+(ing?|e?(r|d)| off+| y(ou|e)(rself)?| u+|tard)?|shit(t?er|head)|dickhead|pedo|whore|(is a )?cunt|cocksucker|ejaculated?|butthurt|(private|pussy) show|lesbo|bitches|suck\\b.{0,20}\\bdick|dee[sz]e? nut[sz])s?\\b|^.{0,250}\\b(shit face)\\b.{0,100}$";
 		Pattern p = Pattern.compile(regExTest);
-		
-		
-		
+
 		ChatRoom socvfinder = cb.getChatRoom(111347);
-		
-		long highTrafficTime = 3*30*1000L; //Every 1,5 minute
-		long lowTrafficTime = 4*60*1000L; //Every four minutes
+
+		long highTrafficTime = 3 * 30 * 1000L; // Every 1,5 minute
+		long lowTrafficTime = 4 * 60 * 1000L; // Every four minutes
 		long sleepTime = highTrafficTime;
-		
+
 		while (!shutDown) {
 			try {
 				ApiResult ap = apiHandler.getComments(start, 10, true);
@@ -79,68 +81,63 @@ public class DupeHunterComments extends Thread {
 					logger.warn("run() - Backoff " + ap.getBackoff());
 					Thread.sleep(ap.getBackoff() * 1000L);
 				}
-				if (ap.getMaxCommentDate()>0){
+				if (ap.getMaxCommentDate() > 0) {
 					start = ap.getMaxCommentDate() + 1;
-				}else{
-					start = System.currentTimeMillis()/1000L;
+				} else {
+					start = System.currentTimeMillis() / 1000L;
 				}
+				// Set sleep time between tags based on traffic
 				List<Comment> comments = ap.getComments();
-				if (comments.size()>40){
-					if (sleepTime == lowTrafficTime){
-						if (comments.size()>80){
-							sleepTime = highTrafficTime;	
+				if (comments.size() > 40) {
+					if (sleepTime == lowTrafficTime) {
+						if (comments.size() > 80) {
+							sleepTime = highTrafficTime;
 						}
 					}
-				}else{
+				} else {
 					sleepTime = lowTrafficTime;
 				}
 				logger.info("Number of commments:" + comments.size() + " Number of pages: " + ap.getNrOfPages());
 				List<Comment> possibileDupes = new ArrayList<>();
+				// Test run to find rude comments
 				for (Comment c : comments) {
-					if (c.isPossibleDuplicateComment()){
-						if (!getLastPostIds().contains(c.getPostId())){
+					if (c.isPossibleDuplicateComment()) {
+						if (!getLastPostIds().contains(c.getPostId())) {
 							addPostIdToQue(c.getPostId());
 							possibileDupes.add(c);
 						}
 					}
-					//Test on report
-					if (p.matcher(c.getBody()).find()){
+					// Test on report
+					if (p.matcher(c.getBody()).find()) {
 						if (logger.isDebugEnabled()) {
 							logger.debug("run() - " + c.getPostId() + ": " + c.getCommentId() + " " + c.getBody());
 						}
 						socvfinder.send("@Petter, @Kyll incomming possibile rude/abusive comment for testing");
-						if (c.getLink()!=null){
-							socvfinder.send(c.getLink());	
-						}else{
+						if (c.getLink() != null) {
+							socvfinder.send(c.getLink());
+						} else {
 							String message = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();
 							socvfinder.send(message);
 						}
 					}
 				}
 
-				
-				//
 				if (!possibileDupes.isEmpty()) {
 					if (logger.isDebugEnabled()) {
 						logger.debug("run() - ---- GET QUESTIONS -----");
 					}
 					Thread.sleep(3 * 1000L);
-					if (shutDown){
+					if (shutDown) {
 						return;
 					}
 					StringBuilder qQuery = new StringBuilder();
 					String sep = "";
 					for (Comment c : possibileDupes) {
-						qQuery.append(sep + c.getPostId());
+						qQuery.append(sep).append(c.getPostId());
 						sep = ";";
 					}
 					ApiResult arQ = apiHandler.getQuestions(qQuery.toString(), null, false, null);
 					List<Question> questions = arQ.getQuestions();
-					for (Question q : questions) {
-						if (logger.isDebugEnabled()) {
-							logger.debug("run() - " + q);
-						}
-					}
 					notifyRooms(questions);
 					if (arQ.getBackoff() > 0) {
 						logger.warn("run() - Backoff " + arQ.getBackoff());
@@ -168,10 +165,10 @@ public class DupeHunterComments extends Thread {
 		}
 
 	}
-	
-	public void addPostIdToQue(long postId){
+
+	public void addPostIdToQue(long postId) {
 		this.lastPostIds.add(postId);
-		if (this.lastPostIds.size()>MAX_POST_ID_QUE){
+		if (this.lastPostIds.size() > MAX_POST_ID_QUE) {
 			this.lastPostIds.poll();
 		}
 	}
@@ -182,21 +179,49 @@ public class DupeHunterComments extends Thread {
 		}
 
 		for (Question q : notifyTheseQuestions) {
+			String message = "[tag:possible-duplicate] " + getTags(q) + "[" + Parser.unescapeEntities(q.getTitle(), false)
+					+ "](http://stackoverflow.com/questions/" + q.getQuestionId() + ")";
 
-			Map<Long, List<DuplicateNotifications>> chatRoomsHunters = getRoomsAndHunters(q);
-			for (Entry<Long, List<DuplicateNotifications>> roomHunters : chatRoomsHunters.entrySet()) {
-				ChatRoom cr = cb.getChatRoom(roomHunters.getKey());
-				String message = "[tag:possible-duplicate] " + getTags(q) + "[" + Parser.unescapeEntities(q.getTitle(), false)
-						+ "](http://stackoverflow.com/questions/" + q.getQuestionId() + ")";
-				message += getNotifyHunters(cr, roomHunters.getValue());
-				cr.send(message);
+			Collection<ChatRoom> rooms = cb.getRooms().values();
+			for (ChatRoom cr : rooms) {
+				
+				if (isQuestionToBeNotified(cr,q)){
+					String send = message + getNotifyHunters(cr, q);
+					cr.send(send);
+				}
+
 			}
-//			if (chatRoomsHunters.isEmpty()){
-//				ChatRoom cr = cb.getChatRoom(111347);
-//				String message = "[tag:possible-duplicate] " + getTags(q) + "[" + Parser.unescapeEntities(q.getTitle(), false)
-//						+ "](http://stackoverflow.com/questions/" + q.getQuestionId() + ")";
-//				cr.send(message);
-//			}
+
+		}
+	}
+
+	private boolean isQuestionToBeNotified(ChatRoom cr, Question q) {
+		switch (cr.getDupNotifyStrategy()) {
+		case ChatRoom.DUPLICATION_NOTIFICATIONS_ALL:
+			return true;
+		case ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS:
+			List<String> roomTags = CloseVoteFinder.getInstance().getRoomTags().get(cr.getRoomId());
+			if (roomTags == null) {
+				return false;
+			}
+			for (String tag : q.getTags()) {
+				if (roomTags.contains(tag)) {
+					return true;
+				}
+			}
+			return false;
+		case ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM:
+			List<DuplicateNotifications> dupNotifs = CloseVoteFinder.getInstance().getHunters(cr.getRoomId(), q.getTags());
+			for (DuplicateNotifications dn : dupNotifs) {
+				User u = cr.getUser(dn.getUserId());
+				if (u != null && u.isCurrentlyInRoom()) {
+					return true;
+				}
+			}
+			return false;
+		case ChatRoom.DUPLICATION_NOTIFICATIONS_NONE:
+		default:
+			return false;
 		}
 	}
 
@@ -241,13 +266,11 @@ public class DupeHunterComments extends Thread {
 		return retVal;
 	}
 
-	private String getNotifyHunters(ChatRoom cr, List<DuplicateNotifications> huntersInTag) {
+	private String getNotifyHunters(ChatRoom cr, Question q) {
 		String message = "";
-		if (huntersInTag == null) {
-			return message;
-		}
 		Set<Long> nHunt = new HashSet<>();
-		for (DuplicateNotifications dn : huntersInTag) {
+		List<DuplicateNotifications> hunters = CloseVoteFinder.getInstance().getHunters(cr.getRoomId(), q.getTags());
+		for (DuplicateNotifications dn : hunters) {
 			long userId = dn.getUserId();
 			if (nHunt.contains(userId)) {
 				continue;
@@ -276,13 +299,13 @@ public class DupeHunterComments extends Thread {
 	public void setCb(ChatBot cb) {
 		this.cb = cb;
 	}
-	
+
 	public Queue<Long> getLastPostIds() {
 		return lastPostIds;
 	}
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		
+
 		String message = "DICKhead";
 		String regExTest = "(?i)(cunt|rude|asshole|rape|bitch|whore|gay|nigger|faggot|slut|cock|eat my|dumbass|pussy|vagina|dick|fuck y|(yo)?u('re| are|r)? (an? )?idiot|(yo)?u('re| are|r)? (an? )?retard)";
 		regExTest = "(?is)\\b((yo)?u suck|8={3,}D|nigg(a|er)|ass ?hole|kiss my ass|dumbass|fag(got)?|slut|daf[au][qk]|(mother)?fuc?k+(ing?|e?(r|d)| off+| y(ou|e)(rself)?| u+|tard)?|shit(t?er|head)|dickhead|pedo|whore|(is a )?cunt|cocksucker|ejaculated?|butthurt|(private|pussy) show|lesbo|bitches|suck\\b.{0,20}\\bdick|dee[sz]e? nut[sz])s?\\b|^.{0,250}\\b(shit face)\\b.{0,100}$";
@@ -291,11 +314,9 @@ public class DupeHunterComments extends Thread {
 		Pattern p = Pattern.compile(regExTest);
 		Matcher m = p.matcher(message);
 		while (m.find()) {
-		    list.add(m.group());
+			list.add(m.group());
 		}
 		System.out.println(list);
 	}
-
-	
 
 }
