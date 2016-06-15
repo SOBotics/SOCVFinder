@@ -196,6 +196,7 @@ The queen can be configured to allow only a sub set of commands in specific room
 
  - **`tag`**: The tag will be added to monitored tags and room users may opt-in for notifications.
 
+
     @Queen remove <tag>
 
  - **`tag`**: The tag will be removed from monitored tags and room users may not opt-in for notifications.
