@@ -1,6 +1,8 @@
 package jdd.so.service;
 
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import org.alicebot.ab.AIMLProcessor;
@@ -13,6 +15,22 @@ import org.tanukisoftware.wrapper.WrapperManager;
 
 import jdd.so.CloseVoteFinder;
 import jdd.so.bot.ChatBot;
+import jdd.so.bot.ChatRoom;
+import jdd.so.bot.actions.BotCommand;
+import jdd.so.bot.actions.cmd.AddUserCommand;
+import jdd.so.bot.actions.cmd.AiChatCommand;
+import jdd.so.bot.actions.cmd.ApiQuotaCommand;
+import jdd.so.bot.actions.cmd.CommandsCommand;
+import jdd.so.bot.actions.cmd.DeleteCommentCommand;
+import jdd.so.bot.actions.cmd.DuplicateConfirmCommand;
+import jdd.so.bot.actions.cmd.DuplicateWhiteListCommand;
+import jdd.so.bot.actions.cmd.HelpCommand;
+import jdd.so.bot.actions.cmd.OptInCommand;
+import jdd.so.bot.actions.cmd.OptOutCommand;
+import jdd.so.bot.actions.cmd.RoomTagAdd;
+import jdd.so.bot.actions.cmd.RoomTagList;
+import jdd.so.bot.actions.cmd.RoomTagRemove;
+import jdd.so.bot.actions.cmd.ShutDownCommand;
 
 public class SOCVFinderServiceWrapper implements WrapperListener {
 	/**
@@ -51,7 +69,7 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 		// the Wrapper has
 		// been properly initialized by calling the start method above.
 	}
-	
+
 	public static void main(String[] args) {
 		new SOCVFinderServiceWrapper(args);
 	}
@@ -85,7 +103,7 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 			properties.load(new FileInputStream("ini/SOCVService.properties"));
 			CloseVoteFinder.initInstance(properties);
 			cb = new ChatBot(properties, null);
-			SOLoginThread login = new SOLoginThread(); //takes to much time
+			SOLoginThread login = new SOLoginThread(); // takes to much time
 			login.start();
 			if (logger.isDebugEnabled()) {
 				logger.debug("start(String[]) - Start completed");
@@ -95,7 +113,7 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 			CloseVoteFinder.getInstance().shutDown();
 			cb.close();
 			return 1;
-		} 
+		}
 
 		if (logger.isInfoEnabled()) {
 			logger.info("start(String[]) - end");
@@ -139,7 +157,7 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 			if (logger.isInfoEnabled()) {
 				logger.info("ServiceWrapper: controlEvent(" + event + ") Ignored");
 			}
-			
+
 		} else {
 			if (logger.isInfoEnabled()) {
 				logger.info("ServiceWrapper: controlEvent(" + event + ") Stopping");
@@ -148,16 +166,15 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 			// Will not get here.
 		}
 	}
-	
-	
-	private class SOLoginThread extends Thread{
+
+	private class SOLoginThread extends Thread {
 		/**
 		 * Logger for this class
 		 */
 		private final Logger logger = Logger.getLogger(SOLoginThread.class);
-		
+
 		@Override
-		public void run(){
+		public void run() {
 			if (logger.isDebugEnabled()) {
 				logger.debug("start(String[]) - Start login");
 			}
@@ -165,11 +182,31 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 			if (logger.isDebugEnabled()) {
 				logger.debug("start(String[]) - Join rooms");
 			}
-			cb.joinRoom("stackoverflow.com", 111347,null, 0,true);
-			cb.joinRoom("stackoverflow.com", 95290,null,0, false);
+			// SOCVFinder
+			cb.joinRoom("stackoverflow.com", 111347, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, true);
+			// Campagins
+			cb.joinRoom("stackoverflow.com", 95290, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
+			// SOCVR Testing Facility
+			List<Class<? extends BotCommand>> allowedCommands = new ArrayList<>();
+			allowedCommands.add(HelpCommand.class);
+			allowedCommands.add(CommandsCommand.class);
+			allowedCommands.add(ApiQuotaCommand.class);
+			allowedCommands.add(AddUserCommand.class);
+			allowedCommands.add(OptInCommand.class);
+			allowedCommands.add(OptOutCommand.class);
+			allowedCommands.add(DuplicateConfirmCommand.class);
+			allowedCommands.add(DuplicateWhiteListCommand.class);
+			allowedCommands.add(DeleteCommentCommand.class);
+			allowedCommands.add(RoomTagList.class);
+			allowedCommands.add(RoomTagAdd.class);
+			allowedCommands.add(RoomTagRemove.class);
+			allowedCommands.add(AiChatCommand.class);
+			allowedCommands.add(ShutDownCommand.class);
+			cb.joinRoom("stackoverflow.com", 68414, allowedCommands, ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM, false);
+
 			cb.startDupeHunter();
 		}
-		
+
 	}
 
 }

@@ -1,6 +1,7 @@
 package jdd.so.bot.actions.cmd;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
@@ -52,8 +53,8 @@ public class RoomTagAdd extends BotCommand {
 		}
 		
 		try {
-			
-			if (CloseVoteFinder.getInstance().isRoomTag(room.getRoomId(),tag)){
+			List<String> tags = CloseVoteFinder.getInstance().getRoomTags().get(room.getRoomId());
+			if (tags!=null && !tag.isEmpty() && CloseVoteFinder.getInstance().isRoomTag(room.getRoomId(),tag)){
 				room.replyTo(event.getMessageId(), "The tag [tag:" + tag + "] is already available in this room");
 				return;
 			}

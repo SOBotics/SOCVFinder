@@ -309,7 +309,7 @@ public class ChatBot {
 		try {
 			cb.loginIn();
 			// SOCVFinder
-			cb.joinRoom("stackoverflow.com", 111347, null, ChatRoom.DUPLICATION_NOTIFICATIONS_ALL,true);
+			cb.joinRoom("stackoverflow.com", 111347, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,true);
 			// Campagins
 			cb.joinRoom("stackoverflow.com", 95290, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 			// SOCVR Testing Facility

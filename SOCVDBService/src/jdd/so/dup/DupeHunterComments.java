@@ -5,11 +5,8 @@ import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Queue;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -211,6 +208,19 @@ public class DupeHunterComments extends Thread {
 			}
 			return false;
 		case ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM:
+			List<String> rt = CloseVoteFinder.getInstance().getRoomTags().get(cr.getRoomId());
+			boolean inTags = false;
+			for (String tag : q.getTags()) {
+				if (rt.contains(tag)) {
+					inTags= true;
+					break;
+				}
+			}
+			
+			if (!inTags){
+				return false;
+			}
+			
 			List<DuplicateNotifications> dupNotifs = CloseVoteFinder.getInstance().getHunters(cr.getRoomId(), q.getTags());
 			for (DuplicateNotifications dn : dupNotifs) {
 				User u = cr.getUser(dn.getUserId());
@@ -225,36 +235,6 @@ public class DupeHunterComments extends Thread {
 		}
 	}
 
-	private Map<Long, List<DuplicateNotifications>> getRoomsAndHunters(Question q) {
-		Map<Long, List<DuplicateNotifications>> retMap = new HashMap<>();
-
-		Map<Long, List<DuplicateNotifications>> huntersMap = CloseVoteFinder.getInstance().getHunterInRooms();
-		for (Entry<Long, List<DuplicateNotifications>> roomHunters : huntersMap.entrySet()) {
-			List<DuplicateNotifications> huntersInTag = getHuntersInTag(roomHunters.getValue(), q);
-			if (!huntersInTag.isEmpty()) {
-				retMap.put(roomHunters.getKey(), huntersInTag);
-			}
-		}
-
-		return retMap;
-	}
-
-	private List<DuplicateNotifications> getHuntersInTag(List<DuplicateNotifications> allHunters, Question q) {
-		List<DuplicateNotifications> retList = new ArrayList<>();
-		for (DuplicateNotifications dn : allHunters) {
-			boolean hasTag = false;
-			for (String tag : q.getTags()) {
-				if (dn.getTag().equalsIgnoreCase(tag)) {
-					hasTag = true;
-					break;
-				}
-			}
-			if (hasTag) {
-				retList.add(dn);
-			}
-		}
-		return retList;
-	}
 
 	private String getTags(Question q) {
 		String retVal = "";
