@@ -163,7 +163,7 @@ Users above >3K are automatically added to the Reviewer privilege level if not p
   - `0`: Guest.
   - `1` Reviewer.
   - `2` Hammer
-  - `3` Room owner.
+  - `3` Tag owner.
   - `4` Bot owner. (you need to be bot owner to set this level)
 
 There is also an actual room owner level but this level can not be set, it depends on chat room settings.
