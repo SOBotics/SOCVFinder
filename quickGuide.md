@@ -115,9 +115,9 @@ As user opt in for notification in a tag a background thread starts that scans S
 
     @Queen opt-in [java] pd
 
-###Remove notifications
+###Respond to notifications
 
-If no other user in room have opt-in the duplicate notifications stream will stop.
+If no other user in room have opt-in and the room is displaying only opt-in notifications the duplicate notifications stream will stop.
 
     @Queen opt-out [java] pd
 
@@ -129,6 +129,12 @@ User with hammer privilege can reply to notification with (either by reply to me
 
  - **`f <wl>`**: Indicate as false positive (if wl is added question is white listed, hence it will not be showed in batches anymore) and if possible edit message.
  
+
+###List available tags for opt-in
+In certain rooms only specific tags can be allowed, this command lists available tags for opt-in.
+
+    @Queen list tags
+
 
 ##Whitelist
 
@@ -160,6 +166,8 @@ Users above >3K are automatically added to the Reviewer privilege level if not p
   - `3` Room owner.
   - `4` Bot owner. (you need to be bot owner to set this level)
 
+There is also an actual room owner level but this level can not be set, it depends on chat room settings.
+
 **Example**
 
 - `add users 5292302 Petter Friberg 2`  - Add user 5292302 with hammer privilege 
@@ -177,4 +185,22 @@ Note: Normally there is no need to index a tag more then 1/2 times a day
 **Example**
 
 - `@Queen index [java]`  - Index the java tag
+
+
+##Actual Room Owner and moderator
+The queen can be configured to allow only a sub set of commands in specific room, futhermore RO's can configure to allow duplicate notifications in only a subset of tags (only in these tag you may opt-in)
+
+###Manage tags in room
+
+@Queen add <tag>
+
+ - **`tag`**: The tag will be added to monitored tags and room users may opt-in for notifications.
+ 
+@Queen remove <tag>
+
+ - **`tag`**: The tag will be removed from monitored tags and room users may not opt-in for notifications.
+ 
+ 
+
+
 
