@@ -95,6 +95,11 @@ public class ChatRoom {
 	public CompletableFuture<Void> delete(long messageId) {
 		return room.delete(messageId);
 	}
+	
+	public void leave(){
+		this.room.leave();
+		this.bot.getRooms().remove(getRoomId());
+	}
 
 	public int getCurrentBatchNumber() {
 		return currentBatchNumber;

@@ -63,7 +63,7 @@ public class RoomTagRemove extends BotCommand {
 			if (logger.isDebugEnabled()) {
 				logger.debug("runCommand(ChatRoom, PingMessageEvent) - " + result);
 			}
-			room.replyTo(event.getMessageId(), "Tag [tag:" + tag + "] haven been removed from this room");
+			room.replyTo(event.getMessageId(), "Tag [tag:" + tag + "] have been removed from this room");
 		} catch (SQLException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
 			room.replyTo(event.getMessageId(),"Sorry problem updating data, @Petter need to check the stack trace");

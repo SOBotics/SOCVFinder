@@ -27,6 +27,7 @@ import jdd.so.bot.actions.cmd.DuplicateWhiteListCommand;
 import jdd.so.bot.actions.cmd.HelpCommand;
 import jdd.so.bot.actions.cmd.OptInCommand;
 import jdd.so.bot.actions.cmd.OptOutCommand;
+import jdd.so.bot.actions.cmd.RoomLeaveCommand;
 import jdd.so.bot.actions.cmd.RoomTagAdd;
 import jdd.so.bot.actions.cmd.RoomTagList;
 import jdd.so.bot.actions.cmd.RoomTagRemove;
@@ -202,7 +203,11 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 			allowedCommands.add(RoomTagRemove.class);
 			allowedCommands.add(AiChatCommand.class);
 			allowedCommands.add(ShutDownCommand.class);
-			cb.joinRoom("stackoverflow.com", 68414, allowedCommands, ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM, false);
+			allowedCommands.add(RoomLeaveCommand.class);
+			//SOCVRTesting
+			//cb.joinRoom("stackoverflow.com", 68414, allowedCommands, ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM, false);
+			//SOCVR
+			cb.joinRoom("stackoverflow.com", 41570, allowedCommands, ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM, false);
 
 			cb.startDupeHunter();
 		}

@@ -46,7 +46,7 @@ public class RoomTagList extends BotCommand {
 		for (String t : tags) {
 			at.append(" [tag:").append(t).append("]");
 		}
-		room.replyTo(event.getMessageId(), "In this room these tag are available" + at.toString());
+		room.replyTo(event.getMessageId(), "In this room these tags are available:" + at.toString());
 	}
 
 }

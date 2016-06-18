@@ -122,7 +122,14 @@ public class CherryPickCommand extends BotCommand {
 				if (openInOtherBatches != null && openInOtherBatches.length() > 0) {
 					rpl += ", some questions are locked in other batches, try later";
 				}
-				room.replyTo(event.getMessageId(), rpl);
+				String editMessage = rpl;
+				sentId.thenAccept(messageId -> {
+					room.edit(messageId, editMessage).handleAsync((mId, thr) -> {
+						if (thr != null)
+							return room.replyTo(event.getMessageId(), editMessage).join();
+						return mId;
+					});
+				});
 				return;
 			}
 

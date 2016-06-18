@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Queue;
@@ -121,7 +120,7 @@ public class DupeHunterComments extends Thread {
 
 				if (!possibileDupes.isEmpty()) {
 					if (logger.isDebugEnabled()) {
-						logger.debug("run() - ---- GET QUESTIONS -----");
+						logger.debug("run() ----- GET QUESTIONS -----");
 					}
 					Thread.sleep(3 * 1000L);
 					if (shutDown) {
@@ -175,13 +174,14 @@ public class DupeHunterComments extends Thread {
 			return;
 		}
 
+		List<ChatRoom> rooms = new ArrayList<>();
+		rooms.addAll(cb.getRooms().values());
+		
 		for (Question q : notifyTheseQuestions) {
 			String message = "[tag:possible-duplicate] " + getTags(q) + "[" + Parser.unescapeEntities(q.getTitle(), false)
 					+ "](http://stackoverflow.com/questions/" + q.getQuestionId() + ")";
 
-			Collection<ChatRoom> rooms = cb.getRooms().values();
 			for (ChatRoom cr : rooms) {
-				
 				if (isQuestionToBeNotified(cr,q)){
 					String send = message + getNotifyHunters(cr, q);
 					cr.send(send);

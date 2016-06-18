@@ -18,6 +18,7 @@ import jdd.so.bot.actions.cmd.IndexCommand;
 import jdd.so.bot.actions.cmd.OptInCommand;
 import jdd.so.bot.actions.cmd.OptOutCommand;
 import jdd.so.bot.actions.cmd.PingCommand;
+import jdd.so.bot.actions.cmd.RoomLeaveCommand;
 import jdd.so.bot.actions.cmd.RoomTagAdd;
 import jdd.so.bot.actions.cmd.RoomTagList;
 import jdd.so.bot.actions.cmd.RoomTagRemove;
@@ -70,6 +71,7 @@ public class BotCommandsRegistry {
 		commands.add(new RoomTagList());
 		commands.add(new RoomTagAdd());
 		commands.add(new RoomTagRemove());
+		commands.add(new RoomLeaveCommand());
 		commands.add(new CherryPickCommand());
 		commands.add(new StatsMeCommand());
 		commands.add(new StatsTagCommand());
