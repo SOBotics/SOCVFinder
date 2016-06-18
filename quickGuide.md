@@ -201,7 +201,9 @@ The queen can be configured to allow only a sub set of commands in specific room
 
  - **`tag`**: The tag will be removed from monitored tags and room users may not opt-in for notifications.
  
- 
+ ###Tell bot to leave room
 
+Instruct the bot to leave the room, she will be back if rebooted. Instruct bot owner if you do not like her back on next reboot.
 
+    @Queen leave
 
