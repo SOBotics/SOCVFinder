@@ -178,7 +178,7 @@ public class DupeHunterComments extends Thread {
 		rooms.addAll(cb.getRooms().values());
 		
 		for (Question q : notifyTheseQuestions) {
-			String message = "[ [SOCVFinder](//git.io/vorzx) ] [tag:possible-duplicate] " + getTags(q) + "[" + Parser.unescapeEntities(q.getTitle(), false)
+			String message = "[ [SOCVFinder](//git.io/vorzx) ] [tag:possible-duplicate] " + getTags(q) + "[" + getSanitizedTitle(q)
 					+ "](http://stackoverflow.com/questions/" + q.getQuestionId() + ")";
 
 			for (ChatRoom cr : rooms) {
@@ -190,6 +190,10 @@ public class DupeHunterComments extends Thread {
 			}
 
 		}
+	}
+
+	private String getSanitizedTitle(Question q) {
+		return Parser.unescapeEntities(q.getTitle(), false).replaceAll("(\\[|\\])", "\\\\$1");
 	}
 
 	private boolean isQuestionToBeNotified(ChatRoom cr, Question q) {
