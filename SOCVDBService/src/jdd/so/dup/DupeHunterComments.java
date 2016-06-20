@@ -179,7 +179,7 @@ public class DupeHunterComments extends Thread {
 		
 		for (Question q : notifyTheseQuestions) {
 			String message = "[ [SOCVFinder](//git.io/vorzx) ] [tag:possible-duplicate] " + getTags(q) + "[" + getSanitizedTitle(q)
-					+ "](http://stackoverflow.com/questions/" + q.getQuestionId() + ")";
+					+ "](//stackoverflow.com/q/" + q.getQuestionId() + ")";
 
 			for (ChatRoom cr : rooms) {
 				if (isQuestionToBeNotified(cr,q)){
