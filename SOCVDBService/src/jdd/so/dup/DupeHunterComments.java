@@ -57,11 +57,8 @@ public class DupeHunterComments extends Thread {
 		long start = System.currentTimeMillis() / 1000L - 60 * 1;
 		shutDown = false;
 
-		// String regExTest = "(?i)(cunt|rude|asshole|
-		// rape|bitch|whore|gay|nigger|faggot|slut|cock|eat
-		// my|dumbass|pussy|vagina|dick|fuck y|(yo)?u('re| are|r)? (an?
-		// )?idiot|(yo)?u('re| are|r)? (an? )?retard)";
-		String regExTest = "(?is)\\b((yo)?u suck|8={3,}D|nigg(a|er)|ass ?hole|kiss my ass|dumbass|fag(got)?|slut|moron|daf[au][qk]|(mother)?fuc?k+(ing?|e?(r|d)| off+| y(ou|e)(rself)?| u+|tard)?|shit(t?er|head)|dickhead|pedo|whore|(is a )?cunt|cocksucker|ejaculated?|butthurt|(private|pussy) show|lesbo|bitches|suck\\b.{0,20}\\bdick|dee[sz]e? nut[sz])s?\\b|^.{0,250}\\b(shit face)\\b.{0,100}$";
+
+		String regExTest = "(?is)\\b((yo)?u suck|8={3,}D|nigg(a|er)|ass ?hole|kiss my ass|dumbass|fag(got)?|slut|moron|daf[au][qk]|(mother)?fuc?k+(ing?|e?(r|d)| off+| y(ou|e)(rself)?| u+|tard)?|shit(t?er|head)|idiot|dickhead|pedo|whore|(is a )?cunt|cocksucker|ejaculated?|butthurt|(private|pussy) show|lesbo|bitches|suck\\b.{0,20}\\bdick|dee[sz]e? nut[sz])s?\\b|^.{0,250}\\b(shit face)\\b.{0,100}$";
 		Pattern p = Pattern.compile(regExTest);
 
 		ChatRoom socvfinder = cb.getChatRoom(111347);
@@ -108,13 +105,11 @@ public class DupeHunterComments extends Thread {
 						if (logger.isDebugEnabled()) {
 							logger.debug("run() - " + c.getPostId() + ": " + c.getCommentId() + " " + c.getBody());
 						}
-						socvfinder.send("@Petter, @Kyll incomming possibile rude/abusive comment for testing");
-						if (c.getLink() != null) {
-							socvfinder.send(c.getLink());
-						} else {
-							String message = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();
-							socvfinder.send(message);
+						String message = c.getLink();
+						if (message==null){
+							message = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();						
 						}
+						socvfinder.send("@Petter, @Kyll incomming possibile rude/abusive comment for testing: " + message);
 					}
 				}
 
