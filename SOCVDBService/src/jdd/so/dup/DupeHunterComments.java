@@ -10,6 +10,7 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 import org.json.JSONException;
@@ -178,17 +179,13 @@ public class DupeHunterComments extends Thread {
 		rooms.addAll(cb.getRooms().values());
 		
 		for (Question q : notifyTheseQuestions) {
-			String message = "[ [SOCVFinder](//git.io/vorzx) ] [tag:possible-duplicate] " + getTags(q) + "[" + getSanitizedTitle(q)
-					+ "](//stackoverflow.com/q/" + q.getQuestionId() + ")";
-
 			for (ChatRoom cr : rooms) {
+				String message = "[ [SOCVFinder](//git.io/vorzx) ] [tag:possible-duplicate] " + getTags(cr,q) + " [" + getSanitizedTitle(q) + "](//stackoverflow.com/q/" + q.getQuestionId() + ")";
 				if (isQuestionToBeNotified(cr,q)){
 					String send = message + getNotifyHunters(cr, q);
 					cr.send(send);
 				}
-
 			}
-
 		}
 	}
 
@@ -240,14 +237,10 @@ public class DupeHunterComments extends Thread {
 	}
 
 
-	private String getTags(Question q) {
-		String retVal = "";
-		if (q != null && q.getTags() != null) {
-			for (String tag : q.getTags()) {
-				retVal += "[tag:" + tag + "] ";
-			}
-		}
-		return retVal;
+	private String getTags(ChatRoom cr, Question q) {
+		List<String> hammerTags = CloseVoteFinder.getInstance().getHunters(cr.getRoomId(), q.getTags()).stream().map(DuplicateNotifications::getTag).collect(Collectors.toCollection(ArrayList::new));
+		q.getTags().stream().filter(t -> !hammerTags.contains(t)).findFirst().ifPresent(hammerTags::add);
+		return hammerTags.stream().map(t -> "[tag:" + t + "]").collect(Collectors.joining(" "));
 	}
 
 	private String getNotifyHunters(ChatRoom cr, Question q) {
