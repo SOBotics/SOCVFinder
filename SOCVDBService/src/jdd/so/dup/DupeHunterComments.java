@@ -178,7 +178,7 @@ public class DupeHunterComments extends Thread {
 		rooms.addAll(cb.getRooms().values());
 		
 		for (Question q : notifyTheseQuestions) {
-			String message = "[tag:possible-duplicate] " + getTags(q) + "[" + Parser.unescapeEntities(q.getTitle(), false)
+			String message = "[ [SOCVFinder](//git.io/vorzx) ] [tag:possible-duplicate] " + getTags(q) + "[" + Parser.unescapeEntities(q.getTitle(), false)
 					+ "](http://stackoverflow.com/questions/" + q.getQuestionId() + ")";
 
 			for (ChatRoom cr : rooms) {
