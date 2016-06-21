@@ -1,22 +1,30 @@
 package jdd.so.nlp;
 
+import org.apache.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
+import org.jsoup.Jsoup;
 
 import opennlp.tools.doccat.DoccatModel;
 import opennlp.tools.doccat.DocumentCategorizerME;
 import opennlp.tools.util.InvalidFormatException;
 
 /**
- * Code by Technik Empire for this gist 
+ * Code by Technik Empire from this gist 
  * https://gist.github.com/TechnikEmpire/4a76aa0b844e15c639f08066655847e7
  * @author Technik Empire (adapted by Petter)
  *
  */
 
 public class CommentCategory {
+	/**
+	 * Logger for this class
+	 */
+	private static final Logger logger = Logger.getLogger(CommentCategory.class);
 	
 	private DoccatModel m;
 	private DocumentCategorizerME myCategorizer;
@@ -26,23 +34,26 @@ public class CommentCategory {
 	}
 	
 	private void initModel() throws InvalidFormatException, IOException {
+
 		m = new DoccatModel(new File("ini/CommentsTrainingModel.model"));
 		myCategorizer = new DocumentCategorizerME(m);
 	}
 
 	public double getThresholdBad(String comment){
-		String line = comment;
-		line = line.replaceAll("lt", "");
-		line = line.replaceAll("gt", "");
-		line = line.replaceAll("@(\\S+)?", "").trim();
-		line = line.replaceAll("[^a-zA-Z\r\n]", " ").trim();
-		line = line.replaceAll("[ ]{2,}", " ");
+
+		String line = Jsoup.parse(comment).text(); //remove html
+		line = line.replaceAll("@(\\S+)?", "").trim(); //remove username
+		line = line.replaceAll("[^a-zA-Z\r\n]", " ").trim(); //remove strange chars
+		line = line.replaceAll("[ ]{2,}", " "); //remove spaces
 		
 		double[] outcomes = myCategorizer.categorize(line);
 		if (outcomes[0]>=0.9){
-			System.out.println(line);
+			Logger.getLogger(LogThresholdHit.class).debug(line + " | " + outcomes[0] + " | "  + outcomes[1]);
+		}else{
+			Logger.getLogger(LogThresholdNonHit.class).debug(line + " | " + outcomes[0] + " | " + outcomes[1]);
 		}
-		return outcomes[0];
+		double returndouble = outcomes[0];
+		return returndouble;
 	}
 
 	
@@ -51,10 +62,16 @@ public class CommentCategory {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("main(String[]) - start");
+		}
+
 		DoccatModel m = null;
 		try {
 			m = new DoccatModel(new File("PATH_TO\\CommentsTrainingModel.model"));
 		} catch (IOException e) {
+			logger.error("main(String[])", e);
+
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -82,9 +99,15 @@ public class CommentCategory {
 
 				}
 			} catch (IOException e) {
+				logger.error("main(String[])", e);
+
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+
+		if (logger.isDebugEnabled()) {
+			logger.debug("main(String[]) - end");
 		}
 	}
 }
