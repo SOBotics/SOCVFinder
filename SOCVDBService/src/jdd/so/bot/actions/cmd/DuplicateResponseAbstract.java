@@ -11,7 +11,7 @@ import jdd.so.dao.model.DuplicateResponse;
 public abstract class DuplicateResponseAbstract extends BotCommand {
 
 	public long getQuestionId(String c){
-		String match = "stackoverflow.com/questions/";
+		String match = "stackoverflow.com/q/";
 		int startPos = c.lastIndexOf(match);
 		String qId = c.substring(startPos + match.length(), c.indexOf(')', startPos + match.length()));
 		return Long.parseLong(qId);

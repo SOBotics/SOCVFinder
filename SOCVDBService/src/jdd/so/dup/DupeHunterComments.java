@@ -233,7 +233,7 @@ public class DupeHunterComments extends Thread {
 
 
 	private String getTags(ChatRoom cr, Question q) {
-		List<String> hammerTags = CloseVoteFinder.getInstance().getHunters(cr.getRoomId(), q.getTags()).stream().map(DuplicateNotifications::getTag).collect(Collectors.toCollection(ArrayList::new));
+		List<String> hammerTags = CloseVoteFinder.getInstance().getHunters(cr.getRoomId(), q.getTags()).stream().map(DuplicateNotifications::getTag).distinct().collect(Collectors.toCollection(ArrayList::new));
 		q.getTags().stream().filter(t -> !hammerTags.contains(t)).findFirst().ifPresent(hammerTags::add);
 		return hammerTags.stream().map(t -> "[tag:" + t + "]").collect(Collectors.joining(" "));
 	}

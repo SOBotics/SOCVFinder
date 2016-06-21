@@ -64,7 +64,7 @@ public class DuplicateConfirmCommand extends DuplicateResponseAbstract {
 			questionId = getQuestionId(content);
 		} catch (RuntimeException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
-			room.replyTo(event.getMessageId(), "Sorry could not retrive question id, question is not white listed");
+			room.replyTo(event.getMessageId(), "Sorry could not retrive question id");
 			return;
 		}
 		
