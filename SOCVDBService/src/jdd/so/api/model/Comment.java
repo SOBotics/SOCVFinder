@@ -2,6 +2,7 @@ package jdd.so.api.model;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -215,18 +216,22 @@ public class Comment {
 		CloseVoteFinder.initInstance(properties);
 		
 		GregorianCalendar cal = new GregorianCalendar();
-		cal.add(Calendar.MINUTE, -10);
+		cal.add(Calendar.DATE, -120);
+		
+		PrintWriter writer = new PrintWriter("dev/old_comments_120days.txt", "UTF-8");
 		
 
 		ApiHandler handler = new ApiHandler();
 		ApiResult res = handler.getComments(cal.getTimeInMillis()/1000L, 10, true);
 		List<Comment> comment = res.getComments();
 		for (Comment c : comment) {
-			System.out.println(c.getBody());
-			System.out.println(Jsoup.parse(c.getBody()).text());
-			System.out.println();
+			String line = Jsoup.parse(c.getBody()).text(); //remove html
+			line = line.replaceAll("@(\\S+)?", "").trim(); //remove username
+			line = line.replaceAll("[^a-zA-Z\r\n]", " ").trim(); //remove strange chars
+			line = line.replaceAll("[ ]{2,}", " "); //remove spaces
+			writer.println(line);
 		}
-		
+		writer.close();
 		
 	}
 }
