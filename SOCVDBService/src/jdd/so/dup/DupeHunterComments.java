@@ -2,12 +2,16 @@ package jdd.so.dup;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Queue;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -25,6 +29,7 @@ import jdd.so.api.model.Question;
 import jdd.so.bot.ChatBot;
 import jdd.so.bot.ChatRoom;
 import jdd.so.dao.model.DuplicateNotifications;
+import jdd.so.nlp.CommentCategory;
 
 public class DupeHunterComments extends Thread {
 	/**
@@ -33,10 +38,12 @@ public class DupeHunterComments extends Thread {
 	private static final Logger logger = Logger.getLogger(DupeHunterComments.class);
 
 	private static final int MAX_POST_ID_QUE = 10;
+	private static final double COMMENT_BAD_THRESHOLD = 0.9;
 
-	ApiHandler apiHandler;
+	private ApiHandler apiHandler;
+	private CommentCategory commentCategory; 
 	private ChatBot cb;
-	Queue<Long> lastPostIds;
+	private Queue<Long> lastPostIds;
 
 	private boolean shutDown;
 
@@ -45,6 +52,11 @@ public class DupeHunterComments extends Thread {
 		this.cb = cb;
 		this.apiHandler = new ApiHandler();
 		this.lastPostIds = new ArrayDeque<>();
+		try {
+			commentCategory = new CommentCategory();
+		} catch (IOException e) {
+			logger.error("DupeHunterComments(ChatBot) - Comment categorizzer could not be instanced", e);
+		}
 	}
 
 	public void run() {
@@ -61,6 +73,10 @@ public class DupeHunterComments extends Thread {
 
 		String regExTest = "(?is)\\b((yo)?u suck|8={3,}D|nigg(a|er)|ass ?hole|kiss my ass|dumbass|fag(got)?|slut|moron|daf[au][qk]|(mother)?fuc?k+(ing?|e?(r|d)| off+| y(ou|e)(rself)?| u+|tard)?|shit(t?er|head)|idiot|dickhead|pedo|whore|(is a )?cunt|cocksucker|ejaculated?|butthurt|(private|pussy) show|lesbo|bitches|suck\\b.{0,20}\\bdick|dee[sz]e? nut[sz])s?\\b|^.{0,250}\\b(shit face)\\b.{0,100}$";
 		Pattern p = Pattern.compile(regExTest);
+		NumberFormat nfThreshold = NumberFormat.getNumberInstance(Locale.US);
+		nfThreshold.setMaximumFractionDigits(2);
+		nfThreshold.setMinimumFractionDigits(2);
+		
 
 		ChatRoom socvfinder = cb.getChatRoom(111347);
 
@@ -101,16 +117,33 @@ public class DupeHunterComments extends Thread {
 							possibileDupes.add(c);
 						}
 					}
-					// Test on report
-					if (p.matcher(c.getBody()).find()) {
-						if (logger.isDebugEnabled()) {
-							logger.debug("run() - " + c.getPostId() + ": " + c.getCommentId() + " " + c.getBody());
-						}
+
+					/**
+					 * RUDE OFFENSIVE TEST
+					 */
+					boolean regexMatch = p.matcher(c.getBody()).find();
+					double threshold = 0d;
+					if (commentCategory!=null){
+						threshold = commentCategory.getThresholdBad(c.getBody());
+					}
+					
+					if (regexMatch||threshold>=COMMENT_BAD_THRESHOLD) {
+						logger.warn("run() - Offensive comment >> REGEX HIT=" + regexMatch + " THRESHOLD=" + nfThreshold.format(threshold)  + c.getPostId() + ": " + c.getCommentId() + " " + c.getBody());
 						String message = c.getLink();
 						if (message==null){
 							message = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();						
 						}
-						socvfinder.send("@Petter, @Kyll incomming possibile rude/abusive comment for testing: " + message);
+						socvfinder.send("@Petter @Kyll testing possibile rude/abusive: REGEX HIT=" + regexMatch + " THRESHOLD=" + nfThreshold.format(threshold));
+						CompletableFuture<Long> mid = socvfinder.send(message);
+						
+						mid.thenAccept(new Consumer<Long>() {
+
+							@Override
+							public void accept(Long t) {
+								EditRudeCommentThread erct = new EditRudeCommentThread(socvfinder, t, c.getLink());
+								erct.start();
+							}
+						});
 					}
 				}
 

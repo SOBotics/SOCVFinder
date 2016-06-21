@@ -331,7 +331,7 @@ public class ChatBot {
 			allowedCommands.add(ShutDownCommand.class);
 			allowedCommands.add(RoomLeaveCommand.class);
 			
-			cb.joinRoom("stackoverflow.com", 68414, allowedCommands, ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM,false);
+			cb.joinRoom("stackoverflow.com", 41570, allowedCommands, ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM,false);
 
 			cb.startDupeHunter();
 			try {
