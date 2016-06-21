@@ -1,7 +1,19 @@
 package jdd.so.api.model;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Properties;
+
+import org.apache.log4j.PropertyConfigurator;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+
+import jdd.so.CloseVoteFinder;
+import jdd.so.api.ApiHandler;
 
 /**
  * A comment on questiton
@@ -194,5 +206,27 @@ public class Comment {
 
 	public void setLink(String link) {
 		this.link = link;
+	}
+	
+	public static void main(String[] args) throws JSONException, IOException {
+		PropertyConfigurator.configure("ini/log4j.properties");
+		Properties properties = new Properties();
+		properties.load(new FileInputStream("ini/SOCVService.properties"));
+		CloseVoteFinder.initInstance(properties);
+		
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.add(Calendar.MINUTE, -10);
+		
+
+		ApiHandler handler = new ApiHandler();
+		ApiResult res = handler.getComments(cal.getTimeInMillis()/1000L, 10, true);
+		List<Comment> comment = res.getComments();
+		for (Comment c : comment) {
+			System.out.println(c.getBody());
+			System.out.println(Jsoup.parse(c.getBody()).text());
+			System.out.println();
+		}
+		
+		
 	}
 }
