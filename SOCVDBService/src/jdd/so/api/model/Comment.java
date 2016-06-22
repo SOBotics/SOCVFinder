@@ -209,6 +209,18 @@ public class Comment {
 		this.link = link;
 	}
 	
+	public static String clean(Comment c){
+		String line = c.getBody();
+		
+		line = line.replaceAll("<code>(.+?)</code>", "").trim(); //remove code
+		//Split on [?!.]+(\s|\z) then check if spaces?
+		
+		line = Jsoup.parse(line).text(); //remove html
+		line = line.replaceAll("@(\\S+)?", "").trim(); //remove username
+		line = line.replaceAll("[ ]{2,}", " "); //remove spaces
+		return line;
+	}
+	
 	public static void main(String[] args) throws JSONException, IOException {
 		PropertyConfigurator.configure("ini/log4j.properties");
 		Properties properties = new Properties();
@@ -218,20 +230,26 @@ public class Comment {
 		GregorianCalendar cal = new GregorianCalendar();
 		cal.add(Calendar.DATE, -120);
 		
-		PrintWriter writer = new PrintWriter("dev/old_comments_120days.txt", "UTF-8");
+		PrintWriter writerNormal = new PrintWriter("dev/model_comments_normal.txt", "UTF-8");
+		PrintWriter writerGood = new PrintWriter("dev/model_comments_good.txt", "UTF-8");
 		
 
 		ApiHandler handler = new ApiHandler();
-		ApiResult res = handler.getComments(cal.getTimeInMillis()/1000L, 10, true);
+		ApiResult res = handler.getComments(cal.getTimeInMillis()/1000L, 30, true);
 		List<Comment> comment = res.getComments();
 		for (Comment c : comment) {
-			String line = Jsoup.parse(c.getBody()).text(); //remove html
-			line = line.replaceAll("@(\\S+)?", "").trim(); //remove username
-			line = line.replaceAll("[^a-zA-Z\r\n]", " ").trim(); //remove strange chars
-			line = line.replaceAll("[ ]{2,}", " "); //remove spaces
-			writer.println(line);
+			String line = Comment.clean(c);
+			if (c.getScore()>0){
+				writerGood.println(c.getBody());
+				
+			}else{
+				writerNormal.println(c.getBody());
+			}
 		}
-		writer.close();
+		writerGood.close();
+		writerNormal.close();
 		
 	}
+	
+	
 }

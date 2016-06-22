@@ -91,7 +91,12 @@ public class BatchDoneCommand extends BotCommand {
 		String questions = b.getQuestions();
 		if (questions != null && questions.trim().length() > 0) {
 			questions = questions.substring(1, questions.length()-1);
+			int nrQuestions = questions.split(";").length;
+			if (nrQuestions==0){
+				nrQuestions=1;
+			}
 			ApiHandler api = new ApiHandler();
+			
 			try {
 				ApiResult cpr = api.getQuestions(questions, null, false, null);
 				int cvCount = 0;
@@ -103,6 +108,12 @@ public class BatchDoneCommand extends BotCommand {
 					}else{
 						cvCount+=q.getCloseVoteCount();
 					}
+				}
+				
+				int deleted = nrQuestions - cpr.getQuestions().size();
+				if (deleted>0){
+					logger.info("Number of deleted question: " + deleted);
+					cvCount+=4;
 				}
 				
 				b.setBatchDateEnd(System.currentTimeMillis()/1000);

@@ -18,7 +18,7 @@ public class RegexTest {
 		    list.add(m.group());
 		}
 		System.out.println(list);
-
+		System.out.println("thanks it wan't a particular stuff lt gt then also gt 0".replace("gt", ""));
 	}
 
 }

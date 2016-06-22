@@ -127,7 +127,8 @@ public class DupeHunterComments extends Thread {
 						threshold = commentCategory.getThresholdBad(c.getBody());
 					}
 					
-					if (regexMatch||threshold>=COMMENT_BAD_THRESHOLD) {
+					// if (regexMatch||threshold>=COMMENT_BAD_THRESHOLD) {
+					if (regexMatch) {
 						logger.warn("run() - Offensive comment >> REGEX HIT=" + regexMatch + " THRESHOLD=" + nfThreshold.format(threshold)  + c.getPostId() + ": " + c.getCommentId() + " " + c.getBody());
 						String message = c.getLink();
 						if (message==null){
@@ -163,6 +164,7 @@ public class DupeHunterComments extends Thread {
 					}
 					ApiResult arQ = apiHandler.getQuestions(qQuery.toString(), null, false, null);
 					List<Question> questions = arQ.getQuestions();
+					//Removed closed questions
 					notifyRooms(questions);
 					if (arQ.getBackoff() > 0) {
 						logger.warn("run() - Backoff " + arQ.getBackoff());
@@ -207,6 +209,9 @@ public class DupeHunterComments extends Thread {
 		rooms.addAll(cb.getRooms().values());
 		
 		for (Question q : notifyTheseQuestions) {
+			if (q.isClosed()){
+				continue;
+			}
 			for (ChatRoom cr : rooms) {
 				String message = "[ [SOCVFinder](//git.io/vorzx) ] [tag:possible-duplicate] " + getTags(cr,q) + " [" + getSanitizedTitle(q) + "](//stackoverflow.com/q/" + q.getQuestionId() + ")";
 				if (isQuestionToBeNotified(cr,q)){

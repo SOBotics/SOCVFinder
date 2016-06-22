@@ -48,9 +48,9 @@ public class CommentCategory {
 		
 		double[] outcomes = myCategorizer.categorize(line);
 		if (outcomes[0]>=0.9){
-			Logger.getLogger(LogThresholdHit.class).debug(line + " | " + outcomes[0] + " | "  + outcomes[1]);
+			Logger.getLogger(LogThresholdHit.class).debug(comment + " | " + outcomes[0] + " | "  + outcomes[1]);
 		}else{
-			Logger.getLogger(LogThresholdNonHit.class).debug(line + " | " + outcomes[0] + " | " + outcomes[1]);
+			Logger.getLogger(LogThresholdNonHit.class).debug(comment + " | " + outcomes[0] + " | " + outcomes[1]);
 		}
 		double returndouble = outcomes[0];
 		return returndouble;
