@@ -1,3 +1,0 @@
-face detection detect any face or face recognition recognize a face who is it | 0.986257261753501 | 0.013742738246499023
-OMG that s really a very stupid mistake Thank you so much for your help thepule | 0.9156173814383568 | 0.0843826185616432
-Hey don t get angry at excaza he s just one rude dude with one rude tude | 0.9993149904697416 | 6.850095302584335E-4
