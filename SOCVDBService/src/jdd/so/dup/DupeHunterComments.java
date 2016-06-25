@@ -223,7 +223,7 @@ public class DupeHunterComments extends Thread {
 	}
 
 	private String getSanitizedTitle(Question q) {
-		return Parser.unescapeEntities(q.getTitle(), false).replaceAll("(\\[|\\])", "\\\\$1");
+		return Parser.unescapeEntities(q.getTitle(), false).replaceAll("(\\[|\\]|_|\\*)", "\\\\$1");
 	}
 
 	private boolean isQuestionToBeNotified(ChatRoom cr, Question q) {
