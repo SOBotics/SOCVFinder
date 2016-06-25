@@ -110,10 +110,10 @@ public class PreProcesser {
 
 
 	private static String removeIntentionalRepetitions(String result) {
-		// TODO To implement
+		// TODO Improve implementation
 		//1 first if 3 letter or more
 		//2 if word contains 2 letters in sequenze and is over threshold
-		return result;
+		return result.replaceAll("(.)\\1{2,}", "$1");
 	}
 
 
@@ -148,12 +148,14 @@ public class PreProcesser {
 	}
 
 	public static void main(String[] args) throws IOException, InterruptedException {
+		
+		System.out.println(removeIntentionalRepetitions("Teeeest thissssssss"));
 	
 		//testComments("dev/model_comments_good.txt",2000);
 		
-		//testComments("dev/model_comments_bad.txt",2000);
+		testComments("dev/model_comments_bad.txt",2000);
 		
-		testTweets("dev/twitter-hate-speech-processed.csv",2000);	
+		//testTweets("dev/twitter-hate-speech-processed.csv",2000);	
 	}
 
 
@@ -176,6 +178,10 @@ public class PreProcesser {
 	private static void testTweets(String fileName, long readTime) throws IOException, InterruptedException{
 		CSVParser parser = CSVParser.parse(new File(fileName), Charset.forName("Cp1252"), CSVFormat.DEFAULT);
 		for (CSVRecord r : parser) {
+			String classif = r.get(0);
+			if (classif.equalsIgnoreCase("The tweet is not offensive")){
+				continue;
+			}
 			String line = r.get(2);
 			System.out.println(line);
 	        System.out.println(preProcessComment(line, true));
