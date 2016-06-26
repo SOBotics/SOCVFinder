@@ -30,7 +30,7 @@ public class TestWekaClassifier {
 		Classifier classifier = new NaiveBayesMultinomialText();
 		classifier.buildClassifier(data);
 		
-		String testMessage = "It was tagged javascript before Joel edited it. Clearly it is programming related :)";
+		String testMessage = "Spencer, my tone? You sir are political correctness gone mad!";
 				
 		double[] ret = classifyMessage(classifier, data, testMessage);
 		System.out.println(ret[0]+ ":" + ret[1]);

@@ -37,7 +37,21 @@ public class Comment {
 	private long postId;
 	private String postType;
 	private String link;
+	
+	
+	//Classification attribute
+	private boolean regExHit;
+	private double openNlpGood;
+	private double openNlpBad;
+	private double naiveBayesGood;
+	private double naiveBayesBad;
+	
+	//Data feedback
+	private boolean deleted;
+	private boolean flaggedBad;
+	private boolean flaggedGood;
 
+	
 	public static Comment getComment(JSONObject json) throws JSONException {
 		Comment c = new Comment();
 		c.setBody(json.getString("body"));
@@ -249,6 +263,70 @@ public class Comment {
 		writerGood.close();
 		writerNormal.close();
 		
+	}
+
+	public boolean isRegExHit() {
+		return regExHit;
+	}
+
+	public void setRegExHit(boolean regExHit) {
+		this.regExHit = regExHit;
+	}
+
+	public double getOpenNlpGood() {
+		return openNlpGood;
+	}
+
+	public void setOpenNlpGood(double openNlpGood) {
+		this.openNlpGood = openNlpGood;
+	}
+
+	public double getOpenNlpBad() {
+		return openNlpBad;
+	}
+
+	public void setOpenNlpBad(double openNlpBad) {
+		this.openNlpBad = openNlpBad;
+	}
+
+	public double getNaiveBayesGood() {
+		return naiveBayesGood;
+	}
+
+	public void setNaiveBayesGood(double naiveBayesGood) {
+		this.naiveBayesGood = naiveBayesGood;
+	}
+
+	public double getNaiveBayesBad() {
+		return naiveBayesBad;
+	}
+
+	public void setNaiveBayesBad(double naiveBayesBad) {
+		this.naiveBayesBad = naiveBayesBad;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	public boolean isFlaggedBad() {
+		return flaggedBad;
+	}
+
+	public void setFlaggedBad(boolean flaggedBad) {
+		this.flaggedBad = flaggedBad;
+	}
+
+	public boolean isFlaggedGood() {
+		return flaggedGood;
+	}
+
+	public void setFlaggedGood(boolean flaggedGood) {
+		this.flaggedGood = flaggedGood;
 	}
 	
 	

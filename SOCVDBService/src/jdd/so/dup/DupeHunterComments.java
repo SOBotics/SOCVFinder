@@ -47,18 +47,24 @@ public class DupeHunterComments extends Thread {
 
 	private boolean shutDown;
 
+	private NumberFormat nfThreshold;
+
 	public DupeHunterComments(ChatBot cb) {
 		this.setName("DupeHunterComments");
 		this.cb = cb;
 		this.apiHandler = new ApiHandler();
 		this.lastPostIds = new ArrayDeque<>();
+		nfThreshold = NumberFormat.getNumberInstance(Locale.US);
+		nfThreshold.setMaximumFractionDigits(2);
+		nfThreshold.setMinimumFractionDigits(2);
 		try {
 			commentCategory = new CommentCategory();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			logger.error("DupeHunterComments(ChatBot) - Comment categorizzer could not be instanced", e);
 		}
 	}
 
+	@Override
 	public void run() {
 
 		try {
@@ -71,11 +77,7 @@ public class DupeHunterComments extends Thread {
 		shutDown = false;
 
 
-		String regExTest = "(?is)\\b((yo)?u suck|8={3,}D|nigg(a|er)|ass ?hole|kiss my ass|dumbass|fag(got)?|slut|moron|daf[au][qk]|(mother)?fuc?k+(ing?|e?(r|d)| off+| y(ou|e)(rself)?| u+|tard)?|shit(t?er|head)|idiot|dickhead|pedo|whore|(is a )?cunt|cocksucker|ejaculated?|butthurt|(private|pussy) show|lesbo|bitches|suck\\b.{0,20}\\bdick|dee[sz]e? nut[sz])s?\\b|^.{0,250}\\b(shit face)\\b.{0,100}$";
-		Pattern p = Pattern.compile(regExTest);
-		NumberFormat nfThreshold = NumberFormat.getNumberInstance(Locale.US);
-		nfThreshold.setMaximumFractionDigits(2);
-		nfThreshold.setMinimumFractionDigits(2);
+		
 		
 
 		ChatRoom socvfinder = cb.getChatRoom(111347);
@@ -121,33 +123,10 @@ public class DupeHunterComments extends Thread {
 					/**
 					 * RUDE OFFENSIVE TEST
 					 */
-					boolean regexMatch = p.matcher(c.getBody()).find();
-					double threshold = 0d;
-					if (commentCategory!=null){
-						threshold = commentCategory.getThresholdBad(c.getBody());
-					}
 					
-					// if (regexMatch||threshold>=COMMENT_BAD_THRESHOLD) {
-					if (regexMatch) {
-						logger.warn("run() - Offensive comment >> REGEX HIT=" + regexMatch + " THRESHOLD=" + nfThreshold.format(threshold)  + c.getPostId() + ": " + c.getCommentId() + " " + c.getBody());
-						String message = c.getLink();
-						if (message==null){
-							message = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();						
-						}
-						socvfinder.send("@Petter @Kyll testing possibile rude/abusive: REGEX HIT=" + regexMatch + " THRESHOLD=" + nfThreshold.format(threshold));
-						CompletableFuture<Long> mid = socvfinder.send(message);
-						
-						mid.thenAccept(new Consumer<Long>() {
-
-							@Override
-							public void accept(Long t) {
-								EditRudeCommentThread erct = new EditRudeCommentThread(socvfinder, t, c.getLink());
-								erct.start();
-							}
-						});
-					}
+					classifyComment(socvfinder, c);
 				}
-
+					
 				if (!possibileDupes.isEmpty()) {
 					if (logger.isDebugEnabled()) {
 						logger.debug("run() ----- GET QUESTIONS -----");
@@ -193,6 +172,60 @@ public class DupeHunterComments extends Thread {
 
 	}
 
+	private void classifyComment(ChatRoom socvfinder, Comment c) {
+		try {
+			boolean hit = commentCategory.classifyComment(c);
+			if (hit){
+				logger.warn("run() - Offensive comment >> REGEX HIT=" + c.isRegExHit() + " NB=" + nfThreshold.format(c.getNaiveBayesBad()) + " OpenNLP=" + nfThreshold.format(c.getOpenNlpBad()) + ": "  + c.getPostId() + ": " + c.getCommentId() + " " + c.getBody());
+				StringBuilder message = new StringBuilder("[ [SOCVFinder](//git.io/vorzx) ]");
+				
+				message.append(" ").append(getBoldRegexHit(c.isRegExHit())).append("Regex").append(getBoldRegexHit(c.isRegExHit())).append(":").append(String.valueOf(c.isRegExHit()));
+				message.append(" ").append(getBoldNaiveBayes(c.getNaiveBayesBad())).append("NaiveBayes").append(getBoldNaiveBayes(c.getNaiveBayesBad())).append(":").append(nfThreshold.format(c.getNaiveBayesBad()));
+				message.append(" ").append(getBoldOpenNLP(c.getOpenNlpBad())).append("Open NLP").append(getBoldOpenNLP(c.getOpenNlpBad())).append(":").append(nfThreshold.format(c.getOpenNlpBad()));
+				message.append(" cc: @Petter @Kyll");
+				socvfinder.send(message.toString());
+				String commentLink = c.getLink();
+				if (commentLink==null){
+					commentLink = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();						
+				}
+				CompletableFuture<Long> mid = socvfinder.send(commentLink);
+				
+				mid.thenAccept(new Consumer<Long>() {
+
+					@Override
+					public void accept(Long t) {
+						EditRudeCommentThread erct = new EditRudeCommentThread(socvfinder, t, c.getLink());
+						erct.start();
+					}
+				});
+			}
+
+		} catch (Exception e) {
+			logger.error("run()", e);
+		}
+	}
+
+	private String getBoldRegexHit(boolean regExHit) {
+		if (regExHit){
+			return "**";
+		}
+		return "";
+	}
+
+	private String getBoldNaiveBayes(double badThreshold) {
+		if (badThreshold>=CommentCategory.WEKA_NB_THRESHOLD){
+			return "**";
+		}
+		return "";
+	}
+	
+	private String getBoldOpenNLP(double badThreshold) {
+		if (badThreshold>=CommentCategory.OPEN_NLP_THRESHOLD){
+			return "**";
+		}
+		return "";
+	}
+	
 	public void addPostIdToQue(long postId) {
 		this.lastPostIds.add(postId);
 		if (this.lastPostIds.size() > MAX_POST_ID_QUE) {
