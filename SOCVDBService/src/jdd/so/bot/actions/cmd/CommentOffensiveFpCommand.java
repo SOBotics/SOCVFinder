@@ -75,7 +75,7 @@ public class CommentOffensiveFpCommand extends CommentResponseAbstract {
 		}
 		
 
-		String edit = getEdit(event, content, true);
+		String edit = getEdit(event, content, false);
 
 		room.edit(event.getParentMessageId(), content + edit).handleAsync((mId, thr) -> {
 //			if (thr != null)
