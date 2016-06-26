@@ -20,7 +20,7 @@ public class EditRudeCommentThread extends Thread {
 		try {
 			Thread.sleep(100*1000L);
 		} catch (InterruptedException e) {}
-		room.edit(messageId, link + " ...");
+		room.delete(messageId);
 	}
 
 }

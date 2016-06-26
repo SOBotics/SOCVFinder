@@ -33,8 +33,8 @@ public class CommentCategory {
 	 */
 	private static final Logger logger = Logger.getLogger(CommentCategory.class);
 
-	public static double OPEN_NLP_THRESHOLD = .95d;
-	public static double WEKA_NB_THRESHOLD = .95d;
+	public static double OPEN_NLP_THRESHOLD = .99d;
+	public static double WEKA_NB_THRESHOLD = .99d;
 
 	private Pattern regexClassifier;
 	private DocumentCategorizerME openNLPClassifier;
@@ -90,7 +90,7 @@ public class CommentCategory {
 		c.setNaiveBayesBad(outcomeWeka[1]);
 		
 		//outcomeNlp[1] > OPEN_NLP_THRESHOLD || disabled for now
-		return regExHit ||  outcomeWeka[1] > WEKA_NB_THRESHOLD;
+		return regExHit ||  (outcomeWeka[1] > WEKA_NB_THRESHOLD&&outcomeNlp[1] > OPEN_NLP_THRESHOLD);
 
 	}
 
@@ -159,7 +159,7 @@ public class CommentCategory {
 		System.out.println(cc.classifyComment(c));
 		
 		c = new Comment();
-		c.setBody("Can you plz clarify your question?");
+		c.setBody("a little mistake. what's up when $i=25?");
 		System.out.println(cc.classifyComment(c));
 		
 	}

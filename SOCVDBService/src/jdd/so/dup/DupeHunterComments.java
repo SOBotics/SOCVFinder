@@ -2,6 +2,7 @@ package jdd.so.dup;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ import jdd.so.api.model.Comment;
 import jdd.so.api.model.Question;
 import jdd.so.bot.ChatBot;
 import jdd.so.bot.ChatRoom;
+import jdd.so.dao.CommentDAO;
 import jdd.so.dao.model.DuplicateNotifications;
 import jdd.so.nlp.CommentCategory;
 
@@ -76,12 +78,9 @@ public class DupeHunterComments extends Thread {
 		long start = System.currentTimeMillis() / 1000L - 60 * 1;
 		shutDown = false;
 
-
-		
-		
-
 		ChatRoom socvfinder = cb.getChatRoom(111347);
-
+		CommentDAO commentDao = new CommentDAO();
+		
 		long highTrafficTime = 3 * 30 * 1000L; // Every 1,5 minute
 		long lowTrafficTime = 4 * 60 * 1000L; // Every four minutes
 		long sleepTime = highTrafficTime;
@@ -111,6 +110,7 @@ public class DupeHunterComments extends Thread {
 				}
 				logger.info("Number of commments:" + comments.size() + " Number of pages: " + ap.getNrOfPages());
 				List<Comment> possibileDupes = new ArrayList<>();
+				List<Comment> possibileRude = new ArrayList<>();
 				// Test run to find rude comments
 				for (Comment c : comments) {
 					if (c.isPossibleDuplicateComment()) {
@@ -125,6 +125,17 @@ public class DupeHunterComments extends Thread {
 					 */
 					
 					classifyComment(socvfinder, c);
+					if (c.isRegExHit()||c.getNaiveBayesBad()>0.7 || c.getOpenNlpBad()>0.7){
+						possibileRude.add(c);
+					}
+				}
+				
+				if (!possibileRude.isEmpty()){
+					try {
+						commentDao.insertComment(CloseVoteFinder.getInstance().getConnection(), possibileRude);
+					} catch (SQLException e) {
+						logger.error("run()", e);
+					}
 				}
 					
 				if (!possibileDupes.isEmpty()) {
@@ -177,17 +188,20 @@ public class DupeHunterComments extends Thread {
 			boolean hit = commentCategory.classifyComment(c);
 			if (hit){
 				logger.warn("run() - Offensive comment >> REGEX HIT=" + c.isRegExHit() + " NB=" + nfThreshold.format(c.getNaiveBayesBad()) + " OpenNLP=" + nfThreshold.format(c.getOpenNlpBad()) + ": "  + c.getPostId() + ": " + c.getCommentId() + " " + c.getBody());
+				String commentLink = c.getLink();
+				if (commentLink==null){
+					commentLink = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();						
+				}
+				
 				StringBuilder message = new StringBuilder("[ [SOCVFinder](//git.io/vorzx) ]");
 				
 				message.append(" ").append(getBoldRegexHit(c.isRegExHit())).append("Regex").append(getBoldRegexHit(c.isRegExHit())).append(":").append(String.valueOf(c.isRegExHit()));
 				message.append(" ").append(getBoldNaiveBayes(c.getNaiveBayesBad())).append("NaiveBayes").append(getBoldNaiveBayes(c.getNaiveBayesBad())).append(":").append(nfThreshold.format(c.getNaiveBayesBad()));
 				message.append(" ").append(getBoldOpenNLP(c.getOpenNlpBad())).append("Open NLP").append(getBoldOpenNLP(c.getOpenNlpBad())).append(":").append(nfThreshold.format(c.getOpenNlpBad()));
-				message.append(" cc: @Petter @Kyll");
+				message.append(" [comment](").append(commentLink).append(")");
+				message.append(" (cc @Petter @Kyll)");
 				socvfinder.send(message.toString());
-				String commentLink = c.getLink();
-				if (commentLink==null){
-					commentLink = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();						
-				}
+				
 				CompletableFuture<Long> mid = socvfinder.send(commentLink);
 				
 				mid.thenAccept(new Consumer<Long>() {
