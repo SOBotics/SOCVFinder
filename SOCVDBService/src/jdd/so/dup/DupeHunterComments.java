@@ -125,7 +125,7 @@ public class DupeHunterComments extends Thread {
 					 */
 					
 					classifyComment(socvfinder, c);
-					if (c.isRegExHit()||c.getNaiveBayesBad()>0.7 || c.getOpenNlpBad()>0.7){
+					if (c.isRegExHit()||c.getNaiveBayesBad()>0.95 || c.getOpenNlpBad()>0.95){
 						possibileRude.add(c);
 					}
 				}

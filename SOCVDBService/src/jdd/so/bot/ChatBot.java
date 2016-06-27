@@ -330,9 +330,29 @@ public class ChatBot {
 			allowedCommands.add(AiChatCommand.class);
 			allowedCommands.add(ShutDownCommand.class);
 			allowedCommands.add(RoomLeaveCommand.class);
-			
 			cb.joinRoom("stackoverflow.com", 41570, allowedCommands, ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM,false);
 
+			// R Room
+			List<Class<? extends BotCommand>> allowedCommandsR = new ArrayList<>();
+			allowedCommandsR.add(HelpCommand.class);
+			allowedCommandsR.add(CommandsCommand.class);
+			allowedCommandsR.add(ApiQuotaCommand.class);
+			allowedCommandsR.add(AddUserCommand.class);
+			allowedCommandsR.add(OptInCommand.class);
+			allowedCommandsR.add(OptOutCommand.class);
+			allowedCommandsR.add(DuplicateConfirmCommand.class);
+			allowedCommandsR.add(DuplicateWhiteListCommand.class);
+			allowedCommandsR.add(DeleteCommentCommand.class);
+			allowedCommandsR.add(RoomTagList.class);
+			allowedCommandsR.add(RoomTagAdd.class);
+			allowedCommandsR.add(RoomTagRemove.class);
+			allowedCommandsR.add(AiChatCommand.class);
+			allowedCommandsR.add(ShutDownCommand.class);
+			allowedCommandsR.add(RoomLeaveCommand.class);
+			cb.joinRoom("stackoverflow.com", 25312, allowedCommandsR, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
+
+			
+			
 			cb.startDupeHunter();
 			try {
 				messageLatch.await();

@@ -65,7 +65,7 @@ public class RoomTagAdd extends BotCommand {
 			if (logger.isDebugEnabled()) {
 				logger.debug("runCommand(ChatRoom, PingMessageEvent) - " + result);
 			}
-			room.replyTo(event.getMessageId(), "Tag [tag:" + tag + "] have been added to room and duplicate notifications for hammer in tag are available");
+			room.replyTo(event.getMessageId(), "Tag [tag:" + tag + "] has been added to room and duplicate notifications for hammer in tag are available");
 		} catch (SQLException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
 			room.replyTo(event.getMessageId(),"Sorry problem updating data, @Petter need to check the stack trace");
