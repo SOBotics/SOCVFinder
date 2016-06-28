@@ -230,6 +230,28 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 			
 			cb.joinRoom("stackoverflow.com", 25312, allowedCommandsR, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
 
+
+			// http://chat.stackoverflow.com/rooms/75819/gmts
+						List<Class<? extends BotCommand>> allowedCommandsGMTs = new ArrayList<>();
+						allowedCommandsGMTs.add(HelpCommand.class);
+						allowedCommandsGMTs.add(CommandsCommand.class);
+						allowedCommandsGMTs.add(ApiQuotaCommand.class);
+						allowedCommandsGMTs.add(AddUserCommand.class);
+						allowedCommandsGMTs.add(OptInCommand.class);
+						allowedCommandsGMTs.add(OptOutCommand.class);
+						allowedCommandsGMTs.add(DuplicateConfirmCommand.class);
+						allowedCommandsGMTs.add(DuplicateWhiteListCommand.class);
+						allowedCommandsGMTs.add(DeleteCommentCommand.class);
+						allowedCommandsGMTs.add(RoomTagList.class);
+						allowedCommandsGMTs.add(RoomTagAdd.class);
+						allowedCommandsGMTs.add(RoomTagRemove.class);
+						allowedCommandsGMTs.add(AiChatCommand.class);
+						allowedCommandsGMTs.add(ShutDownCommand.class);
+						allowedCommandsGMTs.add(RoomLeaveCommand.class);
+						
+						cb.joinRoom("stackoverflow.com", 75819, allowedCommandsGMTs, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
+
+			
 			// SOCVRTesting
 			// cb.joinRoom("stackoverflow.com", 68414, allowedCommands,
 			// ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM, false);
