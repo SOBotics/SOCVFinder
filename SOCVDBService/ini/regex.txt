@@ -10,7 +10,7 @@
 (?i)gay
 (?i)slut
 (?i)moron
-(?i)fuck|f.{1,5}k\s(yo|off)
+(?i)fuck|f\S{1,5}k\s(yo|off)
 (?i)retard
 (?i)bitch
 (?i)nazi

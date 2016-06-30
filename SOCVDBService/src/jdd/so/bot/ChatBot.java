@@ -100,7 +100,7 @@ public class ChatBot {
 		// GMTs 
 		this.joinRoom("stackoverflow.com", 75819, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
 		//Ruby http://chat.stackoverflow.com/rooms/44914/ruby-sometimes-on-rails
-		//this.joinRoom("stackoverflow.com", 44914, getDupeNotificationsOnlyCommands(), ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
+		this.joinRoom("stackoverflow.com", 44914, getDupeNotificationsOnlyCommands(), ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
 	}
 
 	private List<Class<? extends BotCommand>> getDupeNotificationsOnlyCommands() {

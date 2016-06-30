@@ -91,6 +91,20 @@ public class PreProcesser {
 		return result;
 	}
 
+	public static String preProccesForRegex(String comment) {
+		String result = comment;
+		
+		//1 Remove username
+		result = removeUserNames(result);
+		
+		//5-6. Remove intentional repetitions
+		result = removeIntentionalRepetitions(result);
+				
+		//Remove all double space or more 
+		result = removeDoubleSpaces(result);
+		
+		return result;
+	}
 	
 	private static String removeDoubleSpaces(String result) {
 		return result.replaceAll("[ ]{2,}", " ").trim();
@@ -190,6 +204,9 @@ public class PreProcesser {
 		}
 		
 	}
+
+
+	
 	
 	
 	

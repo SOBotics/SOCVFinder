@@ -95,14 +95,16 @@ public class CommentCategory {
 	public boolean classifyComment(Comment c) throws Exception {
 		String comment = c.getBody();
 		
+		String regexText = PreProcesser.preProccesForRegex(comment);
+		// regex it
+		String regExHit = getRegexHit(regexText);
+		c.setRegExHit(regExHit);
+
 		String classifyText = PreProcesser.preProcessComment(comment, false);
 
 		System.out.println("Classifing text: " + classifyText);
 		
-		// regex it
-		String regExHit = getRegexHit(comment);
-		c.setRegExHit(regExHit);
-
+		
 		// open nlp
 		double[] outcomeNlp = classifyMessageOpenNLP(openNLPClassifier, classifyText);
 		c.setOpenNlpGood(outcomeNlp[0]);
