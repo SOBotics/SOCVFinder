@@ -68,7 +68,7 @@
 (?i)(^|\s)kill\sy
 (?i)jack\soff
 (?i)jail\s?bait
-(?i)jerk\s?
+(?i) jerks?(!| |$)
 (?i)lolita
 (?i)milf
 (?i)pissing
