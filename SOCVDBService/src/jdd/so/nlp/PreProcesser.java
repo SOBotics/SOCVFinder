@@ -97,6 +97,9 @@ public class PreProcesser {
 		//1 Remove username
 		result = removeUserNames(result);
 		
+		//10 remove html
+	    result = removeHtml(result);
+		
 		//5-6. Remove intentional repetitions
 		result = removeIntentionalRepetitions(result);
 				

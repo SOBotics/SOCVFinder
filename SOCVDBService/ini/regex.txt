@@ -27,12 +27,12 @@
 (?i)suck my
 (?i)ejaculated
 (?i)butthurt
-(?i)lesbo
+(?i)lesbo(!| |$)
 (?i)shit\s?face
 (?i)acrotomophilia
 (?i)\sanal\s
 (?i)anilingus
-(?i)anus
+(?i)anus(!| |$)
 (?i)apeshit
 (?i)auto\s?erotic
 (?i)bastard
