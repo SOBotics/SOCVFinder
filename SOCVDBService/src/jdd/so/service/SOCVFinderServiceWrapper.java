@@ -180,83 +180,15 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 				logger.debug("start(String[]) - Start login");
 			}
 			cb.loginIn();
-			if (logger.isDebugEnabled()) {
-				logger.debug("start(String[]) - Join rooms");
-			}
-			// SOCVFinder
-			cb.joinRoom("stackoverflow.com", 111347, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, true);
-			// Campagins
-			cb.joinRoom("stackoverflow.com", 95290, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
-			// SOCVR
-			List<Class<? extends BotCommand>> allowedCommands = new ArrayList<>();
-			allowedCommands.add(HelpCommand.class);
-			allowedCommands.add(CommandsCommand.class);
-			allowedCommands.add(ApiQuotaCommand.class);
-			allowedCommands.add(AddUserCommand.class);
-			allowedCommands.add(OptInCommand.class);
-			allowedCommands.add(OptOutCommand.class);
-			allowedCommands.add(DuplicateConfirmCommand.class);
-			allowedCommands.add(DuplicateWhiteListCommand.class);
-			allowedCommands.add(DeleteCommentCommand.class);
-			allowedCommands.add(RoomTagList.class);
-			allowedCommands.add(RoomTagAdd.class);
-			allowedCommands.add(RoomTagRemove.class);
-			allowedCommands.add(AiChatCommand.class);
-			allowedCommands.add(ShutDownCommand.class);
-			allowedCommands.add(RoomLeaveCommand.class);
-			// SOCVRTesting
-			// cb.joinRoom("stackoverflow.com", 68414, allowedCommands,
-			// ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM, false);
-			// SOCVR
-			cb.joinRoom("stackoverflow.com", 41570, allowedCommands, ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM, false);
-
-			// R Room
-			List<Class<? extends BotCommand>> allowedCommandsR = new ArrayList<>();
-			allowedCommandsR.add(HelpCommand.class);
-			allowedCommandsR.add(CommandsCommand.class);
-			allowedCommandsR.add(ApiQuotaCommand.class);
-			allowedCommandsR.add(AddUserCommand.class);
-			allowedCommandsR.add(OptInCommand.class);
-			allowedCommandsR.add(OptOutCommand.class);
-			allowedCommandsR.add(DuplicateConfirmCommand.class);
-			allowedCommandsR.add(DuplicateWhiteListCommand.class);
-			allowedCommandsR.add(DeleteCommentCommand.class);
-			allowedCommandsR.add(RoomTagList.class);
-			allowedCommandsR.add(RoomTagAdd.class);
-			allowedCommandsR.add(RoomTagRemove.class);
-			allowedCommandsR.add(AiChatCommand.class);
-			allowedCommandsR.add(ShutDownCommand.class);
-			allowedCommandsR.add(RoomLeaveCommand.class);
+			logger.info("start(String[]) - Join rooms - START");
 			
-			cb.joinRoom("stackoverflow.com", 25312, allowedCommandsR, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
-
-
-			// http://chat.stackoverflow.com/rooms/75819/gmts
-						List<Class<? extends BotCommand>> allowedCommandsGMTs = new ArrayList<>();
-						allowedCommandsGMTs.add(HelpCommand.class);
-						allowedCommandsGMTs.add(CommandsCommand.class);
-						allowedCommandsGMTs.add(ApiQuotaCommand.class);
-						allowedCommandsGMTs.add(AddUserCommand.class);
-						allowedCommandsGMTs.add(OptInCommand.class);
-						allowedCommandsGMTs.add(OptOutCommand.class);
-						allowedCommandsGMTs.add(DuplicateConfirmCommand.class);
-						allowedCommandsGMTs.add(DuplicateWhiteListCommand.class);
-						allowedCommandsGMTs.add(DeleteCommentCommand.class);
-						allowedCommandsGMTs.add(RoomTagList.class);
-						allowedCommandsGMTs.add(RoomTagAdd.class);
-						allowedCommandsGMTs.add(RoomTagRemove.class);
-						allowedCommandsGMTs.add(AiChatCommand.class);
-						allowedCommandsGMTs.add(ShutDownCommand.class);
-						allowedCommandsGMTs.add(RoomLeaveCommand.class);
-						
-						cb.joinRoom("stackoverflow.com", 75819, allowedCommandsGMTs, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
-
+			cb.joinRooms();
 			
-			// SOCVRTesting
-			// cb.joinRoom("stackoverflow.com", 68414, allowedCommands,
-			// ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM, false);
+			logger.info("start(String[]) - Join rooms - END");
 
 			cb.startDupeHunter();
+			
+			logger.info("start(String[]) - dupe hunter - END");
 		}
 
 	}

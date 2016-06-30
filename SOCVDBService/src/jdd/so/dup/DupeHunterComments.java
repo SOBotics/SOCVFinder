@@ -40,8 +40,6 @@ public class DupeHunterComments extends Thread {
 	private static final Logger logger = Logger.getLogger(DupeHunterComments.class);
 
 	private static final int MAX_POST_ID_QUE = 10;
-	private static final double COMMENT_BAD_THRESHOLD = 0.95;
-
 	private ApiHandler apiHandler;
 	private CommentCategory commentCategory; 
 	private ChatBot cb;
@@ -125,7 +123,7 @@ public class DupeHunterComments extends Thread {
 					 */
 					
 					classifyComment(socvfinder, c);
-					if (c.isRegExHit()||c.getNaiveBayesBad()>0.95 || c.getOpenNlpBad()>0.95){
+					if (c.isRegExHit()||c.getNaiveBayesBad()>0.99 || (c.getNaiveBayesBad()>0.95 && c.getOpenNlpBad()>0.99)){
 						possibileRude.add(c);
 					}
 				}

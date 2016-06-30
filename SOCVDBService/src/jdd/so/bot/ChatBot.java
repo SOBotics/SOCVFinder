@@ -84,6 +84,44 @@ public class ChatBot {
 		}
 		return (client != null);
 	}
+	
+	public void joinOnlySOCVFinder(){
+		// SOCVFinder
+		this.joinRoom("stackoverflow.com", 111347, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,true);
+	}
+	
+	public void joinRooms(){
+		// SOCVFinder
+		this.joinRoom("stackoverflow.com", 111347, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,true);
+		// Campagins
+		this.joinRoom("stackoverflow.com", 95290, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
+		// SOCVR 
+		this.joinRoom("stackoverflow.com", 41570, getDupeNotificationsOnlyCommands(), ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM,false);
+		// GMTs 
+		this.joinRoom("stackoverflow.com", 75819, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
+		//Ruby http://chat.stackoverflow.com/rooms/44914/ruby-sometimes-on-rails
+		//this.joinRoom("stackoverflow.com", 44914, getDupeNotificationsOnlyCommands(), ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
+	}
+
+	private List<Class<? extends BotCommand>> getDupeNotificationsOnlyCommands() {
+		List<Class<? extends BotCommand>> allowedCommands = new ArrayList<>();
+		allowedCommands.add(HelpCommand.class);
+		allowedCommands.add(CommandsCommand.class);
+		allowedCommands.add(ApiQuotaCommand.class);
+		allowedCommands.add(AddUserCommand.class);
+		allowedCommands.add(OptInCommand.class);
+		allowedCommands.add(OptOutCommand.class);
+		allowedCommands.add(DuplicateConfirmCommand.class);
+		allowedCommands.add(DuplicateWhiteListCommand.class);
+		allowedCommands.add(DeleteCommentCommand.class);
+		allowedCommands.add(RoomTagList.class);
+		allowedCommands.add(RoomTagAdd.class);
+		allowedCommands.add(RoomTagRemove.class);
+		allowedCommands.add(AiChatCommand.class);
+		allowedCommands.add(ShutDownCommand.class);
+		allowedCommands.add(RoomLeaveCommand.class);
+		return allowedCommands;
+	}
 
 	/**
 	 * 
@@ -120,27 +158,6 @@ public class ChatBot {
 		return id != 0;
 	}
 
-	// private void roomPost(ChatRoom room, MessagePostedEvent event) {
-	// System.out.println(event);
-	// if (event.getContent().equalsIgnoreCase("que f") ||
-	// event.getContent().equalsIgnoreCase("que f")) {
-	// CompletableFuture<Long> lastMessage = room.getLastMessage();
-	// if (lastMessage != null && lastMessage.isDone()) {
-	// try {
-	// Long mId = lastMessage.get();
-	// if (mId != null) {
-	// Message lastMesage = room.getRoom().getMessage(mId);
-	// if (lastMesage != null) {
-	// System.out.println(lastMessage);
-	// }
-	// }
-	// } catch (InterruptedException | ExecutionException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// }
-	// }
-	// }
 
 	protected void roomEvent(ChatRoom room, PingMessageEvent event, boolean isReply) {
 		if (logger.isDebugEnabled()) {
@@ -309,71 +326,7 @@ public class ChatBot {
 		ChatBot cb = new ChatBot(properties, messageLatch);
 		try {
 			cb.loginIn();
-			// SOCVFinder
-			cb.joinRoom("stackoverflow.com", 111347, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,true);
-			// Campagins
-			cb.joinRoom("stackoverflow.com", 95290, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
-			// SOCVR Testing Facility
-			List<Class<? extends BotCommand>> allowedCommands = new ArrayList<>();
-			allowedCommands.add(HelpCommand.class);
-			allowedCommands.add(CommandsCommand.class);
-			allowedCommands.add(ApiQuotaCommand.class);
-			allowedCommands.add(AddUserCommand.class);
-			allowedCommands.add(OptInCommand.class);
-			allowedCommands.add(OptOutCommand.class);
-			allowedCommands.add(DuplicateConfirmCommand.class);
-			allowedCommands.add(DuplicateWhiteListCommand.class);
-			allowedCommands.add(DeleteCommentCommand.class);
-			allowedCommands.add(RoomTagList.class);
-			allowedCommands.add(RoomTagAdd.class);
-			allowedCommands.add(RoomTagRemove.class);
-			allowedCommands.add(AiChatCommand.class);
-			allowedCommands.add(ShutDownCommand.class);
-			allowedCommands.add(RoomLeaveCommand.class);
-			cb.joinRoom("stackoverflow.com", 41570, allowedCommands, ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM,false);
-
-			// R Room
-			List<Class<? extends BotCommand>> allowedCommandsR = new ArrayList<>();
-			allowedCommandsR.add(HelpCommand.class);
-			allowedCommandsR.add(CommandsCommand.class);
-			allowedCommandsR.add(ApiQuotaCommand.class);
-			allowedCommandsR.add(AddUserCommand.class);
-			allowedCommandsR.add(OptInCommand.class);
-			allowedCommandsR.add(OptOutCommand.class);
-			allowedCommandsR.add(DuplicateConfirmCommand.class);
-			allowedCommandsR.add(DuplicateWhiteListCommand.class);
-			allowedCommandsR.add(DeleteCommentCommand.class);
-			allowedCommandsR.add(RoomTagList.class);
-			allowedCommandsR.add(RoomTagAdd.class);
-			allowedCommandsR.add(RoomTagRemove.class);
-			allowedCommandsR.add(AiChatCommand.class);
-			allowedCommandsR.add(ShutDownCommand.class);
-			allowedCommandsR.add(RoomLeaveCommand.class);
-			cb.joinRoom("stackoverflow.com", 25312, allowedCommandsR, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
-
-			
-			// http://chat.stackoverflow.com/rooms/75819/gmts
-			List<Class<? extends BotCommand>> allowedCommandsGMTs = new ArrayList<>();
-			allowedCommandsGMTs.add(HelpCommand.class);
-			allowedCommandsGMTs.add(CommandsCommand.class);
-			allowedCommandsGMTs.add(ApiQuotaCommand.class);
-			allowedCommandsGMTs.add(AddUserCommand.class);
-			allowedCommandsGMTs.add(OptInCommand.class);
-			allowedCommandsGMTs.add(OptOutCommand.class);
-			allowedCommandsGMTs.add(DuplicateConfirmCommand.class);
-			allowedCommandsGMTs.add(DuplicateWhiteListCommand.class);
-			allowedCommandsGMTs.add(DeleteCommentCommand.class);
-			allowedCommandsGMTs.add(RoomTagList.class);
-			allowedCommandsGMTs.add(RoomTagAdd.class);
-			allowedCommandsGMTs.add(RoomTagRemove.class);
-			allowedCommandsGMTs.add(AiChatCommand.class);
-			allowedCommandsGMTs.add(ShutDownCommand.class);
-			allowedCommandsGMTs.add(RoomLeaveCommand.class);
-			
-			cb.joinRoom("stackoverflow.com", 75819, allowedCommandsGMTs, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
-
-			
-			
+			cb.joinRooms();
 			cb.startDupeHunter();
 			try {
 				messageLatch.await();

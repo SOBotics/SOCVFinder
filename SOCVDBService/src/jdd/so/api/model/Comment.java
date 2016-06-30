@@ -40,7 +40,7 @@ public class Comment {
 	
 	
 	//Classification attribute
-	private boolean regExHit;
+	private String regExHit;
 	private double openNlpGood;
 	private double openNlpBad;
 	private double naiveBayesGood;
@@ -252,7 +252,6 @@ public class Comment {
 		ApiResult res = handler.getComments(cal.getTimeInMillis()/1000L, 30, true);
 		List<Comment> comment = res.getComments();
 		for (Comment c : comment) {
-			String line = Comment.clean(c);
 			if (c.getScore()>0){
 				writerGood.println(c.getBody());
 				
@@ -266,10 +265,14 @@ public class Comment {
 	}
 
 	public boolean isRegExHit() {
-		return regExHit;
+		return regExHit!=null;
+	}
+	
+	public String getRegExHit() {
+		return this.regExHit;
 	}
 
-	public void setRegExHit(boolean regExHit) {
+	public void setRegExHit(String regExHit) {
 		this.regExHit = regExHit;
 	}
 

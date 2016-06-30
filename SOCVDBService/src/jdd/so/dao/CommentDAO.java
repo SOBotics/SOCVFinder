@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.List;
 
 import jdd.so.api.model.Comment;
-import jdd.so.api.model.Question;
 
 public class CommentDAO {
 	
@@ -15,8 +14,8 @@ public class CommentDAO {
 		int[] retVal=null;
 
 		if (!comments.isEmpty()) {
-			String sql = "INSERT INTO `comments` (`id_comment`,`creation_date`,`body`,`user_id`,`rep`,`regexHit`,`nativeBayesBad`,`nativeBayesGood`,`openNLPBad`,`openNLPGood`) " 
-					+ "VALUES (?,?,?,?,?,?,?,?,?,?) "
+			String sql = "INSERT INTO `comments` (`id_comment`,`creation_date`,`body`,`user_id`,`rep`,`regexHit`,`regex`,`nativeBayesBad`,`nativeBayesGood`,`openNLPBad`,`openNLPGood`) " 
+					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?) "
 					+ "ON DUPLICATE KEY UPDATE body=?";
 
 			PreparedStatement ps = null;
@@ -29,11 +28,12 @@ public class CommentDAO {
 					ps.setLong(4, c.getUserId());
 					ps.setLong(5, c.getReputation());
 					ps.setBoolean(6, c.isRegExHit());
-					ps.setDouble(7, c.getNaiveBayesBad());
-					ps.setDouble(8, c.getNaiveBayesGood());
-					ps.setDouble(9, c.getOpenNlpBad());
-					ps.setDouble(10, c.getOpenNlpGood());
-					ps.setString(11, c.getBody());
+					ps.setString(7, c.getRegExHit());
+					ps.setDouble(8, c.getNaiveBayesBad());
+					ps.setDouble(9, c.getNaiveBayesGood());
+					ps.setDouble(10, c.getOpenNlpBad());
+					ps.setDouble(11, c.getOpenNlpGood());
+					ps.setString(12, c.getBody());
 					ps.addBatch();
 				}
 

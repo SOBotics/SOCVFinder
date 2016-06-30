@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashSet;
 
-import org.json.JSONArray;
 import org.jsoup.Jsoup;
 
 import com.google.gson.JsonArray;

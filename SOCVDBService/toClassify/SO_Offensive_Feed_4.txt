@@ -9,7 +9,7 @@ You should find a way to inspire your boss to get you some training.
 ..............................
 Thanks for the downvotes kids but I just want the answer is this safe not your unlikes.
 I am using the `batch` command with a file on Linux from time to time. So trust me.. Or STFW
-sorry but this is *pohtaytoe pohtahtoe*.
+sorry but this is pohtaytoe pohtahtoe.
 Great thanks for letting us know. Come back when you have a question.
 So which tutorial was this copy+thrown up from?
 Wow people on here suck. Why down vote without leaving a comment?
@@ -21,7 +21,7 @@ You rewrote my question and change the entire meaning. That's terrible.
 Such a ***** community.
 _you'll most likely see many more questions from me soon =)_ Hopefully ones of better quality than this one.
 punch of noobs -_-
-**** hooly shit brainfreeze thanks haha
+hooly shit brainfreeze thanks haha
 If you didnt wanted to answer why fucking bother? This is a comment and not an answer. Stop wasting people's time cunt.
 It is a dumb pointless question and voting to close it as such.
 utter lazy rubbish
@@ -66,10 +66,10 @@ You should get some courses in an elementary school for adults
 you just rephrased my comment. stupid. I'm looking for some solutions coz I'M NEW TO ANDROID . So if you don't have some suggestions/solutions shut your old mouth.
 If you've only been debugging for five or ten minutes then you _definitely_ haven't worked long enough on this problem before asking for help.
 Then get your grubby mits off our source code ta.
-**** in the same was as people can conclude you are an offensive homophobic prick.
-You are ***** genius I love you no homo thanks for help !!!!!!!!!!! xD
+in the same was as people can conclude you are an offensive homophobic prick.
+You are genius I love you no homo thanks for help !!!!!!!!!!! xD
 Well it's a log.  Before his changes it fucking printed NULLLLLLLLL.  After I appled his changes it PRINTED WHAT I WANTED
-Apparently it is not the documentation but your reading skills. Read **carefully**!
+Apparently it is not the documentation but your reading skills. Read carefully!
 I guess that's douchebag for as far as I know that doesn't exist.
 Yes but without everything else like method and action and inputs putting it in form tags will do fuck all
 100 is less than 50 you idiots
@@ -141,7 +141,6 @@ calm down champion.I am a new in this area and have a lot of question.when ı re
 To whoever down voted my question it'd be nice if you left some sort of comment explaining why you down voted my question so I don't think that you're just being a dick.
 Please don't shout.
 go home man you're drunk :\
-Read [ask] again.
 why are people downvoting my question.
 If you have a problem then gtfo scrubs thats why forums exists you dumbfucks -_-
 You're right it didn't go well due to that idiot who turned it into a chat about SO rules. I'm deleting it.
@@ -158,4 +157,4 @@ actually i have been trying for two hours know and thanks for being a d*ckhead
 fuck off man i asked a serious question
 this has been asked a million times to get random-no-repeats YOU JUST SHUFFLE.
 having these problems with Azure in fucking 2016 and it doesn't help
-Use your brain and read [javadocs](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#substring-int-int-) or ask your instructor.
+Use your brain and read or ask your instructor.
