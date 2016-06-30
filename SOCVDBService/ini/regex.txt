@@ -24,7 +24,7 @@
 (?i)dildo
 (?i)penis
 (?i)(^|\s)(rape|raping|rapist)
-(?i)suck(\s|s)
+(?i)suck my
 (?i)ejaculated
 (?i)butthurt
 (?i)lesbo
