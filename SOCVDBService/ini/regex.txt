@@ -1,38 +1,42 @@
 #These are the regex executed on raw comment including html code
 (?i)((yo)?u suck)
 (?i)(?<!i.{0,9})idiot
-(?i)(((yo)?u|your) stupid)
-(?i)nigg(a|er)|negro\s
-(?i)(^|\s)ass(\s+|$|\.)
+(?i)(you?|u|he)(.{0,12})\sstupid
+(?i)(that)(.{0,4})\sstupid
+(?i)(you?|u|he)(.{0,12})\sloo?ser
+(?i)(^|\s)insult(\s|\.|!|\?|$)
+(?i)nigg(a|er)|negro(\s|\.|!|\?|$)
+(?i)(^|\s)ass(\s|\.|!|\?|$)
 (?i)a\S{0,5}hole
 (?i)dumbass
-(?i)fag(got)?
-(?i)gay
-(?i)slut
-(?i)moron
-(?i)fuck|f\S{1,5}k\s(yo|off)
-(?i)retard
-(?i)bitch
+(?i)\sfag(got)?
+(?i)(^|\s)gay(\.|!|\s|$)
+(?i)(^|\s)slut(\.|!|\s|$)
+(?i)(^|\s)moron
+(?i)fuck|(^|\s)f\S{1,5}k\s(yo|off)
+(?i)retard 
+(?i)bitch(\s|\.|!|\?|$)
 (?i)nazi
 (?i)shit(t?er|head)
 (?i)dickhead
-(?i)pussy
+(?i)(^|\s)pussy
 (?i)pedo
 (?i)whore
-(?i)cunt
-(?i)cock
+(?i)(^|\s)cunt
+(?i)(^|\s)cock(\s|\.|!|\?|$)
+(?i)cocksuk
 (?i)dildo
 (?i)penis
 (?i)(^|\s)(rape|raping|rapist)
-(?i)suck my
+(?i)suck\s(my|it)
 (?i)ejaculated
 (?i)butthurt
-(?i)lesbo(!| |$)
+(?i)lesbo(\.|!|\s|$)
 (?i)shit\s?face
 (?i)acrotomophilia
 (?i)\sanal\s
 (?i)anilingus
-(?i)anus(!| |$)
+(?i)anus(\.|!|\s|$)
 (?i)apeshit
 (?i)auto\s?erotic
 (?i)bastard
@@ -51,7 +55,6 @@
 (?i)coprolagnia
 (?i)coprophilia
 (?i)cornhole
-(?i)(^|\s)coon
 (?i)creampie
 (?i)(^|\s)cum\s
 (?i)cunnilingus
@@ -60,15 +63,14 @@
 (?i)doggie\s?style
 (?i)(^|\s)escort
 (?i)squirting
-(?i)fucktards
 (?i)golden\s^shower
 (?i)hand\s?job
 (?i)hentai
 (?i)homoerotic
-(?i)(^|\s)kill\sy
+(?i)(^|\s)kill\syou(\.|!|\s|$)
 (?i)jack\soff
 (?i)jail\s?bait
-(?i) jerks?(!| |$)
+(?i)\sjerks?(\.|!|\s|$)
 (?i)lolita
 (?i)milf
 (?i)pissing
@@ -76,4 +78,4 @@
 (?i)threesome
 (?i)towelhead
 (?i)yellow\s?showers
-(?i)zoophilia
+(?i)zoophilias
