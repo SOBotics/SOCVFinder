@@ -4,6 +4,7 @@
 (?i)(you?|u|he)(.{0,12})\sstupid
 (?i)(that)(.{0,4})\sstupid
 (?i)(you?|u|he)(.{0,12})\sloo?ser
+(?i)please be nice
 (?i)(^|\s)insult(\s|\.|!|\?|$)
 (?i)nigg(a|er)|negro(\s|\.|!|\?|$)
 (?i)(^|\s)ass(\s|\.|!|\?|$)

@@ -1,0 +1,45 @@
+normally we say thumb up but today i am going to say u hands up :p u save my hope and time tanx
+thank you man. U saved my lots of time.
+You are a life saver dude :) @claudios
+XD LOL, k let me do some digging. :)
+its totally okay....thanx anywayz......yeah i ll take a look at it and inform you that too
+what else you wanna know please tell me
+He clearly told us &quot;...all starting with a name...&quot;
+Getting Facebook friends from not-Facebook would be a little tricky, no?
+I&#39;d rather ask this question and look like an idiot here than implement several mission critical solutions that break in the field. :-)
+I&#39;m going to sound incredibly stupid, but is there an idiots guide for this? I&#39;ve tried following the generic formula on multiple occasions with a small C# console app and I don&#39;t get out numbers that make any sort of sense to me at all. The ...
+You&#39;ve just made my life so much better. I&#39;ve been smashing my head against this problem, (and those it causes upstream) for 2 weeks now. Truly thank you.
+oh sorry, ive just seen that u use, pos = ()
+yup.. u got it right now
+@herbert - Just got this too a moment ago, never seen it before. I bet it&#39;s a bug. Don&#39;t know why you&#39;re getting down voted and people voting to close.
+You made argsetOf() as static. It ain&#39;t gonna work as you wish being static.
+i think he needs to know why it didnt work in his :)
+@Dani you are a life saver man, I had been beating my head around for a long time.
+i cant understand , what u are saying. i m fresher in phonegap.
+Superb dude . I up voted u for saving my day :)
+Oh my god. I am the biggest idiot on the planet. Spring Boot requires static resources to be in <code>src&#47;main&#47;resources&#47;resources</code> and not in <code>src&#47;main&#47;resources</code>. I actually new that but I missed it when creating th...
+THANK YOU! I was banging my head against this for hours
+All right, so we have just made a big mess here :)  You just want the count of how many rectangles you just drawed ? Like everyone else say, you have that in <code>results.Count()</code>.
+why man? You&#39;re mixing up way too many framework. Chose one and stick with it
+he beat me by a few seconds, i was racing to be first!
+He has  <code>csrf_token</code> passed in his <code>$.ajax</code>. If you look closely.
+THERE IS NO NEED TO CALL <code>notifyDataSetChanged</code> RIGHT AFTER YOU SET THIS ADAPTER TO THE <code>recyclerView</code> !!!!!!!!!!!! ... also where is a code of adding an items?
+You are a boss my friend, thank you for your time :)
+If you don&#39;t want to do this yourself, then you can tell Bill. I&#39;m sure he&#39;s happy to do it for you (to gain some magical internet points).
+Hi @Frank. I got it working. Actually whenever I was opening the cron.sh file, the system was generating copy of the that file with cron copy.sh. And I was running ./cron.sh like an idiot. Thank you!!
+We love to help, but sometimes you just have to get down and dirty with the manual / tutiorials / a decent book, etc.
+I am an idiot. Cropper ends before addLine() function declaration.
+@TonyStark , Even i&#39;m happy to help iron men ;) btw yr welcom
+you saved my life! I love you man!
+Well I feel like an idiot, I had some conflicting javascript that was interfering with the &#39;next page&#39; button getting loaded properly. This answer is correct and I will update my question with the answer.
+I&#39;m really sorry VoIP via ADSL is blocked in my country :S !
+Too hot today to keep my mind :)
+He specifically says he knows how to do that already.
+I hate my life, thanks Jon :))
+I love how I get two negatives. LOL
+THANK YOU ALL FOR HELPING DEBUG!!! :/  That&#39;s what I get when I sit around coding at home with no one around
+CHANGE THE MASK!!!  THERE IS NO OTHER WAY.  THE WINDOWS OPERATING SYSTEM ONLY USES THE MASK!!!
+@RSahu Not gonna lie you had me sweating there.
+I TESETD YOUR CODE AND NO DATA IS COMING THROUGH THIS LINE:- <code>$app_list=file_get_contents(&#39;http:&#47;&#47;localhost&#47;g.php?action=get_details&#39;);</code>
+WHAT IS EXPECTED OUTCOME FOR FIRST CODE
+I love <code>condition ? true : false</code> :D
