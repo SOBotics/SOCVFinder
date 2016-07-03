@@ -360,4 +360,3 @@ When you say &quot;Parameter name&quot; are you talking about <code>Parameter.De
 @JoshLeeDucks When pushing they don&#39;t change to <code>public</code> automagically anymore (at least for me they don&#39;t).
 :bryan so how can i do full back up as you said?
 Stupid me and genius you ))
-
