@@ -169,3 +169,88 @@ you are right friend , excuse me !
 oh.. right.. Let me get back to you..
 I love you @MarcGravell
 You&#39;ve made me entire day! Thankyou.
+lack of research effort
+Agree but -1 for answering a dupe.  You should know better.
+This shows zero effort on the author's part.
+Seriously did not even try did you. Please at least search Google if not stack overflow before posting a question.
+If programming is your thing then a little bad information won&#39;t hurt anyway. Everyone knows what they&#39;re talking about, but many of them are very, very wrong, even when you get into the workplace. Half the challenge is figuring out who to listen to. If your instructor is giving you questionable information and you&#39;ve figured out where he/she is off then you&#39;re on the right track.
+@Luffy I think the downvote is because it is genuinely very unclear; but I can even things up a bit...
+Voting to close as unclear, as a question was asked in the comments, but no clarifications were forthcoming.
+By no means I want this question to be closed, but isn&#39;t this question a bad fit by SO standards? Similar questions have been closed because their title&#39;s was categorized as opinion based. I just don&#39;t get it that SO works. Perhaps how SO rulings works is opinion based. (:(
+<code>gdb</code> from a console, or a multitude of windowing wrappers that drive commands to gdb if you&#39;re into guis. Personally, I&#39;d hit the web for a quick-info tutorial on gdb and old-school it from a console as a learning experience. Trust me, the effort it will pay for itself many time over. Don&#39;t forget to build with debug-symbols enabled (-g)
+@Veverke. XML is very strict about the format of attributes. HTML&#39;s rules are much looser. e.g. <code>id=&#39;foo&#39;</code> is a valid HTML attr but invalid in XML. Really, they&#39;re both derivatives of SGML.
+Thank you, stupid mistake -_-
+Please search first as this only gets asked thousands of times on this site. <a href="https://www.google.com/webhp?sourceid=chrome-instant&amp;ion=1&amp;espv=2&amp;ie=UTF-8#q=site:stackoverflow.com+printing+arrays+in+java" rel="nofollow">For example</a>
+If you can&#39;t properly formulate what exactly you&#39;re trying to do, finding or getting help are not going to be easy. Anyway this is not about programming, so off-topic for Stack Overflow.
+I&#39;m afraid this type of question isn&#39;t a good fit for Stack Overflow. See <a href="http://stackoverflow.com/help/on-topic">stackoverflow.com/help/on-topic</a>
+if you guys ant say anything just don&#39;t down-vote simply without asking
+@jsw324, no problem) don&#39;t forget to mark answer as correct ;)
+@PaulH the people who really tried some code, i tried to gave them full answer, otherwise not (recently).
+you can answer your own question and accept it to help the others who may encounter the same question as you :)
+@RobertLongson People only have eye on the fomat of question. Anyone give me an answer????
+Please delete the old comments
+yes its not a doubt its a fear of my mind that cant take a choice or dont know where to go
+There&#39;s nothing wrong with a post being closed as a duplicate. If it doesn&#39;t answer your question then <a href="http://stackoverflow.com/posts/38160486/edit">edit</a> your question explaining why. In the mean time - this post is locked for an hour to give everyone time to take a walk and chill out. Keep it civil and constructive. Thanks.
+Please don&#39;t downvote my questions without explaining the reason! It limits my privileges. I&#39;m just new here, guys, come on!
+Can you please leave a comment when you downvote, I would like to know why.
+don&#39;t expect a magic answer. Listen to comments given. I&#39;m not going to stand here for hours waiting... I have better things to do with my time.
+To clarify the comment by @AlonEitan - the recommended <code>&lt;meta&gt;</code> asks the device to render the website based off its actual pixel width, rather than the pixel density which can sometimes cause a website to load as though you were zoomed out.
+You&#39;re leaving a trail of unanswerable and unanswered questions. Watch out: beyond a certain number of such questions, you&#39;ll find yourself unable to ask new questions. Best to delete such threads before forum rules catch up with you.
+Perhaps you should expand your acronyms, for people who don&#39;t know what SPOJ or WA mean.
+What would be of help is trying to help yourself before asking others. AHK is well documented. Have you started off by <a href="https://autohotkey.com/docs/Hotkeys.htm" rel="nofollow">reading the introduction to hotkeys</a>?
+You did a great job describing what you already have. But we don&#39;t know the exact problem you are facing.  Can you enlight us?
+SO is neither a code-writing nor tutorial service; take the <a href="http://stackoverflow.com/tour">tour</a> and learn <a href="http://stackoverflow.com/questions/how-to-ask">How to Ask</a>.
+What did you try? We are here to help you solving bugs, not to write code for you. Altough that is an easy way to gain reputation, it does not help you learn.
+Generally speaking you can&#39;t and shouldn&#39;t abort user attempt to leave your site.
+Use a search engine to find a tutorial or just read the docs at <a href="http://jspm.io/" rel="nofollow">jspm.io</a>
+it&#39;s nothing, don&#39;t mention it.  if you have further questions maybe ask a new question, also .. cheers
+We aren&#39;t a freelancing site.  Start doing it yourself and when you have a specific problem come back and ask.  We&#39;ll help.  But we aren&#39;t going to write the app for you.
+I noticed you&#39;re just doing a bulk edit and strip off the <code>FATAL =&gt;</code> from your <code>use warnings;</code> lines. May I ask? Are you just cleaning up? I read about it and learned FATAL is not particularly recommended nowadays. Is that the reason? No offense, I&#39;m just curious. (this is a self-destructing comment.)
+This is a great question! Generally people want the opposite of what you&#39;re asking for!
+I don&#39;t mind the downvote but I would appreciate an explanation that would allow to make the answer better.
+You&#39;re welcome and don&#39;t forget to mark you questions as answered (if they are) so others can benefit from them.
+Don&#39;t forget to upvote answer(s) and choose the best answer <code>\ud83d\ude03</code>
+You&#39;re getting downvoted because before asking you should try something and then come here and ask what is not working. Providing code is a vital part of a question
+You are always allowed to answer your own question. Normally it is only done when the solution isn&#39;t covered by an existing answer and when you think that your own answer will be helpful for others.
+Don&#39;t forget to look for the answer yourself before asking us: <a href="https://www.google.com/search?q=itemgetter" rel="nofollow">google.com/search?q=itemgetter</a>
+That&#39;s not how SO works. We are not a debug/fix/write my code for me site. You do the work, we help - <i>if</i> you ask well researched and well explained <i>specific</i> questions.
+I went through your other questions on StackOverflow, and there&#39;s not a single well-researched, well-asked, precise question amongst these. Please go and read the &quot;how to ask a question&quot; page, and also inform yourself on which topics are allowed on StackOverflow. This question is totally off-topic.
+And reading a SPARQL tutorial does not work for you?
+How do you expect us to know whats going on without seeing any code or the website itself?
+Showing the action isn&#39;t going to help us identify why it&#39;s getting called twice. That&#39;s like showing us a bullet and asking us to identify the shooter!
+Do you have any effort to show us? Remeber that you shouldn&#39;t post questions that just ask <i>write code for me</i>  See the <a href="http://stackoverflow.com/help">help center</a>
+You don&#39;t have to create a library. Turns out someone already did: <a href="http://site.icu-project.org/download" rel="nofollow">ICU</a>. BTW, Please my honest words of sympathy.
+One question at a time, and we don&#39;t recommend libraries, that&#39;s off topic here
+@BartoszZiarkowski  Thanks for the note.  Please consider to accept the best solution by clicking on the tick mark next to the vote.
+I just realized - you <i>asked</i> this question already, <a href="http://stackoverflow.com/questions/38164782/check-how-many-sites-are-running-on-azure-cloud">right here</a>. And you even marked the suggested answer as the <i>accepted</i> answer. Why are you repeating your question? If the answer isn&#39;t correct in the other question, why not unmark the accepted answer, and comment under that answer to explain the issue?
+Where on earth did you get the impression there stack overflow is a free research tool where people do your research work on your behalf?
+I am a little lazy and just want to have a quick answer from experienced person. I don&#39;t need to know them in very detail for now. Want to have a high level understanding first.
+heck with the down votes ... i&#39;m just trying to learn. @Juhana thanks.
+@xvan Read my comment - I never said the question was opinionated. Recommendation questions are off-topic because they tend to attract opinionated <b>answers</b> and spam. The link I gave gives some good pointers on how to ask a good recommendation questi
+Deploy the site on Google App Engine?
+So how do you guys know that OP is taking that course and he is asking this because he has to do the homework?
+@user1937198:  You don&#39;t need the cast to <code>const void *</code> - an address will implicitly convert anyway.
+@dorukayhan Not anymore. The community shouldn&#39;t need to downvote answers to clean up.
+if you meant the single quotes, i have corrected it. Also this might not be a copy-paste soln. beacuse i dont know ur db schema.  You can understand the logic and implement.
+hold it dude - are you including your OWN &quot;manual&quot; trees ?!!  like real physical trees?
+I can&#39;t believe you&#39;re suggesting to use regex when someone finally asks a question about parsing HTML properly.
+@AndrewL. Sorry for my idiotic way of asking
+@vlad2005 You have enough reputation to upvote answers and you can also accept most useful answer. Please make use of this privileges as especially accepting an answer is very important here on Stack Overflow. Endoro and I have spent a lot of time to help
+Can you please delete your answer? I would like to delete this question.
+I thought to swap *(array+1). and don&#39;t mind my mistakes while asking cause I am new to this community.
+That is sad. Have you tried contacting bluemix support and asking them for help?
+Im just a noob trying to get some help
+Feel free to upvote my answer if it helped out!
+I know bro i cant thank you enough :) sorry for pissing you off man .... really thank you
+<i>&quot;Assuming I am a total idiot, please comment those lines, or put it in a step-by-step format that I could follow&quot;</i> - is not something SO is here for. Take the <a href="http://stackoverflow.com/tour">tour</a> and read <a href="http://stackoverflow.com/questions/how-to-ask">How to Ask</a>.
+I don&#39;t mind the downvote but at least point me in the right direction while you&#39;re at it! :-)
+No problem, if you found the answer helpful then don&#39;t forget to mark it as accepted. Happy coding!
+why is everyone down voting this?
+why would you guys downvote this good question
+I&#39;m voting to close this question as off-topic because asking for code is not the purpose of this site. Please read the FAQ.
+Have you actually tried debugging your own code before posting? Does this even compile? Last time I checked <code>or</code> isn&#39;t a valid keyword
+Wrong site. You&#39;re looking for <a href="http://askubuntu.com">Ask Ubuntu</a> or <a href="http://superuser.com">Super User</a> instead. This site is for programming questions.
+Don&#39;t know why you got a downvote (just like i got one for <a href="http://stackoverflow.com/questions/38161811/dplyr-how-to-avoid-hard-coding-variable-names-when-i-need-them-all/38162559#38162559">this</a>).  Plus one.
+I&#39;m afraid this is off-topic here. You can look this up in any math textbook.
+Give answer if you know how to solve this instead downvote the question.
+I also have another question a bit off-topic. How do you guys get notified that a question is posted on Stack Overflow. I got your reply very fast.
