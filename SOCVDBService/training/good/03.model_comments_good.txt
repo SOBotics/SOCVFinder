@@ -16,14 +16,12 @@ Hav you counted how often your loop in <code>abc()</code> is being traversed alt
 <code>tput sgr0</code> is used to reset terminal attributes like display color. <code>PROMPT_COMMAND</code> is executed <i>before</i> the prompt is displayed, and the <code>tput</code> command is presumably used to undo changes made earlier in the prompt (but not shown).
 @Noobie: Nope: it looks for one of them (it is a character class after all).
 Not sure whether relying on the order of the properties in object is good idea...
-If i was a compiler I would refuse to compile anything with such a bad intendation :P
 Undefined behavior. You can&#39;t predict what might happen with any degree of certainty without knowing the exact context in which your program is running.
 Welcome to Stack Overflow! It sounds like you may need to learn how to use a debugger to step through your code. With a good debugger, you can execute your program line by line and see where it is deviating from what you expect. This is an essential tool if you are going to do any programming. Further reading: <a href="http://ericlippert.com/2014/03/05/how-to-debug-small-programs/" rel="nofollow">How to debug small programs</a>.
 remove the semicolon on your while loop line it should just be <code>while (beans &gt; 0)</code> Edit: Actually I see this on multiple while loops, there shouldn&#39;t be semicolons on any of those. You don&#39;t see any output because none of your if statements will evaluate to true at the end if your while loop doesn&#39;t run for enough iterations to make any of the conditions true. That semicolon is just ending the while part of your main loop so it will run no more than once.
 Why <code>b3: &#39;1&#39;</code>.?
 Can you share your code that you tried?
 @user1030181 It&#39;s an <code>OR</code>, it will match all records that are not <code>Completed</code> <i>OR</i> &#39;NULL&#39;.
-what are you doing ?
 Can you add some relevant code showing exactly how you are declaring the background of the site?
 don&#39;t you need to add the buttongroup to a form or panel?
 I&#39;ll add an addendum to my answer.
@@ -45,7 +43,6 @@ Welcome to StackOverflow.  Please read and follow the posting guidelines in the 
 Welcome to StackOverflow. Please note, that this is not a free code-writing service. Yet, we are eager to help fellow programmers (and those looking to learn) with their code. Please read the help topics on [How do I Ask a Good Question][1]. You might also want to [take the tour][2] and earn a badge while doing so. Afterwards, please update your question with the VBA code you have written thus far in order to complete the task(s) you wish to achieve.    [1]: <a href="http://stackoverflow.com/help/how-to-ask">stackoverflow.com/help/how-to-ask</a>   [2]: <a href="http://stackoverflow.com/tour">stackoverflow.com/tour</a>
 Crystal ball says you are not calling CWinThread::PumpMessage().  No message loop =&gt; no messages.
 Kotlin made the choice to support implicit SAM interface conversion to functions only for Java interfaces. Not for Kotlin interfaces. I agree that this hurts readability in some cases. Type aliases will come in the next version (AFAIR). JetBrains will then see if that fixes the problem of if conversion of Kotlin interfaces should be allowed. There&#39;s a feature request for that: <a href="https://youtrack.jetbrains.com/issue/KT-7770" rel="nofollow">youtrack.jetbrains.com/issue/KT-7770</a>. In the meantime, I would just use <code>(T) -&gt; Boolean</code> in the signatures. Hopefully refactoring the code with type aliases won&#39;t be too hard.
-Your code exposes undefined behavior, hence  asking why it&#39;s behaving as you observe is pretty useless. Just don&#39;t write such crappy code, I can&#39;t see any <i>real world</i> use case doing so. If that was something given to you by a teacher in a course, kick them in the ass and <b>leave that class quickly</b>.
 In your last comment there are spaces before the flags, which will cause this error.
 What have you tried? We&#39;re not going write code for you.
 Good point!....
@@ -97,7 +94,6 @@ I&#39;ve looked into this in the past, and I find it&#39;s just easier to combin
 <a href="http://en.cppreference.com/w/cpp/numeric/fenv" rel="nofollow">This page</a> has instructions at the bottom for enabling C++ exceptions to be thrown from floating-point environment exceptions (which you&#39;ll have to configure before they&#39;re raised).
 You have 2 <code>ng-app</code> tags, Angular cannot support more than one application in a page.
 <code>df$estimate.from.LM=predict(model, df[1])</code>?
-This ranks up there as a solution not to show off to anyone :p
 @Remy - +1 for that crucial observation.  I think the fact that a 50MB XML file results in 600MB of application memory use is also a strong indicator that it is the processing of the XML by the application that is primarily responsible for the excessive memory use, rather than the XML itself.  TO provide any assistance in that area of course, we would need to know what the app is <i>doing</i> with that XML.
 The line <i>&quot;I am trying to enter a file path in command line and then run an executable on them...&quot;</i> makes me believe <code>Console.ReadLine()</code> is <i>not</i> what the OP wants, he wants command line args.
 &quot;I doubt MS would even care.&quot; We care because it means that the user installs the new version of Office and your app stops working. The user then says &quot;The new version of Office doesn&#39;t work. It makes this app crash. I rely on this app for my day-to-day work. This is a critical bug in Office.&quot;
@@ -116,7 +112,7 @@ Why do you need to overload anything?
 maybe you can solve it it via the &quot;withCount&quot; method.. to count it directly instead of each time in the view. <a href="https://laravel.com/docs/master/eloquent-relationships#querying-relations" rel="nofollow">laravel.com/docs/master/&hellip;</a> (Counting Relationship Results)
 There is no such limit, the cause of your problem should be found elsewhere.
 .sql files are script files and do not necessarily contain data but structural table/field items and may or may not insert values. You need to run the .sql file in a compatible RDMS then connect with <code>pandas.read_sql_table()</code> for data.
-See <a href="http://stackoverflow.com/q/29229373/2711488">“Why filter() after flatMap() is “not completely” lazy in Java streams?”</a>
+See <a href="http://stackoverflow.com/q/29229373/2711488">â€œWhy filter() after flatMap() is â€œnot completelyâ€� lazy in Java streams?â€�</a>
 Shape names are descriptive only.
 Why do you define <code>theMediaItem</code> as array ?
 If you do not have a WHERE or ORDER BY then you can omit those portions of the DELETE command, but it is important to note that you cannot guarantee that the data being deleted is correct without having a WHERE or ORDER BY. The data may not come out in the same exact order every single time, even though it often does.
@@ -193,7 +189,7 @@ I&#39;m going to upvote you since you put me exactly where I needed to be.  Howe
 <code>&quot;shell&quot;: &quot;bash&quot;</code> is not a valid <a href="http://docs.sublimetext.info/en/latest/reference/build_systems/exec.html#exec-command-arguments" rel="nofollow">build system option</a>. It should either be <code>true</code> or not present. The items in the <code>&quot;cmd&quot;</code> array need to be individually surrounded by quotes, and separated by commas. If you set the executable bit on your <code>.sh</code> file, you don&#39;t need to call it with <code>sh</code>, you just need to put the name of the file there.
 Right, because you&#39;re calling on a non-static method <code>detect</code> from the static context in <code>main</code>. I would recommend reading up on what <code>static</code> means in java.
 Looks like a homework.
-The operating system won&#39;t change anything. Java is cross-platform by design. The issue here is that <code>“”</code> is not the same as <code>&quot;&quot;</code> (notice the curly-ness of your quotes)
+The operating system won&#39;t change anything. Java is cross-platform by design. The issue here is that <code>â€œâ€�</code> is not the same as <code>&quot;&quot;</code> (notice the curly-ness of your quotes)
 Sorry guys, yes, it&#39;s supposed to be -0.0016. Just edited the question. Thanks for pointing that out.
 <code>Action&lt;T&gt;</code> <i>is</i> contravariant; not covariant.
 Nice &quot;hint&quot; answer per OP request.  UV (Quibble: Disagree with &quot;&quot;strings ... usually terminated with a 0 byte&quot;.  In C, <i>strings always</i> end with a null character, else it is not a string.)
@@ -205,7 +201,7 @@ Take a look into your http servers error log file. That is where you can actuall
 Yes, because reduce() returns an Optional&lt;Stream&lt;Integer&gt;&gt;, not a Stream&lt;Integer&gt;.
 Yes. Just threath them as different models.
 It does nothing because you told the function to return if the value passed in is equal to <code>NULL</code>
-Actually an <code>NSTimer</code> will keep its target retained (and the run-loop retains the timer), therefore <code>deinit</code> will never be called so long as the timer is active. You will need to call <code>invalidate()</code> manually at the appropriate time in the object&#39;s lifecycle. Although in this case OP&#39;s timer doesn&#39;t repeat – so the target will only be retained until it&#39;s fired.
+Actually an <code>NSTimer</code> will keep its target retained (and the run-loop retains the timer), therefore <code>deinit</code> will never be called so long as the timer is active. You will need to call <code>invalidate()</code> manually at the appropriate time in the object&#39;s lifecycle. Although in this case OP&#39;s timer doesn&#39;t repeat â€“ so the target will only be retained until it&#39;s fired.
 I gotta a feeling you&#39;re not loading the <code>jQuery</code> library before trying to use it.
 jQuery library correctly linked?
 Try adding <code>console.log(typeof $)</code> on the line before, and see what it tells you
