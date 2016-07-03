@@ -5,14 +5,12 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import opennlp.tools.doccat.DoccatModel;
@@ -35,15 +33,17 @@ import weka.core.Instances;
  */
 public class ModelCreator {
 
+	
+	public static int MAX_COMMENTS = 2000;
 	public static void main(String[] args) throws IOException {
+		
 
 		// Weka arff model
-		 Instances dataSet = getWekaDataSet();
-		 BufferedWriter writer = new BufferedWriter(new
-		 FileWriter("model/comments.arff"));
-		 writer.write(dataSet.toString());
-		 writer.flush();
-		 writer.close();
+		Instances dataSet = getWekaDataSet();
+		BufferedWriter writer = new BufferedWriter(new FileWriter("model/comments.arff"));
+		writer.write(dataSet.toString());
+		writer.flush();
+		writer.close();
 
 		// Open nlp model
 		File traningFileNlp = new File("model/openNPLTraining.txt");
@@ -66,41 +66,51 @@ public class ModelCreator {
 	}
 
 	public static void setupNLPTraning(File file) throws IOException {
+		System.out.println("Creating nlp file");
 		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 		ArrayList<String> classes = new ArrayList<String>();
 		classes.add("good");
 		classes.add("bad");
+		int max = MAX_COMMENTS;
 		for (int c = 0; c < classes.size(); c++) {
+			int nrInClass = 0;
 			String cls = classes.get(c);
 			File dir = new File("training/" + cls);
 			File[] files = dir.listFiles();
 			for (int i = 0; i < files.length; i++) {
-				if (files[i].getName().endsWith(".txt")) {
-					try {
+				System.out.println("Reading file: " + files[i].getName() + " " + nrInClass);
+				try {
 
-						BufferedReader br = new BufferedReader(new FileReader(files[i]));
-						String line = br.readLine();
-						while (line != null) {
-							String comment = PreProcesser.preProcessComment(line, files[i].getName().contains("tweet"));
-							if (comment != null && comment.trim().length() > 2) {
-								writer.write(cls + " " + comment);
-								writer.newLine();
-							}
-							line = br.readLine();
-
+					BufferedReader br = new BufferedReader(new FileReader(files[i]));
+					String line = br.readLine();
+					while (line != null && nrInClass <= max) {
+						String comment = PreProcesser.preProcessComment(line, files[i].getName().contains("tweet"));
+						if (comment != null && comment.trim().length() > 2) {
+							writer.write(cls + " " + comment);
+							writer.newLine();
+							nrInClass++;
 						}
-						br.close();
-					} catch (Exception e) {
-						e.printStackTrace();
+						line = br.readLine();
+
 					}
+					br.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if (nrInClass >= max) {
+					break;
 				}
 			}
+
+			max = nrInClass;
 		}
 		writer.close();
 
 	}
 
 	public static Instances getWekaDataSet() throws IOException {
+
+		System.out.println("Creating weka file");
 
 		ArrayList<Attribute> atts = new ArrayList<Attribute>();
 		ArrayList<String> classes = new ArrayList<String>();
@@ -115,33 +125,41 @@ public class ModelCreator {
 		Instances data = new Instances("weka_SO_comments_model", atts, 0);
 		data.setClassIndex(data.numAttributes() - 1);
 
+		int max = MAX_COMMENTS;
 		for (int c = 0; c < classes.size(); c++) {
+			int nrInClass = 0;
 			String cls = classes.get(c);
 
 			File dir = new File("training/" + cls);
 			File[] files = dir.listFiles();
 			for (int i = 0; i < files.length; i++) {
-				if (files[i].getName().endsWith(".txt")) {
-					try {
+				System.out.println("Reading file: " + files[i].getName()+ " " + nrInClass);
 
-						BufferedReader br = new BufferedReader(new FileReader(files[i]));
-						String line = br.readLine();
-						while (line != null) {
-							String comment = PreProcesser.preProcessComment(line, files[i].getName().contains("tweet"));
-							if (comment != null && comment.trim().length() > 2) {
-								double[] newInst = new double[2];
-								newInst[0] = (double) data.attribute(0).addStringValue(comment);
-								newInst[1] = c;
-								data.add(new DenseInstance(1.0, newInst));
-							}
-							line = br.readLine();
+				try {
+
+					BufferedReader br = new BufferedReader(new FileReader(files[i]));
+					String line = br.readLine();
+					while (line != null && nrInClass < max) {
+						String comment = PreProcesser.preProcessComment(line, files[i].getName().contains("tweet"));
+						if (comment != null && comment.trim().length() > 2) {
+							double[] newInst = new double[2];
+							newInst[0] = (double) data.attribute(0).addStringValue(comment);
+							newInst[1] = c;
+							data.add(new DenseInstance(1.0, newInst));
+							nrInClass++;
 						}
-						br.close();
-					} catch (Exception e) {
-						e.printStackTrace();
+						line = br.readLine();
 					}
+					br.close();
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
+				if (nrInClass >= max) {
+					break;
+				}
+
 			}
+			max = nrInClass;
 		}
 
 		return data;

@@ -125,7 +125,7 @@ public class BatchDoneCommand extends BotCommand {
 					cvc = cpr.getQuestions().size();
 				}
 				double perc = (cvc) / (double)cpr.getQuestions().size();
-				room.replyTo(event.getMessageId(), "Thank you for your effort, you reviewed " + cpr.getQuestions().size() + " questions,  I counted " +cvc + " (" + NumberFormat.getPercentInstance().format(perc) +  ") close votes and " + closedCount + " questions closed");
+				room.send(event.getUserName() + " Thank you for your effort, you reviewed " + cpr.getQuestions().size() + " questions,  I counted " +cvc + " (" + NumberFormat.getPercentInstance().format(perc) +  ") close votes and " + closedCount + " questions closed");
 			} catch (JSONException | IOException | SQLException e) {
 				logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
 				room.replyTo(event.getMessageId(), "Error while storing your data, I guees you need to review another");		

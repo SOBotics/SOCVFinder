@@ -1,7 +1,9 @@
-#These are the regex executed on raw comment including html code
+#These are the regex executed on on comment where username and html has been removed
+(?i)stfw
+(?i)wtf
 (?i)((yo)?u suck)
 (?i)(?<!i.{0,9})idiot
-(?i)(you?|u|he)(.{0,12})\sstupid
+(?i)(you?|he)(.{0,8})\sstupid
 (?i)(that)(.{0,4})\sstupid
 (?i)(you?|u|he)(.{0,12})\sloo?ser
 (?i)please be nice

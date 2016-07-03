@@ -2,6 +2,7 @@ package jdd.so.nlp;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,10 +16,10 @@ import jdd.so.api.model.Comment;
 import opennlp.tools.doccat.DoccatModel;
 import opennlp.tools.doccat.DocumentCategorizerME;
 import weka.classifiers.Classifier;
-import weka.classifiers.bayes.NaiveBayesMultinomialText;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instances;
+import weka.core.SerializationHelper;
 
 /**
  * Categorize comment
@@ -56,17 +57,20 @@ public class CommentCategory {
 		regexClassifier = getRegexs();
 
 		// Open NLP classifier
-		DoccatModel m = new DoccatModel(new File("model/comments.model"));
+		DoccatModel m = new DoccatModel(new File("model/open_comments.model"));
 		openNLPClassifier = new DocumentCategorizerME(m);
 
 		// Weka NaiveBayes classifier
+		wekaClassifier =   (Classifier)SerializationHelper.read(new FileInputStream("model/nb_comments.model"));
+		
+		//This needs to be removed, only used to copy the structure when classifing
 		BufferedReader reader = new BufferedReader(new FileReader("model/comments.arff"));
 		wekaModel = new Instances(reader);
 		wekaModel.setClassIndex(wekaModel.numAttributes() - 1);
 		reader.close();
-
-		wekaClassifier = new NaiveBayesMultinomialText();
-		wekaClassifier.buildClassifier(wekaModel);
+//
+//		wekaClassifier = new NaiveBayesMultinomialText();
+//		wekaClassifier.buildClassifier(wekaModel);
 
 	}
 
@@ -117,7 +121,7 @@ public class CommentCategory {
 		c.setNaiveBayesBad(outcomeWeka[1]);
 		
 		//outcomeNlp[1] > OPEN_NLP_THRESHOLD || disabled for now
-		return regExHit!=null ||  (outcomeWeka[1] > WEKA_NB_THRESHOLD&&outcomeNlp[1] > OPEN_NLP_THRESHOLD);
+		return regExHit!=null ||  (outcomeWeka[1] > WEKA_NB_THRESHOLD && outcomeNlp[1] >0.95) || (outcomeNlp[1] > OPEN_NLP_THRESHOLD&&outcomeWeka[1] > 0.95);
 
 	}
 
@@ -188,14 +192,11 @@ public class CommentCategory {
 	public static void main(String[] args) throws Exception {
 		CommentCategory cc = new CommentCategory();
 		Comment c = new Comment();
-		c.setBody("yes but when i have my button listening in my main activity and I give him the variable i how do my custom adapter knows that i the the value to have in getCount ? ");
+		c.setBody("did you even try looking at the tutorial?");
 		System.out.println(cc.classifyComment(c));
 		
-		c = new Comment();
-		c.setBody("That worked wonderfully. Thank you. You saved me a lot of time and provided some good information for me to investigate and experiment with (File, MatchCollection, etc.).");
-		System.out.println(cc.classifyComment(c));
 		
-		c.setBody("generating random-whole-numbers-in-javascript-in-a-specific-range");
+		c.setBody("hard power off the computer? Obviously worth avoiding normally, but unless you have unsaved work and are unable to save it, just power off, and it should come back when you log back on");
 		System.out.println(cc.classifyComment(c));
 		
 	}

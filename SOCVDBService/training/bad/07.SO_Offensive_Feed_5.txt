@@ -17,7 +17,6 @@ sorry but this answer is completely out of sync with the question i.e it's a loa
 Stick to [MCVE](http://stackoverflow.com/help/mcve)
 Also whoever up voted this should have their voting rights suspended.
 Let's not.  I'm not interested.
-I'm voting to close this question as off-topic because this isn't a homework site.
 simply spamming your sourcecode somewhere wont get you any help - nowhere. Go and ask your teacher.
 **** 1 v 1 me anytime any place
 StackOverflow is not here to do your code writing.
@@ -142,7 +141,6 @@ go go go downvoting :)
 maybe you should visit a doctor :-{  because we cannot see into your head
 You don't seem to have any idea about anything. Why would you think you can create something like this?
 vertical alignment ! similar issue. rest was CSS basics
-I'm voting to close this question as off-topic because it shows no research effort. (One should atlas search stack overflow)
 i get that your answer is to fuck with the client's website dom which is a bad idea.
 And why arent you reacting on the other comments? The one with the firewall and other things?
 And what was the ip of your android device? You cann post the full ips as millions on earth have the same. Dont think its worth to keep it secret now.
@@ -192,7 +190,7 @@ A downvote huh?  cool!  F you buddy!
 what are you talking about idiot ! we have already established it is less.... get a grip !
 You normally SAY THANKS around here once someone helps you.  Did you get it working champ?
 I guess it does not help you. But then again ...
-I'm voting to close this question as off-topic because it's just silly.
+it's just silly.
 He probably meant a lot instead of all could be because English isn't his first language.
 do you have a program to analyze here dude?? then cut the crap
 fuck you community and coding and stack!

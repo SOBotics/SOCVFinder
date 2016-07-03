@@ -84,8 +84,8 @@ public class PreProcesser {
 		//Remove all double space or more 
 		result = removeDoubleSpaces(result);
 		
-		//Upper case what do we do with this?
-		
+		//Upper case what do we do with this (seems to give better result in weka)
+		result = result.toLowerCase();
 		//Repeated words?
 		
 		return result;

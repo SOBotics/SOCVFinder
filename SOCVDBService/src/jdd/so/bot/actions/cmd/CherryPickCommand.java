@@ -158,7 +158,7 @@ public class CherryPickCommand extends BotCommand {
 					retMsg += " There are other questions locked in open batches";
 				}
 
-				final String editMessage = "@" + event.getUserName().replaceAll(" ", "") + " " + retMsg;
+				final String editMessage = event.getUserName() + " " + retMsg;
 				final String replyMessage = retMsg;
 
 				sentId.thenAccept(messageId -> {

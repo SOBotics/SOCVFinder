@@ -7,7 +7,7 @@ what else you wanna know please tell me
 He clearly told us &quot;...all starting with a name...&quot;
 Getting Facebook friends from not-Facebook would be a little tricky, no?
 I&#39;d rather ask this question and look like an idiot here than implement several mission critical solutions that break in the field. :-)
-I&#39;m going to sound incredibly stupid, but is there an idiots guide for this? I&#39;ve tried following the generic formula on multiple occasions with a small C# console app and I don&#39;t get out numbers that make any sort of sense to me at all. The ...
+I&#39;m going to sound incredibly stupid, but is there an idiots guide for this? I&#39;ve tried following the generic formula on multiple occasions with a small C# console app and I don&#39;t get out numbers that make any sort of sense to me at all.
 You&#39;ve just made my life so much better. I&#39;ve been smashing my head against this problem, (and those it causes upstream) for 2 weeks now. Truly thank you.
 oh sorry, ive just seen that u use, pos = ()
 yup.. u got it right now
@@ -17,7 +17,7 @@ i think he needs to know why it didnt work in his :)
 @Dani you are a life saver man, I had been beating my head around for a long time.
 i cant understand , what u are saying. i m fresher in phonegap.
 Superb dude . I up voted u for saving my day :)
-Oh my god. I am the biggest idiot on the planet. Spring Boot requires static resources to be in <code>src&#47;main&#47;resources&#47;resources</code> and not in <code>src&#47;main&#47;resources</code>. I actually new that but I missed it when creating th...
+Oh my god. I am the biggest idiot on the planet. Spring Boot requires static resources to be in <code>src&#47;main&#47;resources&#47;resources</code> and not in <code>src&#47;main&#47;resources</code>.
 THANK YOU! I was banging my head against this for hours
 All right, so we have just made a big mess here :)  You just want the count of how many rectangles you just drawed ? Like everyone else say, you have that in <code>results.Count()</code>.
 why man? You&#39;re mixing up way too many framework. Chose one and stick with it
@@ -43,3 +43,129 @@ CHANGE THE MASK!!!  THERE IS NO OTHER WAY.  THE WINDOWS OPERATING SYSTEM ONLY US
 I TESETD YOUR CODE AND NO DATA IS COMING THROUGH THIS LINE:- <code>$app_list=file_get_contents(&#39;http:&#47;&#47;localhost&#47;g.php?action=get_details&#39;);</code>
 WHAT IS EXPECTED OUTCOME FOR FIRST CODE
 I love <code>condition ? true : false</code> :D
+Well this sucks... the backend of the iframe site has a bug that will not allow me to add the &lt;base target=&quot;_parent&quot; /&gt; tag to the head of the site. Unfortunately I do it like this because there are around 300-500 links.
+How should you find out if anybody, anywhere in the world does whatever he likes with your software on his own hardware?
+HOLY WOW THAT IS AWESOME!!!!! - That is a REALLY cool trick that makes perfect sense!!!
+i suppose you mean does the fosuserbundle exists and is it tracked ? the bundle exists in my copy.. But, i use git add .  does it mean that files could be / are untracked ? I suck at git :/
+If ya don&#39;t <code>using</code> your disposables, yer gonna have a bad time
+Three facts you must be aware of: <b>1.</b> Hadoop has been designed for <b>massive batch jobs</b>, not for the kind of jerk-one-record-at-a-time stuff you appear to be doing <b>2.</b> HDFS files are <b>immutable</b> <i>
+My original comment was wrong, it&#39;s O(N) since they lists are in parallel. I hate Big O and all of its obscurity.
+Hey friend can u tell me what graph is this
+They are more popular, because most people have non-graph punch in their punch bowls.
+I feel real stupid. That&#39;s what happens when you work too many hours in a day. Thanks!
+They can give all the explanations they want. I still feel like someone made the wrong call when introducing <code>Task&lt;T&gt;</code>, <code>ITask</code> but no <code>ITask&lt;out T&gt;</code>.
+i love you .....
+As always u have been awesome!
+u mean i have to mute music on call_state_ringing?.
+But they act as libraries in ProjectA anyway and should not influence the configuration of its DI container. If it happens by coincedence, say, if ProjectA has no its own context.xml configuration and spring is picking up one from classpath (by default)
+May be Knuth&#39;s writings is a best place to start? He discuss many of these aspects...
+By default, all components of the same application run in the same process.If you kill your app the process is terminated by android, you should start a service as a separate process  if you want to run some background work even if you kill your app.
+OK X) i feel a little stupid .....
+i am making a game like tic tac toe
+Yes and it&#39;s not a problem, or I do not remember  a case where this leads to a problem. AFAIK you have the option in plone to switch between email as login and login name as login. If you do so, changing the login should also work in your case.
+It&#39;s just one of the utterly unbelievable things about Apple that they haven&#39;t fixed this.  That, and the fucked-up graphics cards in MBPs.
+Here ya go: <code>\S+\.txt</code>
+Sorry about the knee jerk reply, I&#39;ve had some issues before naming params so close to eachother... @maxisam found the error for you
+I sure remember those days. Hell, I&#39;m happy those days are in the past!
+I hate to bother you once more, but there&#39;s no one else in this thread... Would you please check it again, sir. Now all I want to know is if it works. And if it does it probably the Computational Geometry equivalent of BubbleSort&#39;s retarded cousin.
+i just cant get it to work im literally making biger mess every time
+People like you make the world a better place
+I gonna have a look!
+Cody Gray, I don&#39;t know who he is. I have just joined in.
+@AndreyChernukha Thanks...I&#39;m gonna get some sleep and take another crack at it when I&#39;m up. If I still haven&#39;t gotten it you can take a look. Much obliged.
+Ok honestly, this answer is so perfect, ThanIt&#39;s working! You really saved my ass! Thank you so much sir! Just last question for the camera its the same? Like just swap imageURI_vybrana for  imageView_Fotak? And again thank you!!
+k !! I imagined it really harder... <code>&lt;TapGestureRecognizer Tapped=&quot;OnViewCellTapped&quot;&#47;&gt;</code> as listener... I wanted to add a listener for each item..  Such an idiot when I see your co...
+THANKS.. :) THIS IS SO USEFUL :)
+@h0tw1r3 THX man
+Apparently your game just cares about rank, not suits?
+With all due respect, you shot yourself in the foot with a Regexp.
+wow...I feel incredibly dumb right now. Like I said...probably something dumb. Thanks a ton.
+Who told you that?
+It has a splashscreen, but that fades out to white.
+Nope. I gave him the key word he needs. BitmapData.hitTest
+@halois people get trigger happy with downvoting
+HOW TO COUNT THE EACH WORD&#39;S FREQUENCY IN EACH ROW?
+YES.  <code>{   &quot;data&quot;: [   ],   &quot;summary&quot;: {     &quot;total_count&quot;: 1   } }</code>  But.And where these friends ?. Photo and name?
+@chrisaycock - yeah, I&#39;ve noticed :/   I would think that this would be possible though.
+At CR you frequently find yourself wanting to give people +10.
+This man is a genius.
+THEN WHY DOESN&#39;T IT SAY SO :-(
+THanks. I&#39;ll go hang my head in shame..
+Ah, this sucks! I think compiler writers would like to go the extra mile to annoy users, it is perfectly valid to have a type that includes a map that has its type as value. Quite useful too.
+@julesbou Ok, no problem
+@chrisaycock agreed thx.  as a matter of style I chose <code>T</code> for brevity.
+Ha ha... very funny...
+This is a tricky one. Apparently it even stumped Harvard: <a href="http://comments.gmane.org/gmane.comp.lang.r.zelig/796" rel="nofollow">comments.gmane.org/gmane.comp.lang.r.zelig/796</a>   
+Me too :/ @Helmut
+With <code>sudo: false</code> the build is always in a docker cuntainer
+oh I feel dumb...
+call proc.terminate() or proc.kill() in the call back
+^what he said, buy you&#39;re missing a colon after <code>elif</code>
+well that was a life saver...
+Can you ask the person who sent them to you?
+DO NOT PERFORM GUI ACTIONS OFF THE EVENT DISPATCH THREAD (EDT)!
+THANK YOU, you&#39;re a life saver!
+Good job ! I voted up (y)
+good madam cz i am madam  . and no need madame i am gayathri . happy coding @rashadb
+This is wht I wanted.I work like a chram .Tnk u
+Tnk u for ur help :)
+ok thx man i will try it and give you a feed back
+How dare you? Do you think it&#39;s funny to make my life a living heaven? Do you?
+u didn&#39;t read word programatically
+ohhh..got my mistake
+@YourCommonSense  YES THAT&#39;S WHY I CHANGED
+@nnnnnn :) lol...
+Turbo C++ just won&#39;t die. IT WON&#39;T DIE!
+ma pleasure bro
+What does your &quot;friend&quot; mean, exactly, when he says he wants to join these two scripts ?
+Finally i have found my mistake. In the C#-code i swapped in the heat of the night two parameters :) If wanna hear the right song to the moment, listen to Glen Campbell &quot;Guess i&#39;m dumb&quot;.
+@drescherjm wow, its great then let me do few more research and come up to u for more doubts .. once again thanks
+oh yea.. sorry .. let me do it now
+Indeed, it&#39;s a transitive dependency, look at its <a href="https://oss.sonatype.org/content/repositories/releases/org/webjars/bower/angular-chart.js/0.10.2/angular-chart.js-0.10.2.pom" rel="nofollow">pom</a>
+AFAIK you need to pass either ViewBag or ViewData contains maximum amount of array index to apply on view input, iterate through 1 or 2 loops while providing either multiquestions[i][j] or questions[i] to print text input with indexed name attribute.
+Understood, now. thx all. I will go back and re-learn.
+You saved my day too! I was going crazy
+I almost cried... so happy... so happy... I want to give you a million up votes.
+oh wow I could have thought of that one myself.
+Good Job...keep it up..u really saved my day and life....cant explain my feelings...thank you bro.
+Every day&#39;s a school day. A nice regex feature I have never actually seen before.
+oh, dear god! THANK YOU! :)
+You&#39;re a bloody legend mate!
+You rock bro...!!
+@user5535577 Hahahahaha I am stupit man.
+Awsome man ... many thanks
+@Bergi -- And I love simplicity :D thx!
+wow it&#39;s amazing!
+@Lundin But I&#39;m the fastest in ice cold beer drinking  ;)
+Well sh*t.. Kinda feel useless now hehe
+Loop through, keep a tally of the sum stop when you hit the chosen sum of 50
+<a href="http://kunststube.net/encoding/" rel="nofollow">What Every Programmer Absolutely, Positively Needs To Know About Encodings And Character Sets To Work With Text</a>
+yup,I gotta think laterally here
+O my god I did try this but I left out the ) son of a gun.
+Nevermind, I got it. I like it. Mine was fast because it wasn&#39;t as clean as yours lol
+oh great.. (y)!
+NO ITS NOT THE TOTAL
+@Alon Eitan  no, i just her fans.
+I have seriously gotta look at all these formulae I didn&#39;t even know existed until today... Left? Mid? Right? QUE!? Thank you lookaji :)
+Alexis, here is head of 1 store:
+Thank you for your answer. Let&#39;s assume that I&#39;m a complete idiot (as I&#39;ve been known to be one from time to time haha), can you think of anything that I could have possibly screwed up to cause this? Worst-case scenario kind of thing?
+oh sorry! this my fault , it turns out the advice you gave succeed . thanks bro !
+Apparently you don&#39;t know <a href="http://stackoverflow.com/a/1732454/1744774">THIS ANSWER</a> yet.
+THIS HELPED ME A TON!!! THANK YOU!
+plus 1, and I love this more <code>var filteredArray = test_array.filter( tem =&gt; item !== undefined )</code>
+You my man, are a genious
+oh, okay got it
+Only i cant show u
+@Jeff oh man thanks, it was such a fail :)
+hIS QUESTION AND FIRST STATEMENT IS OPOSIT. CHECK ONCE @Don&#39;tPanic
+Hooks, my friend. Hooks...
+@Don&#39;tPanic I suspect that you are a very wise man my friend.
+Hehe, this guy just linked us to localhost :) ... IT&#39;S NOT LOADING... HELP!
+U&#39;r welcome. Good Luck ;)
+HAHAHAHA IT DID WORK YEA !!!!! YOU MADE MY NIGHT !!!!!! WOOOOUOOHHHHHHHHHH Alfajbg;g agin;all fn;f YES!!!!!!!!!!!!
+Excuse me, i know i looked like complete idiot but i&#39;m not sure that i understand what you mean
+I kind of understand it now, but I don&#39;t think I&#39;m using it right.  I serialized a variable with the value of 5, and then after deserializing on startup of the program, and printing out the value, it was still 0.
+you are right friend , excuse me !
+oh.. right.. Let me get back to you..
+I love you @MarcGravell
+You&#39;ve made me entire day! Thankyou.

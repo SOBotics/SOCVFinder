@@ -1,3 +1,4 @@
+I'm voting to close this question as off-topic because it's not a programming question.
 I had all these crazy ideas about prefetch_related and select_related. Thought it was so hard.
 I&#39;ve heard you can.
 @ZohaibIjaz patience my friend, I always do

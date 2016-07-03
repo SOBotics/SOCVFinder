@@ -82,9 +82,21 @@ public class DupeHunterComments extends Thread {
 		long highTrafficTime = 3 * 30 * 1000L; // Every 1,5 minute
 		long lowTrafficTime = 4 * 60 * 1000L; // Every four minutes
 		long sleepTime = highTrafficTime;
-
+		List<Long> notifyOffensiveUser = new ArrayList<>();
+		notifyOffensiveUser.add(5292302L);
+		notifyOffensiveUser.add(4174897L);
 		while (!shutDown) {
+			
+			
 			try {
+				
+				List<User> notifyOffensiveUserPresent = new ArrayList<>();
+				for (Long id : notifyOffensiveUser) {
+					User user = socvfinder.getUser(id);
+					if (user!=null && user.isCurrentlyInRoom()){
+						notifyOffensiveUserPresent.add(user);
+					}
+				}
 				ApiResult ap = apiHandler.getComments(start, 10, true);
 				if (ap.getBackoff() > 0) {
 					logger.warn("run() - Backoff " + ap.getBackoff());
@@ -122,8 +134,8 @@ public class DupeHunterComments extends Thread {
 					 * RUDE OFFENSIVE TEST
 					 */
 					
-					classifyComment(socvfinder, c);
-					if (c.isRegExHit()||c.getNaiveBayesBad()>0.99 || (c.getNaiveBayesBad()>0.95 && c.getOpenNlpBad()>0.99)){
+					boolean hit = classifyComment(socvfinder,notifyOffensiveUserPresent, c);
+					if (hit){
 						possibileRude.add(c);
 					}
 				}
@@ -181,9 +193,10 @@ public class DupeHunterComments extends Thread {
 
 	}
 
-	private void classifyComment(ChatRoom socvfinder, Comment c) {
+	private boolean classifyComment(ChatRoom socvfinder, List<User> notifyOffensiveUserPresent, Comment c) {
+		boolean hit = false;
 		try {
-			boolean hit = commentCategory.classifyComment(c);
+			hit = commentCategory.classifyComment(c);
 			if (hit){
 				logger.warn("run() - Offensive comment >> REGEX HIT=" + c.isRegExHit() + " NB=" + nfThreshold.format(c.getNaiveBayesBad()) + " OpenNLP=" + nfThreshold.format(c.getOpenNlpBad()) + ": "  + c.getPostId() + ": " + c.getCommentId() + " " + c.getBody());
 				String commentLink = c.getLink();
@@ -193,11 +206,17 @@ public class DupeHunterComments extends Thread {
 				
 				StringBuilder message = new StringBuilder("[ [SOCVFinder](//git.io/vorzx) ]");
 				
-				message.append(" ").append(getBoldRegexHit(c.isRegExHit())).append("Regex").append(getBoldRegexHit(c.isRegExHit())).append(":").append(String.valueOf(c.isRegExHit()));
+				message.append(" ").append(getBoldRegexHit(c.isRegExHit())).append("Regex").append(getBoldRegexHit(c.isRegExHit())).append(":").append(c.isRegExHit());
 				message.append(" ").append(getBoldNaiveBayes(c.getNaiveBayesBad())).append("NaiveBayes").append(getBoldNaiveBayes(c.getNaiveBayesBad())).append(":").append(nfThreshold.format(c.getNaiveBayesBad()));
 				message.append(" ").append(getBoldOpenNLP(c.getOpenNlpBad())).append("Open NLP").append(getBoldOpenNLP(c.getOpenNlpBad())).append(":").append(nfThreshold.format(c.getOpenNlpBad()));
 				message.append(" [comment](").append(commentLink).append(")");
-				message.append(" (cc @Petter @Kyll)");
+				if (!notifyOffensiveUserPresent.isEmpty()){
+					message.append(" cc: ");
+					for (User user : notifyOffensiveUserPresent) {
+						message.append("@").append(user.getName().replaceAll(" ", "")).append(" ");
+						
+					}
+				}
 				socvfinder.send(message.toString());
 				
 				CompletableFuture<Long> mid = socvfinder.send(commentLink);
@@ -215,6 +234,7 @@ public class DupeHunterComments extends Thread {
 		} catch (Exception e) {
 			logger.error("run()", e);
 		}
+		return hit;
 	}
 
 	private String getBoldRegexHit(boolean regExHit) {
