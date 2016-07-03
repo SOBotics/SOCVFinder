@@ -52,7 +52,7 @@ public class ModelCreator {
 		DoccatModel model = getNLPModel(traningFileNlp);
 		OutputStream modelOut = null;
 		try {
-			modelOut = new BufferedOutputStream(new FileOutputStream("model/comments.model"));
+			modelOut = new BufferedOutputStream(new FileOutputStream("model/open_comments.model"));
 			model.serialize(modelOut);
 		} catch (IOException e) {
 			// Failed to save model
@@ -75,7 +75,7 @@ public class ModelCreator {
 		for (int c = 0; c < classes.size(); c++) {
 			int nrInClass = 0;
 			String cls = classes.get(c);
-			File dir = new File("training/" + cls);
+			File dir = new File("training_v2/" + cls);
 			File[] files = dir.listFiles();
 			for (int i = 0; i < files.length; i++) {
 				System.out.println("Reading file: " + files[i].getName() + " " + nrInClass);
@@ -130,7 +130,7 @@ public class ModelCreator {
 			int nrInClass = 0;
 			String cls = classes.get(c);
 
-			File dir = new File("training/" + cls);
+			File dir = new File("training_v2/" + cls);
 			File[] files = dir.listFiles();
 			for (int i = 0; i < files.length; i++) {
 				System.out.println("Reading file: " + files[i].getName()+ " " + nrInClass);
