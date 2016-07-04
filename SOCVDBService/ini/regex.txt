@@ -82,4 +82,4 @@
 (?i)towelhead
 (?i)yellow\s?showers
 (?i)zoophilias
-(?i)spam
+(?i)(?<!answers.{0,14})spam
