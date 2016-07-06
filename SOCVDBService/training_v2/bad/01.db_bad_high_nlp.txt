@@ -50,3 +50,48 @@ Well, the SO has gone to hell a long time ago. These days people downvote if the
 For those who are wondering: <a href="http://i.imgur.com/4liLpYA.png" rel="nofollow">Why the hell kebab?</a>
 @Plutonix Boy? Com on...Haters gonna hate but this I am trying to get some help and you came here just to say what no one what&#39;s to read...
 This community is so horrible right now...
+Do you really think this answer might help on a 3 year old question?
+asking for a proper guidance from some experienced fellas isn&#39;t any off topic or bad thing &amp; more over people here are busy deleting questions rather than answering them coz they know nothing other than flagging &amp; down voting, microsoft forum is a ton of times better than this shit overflow which contain some non worthy junks!!
+The manual ref counting is needed to keep the list alive at least as long as the enumerator. You aren&#39;t stupid but you are stubborn. Once you&#39;ve taken a view you refuse to change it. That&#39;s your big weakness.
+why you all are fighting for such a small thing
+@AD7six  If you&#39;re not going to add value to my topic why are you commenting ?  just to waste your&#39;s and mine ?  wtf :s
+Idea: don&#39;t try to build a skyscraper if you have no idea yet how to dig a hole for the basement. Seriously: if your knowledge of java is yet so &quot;beginner-level&quot; that you don&#39;t know what import statements <b>are</b>, and that you need a <b>library</b> &quot;backing them&quot; ... then you are not up any advanced topics, such as &quot;trying to run vlcj in my own UI application&quot; or such things. You want to run, whilst you are not able to crawl as of now.
+You are a idiot. I think you have some problem in english understanding. My question is in simple language. If you know the answer then tell me, otherwise fuck off. Are you stack exchange employee, telling me the guidelines. Do your business. Stupid. :( @Tunaki
+Fuck off. Do your business. You are donkey and idiot.
+Well thats a stupid answer. If you havent got a useful reply please dont comment
+lol @ the retaliatory downvote on my completely unrelated question from months ago (even though I didn&#39;t downvote your question...). Grow up.
+Bit of an assholey downvote - who does that? Shame on you for downvoting without providing a reason to support it. This question may be a hopeless case but the OP is self-declared as &quot;an absolute beginner&quot;. You would turn them away? I&#39;m pretty sure they would struggle to better hone the question to be more precise than it already is. Absolute douche-baggery.
+@henry, thank you henry, I added &quot;-o receive_override_options=no_header_body_checks,no_unknown_recipient_checks,no_mi&zwnj;&#8203;lters&quot; in master.cf (from your link) and now there is 1 DKIM but the email is still marked as spam, grr, I&#39;ve u
+Dumb comment, you are an idiot.  You don&#39;t know there&#39;s no shaders, and he does set the version so fuck off already cretin.
+I think this is against best practices. WTF you set negative points to my question?
+Put on hold? Even my account? You fucking Wankers!
+fucking less .......
+This is a garbage post. Flag as &quot;Rude or abusive&quot; to destroy it quickly without poorly seeding the spam detector (see this <a href="http://meta.stackoverflow.com/a/317611">Meta answer</a>).
+My attitude? please don&#39;t embarrass yourself. I just said that I find other answers dirty and based on eyeballing which is NEVER good. You&#39;re commenting on the answer being sarcastic at all, trying to defend your answer by all means, even though you know it&#39;s not good.
+@roryap i thought this is a site to help each other out and introduce starting programmers... But well if you want to be a Jerk do so
+Flagged as spam
+why was this closed? Again some superficial reasons from moderators who get off on their moderator priviliges.
+Some elitists jerks roam around and give -1&#39;s to random people. That&#39;s what StackOverflow is all about these days. They don&#39;t even bother to type out what was worth a -1.
+These are an awful lot of basic problems for someone with so much rep. Did you try debugging this yourself?
+Why is it getting downvoted?  Because stackoverflow is becoming the bastion of a bunch of elitists who scoff at your problems because they are beneath them.  Have an up vote.. it really is annoying.
+thats because some asshole deleted the summary comment below:    sorry bout the crazy formatting. error is the database connector error for which there are five separate questions. clearly, it needs resolution. doing a blank install, SHOULD NOT cause immediate problems. Most important thing to note:  rails dbconsole CONNECTS with existing database.yaml  so something else is screwing up. prolly in the rails internal code.
+shut the hell up
+you have forgot c++, python, C# and brainfuck tags
+We didn&#39;t sit here to click pics and check code. rubbish. Also lot of answers given below.check them
+why the hell did someone vote down my question? Seriously crappy.  So sorry, I&#39;m not as awesome as you, jerk.
+Sincerely, your comment is stupid... I am just asking for some help because i couldn&#39;t do this, like posting the code, it&#39;s written on the question, man... Be kindle, don&#39;t be a stupid scumbag, please! =)
+won&#39;t i repair my windows xp ?? fuck you all and fuck stackoverflow&#39;s owners, admins and all moderator (Y)
+@MethodMan : been programming for 20 + years, been doing OO since Delphi, I think I have a good idea about OO and who an idiot is. There is no lack of experience on my part ;)
+@duskwuff:- shut up your mouth idiot how do you know that tool is malware ??
+cute how the massive amounts of SO trolls always downvote everything - especially the things they dont understand :)
+Flagged as SPAM.
+Start by reading some basic tutorials. Come back when you have code and a real question
+Bit of an assholey downvote - who does that?
+Excuse me but I don&#39;t want to get banned from this poisonous community because I still need answers.
+Holy crow these types of answers are horrific.
+No offense, but maybe computer programming is not your thing.
+You know you&#39;re asking us about 1 local db type and 2 remote ones, right?  If you can&#39;t even figure that out, there&#39;s no way to answer it even if it wasn&#39;t unanswerably vague.
+Thanks so much Jorg. I write the code from home for my business. Sorry for being so silly. But since we&#39;re giving out advice, my advice to you is to work on your manners. I don&#39;t care what your score is on SO, your arrogance is showing.
+I, personally think you should not receive any help from the people here at SO who devote their valuable time to help others. My reason? You haven&#39;t explained yourself properly and have a poor attitude.
+don&#39;t worry though not gonna waste time on this question anymore
+This answer really looks like spam.

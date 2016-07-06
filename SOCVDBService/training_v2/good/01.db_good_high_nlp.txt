@@ -2,10 +2,9 @@ what ? .I khow what is encryption .i dont Need you tell me learn encryption  @Mi
 Damn i dont even know what i dont know. Please dont downvote me to hell :p
 @Andrew: A dumb way to go about what? It&#39;s not clear what you&#39;re criticising.
 why u need light from someone others when sun is shining outside?
-IF YOU ARE DOWNVOTING.. MENTION COMMENT HERE IF YOU HAVE DARE TO DO
-A downvote because you dislike rectangular selection? You gotta be kidding me. <i>*shakes head*</i>
+A downvote because you dislike rectangular selection? You gotta be kidding me. <i>shakes head</i>
 Don&#39;t you hate it when people downvote and don&#39;t explain why?
-Formatted the html code         I DON&#39;T KNOW WHAT THIS YOU SAY
+Formatted the html code I DON&#39;T KNOW WHAT THIS YOU SAY
 whoever down voted, be a big boy, explain why
 @User TL;DR: &quot;Too Long; Don&#39;t Read&quot;
 Seems like a home work!
@@ -374,4 +373,224 @@ When you say &quot;Parameter name&quot; are you talking about <code>Parameter.De
 @JoshLeeDucks When pushing they don&#39;t change to <code>public</code> automagically anymore (at least for me they don&#39;t).
 :bryan so how can i do full back up as you said?
 Stupid me and genius you ))
+I&#39;d go a re-factor it all based on your suggestions, but I have retired half a year ago. I&#39;ll be always open to learning after writing such bad code for 40+ years.
+Did my answer assist at at? It takes time to actually write them up. Feedback is appreciated (that is our pay).
+Have you seen the uptime of MY box yet? ;) But seriously, there is <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#nanoTime--" rel="nofollow">no guarantee</a> that nanoTime starts at 0: <code>The value returned represents nanoseconds since some fixed but arbitrary origin time (perhaps in the future, so values may be negative). The same origin is used by all invocations of this method in an instance of a Java virtual machine; other virtual machine instances are likely to use a different origin.</code> So it wraps every 292 years, but potentially much earlier than 292 years after booting up.
+Whether you know it or not, you entered more than one character. Count how many times you hit a key on your keyboard; don&#39;t leave <i>anything</i> out.
+<a href="http://stationplaylist.com/airtel.mpg" rel="nofollow">stationplaylist.com/airtel.mpg</a> @Ken White
+&quot;Questions asking us to recommend or find a book, tool, software library, tutorial or other off-site resource are off-topic for Stack Overflow as they tend to attract opinionated answers and spam. Instead, describe the problem and what has been done so far to solve it.&quot;
+This isn&#39;t a tutorial or &quot;how to&quot; site. Read the documentation for their API&#39;s
+When you get help with your problem, don&#39;t just leave or soon people will stop helping you. You haven&#39;t selected an answer for any of the questions you&#39;ve posted, including this one. Is my reply not helpful?
+No As you said that already answered here. then according to rule is you must share answer as comment. rather than giving as separate answer. And if you don&#39;t have enough rep. then please wait.
+@StevenSummers when the buttons appear the spam a chat button is almost at the top and Raise your kappa is at the bottom. it seems like the length of the text is the decider but I want to change that
+&quot;language&quot;: { &quot;1&quot;: &quot;English&quot;, &quot;2&quot;: &quot;Spanish&quot; }, &quot;languageChoice&quot;: &quot;English&quot;, English must be 1
+@ShadowWizard Wow really?, I moderator of a programming community who has never heard of Classic ASP...oh well.
+@hakunin: yeah, put up a big fat warning :)
+Billions of documents are printed every week, millions of printers run out of paper, without ever needing the &quot;help&quot; of System.Printing.  You&#39;ll learn to live without it.
+@IInspectable I have given something true anyways. Who would know the answer without the actual source code anyway? Also don&#39;t call me an idiot. My view is not a dogmatic one (for the reason that it will change if there is a reason for that). It&#39;s
+@guest271314 global variables - disgusting. Why do you people prefer some terrible code when you can have a concise and readable one <code>const validatePIN = pin =&gt; &#47;^(\d{4}|\d{6})$&#47;.test(pin)</code>
+@Memme Forcing a gc is a bad idea! You need to stop the memory leak not try and cover it up.
+Please don&#39;t use the old phpexcel.codeplex.com site anymore: we&#39;ve been trying to get rid of it for ages.... PHPExcel moved from codeplex to <a href="https://github.com/PHPOffice/PHPExcel" rel="nofollow">github.com/PHPOffice/PHPExcel</a> four years ago
+You need to move the rule that forces HTTPs above your normal rules.
+Mother Teresa is that you? Great to know that you&#39;ve taken up coding!
+Okay, and where did you get stuck when you attempted to write this yourself? What part, or parts, don&#39;t you understand or struggle with?
+GUYS!! This is a genuine question. Stop downvoting the OP.
+@J&#248;rgen Yes, GET work successfully. Error message tells about error while handling another error. So, VerbFilter giving two errors. Like I attached VerbFilter twice. But I don&#39;t. Wtf...:(
+@Y.B. Never mind, I&#39;m rather addicted to rep points collection and developers have to stick together! Btw: I&#39;ll delete my unrelated comments after some minutes...
+a picture is worth a thousand words
+Who did down vote my answer?Tell me the reason.
+Down vote for syntactical and grammar mistake !! seriously!! @vahid
+@Quentin I might be completely wrong, but I wouldnt expect that optimizations have to restrict to a &quot;compile as-if&quot;. As I understand, the as-if rule does not include things that are undefined/unspecified anyhow. However, instead of spamming mayb
+i&#39;m in a hostel without a laptop and a computer with java compiler and i&#39;m learning java out of curiostity out from a book
+Problem is I do. I had a lot of problems with <code>linux&#47;fs.h</code> because nothing from there was seen by linux/dax.h for example, had to spend extra time to make it stop spamming errors. Although maybe I&#39;m not including somewhere else. I&#39;ve lost clue at this point (probably with parts of my sanity).
+&quot;I couldn&#39;t find anyone looking for sending an email without password authentication&quot; -- that is because mail servers require passwords to be able to send email, at least from arbitrary IP addresses. Otherwise, spammers would be very happy.
+Just a guess because we don&#39;t have much information to go off of here but <code>dataSnapshot.child(&quot;myvalue&quot;)</code> is probably the culprit...
+Recommending memmove over rotate doesn&#39;t seem like such a good idea. Maybe complain to your compiler vendor if they don&#39;t generate good code for rotate?
+I just confused why some of those earlier answers were to monkey patch the global <code>sys.stdout</code> :(
+Can you please delete these comments, its gettin a lil bit spammy, we can discuss in a chatroom if you want. <a href="https://chat.stackoverflow.com/rooms/116381/matplotlib-discussion">chat.stackoverflow.com/rooms/116381/matplotlib-discussion</a>
+This is the second time you&#39;ve posted link-only answers directing people to a non-English site. That makes it spam.
+I make a fool out of myself all the time.
+anyway, i gotta go to bed.  maybe next time you might reward people with rep if they help you for hours.
+First you have to get to know the OwinContext.Request.Query well enough to find something that makes it feel inadequate. I googled &quot;OwinContex.Request.Query flaws&quot; but didn&#39;t find anything good to work with. So in that case we can just resort to basic name-calling and hope that it&#39;s sensitive. &quot;You stupid, stupid OwinContext.Request.Query!&quot; Point at it and laugh. But when it starts to cry your conscience will bother you, sending you into a spiral of self-hatred and futile attempts to restore self-esteem through even more witless mockery.
+@Ehryk There isn&#39;t such a requirement, but people are also free to vote as they like. Low quality answers to duplicate questions often attract downvotes. Sometimes even delete votes.
+Outbound SMTP is pretty much universally blocked from home consumer netblocks as an anti-spam measure. You basically can&#39;t run a mail server on a home ADSL any longer becaue s&#39;ammers poisoned that well (too).
+Here&#39;s a blog post I wrote just a week ago on this exact subject. How convenient! <a href="http://scotthannen.org/blog/2016/06/25/extension-methods.html" rel="nofollow">http://scotthannen.org/blog/2016/06/25/extension-methods.html</a>
+nothing to do with php. it just walks your envelope down to the street corner and tosses it into the mailbox (smtp server). if hotmail doesn&#39;t get the mail, that&#39;s not php&#39;s problem. it&#39;s the postal service&#39;s (e.g. spam folder/filters)
+Very useful and convenient things. You can always ask about him in chat or in the channel of slack (he is more active)
+I got rid of the Japanese characters (with the help of Google translate) to avoid spam errors
+You really need to properly format your code. It&#39;s near impossible to read.
+Than you <a href="http://stackoverflow.com/users/1683264/rojo">rojo</a> you are awesome, amazing answer!
+Your lapply has looped over files, you need to ass a second loop over sheets to get what you want.
+The filter is just a doctrine query so it has no real connection to the flushing process. A far easier way to hard delete would be to to run the the <code>$em-&gt;remove($object); $em-&gt;flush($object);</code> twice. The first flush would set the <code>deletedAt</code> to now. The second would recognise that the <code>deletedAt</code> has been set previously and will ignore actually delete - ass you can see here <a href="https://github.com/Atlantic18/DoctrineExtensions/blob/master/lib/Gedmo/SoftDeleteable/SoftDeleteableListener.php#L63-L71" rel="nofollow">github.com/Atlantic18/DoctrineExtensions/blob/master/lib/Gedmo/&hellip;</a>.
+now ur keyboard is going down or not?? by tapping outside??
+I don&#39;t have time to go through all of that and I doubt ill learn it from there all I want is for someone to give me a clue and ill do the rest myself
+@SashaKid The code they have in their tutorial is what I have in mine (in Swift) and that works. There is more involved but that doesn&#39;t mean that their work is wrong. Maybe I should&#39;ve clarified that. Right now I&#39;m using <a href="https://janu
+Off topic but I just wanted to say that your project idea is ingenious. Keep going!
+If you got time please contact me at <a href="http://chat.stackexchange.com,and">chat.stackexchange.com,and</a> if you are up there,please leave me know you are there by leaving a comment here thanks
+I think you can&#39;t except if your notification is a silent notification. But if you dont have access to server-side code, you just can&#39;t to id
+@RomanPerekhrest I just don&#39;t get it.. does downvoting provde points to voters, it is necessary that people who downvote questions at least add a comment as to their reason to downvote
+Cool bro... u r intellectual
+@Venco you have a problem with your specifications of the problem. What defines what &quot;matchWholeWords&quot; means? In this fiddle, you mean you want &quot;Q5&quot; to be replaced, but in &quot;Q5.&quot;, the &quot;.&quot; should be a word boundary, b
+Surely even compilers for low-level/embedded systems are smart enough to optimize a division by a power of two to a bit shift? No one writes <code>x &#47; 32</code> because they actually want a divide instruction, but because it is clearer to a human being than <code>x &gt;&gt; 5</code> but equivalent to a compiler.
+You can show api documentation, i fink you need one array not twoo <code>array(array(</code>.
+Why the hell would you tag people you only just found via search? Now that sounds like the very definition of tag spam.
+I&#39;m voting to close this question as off-topic because it looks like a spam precursor post: it&#39;s an exact duplicate of this answer: <a href="http://stackoverflow.com/a/35639267/4014959">stackoverflow.com/a/35639267/4014959</a>
+Seriously.. why the downvote? If a newbie can&#39;t ask questions at a community, what does the community exist for?
+Why down vote here? please leave your comment.
+This looks like a thedailywtf.com-type approach for downloading a document via http. Different operating systems use different libraries for implementing HTTP. Since you did not indicate which operating system you are using, no answer is possible. But one can always create a socket(), connect(), send an HTTP request, and retrieve the HTTP response manually. HTTP is very simple.
+@Sigbert -- don&#39;t call me a jerk. Read the rules.  <a href="http://stackoverflow.com/help/on-topic">stackoverflow.com/help/on-topic</a>  You wouldn&#39;t expect to be able to ask a question about how to plug in your computer here, would you?  Off topi
+@sigbert in fairness, hes not being a jerk. This site does define very clearly what questions are for here, and what arent. the reality is the question close reasons exactly list the text he picked.. he wasnt being a jerk
+@KABoissonneault no i didn&#39;t read a book and i didn&#39;t found a tutorial on how to read of a pastebin post in c++...
+Did you even try to do anything yourself or did you just dump your assignment here?
+Maybe you should tell us what your program actually does. Because if it handles sensitive information, this ain&#39;t a good idea.
+Down voted because my 2 year old answer is NOW out of date?
+Possible duplicate of <a href="http://stackoverflow.com/questions/22203159/generate-a-dynamic-form-using-flask-wtf-and-sqlalchemy">Generate a dynamic form using flask-wtf and sqlalchemy</a>
+Footer for that website is &quot;<i>Content copyrighted. Reproduction Denied.</i>&quot;. Maybe they don&#39;t want you copying their stuff and have limited content access?
+Don&#39;t worry, no insult taken. It&#39;s just that at some days, I would at least like to try to be a rockstar ;-)
+If you don&#39;t even take the time to format your question and REMOVE the -3 down vote favorite that came with the copy/pasting, people will not want to help you.
+@RomainB. As far as I know WTForms uses classattributes to determine which fields to show. In the answer they are creating a class at runtime with the appropriate class attributes to show what they want. That should also be possible in your case. But actu
+@Lankymart: my boss asks me to do stupid stuff all the time. Sometimes, I can talk him off the ledge; other times, I just have to swallow my pride and do it his way - it&#39;s his company, not mine. If you&#39;re not in the same boat, count your blessings
+@Jaxian downvotes get removed when the question gets deleted so all the OP has to do is delete it. Also downvotes are entirely appropriate since this question has nothing to do with android and also has nothing to do with programming
+Pay some symfony guy here to get you on track. Note, I am not a symfony guy.
+@AbAppletic Sorry, I mixed you up with Abishek below when I wrote the comments and just realised that and deleted the comments before you wrote back - I actually wrote my answer 19 hours ago, you wrote yours 15 hours ago. Mine was here first so I literall
+Downvoters please atleast care to comment reason for downvoting
+Thanks to you also. Well spotted. What an idiot I am.
+I kind of understand what you mean but im sorry if this is a dumb question,where is contentPane.add(new JScrollPane(table)); supposed to be placed?
+title and content contradicts. are you trying to get your followers or the people you follow?
+@James no worries, i&#39;m off out now. Have fun coding!
+Sounds like a place I once knew. I presume that the other approach (find an old PC that someone is throwing out, install Linux yourself) is also rendered impossible by the network and firewall people or regulations?
+Downvoted without even leaving a comment?
+If you don&#39;t post some code, no answer is possible. You&#39;re doing something wrong, but without some code nobody can really tell you what.
+Well, the thing is that the online example has managed to idiot-proof itself, whereas when I try the same example on my local machine, it isn&#39;t idiot-proof.
+@AKWF Best to ignore him, all theory and no practise.
+I thought that here will be some smart man, who can help me solve this task. You have to know that I made researches before I came here, but I found nothing useful. I didnt meant to bother anyone or insult SO rules. if no one can help or understand the task, then I think this doesn&#39;t have any solution.
+@Kayaman who ask you to write a code I know you are busy so plz dont interrupt if u don&#39;t have time
+Damn Wordpress always &lt;p&gt;&#39;s all over my stuff!
+@JoeEnos holy cow, all I did was shut down VS and then restart comp, came back and it hit the breakpoint.. such a waste of time when it was going where we expected lol thanks for the help anyways man. much appreciated.
+Ha! That&#39;s always my favorite solution. Must have been some cached assembly or something. Irritates me to no end - every now and then ASP.NET screws me over - I can&#39;t count how many hours I&#39;ve wasted over the years chasing ghosts.
+What algorithm are you using to classify the spam? What language are you using to build the model? If you are asking generically, then your question is not a programming question and would be better posted on <a href="http://stats.stackexchange.com">Cross Validated</a>
+Thanks, yes I just noticed that it can be spammed and be a problem. I&#39;ll createWallet at register instead. I have a function that deletes the inactive users every certain time which i&#39;ll use to delete inactive user&#39;s wallets as well. Still it kinda confuses me how just for clicking once it does that.
+Please read through the help center. All of this is explained. When a question is put on hold and edited, it was put in a queue where people can vote to reopen it. You&#39;re being impatient.
+Actually someone is downvoting all of my posts
+Any reason for the downvote?
+btw you don&#39;t need all those escapes: <code>var regex = &#47;^[^&#39;\&#47;:*?&quot;&lt;&gt;|-]*$&#47;;</code>
+I was wasting a lot of time trying to find whats wrong with my pojos. This finally was the biggest help :)
+It&#39;s impossible to say a-priori because even if we just go ahead and <i>assume</i> that the second way results in a conditional move rather than a branch, that is neither strictly worse nor strictly better than a branch. It depends. But we can&#39;t even assume that, so we know even less than that.
+@???????? who downvoted the answer given by Paul Smith aka @MadScientist?
+If those who are downvoting my question could tell me why they are doing it I&#39;d gladly use the information to improve my question so I don&#39;t get banned :)
+and exactly what do you expect us to do? you&#39;ve provided NO details about anything useful: how do you communicate with your device? what&#39;s the communication protocol? What commands does the device expect? blah blah blah blah. We are not here to do your job for you, especially when you can&#39;t be bothered to even explain what your job is in anything other than top-level managerial terms.
+@Shnugo I agree, at first I liked John P&#39;s answer, but then reconsidered because I DON&#39;T TRUST USERS.  They may be smart, but they do really dumb things
+Trust me - if upgrading was an option we&#39;d be very close to the latest, always. But in this company , its like impossible to get a unix admin to do anything for us. This is a JAVA/ORACLE business and they&#39;re always on the latest of everything. But if we ask for anything we&#39;re the red-headed step children...
+Well it sounds easier to do this unless you want to spam users in sending them an email for every version and or release to go download it... What would you think?
+@Bugiroff be patient, things takes time. you got any way my up vote
+Aside: <code>UnikatniICP = set()</code> / <code>UnikatniICP.add(line)</code> might go faster. If you don&#39;t care about order, <code>distinct.writelines(set(SeznamICP_all))</code> might go fastest.
+I&#39;m not sure &quot;old database&quot; quite describes a product that came out 16 years ago and hasn&#39;t even been supported for almost a decade! But how about a manual pivot, something like this <a href="http://stackoverflow.com/questions/312861/pivot-using-sql-server-2000" title="pivot using sql server 2000">stackoverflow.com/questions/312861/pivot-using-sql-server-2000</a>
+please go back to reading some basic C# tutorials for beginners
+Why the downvote? Comment plz.
+It was a dumb mistake. Sorry guys. The guy on the comment below helped me.
+I&#39;m new to this community but I think it&#39;s a Q&amp;A site. I asked you&#39;re supposed to answer if you want.
+What part of <code>Invalid object name &#39;Patient_Details&#39;</code> don&#39;t you understand?
+It will keep running if you don&#39;t turn off your computer or you not face any power cut.
+@mgansler I assume you mean git branches? At this stage no - everything is sitting in 1 repository. Usually a team will fork off the main repo and then merge their changes back in later.
+@KevinEsche: True. Apologies for sounding harsh, I just wanted to point out potential problems with the approach to make sure OP is aware. It is up to him to decide what he really wants and sees fitting.
+Spamming unrelated language tags is an excellent way to give your question maximum negative attention, in order to get it down-voted by as many people as possible.
+I&#39;d recommend Aaron&#39;s articles every day :-) He has a series of articles called Bad habits to kick, everyone of them that I&#39;ve read was great.
+@MAP, it does? I suppose I&#39;m a bit too lazy too.
+To add to Andy&#39;s comment - if you don&#39;t override <code>hashCode</code> in a way that&#39;s consistent with <code>equals</code>, expect bad things to happen in potentially unexpected places. It&#39;s <i>always</i> worth making sure that you override them both consistently (or don&#39;t override them at all).
+w o n d e r f u l
+If it helps - just print the output of your script normally and pipe it through the <a href="http://www.computerhope.com/unix/utee.htm" rel="nofollow">tee</a> command that will fork your script&#39;s output into multiple out streams.
+The OP doesn&#39;t want closures and you present him, um...disguised closures?
+@M.M: Why do you regard such things as happenstance?  If you don&#39;t like the language Dennis Ritchie invented, invent something else.  Don&#39;t try to name-drop off the language that became popular precisely because it supported the kinds of abilities
+Regardless it&#39;s a dirty hack for such a small issue :/
+@Apostolos I don&#39;t even understand what they want to do. Respect for understanding the intention.
+Don&#39;t even have enough rep here to up vote!
+I&#39;m not really sure how to do that so i just looped the hell outta of those things
+I think the downvote is due to having <b>5</b> questions rather than one and all <b>5</b> being somewhat Off Topic
+I wonder why someone downvoted the question? Any explanation?
+@Tom &quot;the biggest one&quot; is the biggest path. When i start the program(Jlist), this 3 path&#39;s appear, and i just want to appear &quot;the biggest one&quot;, that is &quot;C:\Diretorio\Antonio\Documentos\Temp&quot; appear on Jlist item
+My apologies, I just posted an answer below. Sorry for spamming the website with extra comments.
+This is off topic here. You should delete this one and move it to serverfault.com
+@MatthewRoh I&#39;m going to say there are not. You&#39;ve seen some of the brightest folks on <a href="http://stackoverflow.com">stackoverflow.com</a> post answers here, if anyone would know of a C++17 addendum it would be them. As such I don&#39;t belie
+Having to do this is arguably a bug in WTForms, since returning <code>&quot;None&quot;</code> as a string is just very odd indeed.
+I know async methods let you trivialize some parralelizations but you cant just flip a switch and tell the compiler to cut up your work for all the computing cores
+Arrays can&#39;t be copied and will always decay to a pointer.
+Maybe my reading skills aren&#39;t good enough, but I still dont get what <code>Aa</code> and <code>Bb</code> etc. is. Can you give a simple example?
+wow thank you I feel stupid now
+Ah wow. I literally just realized this is the stupidest mistake ever. I am looping the getcontent program but it includes the library declaration. I just moved the line include(&#39;/var/www/tools/dom/simple_html_dom.php&#39;); into my primary routine and it all works. Thanks for your help. I was way too focused on my primary routine.
+@Bergi the title asks if promises are sync or async, but the body asks about race condition. Promises are async but still unable to race, because of the rest of the answer.
+Get rid of <code>return false</code> as Mr. McCrossan suggested, then place <code>event.preventDefault()</code>  right above <code>if(event.keyCode == 13) {...</code>
+This is really horrible advice in team environments. Nobody should ever press the magic reset buttons in Xcode.
+Reason for the downvote?
+i don&#39;t see how or where DoStuff is every being called here?
+<a href="http://math.ucr.edu/home/baez/physics/General/jerk.html" rel="nofollow">Jerk is the rate of change of acceleration over time, just as velocity if the rate of change in position over time, and as acceleration is the rate of change of velocity over time.</a>  Because you have a maximum acceleration constraint, this implies that the acceleration is changing over time.  Thus, jerk is how fast it is changing, and a value that you will set (I&#39;d recommend making it specific to different enemies).   And as for your acceleration not exceeding a constraint level, I am including that in the answer I am typing right now.
+omg you found my mistake, thanks to you. really stupid but i sit here and wondered since 1 hour xD
+Oh right; so jerk is a different way of expressing &quot;car reaches 100mph in 2 seconds&quot; - but rather than using time, you use a rate... is that right? That could work... I suppose! I&#39;d have to see it in action. Anyway I&#39;m way overdue for sleep I&#39;m afraid. Looking forward to checking-in in about 8 hours. Good luck!
+Ok, I am starting to figure out how to control it.  You have to use the check boxes.  Argh.  WTF does it let you even edit the code it presents?  Anywas, thank you for providing a correct answer to my question (I still hate computers, though).
+Mostly, car reaches 100 mph is super broad, only mentioning a time and final velocity magnitude.  For example, lets say that the car&#39;s acceleration from 0 m/s^2 to 20 m/s^2 in 3 seconds.  How did it do this?  At 2 seconds, was its acceleration still 0 and then it jumped to 3?  Jerk describes how it increased (or in this case, a constant jerk value will make it so that the acceleration increases linearly with time).  Likewise, this linear accleration increase implies that the velocity increase will be parabolic, and positional change for the car would vary with time^3.
+Holy crap that was beautiful haha/
+Sorry, don&#39;t have any more to offer.  I&#39;ve seen other posts where developers report delays, often when the developer is far from the USA.  Those seemed to be caused by poor network performance.  Maybe I don&#39;t experience problems because I am in California.
+here you go! <a href="http://www.joshmorony.com/adding-background-geolocation-to-an-ionic-2-application/" rel="nofollow">joshmorony.com/&hellip;</a>
+You must at least tag the code language you&#39;re using and ask a more detailed question. I know it&#39;s Java but most people don&#39;t and you should give more details about the technology you&#39;re using.
+read carefully the answer below, you say you know all that, and you need to create a random matrix,  but you don&#39;t use <code>rand</code> or any other function for random numbers in your code. don&#39;t expect others to do your homework if you don&#39;t try to do it yourself
+Looks like this code is not nearly enough to actually investigate your issue. Also beware that your formatting has cause the automated systems to consider this spam so you have a second reason to edit.
+@bzlm I&#39;m not familiar with fiddle. What am I supposed to be looking in that link?
+@Gilles: Semantically speaking a void object is <i>not a function</i>, so we should have a <code>nil</code> not an error.  If using a looser definition, all callable objects should be taken into account, including macros and lambdas. Please see the update
+@AndrewK - I think that&#39;s definitely the path to go down. You can answer your own question if you like to close it off.
+All of this is due to the behavior of the underlying Date.parse() trying to follow ISO 8601. When the date string follows the yyyy-mm-dd format, it&#39;s assumed to be ISO 8601 with implicit UTC 00:00. When the string deviates from the format (e.g. mm-dd-yyyy or slash instead of hyphen), it falls back to the looser parser according to RFC 2822 which uses local time when the timezone is absent. Admittedly, this will all be quite arcane to an average person.
+@Desperado who said it was Darshan who downvoted? Please don&#39;t judge people if you don&#39;t know. I find Darshan&#39;s question a legitimate one.
+Please don&#39;t tag-spam. This has nothing to do with <a href="http://stackoverflow.com/questions/tagged/c%23">c#</a> or <a href="http://stackoverflow.com/questions/tagged/asp.net-mvc">asp.net-mvc</a>.
+use a proper installer, don&#39;t write your own.
+Interesting. I guess it depends on who your students are. My students (humanities) need to know how to drive the car, not how to take it apart and put it back together.
+Michael&#39;s answer makes full sense to me, so I don&#39;t understand the someone&#39;s down-vote. Up-voting back on.
+So you think your dropping of requirements will make people send you code? Sorry, won&#39;t happen.
+Internet Archive to the rescue: <a href="https://web.archive.org/web/20160703165415/https://graphics.stanford.edu/~seander/bithacks.html" rel="nofollow">web.archive.org/web/20160703165415/https://&hellip;</a> This is still a lazy answer so I downvoted.
+@RareKyurem this is too broad and the question is badly presented. We can&#39;t help or assist those who make it hard or impossible.
+ping one of us if you get anything. Moving on
+You should disclose you have a personal interest in the link mentioned. If you don&#39;t do that, it fits the criteria for SPAM.
+@RudyVelthuis Every class descended from <code>TInterfacedObject</code> is destined to be used via interfaces because of the lifetime policy that it implements. If you want a different lifetime policy then you should choose a different base class. And you
+Do read <a href="https://stackoverflow.com/help/promotion">How to not be a spammer</a>.
+Really you should have explained a lot better your problem. And downvoting just because we cannot understand your unexplained problem is just silly
+If helpful, vote up. That&#39;s how you say thanks around here.
+What don&#39;t you understand? Why did you write this code?
+@mishamosher pls have this as an answer! this captured a bunch of cases (not sure if all)
+Meanwhile anonymous downvotes without explanation. I believe they haven&#39;t even understood the question.
+gif isnt white :(
+-fpic would be an option for a compiler, like gcc. if you&#39;re writing asm, you&#39;d have to write the pic stuff yourself.
+This is ridiculous, no matter how hard I try im on the edge of getting banned ( for some unclear reasons )
+visit <a href="http://www.wikihow.com/Calculate-Percentage-in-Java" rel="nofollow">wikihow.com/Calculate-Percentage-in-Java</a> you might get some idea.
+OP expects &quot;Sublime Text 3&quot; from path &quot;C:\Program Files\Sublime Text 3\sublime_text.exe&quot; So I don&#39;t think your answer is the OP&#39;s intention
+here is the last link : <a href="https://www.unlocktheinbox.com/mail-tester/SUcC6jd9RyY=/" rel="nofollow">unlocktheinbox.com/mail-tester/SUcC6jd9RyY=</a>  SPF seems to be okay now, but emails are still marked as spam :(
+I don&#39;t think doing any simple computation every two hours is going to waste anything significantly.
+If I were you I wouldn&#39;t let my threads stay up that late. I always put mine to bed by 7:30, 8:00 at the latest
+Just cut and paste the text I will format it. Pictures are barely of any use. In general, very annoying on the stack. Because people cut and paste your text to make their answer. So a picture is like a waste of time.
+Lol @AshwinNair you deleted yours I deleted mine :)
+It&#39;s worth mentioning that <b>a lot</b> of e-mail clients (I&#39;d dare to say the majority, even) will not support Javascript - not to mention the risk of the e-mail getting marked as SPAM or rejected altogether. I would advise redirecting them to a website doing this, rather than including a form in the e-mail itself.   Oh, and I just noticed..- <code>action=&quot;..&#47;mail.php&quot;</code> won&#39;t really work when sent in an e-mail - if the form itself works to begin with (which, <b>it can</b>, but likely <b>won&#39;t</b>).
+Great. I&#39;ve painted myself into weird generic inheritance corners over and over and over, so it really helped when someone explained the alternative to me.
+A little advice... don&#39;t write an preface if you want your question answered. People don&#39;t want to read a story to answer your question. This will probably help you get more questions answers.
+You&#39;re lucky. I was about to go to bed. I&#39;ve send you a reply through email.
+I had this problem on some of my wordpress websites. I was surprised that no one has mentioned this on the wordpress forum. I can&#39;t upvote enough for this.
+You too boss...tacked on a +1 for you. Who actually focused on his stuff while I was off in SC somewhere.
+@Oriol Let&#39;s not go to deep.. <code>+0 === -0</code> alright.. This <a href="http://stackoverflow.com/questions/7223359/are-0-and-0-the-same">article</a> might help.
+It is not enough. One cannot understand where <code>CopyFileW(Path, TPath, 0)</code> fails without seeing everything. I suggest you to debug your program instead of asking here.
+They are not. One is GET and second PUT. Router should distinguish such obvious difference, don&#39;t You think?
+The problem here is that we have a lot off functions that need to be present in draw and setup. So passing them one by one, is not an solution. We could pass them ass object but then we are back at square one. Thanks for all your thought Peter. I will rethink the idea and maybe we have to go for a global scope.
+To the person who downvoted : <code>LEAVE A COMMENT</code> why !
+If you explicitly tag a question with iText, and your question is not about iText at all, it shouldn&#39;t come as a surprise that iText people aren&#39;t too happy about it. What you do, is called tag spamming, and I am going to edit your question to remove your spam.
+@MatthieuM. <code>OsString</code> has <i>no</i> inherent relationship to C strings.  For example, on Windows, <code>OsString</code> is WTF-8, whilst C strings are <i>guaranteed</i> to be in some <i>other</i> encoding (since Win32 doesn&#39;t know what WTF
+please ass the packages to your code snipped
+Actually my professor talked about the precision problems. Don&#39;t worry he is a great professor ahah
+@Pshemo I agree. I just don&#39;t like to pass on the opportunity to tell people not to use regular expressions for every string processing task :)
+@Zabuza We want to teach him to always specify an encoding, so when the encoding is different than he thinks he doesn&#39;t have to come back to SO with a new question about why his file reading doesn&#39;t work. Either answer properly or don&#39;t answer
+Only when you answer your own question. I think the restriction is there to stop people posting a bunch of questions and immediately answering them to game the reputation system.
+Why on earth would you call a user <code>$data</code>? You make things more confusing for yourself and others if you come up with arbitrary variable names.
+just realized that slut is an extremely bad parameter when posting this on an english site, to my defence, its &quot;end&quot; in swedish, hope that wont stop you if you got any idea for me...
+@Hack-R sorry I know i added that to answer your question. actually I don&#39;t care even if they remove my question. the only thing I don&#39;t like is that some people are just BLAH, just close their eyes and even don&#39;t read a question and down vote
+@nmnsud The OP <i>appears</i> to want to get email addresses for the purposes of spamming. Unless they provide a reasonable justification for what appears to be their intent, do you <i>want</i> to help increase email spam?
+why down vote i want to know? I don&#39;t know how these people live, just by down voting without any reason.
+Over 16 millions chars? This is enough for a book ;)
+It&#39;s sad that users don&#39;t lose rep for downvoting questions too.
+Stop wasting GUIDs! We have only 5,316,911,983,139,663,491,615,228,241,121,400,000 of them!
+I&#39;m sorry, I don&#39;t understand the chaining of for cols in zip() for col in cols? I understand &quot;for cols in zip&quot; but don&#39;t get the double recursivity there... Would you mind developping, please?
+Just put the items in an ObservableCollection, bind it in the XAML, and get on with your life. You don&#39;t get any bonus points for punishing yourself by doing things wrong. But if you&#39;re absolutely determined to waste your own time, have you tried raising PropertyChanged for the collection property? Or are you not even binding it?
+Holy sh**t -_- i&#39;m so tired, thank a lot...
 

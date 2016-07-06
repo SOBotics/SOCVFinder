@@ -114,7 +114,7 @@ Well it works in iphone / ipad size but now the fullscreen is fucked because it 
 My other aliases especially my favorite `alias fuck='sudo $(history -p \!\!)'`  show up though!
 
 You don't know enough SQL to create a `SELECT` query?
-Did you try anything at all? Did you search for this? Do you even *know* JavaScript?
+Did you try anything at all? Did you search for this? Do you even know JavaScript?
 Err... [RTFM](http://php.net/manual/en/function.preg-grep.php) maybe? Use `PREG_GREP_INVERT` as the 3rd parameter.
 Seriously ? It's the easiest programming task I've ever seen. Juste read some doc/tutorial about arrays
 He's asking how to set an element in an array what do you think he has done so far ? Nothing.

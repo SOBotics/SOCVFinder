@@ -121,7 +121,7 @@ public class CommentCategory {
 		c.setNaiveBayesBad(outcomeWeka[1]);
 		
 		//outcomeNlp[1] > OPEN_NLP_THRESHOLD || disabled for now
-		return regExHit!=null ||  (outcomeWeka[1] > WEKA_NB_THRESHOLD && outcomeNlp[1] >0.95) || (outcomeNlp[1] > OPEN_NLP_THRESHOLD&&outcomeWeka[1] > 0.95);
+		return regExHit!=null ||  (outcomeWeka[1] > WEKA_NB_THRESHOLD && outcomeNlp[1] >0.70) || (outcomeNlp[1] > OPEN_NLP_THRESHOLD&&outcomeWeka[1] > 0.95);
 
 	}
 
@@ -192,7 +192,7 @@ public class CommentCategory {
 	public static void main(String[] args) throws Exception {
 		CommentCategory cc = new CommentCategory();
 		Comment c = new Comment();
-		c.setBody("did you even try looking at the tutorial?");
+		c.setBody(" attract opinionated answe an spam. ");
 		System.out.println(cc.classifyComment(c));
 		
 		
