@@ -1,30 +1,29 @@
 #These are the regex executed on on comment where username and html has been removed
 (?i)(^|\s)stfw(\s|\.|!|\?|$)
-(?i)(^|\s)wtf(\s|\.|!|\?|$)
+(?i)(?<!flask\-)\bwtf\b
 (?i)((yo)?u suck)
-(?i)(?<!i.{0,9})idiot
-(?i)(?<!i.{0,9})moron
-(?i)(you?|\she)(.{0,8})\sstupid
-(?i)(that)(.{0,4})\sstupid
+(?i)(?<!i('| a)?m\s*(\w+\s*){0,2})idiot(?![\s-]?proof)
+(?i)(?<!i('| a)?m\s*(\w+\s*){0,2})moron
+(?i)(?<!i('| a)?m\s*(\w+\s*){0,2})stupid(est)?(?!mistake|error|typo)
 (?i)(you?|u|\she)(.{0,12})\sloo?ser
 (?i)please be nice
-(?i)(^|\s)insult(\s|\.|!|\?|$)
+(?i)\binsults?\b
 (?i)nigg(a|er)|negro(\s|\.|!|\?|$)
 (?i)(^|\s)ass(\s|\.|!|\?|$)
-(?i)a\S{0,5}hole
+(?i)\ba\S{0,3}hole
 (?i)dumbass
 (?i)\sfag(got)?
 (?i)(^|\s)gay(\.|!|\s|$)
-(?i)(^|\s)slut(\.|!|\s|$)
-(?i)(^|\s)fuck|(^|\s)f\S{1,5}k\s(yo|off)
+(?i)\bsluts?\b
+(?i)\b(f\Sck(s|ers?|ed)?|f[kcuf]+k)\b
 (?i)retard 
 (?i)bitch(\s|\.|!|\?|$)
-(?i)nazi
+(?i)(?<!grammar[ -]?)\bnazis?\b
 (?i)shit(t?er|head)
 (?i)dickhead
 (?i)(^|\s)pussy
-(?i)pedo
-(?i)whore
+(?i)\bpedo\b
+(?i)whore\b
 (?i)(^|\s)cunt(\s|\.|!|\?|$)
 (?i)(^|\s)cock(\s|\.|!|\?|$)
 (?i)cocksuk
@@ -37,9 +36,9 @@
 (?i)lesbo(\.|!|\s|$)
 (?i)shit\s?face
 (?i)acrotomophilia
-(?i)(^|\s)anal(\.|!|\s|$)
+(?i)\banal\b
 (?i)anilingus
-(?i)(^|\s)anus(\.|!|\s|$)
+(?i)\banus\b
 (?i)apeshit
 (?i)auto\s?erotic
 (?i)bastard
@@ -82,4 +81,5 @@
 (?i)towelhead
 (?i)yellow\s?showers
 (?i)zoophilias
-(?i)(flag.*spam)|(this.{0,5}spam)
+(?i)this\s*(\w+)?\s*spam
+(?i)(flag.*spam)
