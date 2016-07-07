@@ -4,7 +4,7 @@
 (?i)((yo)?u suck)
 (?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{0,10})?)idiot(?![\s-]?proof)
 (?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{0,10})?)moron
-(?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{0,10})?)stupid(est)?(?!mistake|error|typo)
+(?i)(you?|(^|\s)he)(\w+\s*){0,3}\sstupid
 (?i)(you?|u|\she)(.{0,12})\sloo?ser
 (?i)please be nice
 (?i)\binsults?\b
