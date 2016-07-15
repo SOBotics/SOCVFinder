@@ -204,7 +204,7 @@ public class DupeHunterComments extends Thread {
 					commentLink = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();						
 				}
 				
-				StringBuilder message = new StringBuilder("[ [SOCVFinder](//git.io/vorzx) ]");
+				StringBuilder message = new StringBuilder("[ [Snark Detector](//git.io/vorzx) ]");
 				
 				message.append(" ").append(getBoldRegexHit(c.isRegExHit())).append("Regex").append(getBoldRegexHit(c.isRegExHit())).append(":").append(c.isRegExHit());
 				message.append(" ").append(getBoldNaiveBayes(c.getNaiveBayesBad())).append("NaiveBayes").append(getBoldNaiveBayes(c.getNaiveBayesBad())).append(":").append(nfThreshold.format(c.getNaiveBayesBad()));

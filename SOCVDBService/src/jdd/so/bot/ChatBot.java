@@ -92,7 +92,7 @@ public class ChatBot {
 	
 	public void joinRooms(){
 		// SOCVFinder
-		this.joinRoom("stackoverflow.com", 111347, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,true);
+		this.joinRoom("stackoverflow.com", 111347, null, ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM,true);
 		// Campagins
 		this.joinRoom("stackoverflow.com", 95290, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 		// SOCVR 
@@ -101,6 +101,11 @@ public class ChatBot {
 		this.joinRoom("stackoverflow.com", 75819, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
 		//Ruby http://chat.stackoverflow.com/rooms/44914/ruby-sometimes-on-rails
 		this.joinRoom("stackoverflow.com", 44914, getDupeNotificationsOnlyCommands(), ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
+		// http://chat.stackoverflow.com/rooms/117458/duplicate-posts
+		this.joinRoom("stackoverflow.com", 117458, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
+		//http://chat.stackoverflow.com/rooms/108192/room-for-bhargav-rao-and-tunaki		
+		this.joinRoom("stackoverflow.com", 108192, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,true);
+		
 	}
 
 	private List<Class<? extends BotCommand>> getDupeNotificationsOnlyCommands() {

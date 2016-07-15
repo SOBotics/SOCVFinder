@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
-import org.jsoup.Jsoup;
 
 import jdd.so.api.model.Comment;
 import opennlp.tools.doccat.DoccatModel;
@@ -38,7 +37,7 @@ public class CommentCategory {
 	private static final Logger logger = Logger.getLogger(CommentCategory.class);
 
 	public static final double OPEN_NLP_THRESHOLD = .99d;
-	public static final double WEKA_NB_THRESHOLD = .99d;
+	public static final double WEKA_NB_THRESHOLD = .98d;
 
 	private List<Pattern> regexClassifier;
 	private DocumentCategorizerME openNLPClassifier;
@@ -120,8 +119,18 @@ public class CommentCategory {
 		c.setNaiveBayesGood(outcomeWeka[0]);
 		c.setNaiveBayesBad(outcomeWeka[1]);
 		
+		String logMessage = "\""+ c.getNaiveBayesBad() + "\",\"" + c.getOpenNlpBad() + "\",\"" + classifyText + "\",\"" + c.getBody() + "\"";
+		
+		if (c.getNaiveBayesBad()>0.6){
+			Logger.getLogger(LogNaiveBayes.class).debug(logMessage);
+		}
+		
+		if (c.getOpenNlpBad()>0.6){
+			Logger.getLogger(LogOpenNLP.class).debug(logMessage);
+		}
+		
 		//outcomeNlp[1] > OPEN_NLP_THRESHOLD || disabled for now
-		return regExHit!=null ||  (outcomeWeka[1] > WEKA_NB_THRESHOLD && outcomeNlp[1] >0.70) || (outcomeNlp[1] > OPEN_NLP_THRESHOLD&&outcomeWeka[1] > 0.95);
+		return regExHit!=null ||  (outcomeWeka[1] > WEKA_NB_THRESHOLD && outcomeNlp[1] > 0.1) || (outcomeNlp[1] > OPEN_NLP_THRESHOLD&&outcomeWeka[1] > 0.90);
 
 	}
 
@@ -140,6 +149,7 @@ public class CommentCategory {
 	public double[] classifyMessageOpenNLP(DocumentCategorizerME classifier, String classifyText) {
 		double[] outcomes = classifier.categorize(classifyText);
 		String category = classifier.getBestCategory(outcomes);
+		
 		System.out.println("Open nlp classified as " + category + " Threshold: bad=" + outcomes[1] + ", good=" + outcomes[0]);
 		return outcomes;
 	}
@@ -166,23 +176,6 @@ public class CommentCategory {
 
 	}
 
-	public double getThresholdBad(String comment) {
-
-		String line = Jsoup.parse(comment).text(); // remove html
-		line = line.replaceAll("@(\\S+)?", "").trim(); // remove username
-		line = line.replaceAll("[^a-zA-Z\r\n]", " ").trim(); // remove strange
-																// chars
-		line = line.replaceAll("[ ]{2,}", " "); // remove spaces
-
-		double[] outcomes = openNLPClassifier.categorize(line);
-		if (outcomes[0] >= 0.9) {
-			Logger.getLogger(LogThresholdHit.class).debug(comment + " | " + outcomes[0] + " | " + outcomes[1]);
-		} else {
-			Logger.getLogger(LogThresholdNonHit.class).debug(comment + " | " + outcomes[0] + " | " + outcomes[1]);
-		}
-		double returndouble = outcomes[0];
-		return returndouble;
-	}
 
 	/**
 	 * 
@@ -192,7 +185,7 @@ public class CommentCategory {
 	public static void main(String[] args) throws Exception {
 		CommentCategory cc = new CommentCategory();
 		Comment c = new Comment();
-		c.setBody(" attract opinionated answe an spam. ");
+		c.setBody("That's stupid!");
 		System.out.println(cc.classifyComment(c));
 		
 		
