@@ -1,17 +1,17 @@
 #These are the regex executed on on comment where username and html has been removed
 (?i)(^|\s)stfw(\s|\.|!|\?|$)
 (?i)(?<!flask\-)\bwtf\b
-(?i)((yo)?u suck)
+(?i)\b(yo)?u suck
 (?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{0,10})?)idiot(?![\s-]?proof)
 (?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{0,10})?)moron
 (?i)(you?|(^|\s)he)(\w+\s*){0,3}\sstupid
 (?i)(you?|u|\she)(.{0,12})\sloo?ser
-(?i)please be nice
-(?i)\binsults?\b
+(?i)please,? be nice
+(?i)\binsults?\b(?! to injury)
 (?i)nigg(a|er)|negro(\s|\.|!|\?|$)
 (?i)(^|\s)ass(\s|\.|!|\?|$)
 (?i)\ba\S{0,3}hole
-(?i)dumbass
+(?i)dumb\s?ass
 (?i)\sfag(got)?
 (?i)(^|\s)gay(\.|!|\s|$)
 (?i)\bsluts?\b
@@ -28,11 +28,11 @@
 (?i)(^|\s)cock(\s|\.|!|\?|$)
 (?i)cocksuk
 (?i)dildo
-(?i)penis
+(?i)\bpenis\b
 (?i)(^|\s)(rape|raping|rapist)
 (?i)suck\s(my|it)
 (?i)ejaculated
-(?i)butthurt
+(?i)butt[\s-]?hurt
 (?i)lesbo(\.|!|\s|$)
 (?i)shit\s?face
 (?i)acrotomophilia
@@ -41,7 +41,7 @@
 (?i)\banus\b
 (?i)apeshit
 (?i)auto\s?erotic
-(?i)bastard
+(?i)\bbastards?\b
 (?i)blow\s?job
 (?i)blumpkin
 (?i)bollocks
