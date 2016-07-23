@@ -55,13 +55,13 @@ public abstract class BotCommand implements Comparable<BotCommand> {
 	}
 
 	public String getTags(String message) {
-		String regex = "(?i)(\\[.*?\\])";
+		String regex = "(?i)\\[(?:tag:)?(.*?)\\]";
 		Matcher matcher = Pattern.compile(regex).matcher(message);
 		String result = "";
 		String sep = "";
 		while (matcher.find()) {
-			String tagMark = matcher.group();
-			result += sep + tagMark.substring(1, tagMark.length() - 1).replaceAll(" ", "").toLowerCase();
+			String tagMark = matcher.group(1);
+			result += sep + tagMark.replaceAll(" ", "").toLowerCase();
 			sep = ";";
 		}
 		return result;
