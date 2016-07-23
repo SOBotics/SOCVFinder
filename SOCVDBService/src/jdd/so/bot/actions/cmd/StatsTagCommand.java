@@ -1,9 +1,9 @@
 package jdd.so.bot.actions.cmd;
 
-import org.apache.log4j.Logger;
-
 import java.sql.SQLException;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.CloseVoteFinder;
@@ -45,19 +45,21 @@ public class StatsTagCommand extends StatsCommandAbstract{
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
-		long fromDate = getFromDate(event.getContent());
+		String messageContent = event.getMessage().getContent();
+		long messageId = event.getMessage().getId();
+		long fromDate = getFromDate(messageContent);
 		try {
 			
 			List<Stats> stats = new BatchDAO().getTagsStats(CloseVoteFinder.getInstance().getConnection(),fromDate);
 			if (stats.isEmpty()){
-				room.replyTo(event.getMessageId(), "There are no stats available");
+				room.replyTo(messageId, "There are no stats available");
 				return;
 			}
-			String retVal = "    Tag statistics" + getFilteredTitle(event.getContent()) + getStats(stats, false); 
+			String retVal = "    Tag statistics" + getFilteredTitle(messageContent) + getStats(stats, false); 
 			room.send(retVal);
 		} catch (SQLException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
-			room.replyTo(event.getMessageId(), "Sorry an error occured while trying to get the stats @Petter");
+			room.replyTo(messageId, "Sorry an error occured while trying to get the stats @Petter");
 		}
 	}
 

@@ -38,18 +38,19 @@ public class AddUserCommand extends BotCommand {
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
-		String message = event.getContent();
+		String message = event.getMessage().getContent();
 		String data = message.substring(message.toLowerCase().indexOf("user") + 4, message.length());
 		String[] cmdArray = data.trim().split(" ");
+		long messageId = event.getMessage().getId();
 		if (cmdArray.length < 3) {
-			room.replyTo(event.getMessageId(), "Incorrect command usage: " + getCommandUsage());
+			room.replyTo(messageId, "Incorrect command usage: " + getCommandUsage());
 			return;
 		}
 		long idUser = 0;
 		try {
 			idUser = Long.parseLong(cmdArray[0]);
 		} catch (NumberFormatException e) {
-			room.replyTo(event.getMessageId(), "User id is not an integer usage: " + getCommandUsage());
+			room.replyTo(messageId, "User id is not an integer usage: " + getCommandUsage());
 			return;
 		}
 		User userAdding = CloseVoteFinder.getInstance().getUsers().get(event.getUserId());
@@ -57,7 +58,7 @@ public class AddUserCommand extends BotCommand {
 		User userToAdd = CloseVoteFinder.getInstance().getUsers().get(idUser);
 		
 		if (userToAdd!=null && userToAdd.getAccessLevel()>=userAdding.getAccessLevel() && (userToAdd.getUserId()!=userAdding.getUserId())){
-			room.replyTo(event.getMessageId(), "You can not modify user " + userToAdd.getUserName() + " with same or higher access level");
+			room.replyTo(messageId, "You can not modify user " + userToAdd.getUserName() + " with same or higher access level");
 			return;
 		}
 		
@@ -65,19 +66,19 @@ public class AddUserCommand extends BotCommand {
 		try {
 			accessLevel = Integer.parseInt(cmdArray[cmdArray.length - 1]);
 		} catch (NumberFormatException e) {
-			room.replyTo(event.getMessageId(), "Access level is not an int usage: " + getCommandUsage());
+			room.replyTo(messageId, "Access level is not an int usage: " + getCommandUsage());
 			return;
 		}
 		
 		
 		
 		if (accessLevel<BotCommand.ACCESS_LEVEL_NONE || accessLevel>BotCommand.ACCESS_LEVEL_BOT_OWNER){
-			room.replyTo(event.getMessageId(), "Access level should be between 0-" + BotCommand.ACCESS_LEVEL_BOT_OWNER);
+			room.replyTo(messageId, "Access level should be between 0-" + BotCommand.ACCESS_LEVEL_BOT_OWNER);
 			return;
 		}
 		
 		if (accessLevel>userAdding.getAccessLevel()){
-			room.replyTo(event.getMessageId(), "Sorry you can only add users with same access level as yours: " + userAdding.getAccessLevel() + ": " + BotCommand.getAccessLevelName(userAdding.getAccessLevel()));
+			room.replyTo(messageId, "Sorry you can only add users with same access level as yours: " + userAdding.getAccessLevel() + ": " + BotCommand.getAccessLevelName(userAdding.getAccessLevel()));
 			return;
 		}
 		
@@ -92,7 +93,7 @@ public class AddUserCommand extends BotCommand {
 			userName += cmdArray[i];
 		}
 		if (userName.length()==0){
-			room.replyTo(event.getMessageId(), "No user name has been specified: " + getCommandUsage());
+			room.replyTo(messageId, "No user name has been specified: " + getCommandUsage());
 			return;
 		}
 		

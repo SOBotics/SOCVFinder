@@ -73,18 +73,19 @@ public class BatchDoneCommand extends BotCommand {
 			}
 		}
 
+		long messageId = event.getMessage().getId();
 		if (b == null) {
-			room.replyTo(event.getMessageId(), "Sorry, could not understand the batch that you are referring to.");
+			room.replyTo(messageId, "Sorry, could not understand the batch that you are referring to.");
 			return;
 		}
 		
 		if (b.getUserId()!=event.getUserId()){
-			room.replyTo(event.getMessageId(), "Sorry, this is not your batch, please check your reply message");
+			room.replyTo(messageId, "Sorry, this is not your batch, please check your reply message");
 			return;
 		}
 		
 		if (b.getBatchDateEnd()>0){
-			room.replyTo(event.getMessageId(), "You have already completed this batch");
+			room.replyTo(messageId, "You have already completed this batch");
 			return;
 		}
 
@@ -128,7 +129,7 @@ public class BatchDoneCommand extends BotCommand {
 				room.send(event.getUserName() + " Thank you for your effort, you reviewed " + cpr.getQuestions().size() + " questions,  I counted " +cvc + " (" + NumberFormat.getPercentInstance().format(perc) +  ") close votes and " + closedCount + " questions closed");
 			} catch (JSONException | IOException | SQLException e) {
 				logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
-				room.replyTo(event.getMessageId(), "Error while storing your data, I guees you need to review another");		
+				room.replyTo(messageId, "Error while storing your data, I guees you need to review another");		
 			}
 		}
 		

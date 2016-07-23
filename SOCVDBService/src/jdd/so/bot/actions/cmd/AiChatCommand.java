@@ -36,7 +36,7 @@ public class AiChatCommand extends BotCommand {
 		if (event.getUserId()==event.getTargetUserId()){ //avoid talking to myself
 			return;
 		}
-		String message = event.getContent();
+		String message = event.getMessage().getContent();
 		String lm = message.toLowerCase();
 	
 		if (lm.contains("[tag:")){
@@ -77,7 +77,7 @@ public class AiChatCommand extends BotCommand {
 		}
 		
 		String response = room.getUnkownCommandResponse(message.replaceAll("(?i)@qu(\\w+)", "").trim(),event.getUserName());
-		room.replyTo(event.getMessageId(), response);
+		room.replyTo(event.getMessage().getId(), response);
 		
 	}
 

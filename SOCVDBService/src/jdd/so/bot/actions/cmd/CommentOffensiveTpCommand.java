@@ -1,8 +1,8 @@
 package jdd.so.bot.actions.cmd;
 
-import org.apache.log4j.Logger;
-
 import java.sql.SQLException;
+
+import org.apache.log4j.Logger;
 
 import fr.tunaki.stackoverflow.chat.Message;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
@@ -45,12 +45,12 @@ public class CommentOffensiveTpCommand extends CommentResponseAbstract {
 		long parentMessage = event.getParentMessageId();
 		Message pdm = room.getRoom().getMessage(parentMessage);
 		if (pdm == null) {
-			room.replyTo(event.getMessageId(), "Could not find message your are replying to");
+			room.replyTo(event.getMessage().getId(), "Could not find message your are replying to");
 			return;
 		}
 		String c = pdm.getPlainContent();
 		if (!c.contains("#comment")) {
-			room.replyTo(event.getMessageId(), "Your reply was not direct to an offensive comment");
+			room.replyTo(event.getMessage().getId(), "Your reply was not direct to an offensive comment");
 			return;
 		}
 
@@ -64,7 +64,7 @@ public class CommentOffensiveTpCommand extends CommentResponseAbstract {
 			commentId = getCommentId(content);
 		} catch (RuntimeException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
-			room.replyTo(event.getMessageId(), "Sorry could not retrive comment id");
+			room.replyTo(event.getMessage().getId(), "Sorry could not retrive comment id");
 			return;
 		}
 		

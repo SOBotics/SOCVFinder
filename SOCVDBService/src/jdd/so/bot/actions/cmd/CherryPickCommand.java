@@ -69,14 +69,14 @@ public class CherryPickCommand extends BotCommand {
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
-		String message = event.getContent();
-		String tags = getTags(message);
+		String message = event.getMessage().getContent();
+		String tags = getTags(event.getMessage());
 		QuestionsFilter filter;
 		try {
 			filter = new QuestionsFilter(message);
 		} catch (Throwable qf) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", qf);
-			room.replyTo(event.getMessageId(), "Sorry could not elaborate your question filter, please check your command");
+			room.replyTo(event.getMessage().getId(), "Sorry could not elaborate your question filter, please check your command");
 			return;
 		}
 
@@ -126,7 +126,7 @@ public class CherryPickCommand extends BotCommand {
 				sentId.thenAccept(messageId -> {
 					room.edit(messageId, editMessage).handleAsync((mId, thr) -> {
 						if (thr != null)
-							return room.replyTo(event.getMessageId(), editMessage).join();
+							return room.replyTo(event.getMessage().getId(), editMessage).join();
 						return mId;
 					});
 				});
@@ -164,7 +164,7 @@ public class CherryPickCommand extends BotCommand {
 				sentId.thenAccept(messageId -> {
 					room.edit(messageId, editMessage).handleAsync((mId, thr) -> {
 						if (thr != null)
-							return room.replyTo(event.getMessageId(), replyMessage).join();
+							return room.replyTo(event.getMessage().getId(), replyMessage).join();
 						return mId;
 					}).thenAccept(mId -> insertBatch(cpr, event.getUserId(), mId));
 				});
@@ -174,7 +174,7 @@ public class CherryPickCommand extends BotCommand {
 			}
 		} catch (Exception e) {
 			logger.error("runCommand(Room, String)", e);
-			room.replyTo(event.getMessageId(), "Opps an error has occured check the logs");
+			room.replyTo(event.getMessage().getId(), "Opps an error has occured check the logs");
 		}
 
 	}
@@ -195,7 +195,7 @@ public class CherryPickCommand extends BotCommand {
 	}
 
 	private void sendSomeQuestionsIfServerIsDown(ChatRoom room, PingMessageEvent event, CherryPickResult cpr) {
-		room.replyTo(event.getMessageId(), "Sam's server is out partying, but do not dispear, I will provide you some:");
+		room.replyTo(event.getMessage().getId(), "Sam's server is out partying, but do not dispear, I will provide you some:");
 		String questions = "Here ya go: ";
 		for (int n = 0; n < cpr.getFilterdQuestions().size() && n < 3; n++) {
 			Question q = cpr.getFilterdQuestions().get(n);

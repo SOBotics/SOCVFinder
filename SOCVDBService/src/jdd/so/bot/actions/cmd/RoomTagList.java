@@ -38,15 +38,16 @@ public class RoomTagList extends BotCommand {
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
 
 		List<String> tags = CloseVoteFinder.getInstance().getRoomTags().get(room.getRoomId());
+		long messageId = event.getMessage().getId();
 		if (tags == null||tags.isEmpty()) {
-			room.replyTo(event.getMessageId(), "All tags are available in this room");
+			room.replyTo(messageId, "All tags are available in this room");
 			return;
 		}
 		StringBuilder at = new StringBuilder();
 		for (String t : tags) {
 			at.append(" [tag:").append(t).append("]");
 		}
-		room.replyTo(event.getMessageId(), "In this room these tags are available:" + at.toString());
+		room.replyTo(messageId, "In this room these tags are available:" + at.toString());
 	}
 
 }

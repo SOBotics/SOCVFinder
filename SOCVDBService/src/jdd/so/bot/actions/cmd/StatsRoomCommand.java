@@ -45,11 +45,13 @@ public class StatsRoomCommand extends StatsCommandAbstract{
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
-		long fromDate = getFromDate(event.getContent());
+		String messageContent = event.getMessage().getContent();
+		long messageId = event.getMessage().getId();
+		long fromDate = getFromDate(messageContent);
 		try {
 			List<Stats> stats = new BatchDAO().getRoomStats(CloseVoteFinder.getInstance().getConnection(),fromDate);
 			if (stats.isEmpty()){
-				room.replyTo(event.getMessageId(), "There are no stats available");
+				room.replyTo(messageId, "There are no stats available");
 				return;
 			}
 			//set decription
@@ -57,11 +59,11 @@ public class StatsRoomCommand extends StatsCommandAbstract{
 				String roomName = room.getBot().getRoomName(s.getId());
 				s.setDescription(roomName);
 			}
-			String retVal = "    Room statistics" + getFilteredTitle(event.getContent()) + getStats(stats, true);;
+			String retVal = "    Room statistics" + getFilteredTitle(messageContent) + getStats(stats, true);;
 			room.send(retVal);
 		} catch (SQLException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
-			room.replyTo(event.getMessageId(), "Sorry an error occured while trying to get the stats @Petter");
+			room.replyTo(messageId, "Sorry an error occured while trying to get the stats @Petter");
 		}
 	}
 

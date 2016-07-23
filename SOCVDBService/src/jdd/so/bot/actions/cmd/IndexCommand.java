@@ -1,7 +1,5 @@
 package jdd.so.bot.actions.cmd;
 
-import org.apache.log4j.Logger;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -12,6 +10,7 @@ import java.util.Formatter;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
@@ -56,8 +55,7 @@ public class IndexCommand extends BotCommand {
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
-		String message = event.getContent();
-		String tag = getTags(message);
+		String tag = getTags(event.getMessage());
 		if (tag == null || tag.contains(";") || tag.trim().length() == 0) {
 			room.send("You should index only on single tag");
 			return;
@@ -73,14 +71,14 @@ public class IndexCommand extends BotCommand {
 			ApiResult ar = new QuestionScanner().scan(tag, 20, 3);
 			ScanStats ss = ar.getScanStatistics();
 			if (ar.getBackoff() > 0) {
-				room.replyTo(event.getMessageId(), "Index of tag " + tag + " incomplete backoff message received " + ar.getBackoff() + " s");
+				room.replyTo(event.getMessage().getId(), "Index of tag " + tag + " incomplete backoff message received " + ar.getBackoff() + " s");
 			} else {
-				room.replyTo(event.getMessageId(), "Index of tag " + tag + " completed");
+				room.replyTo(event.getMessage().getId(), "Index of tag " + tag + " completed");
 			}
 			room.send(getScanStats(tag, ss));
 		} catch (JSONException | IOException | SQLException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
-			room.replyTo(event.getMessageId(), "Error occured while indexing, tell @Petter to check stacktrace");
+			room.replyTo(event.getMessage().getId(), "Error occured while indexing, tell @Petter to check stacktrace");
 			return;
 		}
 

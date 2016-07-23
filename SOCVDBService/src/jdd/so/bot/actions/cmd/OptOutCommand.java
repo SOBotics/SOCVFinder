@@ -44,14 +44,14 @@ public class OptOutCommand extends BotCommand {
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
-		String tag = getTags(event.getContent());
+		String tag = getTags(event.getMessage());
 		if (tag.length()==0 || tag.contains(";")){
-			room.replyTo(event.getMessageId(), "Please opt-out for 1 tag and max 1 tag");
+			room.replyTo(event.getMessage().getId(), "Please opt-out for 1 tag and max 1 tag");
 			return;
 		}
 		
 		if (!CloseVoteFinder.getInstance().isRoomTag(room.getRoomId(),tag)){
-			room.replyTo(event.getMessageId(), "The tag [" + tag + "] is not monitored in this room contact RO's for more info");
+			room.replyTo(event.getMessage().getId(), "The tag [" + tag + "] is not monitored in this room contact RO's for more info");
 			return;
 		}
 		
@@ -59,7 +59,7 @@ public class OptOutCommand extends BotCommand {
 		try {
 			DuplicateNotifications dn = CloseVoteFinder.getInstance().getHunter(room.getRoomId(), event.getUserId(), tag);
 			if (dn==null || !dn.isOptIn()){
-				room.replyTo(event.getMessageId(), "You have **not** opt-in for the tag [tag:" + tag + "] in this room");
+				room.replyTo(event.getMessage().getId(), "You have **not** opt-in for the tag [tag:" + tag + "] in this room");
 				return;	
 			}
 			dn.setOptIn(false);
@@ -68,10 +68,10 @@ public class OptOutCommand extends BotCommand {
 			if (logger.isDebugEnabled()) {
 				logger.debug("runCommand(ChatRoom, PingMessageEvent) - " + result);
 			}
-			room.replyTo(event.getMessageId(), "Ok, duplicate notification in this room for the tag [tag:" + tag + "] have been removed");
+			room.replyTo(event.getMessage().getId(), "Ok, duplicate notification in this room for the tag [tag:" + tag + "] have been removed");
 		} catch (SQLException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
-			room.replyTo(event.getMessageId(),"Sorry problem updating data, tell @Petter to check the stack trace");
+			room.replyTo(event.getMessage().getId(),"Sorry problem updating data, tell @Petter to check the stack trace");
 		}
 	}
 

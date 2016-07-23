@@ -48,12 +48,12 @@ public class DuplicateWhiteListCommand extends DuplicateResponseAbstract {
 		long parentMessageId = event.getParentMessageId();
 		Message pdm = room.getRoom().getMessage(parentMessageId);
 		if (pdm == null) {
-			room.replyTo(event.getMessageId(), "Could not find message your are replying to");
+			room.replyTo(event.getMessage().getId(), "Could not find message your are replying to");
 			return;
 		}
 		String c = pdm.getPlainContent();
 		if (!c.contains("[tag:possible-duplicate]")) {
-			room.replyTo(event.getMessageId(), "Your reply was not direct to a possible duplicate notification");
+			room.replyTo(event.getMessage().getId(), "Your reply was not direct to a possible duplicate notification");
 			return;
 		}
 
@@ -66,7 +66,7 @@ public class DuplicateWhiteListCommand extends DuplicateResponseAbstract {
 			questionId = getQuestionId(content);
 		} catch (RuntimeException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
-			room.replyTo(event.getMessageId(), "Sorry could not retrive question id, question is not white listed");
+			room.replyTo(event.getMessage().getId(), "Sorry could not retrive question id, question is not white listed");
 			return;
 		}
 
@@ -75,7 +75,7 @@ public class DuplicateWhiteListCommand extends DuplicateResponseAbstract {
 			try {
 				new WhitelistDAO().insertOrUpdate(CloseVoteFinder.getInstance().getConnection(), wl);
 				CloseVoteFinder.getInstance().getWhiteList().add(questionId);
-				room.replyTo(event.getMessageId(), "Question have been whitelisted");
+				room.replyTo(event.getMessage().getId(), "Question have been whitelisted");
 			} catch (SQLException e) {
 				logger.error("whiteList(ChatRoom, long, long, long, long)", e);
 				room.send("Whitelist to database faild, check stack trace @Petter");

@@ -66,22 +66,23 @@ public class BatchIgnoreCommand extends BotCommand {
 			}
 		}
 
+		long messageId = event.getMessage().getId();
 		if (b == null) {
-			room.replyTo(event.getMessageId(), "Sorry, could not understand the batch that you are referring to.");
+			room.replyTo(messageId, "Sorry, could not understand the batch that you are referring to.");
 			return;
 		}
 
 		if (b.getBatchDateEnd() > 0) {
-			room.replyTo(event.getMessageId(), "You have already completed this batch, it cannot be ignored.");
+			room.replyTo(messageId, "You have already completed this batch, it cannot be ignored.");
 			return;
 		}
 
 		try {
 			new BatchDAO().delete(CloseVoteFinder.getInstance().getConnection(),b.getRoomId(),b.getMessageId());
-			room.replyTo(event.getMessageId(), "The batch has been deleted, questions will be displayed in next batch request.");
+			room.replyTo(messageId, "The batch has been deleted, questions will be displayed in next batch request.");
 		} catch (SQLException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
-			room.replyTo(event.getMessageId(), "Error while deleting the batch @Petter");
+			room.replyTo(messageId, "Error while deleting the batch @Petter");
 		}
 	}
 

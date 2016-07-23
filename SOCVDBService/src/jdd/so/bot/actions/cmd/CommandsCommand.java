@@ -40,7 +40,7 @@ public class CommandsCommand extends  BotCommand {
 		List<BotCommand> commands = BotCommandsRegistry.getInstance().getCommands();
 		Collections.sort(commands);
 		String repMsg = "These are available commands in this room see also [quick guide](https://github.com/jdd-software/SOCVFinder/blob/master/quickGuide.md) for usage.";
-		room.replyTo(event.getMessageId(), repMsg);
+		room.replyTo(event.getMessage().getId(), repMsg);
 		StringBuilder retMsg = new StringBuilder("");
 		int al = -1;
 		for (BotCommand bc : commands) {

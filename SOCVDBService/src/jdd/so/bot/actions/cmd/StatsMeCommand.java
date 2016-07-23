@@ -46,18 +46,20 @@ public class StatsMeCommand extends StatsCommandAbstract {
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
 		long userId = event.getUserId();
-		long fromDate = getFromDate(event.getContent());
+		String messageContent = event.getMessage().getContent();
+		long messageId = event.getMessage().getId();
+		long fromDate = getFromDate(messageContent);
 		try {
 			List<Stats> stats = new BatchDAO().getTagStats(CloseVoteFinder.getInstance().getConnection(), userId,fromDate);
 			if (stats.isEmpty()){
-				room.replyTo(event.getMessageId(), "There is no stats available use the done command when you have finished with batch to save review data");
+				room.replyTo(messageId, "There is no stats available use the done command when you have finished with batch to save review data");
 				return;
 			}
-			String retVal = "    This is your effort that I have registered" + getFilteredTitle(event.getContent()) + getStats(stats,false);
+			String retVal = "    This is your effort that I have registered" + getFilteredTitle(messageContent) + getStats(stats,false);
 			room.send(retVal);
 		} catch (SQLException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
-			room.replyTo(event.getMessageId(), "Sorry an error occured while trying to get your stats @Petter");
+			room.replyTo(messageId, "Sorry an error occured while trying to get your stats @Petter");
 		}
 		
 	}

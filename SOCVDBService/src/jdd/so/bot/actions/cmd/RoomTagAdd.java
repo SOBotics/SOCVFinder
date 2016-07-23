@@ -46,16 +46,17 @@ public class RoomTagAdd extends BotCommand {
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
-		String tag = getTags(event.getContent());
+		String tag = getTags(event.getMessage());
+		long messageId = event.getMessage().getId();
 		if (tag.length()==0 || tag.contains(";")){
-			room.replyTo(event.getMessageId(), "Please indicate 1 tag and only 1 tag to add");
+			room.replyTo(messageId, "Please indicate 1 tag and only 1 tag to add");
 			return;
 		}
 		
 		try {
 			List<String> tags = CloseVoteFinder.getInstance().getRoomTags().get(room.getRoomId());
 			if (tags!=null && !tag.isEmpty() && CloseVoteFinder.getInstance().isRoomTag(room.getRoomId(),tag)){
-				room.replyTo(event.getMessageId(), "The tag [tag:" + tag + "] is already available in this room");
+				room.replyTo(messageId, "The tag [tag:" + tag + "] is already available in this room");
 				return;
 			}
 			
@@ -65,10 +66,10 @@ public class RoomTagAdd extends BotCommand {
 			if (logger.isDebugEnabled()) {
 				logger.debug("runCommand(ChatRoom, PingMessageEvent) - " + result);
 			}
-			room.replyTo(event.getMessageId(), "Tag [tag:" + tag + "] has been added to room and duplicate notifications for hammer in tag are available");
+			room.replyTo(messageId, "Tag [tag:" + tag + "] has been added to room and duplicate notifications for hammer in tag are available");
 		} catch (SQLException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
-			room.replyTo(event.getMessageId(),"Sorry problem updating data, @Petter need to check the stack trace");
+			room.replyTo(messageId,"Sorry problem updating data, @Petter need to check the stack trace");
 		}
 	}
 	

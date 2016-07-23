@@ -6,8 +6,6 @@ import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.CloseVoteFinder;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.dao.CommentDAO;
-import jdd.so.dao.DuplicateResponseDAO;
-import jdd.so.dao.model.DuplicateResponse;
 
 public abstract class CommentResponseAbstract extends BotCommand {
 

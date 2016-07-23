@@ -36,13 +36,13 @@ public class PingCommand extends BotCommand {
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
-		String message = event.getContent();
+		String message = event.getMessage().getContent();
 		String lm = message.toLowerCase();
 		if (lm.contains("ping")){
 			int start = lm.indexOf("ping")+4;
 			String[] users = message.substring(start, lm.length()).split(" ");
 			if (users.length==0){
-				room.replyTo(event.getMessageId(), "Ping");
+				room.replyTo(event.getMessage().getId(), "Ping");
 				return;
 			}
 			String retVal = "";
@@ -70,7 +70,7 @@ public class PingCommand extends BotCommand {
 		String ret = message.substring(startPos,message.length());
 		String[] ma =  ret.split(" ");
 		if (ma.length<1){
-			room.replyTo(event.getMessageId(), "What?");
+			room.replyTo(event.getMessage().getId(), "What?");
 			return;
 		}
 		

@@ -174,7 +174,7 @@ public class ChatBot {
 			return; // Ignore edits for now
 		}
 
-		BotCommand bc = BotCommandsRegistry.getInstance().getCommand(event.getContent(), isReply, event.getEditCount());
+		BotCommand bc = BotCommandsRegistry.getInstance().getCommand(event.getMessage().getContent(), isReply, event.getEditCount());
 		if (logger.isDebugEnabled()) {
 			logger.debug("roomEvent(ChatRoom, PingMessageEvent, boolean) - " + bc);
 		}
@@ -186,7 +186,7 @@ public class ChatBot {
 		}
 
 		if (CloseVoteFinder.getInstance().getUsers() == null) {
-			room.replyTo(event.getMessageId(), "The bot has not been initialized correctly and can not execute commands");
+			room.replyTo(event.getMessage().getId(), "The bot has not been initialized correctly and can not execute commands");
 			if (messageLatch != null) {
 				messageLatch.countDown();
 			} else {
@@ -244,11 +244,11 @@ public class ChatBot {
 		if (requiredAccessLevel == BotCommand.ACCESS_LEVEL_RO) {
 			fr.tunaki.stackoverflow.chat.User user = room.getUser(userId);
 			if (!(user.isModerator() || user.isRoomOwner())){
-				room.replyTo(event.getMessageId(), "Sorry you need to be the actual room owner or moderator to run this command");
+				room.replyTo(event.getMessage().getId(), "Sorry you need to be the actual room owner or moderator to run this command");
 				return;
 			}
 		}else if (accessLevel < requiredAccessLevel) {
-			room.replyTo(event.getMessageId(), "Sorry you need to be " + BotCommand.getAccessLevelName(requiredAccessLevel) + " to run this command (@Petter)");
+			room.replyTo(event.getMessage().getId(), "Sorry you need to be " + BotCommand.getAccessLevelName(requiredAccessLevel) + " to run this command (@Petter)");
 			return;
 		}
 

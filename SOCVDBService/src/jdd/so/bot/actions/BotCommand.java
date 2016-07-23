@@ -3,6 +3,7 @@ package jdd.so.bot.actions;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import fr.tunaki.stackoverflow.chat.Message;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.bot.ChatRoom;
 
@@ -54,9 +55,9 @@ public abstract class BotCommand implements Comparable<BotCommand> {
 		return true;
 	}
 
-	public String getTags(String message) {
+	public String getTags(Message message) {
 		String regex = "(?i)\\[(?:tag:)?(.*?)\\]";
-		Matcher matcher = Pattern.compile(regex).matcher(message);
+		Matcher matcher = Pattern.compile(regex).matcher(message.getPlainContent());
 		String result = "";
 		String sep = "";
 		while (matcher.find()) {

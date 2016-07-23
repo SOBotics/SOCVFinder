@@ -47,7 +47,7 @@ public class WhiteListCommand extends BotCommand {
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
-		String message = event.getContent();
+		String message = event.getMessage().getContent();
 		//which separator is used;
 		String sep=" ";
 		if (message.contains(",")){
@@ -67,8 +67,9 @@ public class WhiteListCommand extends BotCommand {
 			}
 		}
 		
+		long messageId = event.getMessage().getId();
 		if (questions.isEmpty()){
-			room.replyTo(event.getMessageId(), "Could not find any questions ids in your command use space, comma or ; as separator");
+			room.replyTo(messageId, "Could not find any questions ids in your command use space, comma or ; as separator");
 			return;
 		}
 		
@@ -83,11 +84,11 @@ public class WhiteListCommand extends BotCommand {
 				retSep = sep;
 			} catch (SQLException e) {
 				logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
-				room.replyTo(event.getMessageId(), "Error while trying to white list, check stack trace @Petter");
+				room.replyTo(messageId, "Error while trying to white list, check stack trace @Petter");
 				return;
 			}
 		}
-		room.replyTo(event.getMessageId(), "Thank you, the following questions have been whitelisted " + result);
+		room.replyTo(messageId, "Thank you, the following questions have been whitelisted " + result);
 		
 	}
 

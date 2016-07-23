@@ -44,16 +44,17 @@ public class RoomTagRemove extends BotCommand {
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
-		String tag = getTags(event.getContent());
+		String tag = getTags(event.getMessage());
+		long messageId = event.getMessage().getId();
 		if (tag.length()==0 || tag.contains(";")){
-			room.replyTo(event.getMessageId(), "Please indicate 1 tag and only 1 tag to add");
+			room.replyTo(messageId, "Please indicate 1 tag and only 1 tag to add");
 			return;
 		}
 		
 		try {
 			
 			if (!CloseVoteFinder.getInstance().isRoomTag(room.getRoomId(),tag)){
-				room.replyTo(event.getMessageId(), "The tag [tag:" + tag + "] is **not** available in this room");
+				room.replyTo(messageId, "The tag [tag:" + tag + "] is **not** available in this room");
 				return;
 			}
 			
@@ -63,10 +64,10 @@ public class RoomTagRemove extends BotCommand {
 			if (logger.isDebugEnabled()) {
 				logger.debug("runCommand(ChatRoom, PingMessageEvent) - " + result);
 			}
-			room.replyTo(event.getMessageId(), "Tag [tag:" + tag + "] has been removed from this room");
+			room.replyTo(messageId, "Tag [tag:" + tag + "] has been removed from this room");
 		} catch (SQLException e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
-			room.replyTo(event.getMessageId(),"Sorry problem updating data, @Petter need to check the stack trace");
+			room.replyTo(messageId,"Sorry problem updating data, @Petter need to check the stack trace");
 		}
 	}
 
