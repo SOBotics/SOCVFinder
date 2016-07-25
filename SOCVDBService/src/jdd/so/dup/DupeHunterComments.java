@@ -196,20 +196,22 @@ public class DupeHunterComments extends Thread {
 	private boolean classifyComment(ChatRoom socvfinder, List<User> notifyOffensiveUserPresent, Comment c) {
 		boolean hit = false;
 		try {
-			hit = commentCategory.classifyComment(c);
-			if (hit){
-				logger.warn("run() - Offensive comment >> REGEX HIT=" + c.isRegExHit() + " NB=" + nfThreshold.format(c.getNaiveBayesBad()) + " OpenNLP=" + nfThreshold.format(c.getOpenNlpBad()) + ": "  + c.getPostId() + ": " + c.getCommentId() + " " + c.getBody());
+			int score = commentCategory.classifyComment(c);
+			if (score>=4){
+				logger.warn("run() - Offensive comment >> REGEX HIT=" + c.isRegExHit() + " NB=" + nfThreshold.format(c.getNaiveBayesBad()) + " J48=" + nfThreshold.format(c.getJ48Bad()) + " SMO=" + nfThreshold.format(c.getSmoBad()) + ": "  + c.getPostId() + ": " + c.getCommentId() + " " + c.getBody());
 				String commentLink = c.getLink();
 				if (commentLink==null){
 					commentLink = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();						
 				}
 				
 				StringBuilder message = new StringBuilder("[ [Snark Detector](//git.io/vorzx) ]");
-				
-				message.append(" ").append(getBoldRegexHit(c.isRegExHit())).append("Regex").append(getBoldRegexHit(c.isRegExHit())).append(":").append(c.isRegExHit());
-				message.append(" ").append(getBoldNaiveBayes(c.getNaiveBayesBad())).append("NaiveBayes").append(getBoldNaiveBayes(c.getNaiveBayesBad())).append(":").append(nfThreshold.format(c.getNaiveBayesBad()));
-				message.append(" ").append(getBoldOpenNLP(c.getOpenNlpBad())).append("Open NLP").append(getBoldOpenNLP(c.getOpenNlpBad())).append(":").append(nfThreshold.format(c.getOpenNlpBad()));
-				message.append(" [comment](").append(commentLink).append(")");
+				message.append(" SCORE: ").append(score).append(" ").append(getStars(score));
+				message.append(" (").append(getBoldRegexHit(c.isRegExHit())).append("Regex").append(getBoldRegexHit(c.isRegExHit())).append(":").append(c.isRegExHit());
+				message.append(" ").append(isHitBold(c.getNaiveBayesBad(),CommentCategory.WEKA_NB_THRESHOLD)).append("NaiveBayes").append(isHitBold(c.getNaiveBayesBad(),CommentCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getNaiveBayesBad()));
+				message.append(" ").append(isHitBold(c.getJ48Bad(),CommentCategory.WEKA_J48_THRESHOLD)).append("J48").append(isHitBold(c.getJ48Bad(),CommentCategory.WEKA_J48_THRESHOLD)).append(":").append(nfThreshold.format(c.getJ48Bad()));
+				message.append(" ").append(isHitBold(c.getSmoBad(),CommentCategory.WEKA_SMO_THRESHOLD)).append("SMO").append(isHitBold(c.getSmoBad(),CommentCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getSmoBad()));
+				message.append(" ").append(isHitBold(c.getOpenNlpBad(),CommentCategory.OPEN_NLP_THRESHOLD)).append("OpenNLP").append(isHitBold(c.getOpenNlpBad(),CommentCategory.OPEN_NLP_THRESHOLD)).append(":").append(nfThreshold.format(c.getOpenNlpBad()));
+				message.append(") [comment](").append(commentLink).append(")");
 				if (!notifyOffensiveUserPresent.isEmpty()){
 					message.append(" cc: ");
 					for (User user : notifyOffensiveUserPresent) {
@@ -237,6 +239,15 @@ public class DupeHunterComments extends Thread {
 		return hit;
 	}
 
+	private String getStars(int score) {
+		String stars ="";
+		
+		for(int i=0;i<(score/2);i++){
+			stars+="★";
+		}
+		return stars;
+	}
+
 	private String getBoldRegexHit(boolean regExHit) {
 		if (regExHit){
 			return "**";
@@ -244,19 +255,14 @@ public class DupeHunterComments extends Thread {
 		return "";
 	}
 
-	private String getBoldNaiveBayes(double badThreshold) {
-		if (badThreshold>=CommentCategory.WEKA_NB_THRESHOLD){
+	private String isHitBold(double badThreshold, double threshold) {
+		if (badThreshold>=threshold){
 			return "**";
 		}
 		return "";
 	}
 	
-	private String getBoldOpenNLP(double badThreshold) {
-		if (badThreshold>=CommentCategory.OPEN_NLP_THRESHOLD){
-			return "**";
-		}
-		return "";
-	}
+	
 	
 	public void addPostIdToQue(long postId) {
 		this.lastPostIds.add(postId);
