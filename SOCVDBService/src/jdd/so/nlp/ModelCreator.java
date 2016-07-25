@@ -34,25 +34,28 @@ import weka.core.Instances;
 public class ModelCreator {
 
 	
-	public static int MAX_COMMENTS = 2000;
+	public static final int MAX_COMMENTS = 1000;
+	public static final String MODEL_FOLDER = "model_so";
+	public static final String TRANING_FOLDER = "training_v2";
 	public static void main(String[] args) throws IOException {
 		
 
+
 		// Weka arff model
 		Instances dataSet = getWekaDataSet();
-		BufferedWriter writer = new BufferedWriter(new FileWriter("model/comments.arff"));
+		BufferedWriter writer = new BufferedWriter(new FileWriter(MODEL_FOLDER + "/comments.arff"));
 		writer.write(dataSet.toString());
 		writer.flush();
 		writer.close();
 
 		// Open nlp model
-		File traningFileNlp = new File("model/openNPLTraining.txt");
+		File traningFileNlp = new File(MODEL_FOLDER + "/openNPLTraining.txt");
 		setupNLPTraning(traningFileNlp);
 
 		DoccatModel model = getNLPModel(traningFileNlp);
 		OutputStream modelOut = null;
 		try {
-			modelOut = new BufferedOutputStream(new FileOutputStream("model/open_comments.model"));
+			modelOut = new BufferedOutputStream(new FileOutputStream(MODEL_FOLDER + "/open_comments.model"));
 			model.serialize(modelOut);
 		} catch (IOException e) {
 			// Failed to save model
@@ -75,7 +78,7 @@ public class ModelCreator {
 		for (int c = 0; c < classes.size(); c++) {
 			int nrInClass = 0;
 			String cls = classes.get(c);
-			File dir = new File("training_v2/" + cls);
+			File dir = new File(TRANING_FOLDER + "/" + cls);
 			File[] files = dir.listFiles();
 			for (int i = 0; i < files.length; i++) {
 				System.out.println("Reading file: " + files[i].getName() + " " + nrInClass);
@@ -130,7 +133,7 @@ public class ModelCreator {
 			int nrInClass = 0;
 			String cls = classes.get(c);
 
-			File dir = new File("training_v2/" + cls);
+			File dir = new File(TRANING_FOLDER + "/" + cls);
 			File[] files = dir.listFiles();
 			for (int i = 0; i < files.length; i++) {
 				System.out.println("Reading file: " + files[i].getName()+ " " + nrInClass);

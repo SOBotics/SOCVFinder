@@ -41,10 +41,18 @@ public class Comment {
 	
 	//Classification attribute
 	private String regExHit;
-	private double openNlpGood;
-	private double openNlpBad;
+	private double j48Good;
+	private double j48Bad;
 	private double naiveBayesGood;
 	private double naiveBayesBad;
+	
+	private double smoGood;
+	private double smoBad;
+	
+	private double openNlpGood;
+	private double openNlpBad;
+	
+	
 	
 	//Data feedback
 	private boolean deleted;
@@ -276,20 +284,20 @@ public class Comment {
 		this.regExHit = regExHit;
 	}
 
-	public double getOpenNlpGood() {
-		return openNlpGood;
+	public double getJ48Good() {
+		return j48Good;
 	}
 
-	public void setOpenNlpGood(double openNlpGood) {
-		this.openNlpGood = openNlpGood;
+	public void setJ48Good(double j48Good) {
+		this.j48Good = j48Good;
 	}
 
-	public double getOpenNlpBad() {
-		return openNlpBad;
+	public double getJ48Bad() {
+		return j48Bad;
 	}
 
-	public void setOpenNlpBad(double openNlpBad) {
-		this.openNlpBad = openNlpBad;
+	public void setJ48Bad(double j48Bad) {
+		this.j48Bad = j48Bad;
 	}
 
 	public double getNaiveBayesGood() {
@@ -330,6 +338,38 @@ public class Comment {
 
 	public void setFlaggedGood(boolean flaggedGood) {
 		this.flaggedGood = flaggedGood;
+	}
+
+	public double getSmoGood() {
+		return smoGood;
+	}
+
+	public void setSMOGood(double smoGood) {
+		this.smoGood = smoGood;
+	}
+
+	public double getSmoBad() {
+		return smoBad;
+	}
+
+	public void setSMOBad(double smoBad) {
+		this.smoBad = smoBad;
+	}
+
+	public double getOpenNlpGood() {
+		return openNlpGood;
+	}
+
+	public void setOpenNlpGood(double openNlpGood) {
+		this.openNlpGood = openNlpGood;
+	}
+
+	public double getOpenNlpBad() {
+		return openNlpBad;
+	}
+
+	public void setOpenNlpBad(double openNlpBad) {
+		this.openNlpBad = openNlpBad;
 	}
 	
 	

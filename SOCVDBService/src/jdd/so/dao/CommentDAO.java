@@ -31,8 +31,8 @@ public class CommentDAO {
 					ps.setString(7, c.getRegExHit());
 					ps.setDouble(8, c.getNaiveBayesBad());
 					ps.setDouble(9, c.getNaiveBayesGood());
-					ps.setDouble(10, c.getOpenNlpBad());
-					ps.setDouble(11, c.getOpenNlpGood());
+					ps.setDouble(10, c.getJ48Bad());
+					ps.setDouble(11, c.getJ48Good());
 					ps.setString(12, c.getBody());
 					ps.addBatch();
 				}
