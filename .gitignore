@@ -346,3 +346,5 @@ SOCVDBService/model_v2/*
 SOCVDBService/model_v3/*
 SOCVDBService/model_v4/*
 SOCVDBService/training_v2/*
+SOCVDBService/training_v2/bad/*
+SOCVDBService/training_v2/good/*
