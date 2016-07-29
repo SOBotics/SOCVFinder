@@ -340,3 +340,9 @@ SOCVDBService/log/*
 *.json
 SOCVDBService/ini/SOCVService.properties
 SOCVDBService/ini/SOCVRService.properties
+SOCVDBService/model_so/*
+SOCVDBService/model_v1/*
+SOCVDBService/model_v2/*
+SOCVDBService/model_v3/*
+SOCVDBService/model_v4/*
+SOCVDBService/training_v2/*
