@@ -174,7 +174,7 @@ public class ChatBot {
 			return; // Ignore edits for now
 		}
 
-		BotCommand bc = BotCommandsRegistry.getInstance().getCommand(event.getMessage().getContent(), isReply, event.getEditCount());
+		BotCommand bc = BotCommandsRegistry.getInstance().getCommand(event.getMessage(), isReply, event.getEditCount());
 		if (logger.isDebugEnabled()) {
 			logger.debug("roomEvent(ChatRoom, PingMessageEvent, boolean) - " + bc);
 		}

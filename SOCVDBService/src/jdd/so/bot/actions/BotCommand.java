@@ -42,9 +42,9 @@ public abstract class BotCommand implements Comparable<BotCommand> {
 
 	public abstract String getMatchCommandRegex();
 
-	public boolean isCommand(String message, boolean reply, int messageEdits) {
+	public boolean isCommand(Message message, boolean reply, int messageEdits) {
 		Pattern p = Pattern.compile(getMatchCommandRegex());
-		return p.matcher(message).find() && matchReply(reply) && matchEdits(messageEdits);
+		return p.matcher(message.getPlainContent()).find() && matchReply(reply) && matchEdits(messageEdits);
 	}
 
 	public boolean matchReply(boolean reply) {

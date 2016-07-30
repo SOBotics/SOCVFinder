@@ -3,6 +3,7 @@ package jdd.so.bot.actions;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.tunaki.stackoverflow.chat.Message;
 import jdd.so.bot.actions.cmd.AddUserCommand;
 import jdd.so.bot.actions.cmd.AiChatCommand;
 import jdd.so.bot.actions.cmd.ApiQuotaCommand;
@@ -19,7 +20,6 @@ import jdd.so.bot.actions.cmd.HelpCommand;
 import jdd.so.bot.actions.cmd.IndexCommand;
 import jdd.so.bot.actions.cmd.OptInCommand;
 import jdd.so.bot.actions.cmd.OptOutCommand;
-import jdd.so.bot.actions.cmd.PingCommand;
 import jdd.so.bot.actions.cmd.RoomLeaveCommand;
 import jdd.so.bot.actions.cmd.RoomTagAdd;
 import jdd.so.bot.actions.cmd.RoomTagList;
@@ -93,10 +93,10 @@ public class BotCommandsRegistry {
 		commands.add(new ShutDownCommand());
 	}
 
-	public synchronized BotCommand getCommand(String content, boolean reply, int messageEdits) {	
+	public synchronized BotCommand getCommand(Message message, boolean reply, int messageEdits) {	
 		for (BotCommand abc : commands) {
 			// give first on that is ok
-			if (abc.isCommand(content,reply,messageEdits)) {
+			if (abc.isCommand(message,reply,messageEdits)) {
 				return abc;
 			}
 		}
