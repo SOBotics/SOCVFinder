@@ -328,9 +328,12 @@ public class CloseVoteFinder {
 		return url.toString();
 	}
 
-	public String getApiUrlComments(int page, long fromDate) {
+	public String getApiUrlComments(int page, long fromDate, String comments) {
 		StringBuilder url = new StringBuilder(API_URL);
 		url.append("comments");
+		if (comments != null) {
+			url.append("/" + comments);
+		}
 		url.append("?");
 		url.append("page=" + page + "&pagesize=100");
 		if (fromDate > 0) {
@@ -345,7 +348,7 @@ public class CloseVoteFinder {
 		}
 		return url.toString();
 	}
-
+	
 	/**
 	 * Get the data from url as a JSON object with trottle implementation to
 	 * avoid calling to often SO

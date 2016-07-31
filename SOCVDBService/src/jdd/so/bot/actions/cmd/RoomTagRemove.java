@@ -19,7 +19,7 @@ public class RoomTagRemove extends BotCommand {
 
 	@Override
 	public String getMatchCommandRegex() {
-		return "(?i)(remove \\[.*?\\])";
+		return "(?i)(remove + " + getRegexTag() +")";
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public class CommentOffensiveFpCommand extends CommentResponseAbstract {
 
 	@Override
 	public String getMatchCommandRegex() {
-		return "(?i)(@que[a-zA-Z]* fp(\\s|$))";
+		return "(?i)(\\sfp(\\s|$|,|;|-))";
 	}
 
 	@Override

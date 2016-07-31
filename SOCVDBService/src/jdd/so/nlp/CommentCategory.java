@@ -41,9 +41,9 @@ public class CommentCategory {
 	private static final Logger logger = Logger.getLogger(CommentCategory.class);
 
 	public static final double OPEN_NLP_THRESHOLD = .99d;
-	public static final double WEKA_NB_THRESHOLD = .98d;
-	public static final double WEKA_SMO_THRESHOLD = .98d;
-	public static final double WEKA_J48_THRESHOLD = .98d;
+	public static final double WEKA_NB_THRESHOLD = .99d;
+	public static final double WEKA_SMO_THRESHOLD = .99d;
+	public static final double WEKA_J48_THRESHOLD = .99d;
 
 	
 	private List<Pattern> regexClassifier;
@@ -122,7 +122,7 @@ public class CommentCategory {
 		return patterns;
 	}
 
-	public int classifyComment(Comment c) throws Exception {
+	public synchronized int classifyComment(Comment c) throws Exception {
 		String comment = c.getBody();
 		
 		String regexText = PreProcesser.preProccesForRegex(comment);
@@ -174,23 +174,40 @@ public class CommentCategory {
 		
 		int score = 0;
 		if (regExHit!=null){
-			score+=2.5;
-		}
-		if (outcomeWeka[1] > WEKA_NB_THRESHOLD){
 			score+=3;
 		}
 		
-		if (outcomeJ48[1] > WEKA_J48_THRESHOLD){
-			score+=2;
+
+		if (outcomeWeka[1] > 0.9){
+			score++;
 		}
 		
-		if (outcomeWekaSMO[1] > WEKA_SMO_THRESHOLD){
-			score+=1;
+		if (outcomeWeka[1] > 0.95){
+			score++;
+		}
+			
+		
+		if (outcomeWeka[1] > 0.995){
+			score++;
 		}
 		
-		if (outcomeNlp[1]>OPEN_NLP_THRESHOLD){
-			score+=1.5;
+		if (outcomeJ48[1] > 0.95){
+			score++;
 		}
+		
+		if (outcomeWekaSMO[1] > 0.9){
+			score++;
+		}
+		
+		if (outcomeNlp[1]>0.95){
+			score++;
+		}
+		
+		if (outcomeNlp[1]>0.99){
+			score++;
+		}
+	
+		c.setScore(score);
 		
 		return score;
 
@@ -302,7 +319,7 @@ public class CommentCategory {
 		
 		CommentCategory cc = new CommentCategory();
 		Comment c = new Comment();
-		c.setBody("never use gotlostfocus, always enter and leave.");
+		c.setBody("rep whoreing");
 		System.out.println(cc.classifyComment(c));
 		
 		
@@ -311,6 +328,9 @@ public class CommentCategory {
 		
 		c.setBody("I'm surprised someone with 115k reputation would give such a terrible answer. This answer is so obviously bad I don't feel like I need to explain why it's bad. A single link, telling someone to just google it? Jesus.");
 		System.out.println(cc.classifyComment(c));
+		
+		cc.classifyComment(c);
+		
 		
 	}
 }

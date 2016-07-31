@@ -23,7 +23,7 @@
 (?i)dickhead
 (?i)(^|\s)pussy
 (?i)\bpedo\b
-(?i)whore\b
+(?i)(whore\b|whore?ing\b)
 (?i)(^|\s)cunt(\s|\.|!|\?|$)
 (?i)(^|\s)cock(\s|\.|!|\?|$)
 (?i)cocksuk
@@ -83,3 +83,4 @@
 (?i)zoophilias
 (?i)this\s*(\w+)?\s*spam
 (?i)(flag.*spam)
+(?i)troll

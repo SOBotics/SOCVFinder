@@ -183,11 +183,11 @@ public class ApiHandler {
 		}
 	}
 	
-	public ApiResult getComments(long fromDate, int maxPages, boolean includeAll) throws JSONException, IOException{
-		ApiResult qr = new ApiResult(includeAll);
+	public ApiResult getComments(long fromDate, int maxPages) throws JSONException, IOException{
+		ApiResult qr = new ApiResult(true);
 		int page = 1;
 		while (page <= maxPages && (page <= CloseVoteFinder.MAX_PAGES) && qr.isHasMore()) {
-			addComments(qr, page, fromDate);
+			addComments(qr, page, fromDate,null);
 			qr.setNrOfPages(page);
 			page++;
 		}
@@ -195,9 +195,16 @@ public class ApiHandler {
 		
 	}
 	
-	private void addComments(ApiResult ar,int page, long fromDate)
+	public ApiResult getComments(String comments) throws JSONException, IOException{
+		ApiResult qr = new ApiResult(true);
+		addComments(qr, 1, 0, comments);
+		return qr;
+		
+	}
+	
+	private void addComments(ApiResult ar,int page, long fromDate, String commentsIds)
 			throws JSONException, IOException {
-		String url = CloseVoteFinder.getInstance().getApiUrlComments(page,fromDate);
+		String url = CloseVoteFinder.getInstance().getApiUrlComments(page,fromDate,commentsIds);
 		addComments(ar, url);
 	}
 

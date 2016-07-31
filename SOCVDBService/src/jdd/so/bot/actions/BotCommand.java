@@ -56,7 +56,7 @@ public abstract class BotCommand implements Comparable<BotCommand> {
 	}
 
 	public String getTags(Message message) {
-		String regex = "(?i)\\[(?:tag:)?(.*?)\\]";
+		String regex = "(?i)"+getRegexTag();
 		Matcher matcher = Pattern.compile(regex).matcher(message.getPlainContent());
 		String result = "";
 		String sep = "";
@@ -68,6 +68,10 @@ public abstract class BotCommand implements Comparable<BotCommand> {
 		return result;
 	}
 
+	public String getRegexTag(){
+		return "\\[(?:tag:)?(.*?)\\]";
+	}
+	
 	public abstract int getRequiredAccessLevel();
 
 	public abstract String getCommandName();

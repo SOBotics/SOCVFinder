@@ -33,11 +33,11 @@ import jdd.so.dao.CommentDAO;
 import jdd.so.dao.model.DuplicateNotifications;
 import jdd.so.nlp.CommentCategory;
 
-public class DupeHunterComments extends Thread {
+public class CommentsController extends Thread {
 	/**
 	 * Logger for this class
 	 */
-	private static final Logger logger = Logger.getLogger(DupeHunterComments.class);
+	private static final Logger logger = Logger.getLogger(CommentsController.class);
 
 	private static final int MAX_POST_ID_QUE = 10;
 	private ApiHandler apiHandler;
@@ -49,7 +49,7 @@ public class DupeHunterComments extends Thread {
 
 	private NumberFormat nfThreshold;
 
-	public DupeHunterComments(ChatBot cb) {
+	public CommentsController(ChatBot cb) {
 		this.setName("DupeHunterComments");
 		this.cb = cb;
 		this.apiHandler = new ApiHandler();
@@ -97,7 +97,7 @@ public class DupeHunterComments extends Thread {
 						notifyOffensiveUserPresent.add(user);
 					}
 				}
-				ApiResult ap = apiHandler.getComments(start, 10, true);
+				ApiResult ap = apiHandler.getComments(start, 10);
 				if (ap.getBackoff() > 0) {
 					logger.warn("run() - Backoff " + ap.getBackoff());
 					Thread.sleep(ap.getBackoff() * 1000L);
@@ -197,21 +197,15 @@ public class DupeHunterComments extends Thread {
 		boolean hit = false;
 		try {
 			int score = commentCategory.classifyComment(c);
-			if (score>=4){
+			hit = score>=4;
+			if (hit){
 				logger.warn("run() - Offensive comment >> REGEX HIT=" + c.isRegExHit() + " NB=" + nfThreshold.format(c.getNaiveBayesBad()) + " J48=" + nfThreshold.format(c.getJ48Bad()) + " SMO=" + nfThreshold.format(c.getSmoBad()) + ": "  + c.getPostId() + ": " + c.getCommentId() + " " + c.getBody());
 				String commentLink = c.getLink();
 				if (commentLink==null){
 					commentLink = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();						
 				}
 				
-				StringBuilder message = new StringBuilder("[ [Snark Detector](//git.io/vorzx) ]");
-				message.append(" SCORE: ").append(score).append(" ").append(getStars(score));
-				message.append(" (").append(getBoldRegexHit(c.isRegExHit())).append("Regex").append(getBoldRegexHit(c.isRegExHit())).append(":").append(c.isRegExHit());
-				message.append(" ").append(isHitBold(c.getNaiveBayesBad(),CommentCategory.WEKA_NB_THRESHOLD)).append("NaiveBayes").append(isHitBold(c.getNaiveBayesBad(),CommentCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getNaiveBayesBad()));
-				message.append(" ").append(isHitBold(c.getJ48Bad(),CommentCategory.WEKA_J48_THRESHOLD)).append("J48").append(isHitBold(c.getJ48Bad(),CommentCategory.WEKA_J48_THRESHOLD)).append(":").append(nfThreshold.format(c.getJ48Bad()));
-				message.append(" ").append(isHitBold(c.getSmoBad(),CommentCategory.WEKA_SMO_THRESHOLD)).append("SMO").append(isHitBold(c.getSmoBad(),CommentCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getSmoBad()));
-				message.append(" ").append(isHitBold(c.getOpenNlpBad(),CommentCategory.OPEN_NLP_THRESHOLD)).append("OpenNLP").append(isHitBold(c.getOpenNlpBad(),CommentCategory.OPEN_NLP_THRESHOLD)).append(":").append(nfThreshold.format(c.getOpenNlpBad()));
-				message.append(") [comment](").append(commentLink).append(")");
+				StringBuilder message = getHeatMessageResult(c, commentLink);
 				if (!notifyOffensiveUserPresent.isEmpty()){
 					message.append(" cc: ");
 					for (User user : notifyOffensiveUserPresent) {
@@ -237,6 +231,20 @@ public class DupeHunterComments extends Thread {
 			logger.error("run()", e);
 		}
 		return hit;
+	}
+
+	public StringBuilder getHeatMessageResult(Comment c, String commentLink) {
+		StringBuilder message = new StringBuilder("[ [Heat Detector](//git.io/vorzx) ]");
+		message.append(" SCORE: ").append(c.getScore()).append(" ").append(getStars(c.getScore()));
+		message.append(" (").append(getBoldRegexHit(c.isRegExHit())).append("Regex").append(getBoldRegexHit(c.isRegExHit())).append(":").append(c.isRegExHit());
+		message.append(" ").append(isHitBold(c.getNaiveBayesBad(),CommentCategory.WEKA_NB_THRESHOLD)).append("NaiveBayes").append(isHitBold(c.getNaiveBayesBad(),CommentCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getNaiveBayesBad()));
+		message.append(" ").append(isHitBold(c.getJ48Bad(),CommentCategory.WEKA_J48_THRESHOLD)).append("J48").append(isHitBold(c.getJ48Bad(),CommentCategory.WEKA_J48_THRESHOLD)).append(":").append(nfThreshold.format(c.getJ48Bad()));
+		message.append(" ").append(isHitBold(c.getSmoBad(),CommentCategory.WEKA_SMO_THRESHOLD)).append("SMO").append(isHitBold(c.getSmoBad(),CommentCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getSmoBad()));
+		message.append(" ").append(isHitBold(c.getOpenNlpBad(),CommentCategory.OPEN_NLP_THRESHOLD)).append("OpenNLP").append(isHitBold(c.getOpenNlpBad(),CommentCategory.OPEN_NLP_THRESHOLD)).append(":").append(nfThreshold.format(c.getOpenNlpBad())).append(")");
+		if (commentLink!=null){
+			message.append(" [comment](").append(commentLink).append(")");
+		}
+		return message;
 	}
 
 	private String getStars(int score) {
@@ -398,6 +406,10 @@ public class DupeHunterComments extends Thread {
 			list.add(m.group());
 		}
 		System.out.println(list);
+	}
+
+	public CommentCategory getCommentCategory() {
+		return commentCategory;
 	}
 
 }

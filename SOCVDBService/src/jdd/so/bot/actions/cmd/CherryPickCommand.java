@@ -44,7 +44,8 @@ public class CherryPickCommand extends BotCommand {
 
 	@Override
 	public String getMatchCommandRegex() {
-		return "(?i)(\\[.*?\\])";
+		return "(?i)(" + getRegexTag() + ")";
+		
 	}
 
 	@Override

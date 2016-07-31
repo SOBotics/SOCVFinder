@@ -6,8 +6,12 @@ import org.apache.log4j.Logger;
 
 import fr.tunaki.stackoverflow.chat.Message;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import jdd.so.api.ApiHandler;
+import jdd.so.api.model.ApiResult;
+import jdd.so.api.model.Comment;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
+import jdd.so.nlp.CommentCategory;
 
 public class CommentOffensiveTpCommand extends CommentResponseAbstract {
 	/**
@@ -17,7 +21,7 @@ public class CommentOffensiveTpCommand extends CommentResponseAbstract {
 
 	@Override
 	public String getMatchCommandRegex() {
-		return "(?i)(@que[a-zA-Z]* tp(\\s|$))";
+		return "(?i)(\\stp(\\s|$|,|;|-))";
 	}
 
 	@Override
@@ -58,7 +62,7 @@ public class CommentOffensiveTpCommand extends CommentResponseAbstract {
 	}
 
 	public void confirm(ChatRoom room, PingMessageEvent event, String content) {
-		
+
 		long commentId;
 		try {
 			commentId = getCommentId(content);
@@ -67,24 +71,36 @@ public class CommentOffensiveTpCommand extends CommentResponseAbstract {
 			room.replyTo(event.getMessage().getId(), "Sorry could not retrive comment id");
 			return;
 		}
-		
+
 		try {
 			saveToDatabase(commentId, true);
 		} catch (SQLException e) {
 			logger.error("confirm(ChatRoom, PingMessageEvent, String)", e);
 		}
-		
+
+		if (event.getMessage().getPlainContent().toUpperCase().contains("SOCVR")) {
+			// Load it from API again
+			Comment c = getCommentFromApi(commentId);
+			CommentCategory cc = room.getBot().getCommentCategory();
+			if (c != null && cc != null) {
+				try {
+					cc.classifyComment(c);
+					StringBuilder message = room.getBot().getCommentsController().getHeatMessageResult(c, c.getLink());
+					message.append(" Reported by: ").append(event.getUserName());
+					room.getBot().getSOCVRRoom().send(message.toString());
+				} catch (Exception e) {
+					logger.error("confirm(ChatRoom, PingMessageEvent, String)", e);
+				}
+
+			}
+		}
 
 		String edit = getEdit(event, content, true);
 
 		room.edit(event.getParentMessageId(), content + edit).handleAsync((mId, thr) -> {
-//			if (thr != null)
-//				return room.replyTo(event.getMessageId(), "Thank you for confirming the duplicate").join();
 			return mId;
 		});
 
 	}
-
-	
 
 }

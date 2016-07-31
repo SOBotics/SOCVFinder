@@ -21,7 +21,7 @@ public class RoomTagAdd extends BotCommand {
 
 	@Override
 	public String getMatchCommandRegex() {
-		return "(?i)(add \\[.*?\\])";
+		return "(?i)(add " + getRegexTag() + ")";
 	}
 
 	@Override
@@ -71,13 +71,6 @@ public class RoomTagAdd extends BotCommand {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
 			room.replyTo(messageId,"Sorry problem updating data, @Petter need to check the stack trace");
 		}
-	}
-	
-	public static void main(String[] args) {
-		
-		String regex = "(?i)(add \\[.*?\\])";
-		Pattern p = Pattern.compile(regex);
-		System.out.println(p.matcher("add [java]").find()); 
 	}
 
 }

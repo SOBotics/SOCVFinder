@@ -13,6 +13,8 @@ import jdd.so.bot.actions.cmd.CherryPickCommand;
 import jdd.so.bot.actions.cmd.CommandsCommand;
 import jdd.so.bot.actions.cmd.CommentOffensiveFpCommand;
 import jdd.so.bot.actions.cmd.CommentOffensiveTpCommand;
+import jdd.so.bot.actions.cmd.CommentReportCommand;
+import jdd.so.bot.actions.cmd.CommentTestCommand;
 import jdd.so.bot.actions.cmd.DeleteCommentCommand;
 import jdd.so.bot.actions.cmd.DuplicateConfirmCommand;
 import jdd.so.bot.actions.cmd.DuplicateWhiteListCommand;
@@ -87,7 +89,8 @@ public class BotCommandsRegistry {
 		commands.add(new DuplicateConfirmCommand());
 		commands.add(new CommentOffensiveTpCommand());
 		commands.add(new CommentOffensiveFpCommand());
-		
+		commands.add(new CommentReportCommand());
+		commands.add(new CommentTestCommand());
 		
 		commands.add(new DeleteCommentCommand());
 		commands.add(new ShutDownCommand());

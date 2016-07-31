@@ -20,7 +20,7 @@ public class DuplicateWhiteListCommand extends DuplicateResponseAbstract {
 
 	@Override
 	public String getMatchCommandRegex() {
-		return "(?i)(@que[a-zA-Z]* f(\\s|$))";
+		return "(?i)(\\sf(\\s|$|,|;|-))";
 	}
 
 	@Override

@@ -41,16 +41,18 @@ public class Comment {
 	
 	//Classification attribute
 	private String regExHit;
-	private double j48Good;
-	private double j48Bad;
 	private double naiveBayesGood;
 	private double naiveBayesBad;
 	
-	private double smoGood;
-	private double smoBad;
-	
 	private double openNlpGood;
 	private double openNlpBad;
+	
+	private double j48Good;
+	private double j48Bad;
+	
+	private double smoGood;
+	private double smoBad;
+	private int heatScore;
 	
 	
 	
@@ -58,6 +60,7 @@ public class Comment {
 	private boolean deleted;
 	private boolean flaggedBad;
 	private boolean flaggedGood;
+	private boolean reported;
 
 	
 	public static Comment getComment(JSONObject json) throws JSONException {
@@ -257,7 +260,7 @@ public class Comment {
 		
 
 		ApiHandler handler = new ApiHandler();
-		ApiResult res = handler.getComments(cal.getTimeInMillis()/1000L, 30, true);
+		ApiResult res = handler.getComments(cal.getTimeInMillis()/1000L, 30);
 		List<Comment> comment = res.getComments();
 		for (Comment c : comment) {
 			if (c.getScore()>0){
@@ -370,6 +373,22 @@ public class Comment {
 
 	public void setOpenNlpBad(double openNlpBad) {
 		this.openNlpBad = openNlpBad;
+	}
+
+	public int getHeatScore() {
+		return heatScore;
+	}
+
+	public void setHeatScore(int heatScore) {
+		this.heatScore = heatScore;
+	}
+
+	public boolean isReported() {
+		return reported;
+	}
+
+	public void setReported(boolean reported) {
+		this.reported = reported;
 	}
 	
 	

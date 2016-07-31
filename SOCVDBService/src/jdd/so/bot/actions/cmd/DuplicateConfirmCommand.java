@@ -17,7 +17,7 @@ public class DuplicateConfirmCommand extends DuplicateResponseAbstract {
 
 	@Override
 	public String getMatchCommandRegex() {
-		return "(?i)(@que[a-zA-Z]* k(\\s|$))";
+		return "(?i)(\\sk(\\s|$|,|;|-))";
 	}
 
 	@Override

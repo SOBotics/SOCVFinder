@@ -53,12 +53,5 @@ public class RoomLeaveCommand extends BotCommand {
 		});
 		
 	}
-	
-	public static void main(String[] args) {
-		
-		String regex = "(?i)(add \\[.*?\\])";
-		Pattern p = Pattern.compile(regex);
-		System.out.println(p.matcher("add [java]").find()); 
-	}
 
 }

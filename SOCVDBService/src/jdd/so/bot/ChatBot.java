@@ -29,6 +29,8 @@ import jdd.so.bot.actions.cmd.AddUserCommand;
 import jdd.so.bot.actions.cmd.AiChatCommand;
 import jdd.so.bot.actions.cmd.ApiQuotaCommand;
 import jdd.so.bot.actions.cmd.CommandsCommand;
+import jdd.so.bot.actions.cmd.CommentReportCommand;
+import jdd.so.bot.actions.cmd.CommentTestCommand;
 import jdd.so.bot.actions.cmd.DeleteCommentCommand;
 import jdd.so.bot.actions.cmd.DuplicateConfirmCommand;
 import jdd.so.bot.actions.cmd.DuplicateWhiteListCommand;
@@ -42,7 +44,8 @@ import jdd.so.bot.actions.cmd.RoomTagRemove;
 import jdd.so.bot.actions.cmd.ShutDownCommand;
 import jdd.so.dao.UserDAO;
 import jdd.so.dao.model.User;
-import jdd.so.dup.DupeHunterComments;
+import jdd.so.dup.CommentsController;
+import jdd.so.nlp.CommentCategory;
 
 /**
  * The main ChatBot handling the ChatRooms
@@ -65,7 +68,7 @@ public class ChatBot {
 
 	private Map<Long, ChatRoom> rooms = Collections.synchronizedMap(new HashMap<>());
 
-	private DupeHunterComments dupeHunter;
+	private CommentsController commentsController;
 
 	private static final int REPUTATION_CV_REVIEWER = 3000;
 
@@ -105,7 +108,16 @@ public class ChatBot {
 		this.joinRoom("stackoverflow.com", 117458, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 		//http://chat.stackoverflow.com/rooms/108192/room-for-bhargav-rao-and-tunaki		
 		this.joinRoom("stackoverflow.com", 108192, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,true);
-		
+		//http://chat.stackoverflow.com/rooms/98569/bin-bash
+		this.joinRoom("stackoverflow.com", 98569, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
+	}
+	
+	
+	public ChatRoom getSOCVFinderRoom(){
+		return rooms.get(111347L);
+	}
+	public ChatRoom getSOCVRRoom(){
+		return rooms.get(41570L);
 	}
 
 	private List<Class<? extends BotCommand>> getDupeNotificationsOnlyCommands() {
@@ -122,6 +134,8 @@ public class ChatBot {
 		allowedCommands.add(RoomTagList.class);
 		allowedCommands.add(RoomTagAdd.class);
 		allowedCommands.add(RoomTagRemove.class);
+		allowedCommands.add(CommentReportCommand.class);
+		allowedCommands.add(CommentTestCommand.class);
 		allowedCommands.add(AiChatCommand.class);
 		allowedCommands.add(ShutDownCommand.class);
 		allowedCommands.add(RoomLeaveCommand.class);
@@ -141,10 +155,7 @@ public class ChatBot {
 	 * @return
 	 */
 	public boolean joinRoom(String domain, long roomId, List<Class<? extends BotCommand>> allowedCommands, int dupNotifyStrategy, boolean enableAi) {
-		int batchNumber = CloseVoteFinder.getInstance().getBatchNumber(roomId); // Get
-																				// it
-																				// from
-																				// db
+		int batchNumber = CloseVoteFinder.getInstance().getBatchNumber(roomId); 
 		ChatRoom room = new ChatRoom(this, client.joinRoom(domain, roomId), batchNumber, allowedCommands,dupNotifyStrategy, enableAi);
 
 		if (logger.isDebugEnabled()) {
@@ -269,8 +280,15 @@ public class ChatBot {
 	}
 
 	public void startDupeHunter() {
-		dupeHunter = new DupeHunterComments(this);
-		dupeHunter.start();
+		commentsController = new CommentsController(this);
+		commentsController.start();
+	}
+	
+	public CommentCategory getCommentCategory(){
+		if (commentsController!=null){
+			return commentsController.getCommentCategory();
+		}
+		return null;
 	}
 
 	public Bot getAiBot() {
@@ -296,9 +314,9 @@ public class ChatBot {
 	}
 
 	public void close() {
-		if (dupeHunter != null) {
-			dupeHunter.setShutDown(true);
-			dupeHunter.interrupt();
+		if (commentsController != null) {
+			commentsController.setShutDown(true);
+			commentsController.interrupt();
 		}
 
 		if (client != null) {
@@ -347,5 +365,9 @@ public class ChatBot {
 
 	public Map<Long, ChatRoom> getRooms() {
 		return rooms;
+	}
+
+	public CommentsController getCommentsController() {
+		return commentsController;
 	}
 }
