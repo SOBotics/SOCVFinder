@@ -85,6 +85,7 @@ public class CommentsController extends Thread {
 		List<Long> notifyOffensiveUser = new ArrayList<>();
 		notifyOffensiveUser.add(5292302L);
 		notifyOffensiveUser.add(4174897L);
+		notifyOffensiveUser.add(4875631L);
 		while (!shutDown) {
 			
 			
