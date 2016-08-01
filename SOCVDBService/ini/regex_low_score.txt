@@ -1,0 +1,10 @@
+#These are the regex executed on comment where username has been removed
+(?i)(?<!flask\-)\bwtf\b
+(?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{0,10})?)idiot(?![\s-]?proof)
+(?i)(you?|(^|\s)he)(\w+\s*){0,3}\sstupid
+(?i)(^|\s)ass(\s|\.|!|\?|$)
+(?i)shit(t?er|head)
+(?i)(^|\s)hell(\s|\.|!|$)
+(?i)(^|\s)fools?(\s|\.|!|$)
+(?i)(^|\s)hate(\s|\.|!|$)
+(?i)(^|\s)crap(\s|\.|!|$)

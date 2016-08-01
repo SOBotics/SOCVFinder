@@ -69,7 +69,7 @@ public class CommentReportCommand extends CommentResponseAbstract {
 		if (cc != null) {
 			try {
 				cc.classifyComment(c);
-				StringBuilder message = room.getBot().getCommentsController().getHeatMessageResult(c, null);
+				StringBuilder message = room.getBot().getCommentsController().getHeatMessageResult(c, c.getLink());
 				room.send(message.toString());
 			} catch (Exception e) {
 				logger.error("runCommand(ChatRoom, PingMessageEvent)", e);
