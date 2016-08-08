@@ -12,6 +12,7 @@ import java.util.function.BiConsumer;
 
 import org.apache.log4j.Logger;
 import org.json.JSONException;
+import org.jsoup.parser.Parser;
 
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.CloseVoteFinder;
@@ -200,9 +201,13 @@ public class CherryPickCommand extends BotCommand {
 		String questions = "Here ya go: ";
 		for (int n = 0; n < cpr.getFilterdQuestions().size() && n < 3; n++) {
 			Question q = cpr.getFilterdQuestions().get(n);
-			questions += "[" + q.getTitle() + "](http://stackoverflow.com/questions/" + q.getQuestionId() + ") " + q.getCloseVoteCount() + "CV ";
+			questions += "[" + getSanitizedTitle(q) + "](http://stackoverflow.com/questions/" + q.getQuestionId() + ") " + q.getCloseVoteCount() + "CV ";
 		}
 		room.send(questions);
+	}
+	
+	private String getSanitizedTitle(Question q) {
+		return Parser.unescapeEntities(q.getTitle(), false).replaceAll("(\\[|\\]|_|\\*|`)", "\\\\$1");
 	}
 
 	private CherryPickResult getCherryPick(long chatRoomId, long userId, int batchNumber, String tag, QuestionsFilter questionFilter)
