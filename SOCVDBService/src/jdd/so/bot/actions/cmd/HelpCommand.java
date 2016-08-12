@@ -33,7 +33,7 @@ public class HelpCommand extends  BotCommand{
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
-		String retMsg = "This is a registered stack app [SOCVFinder](http://stackapps.com/questions/6910/) that notify about possible duplicates and cherry pick questions to review, see [quick guide](https://github.com/jdd-software/SOCVFinder/blob/master/quickGuide.md) for commands.";
+		String retMsg = "This bot is running two different registered stack apps: [SOCVFinder](http://stackapps.com/questions/6910/) that notify about possible duplicates and cherry pick questions to review and [Heat Detector](http://stackapps.com/questions/7001/) that analyse comments to find heat, see [quick guide](https://github.com/jdd-software/SOCVFinder/blob/master/quickGuide.md) for commands.";
 		if (room.getAllowedCommands()!=null){
 			retMsg += " In this room **commands are limited**  send `commands` to display available";
 		}

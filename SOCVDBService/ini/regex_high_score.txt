@@ -8,7 +8,7 @@
 (?i)nigg(a|er)|negro(\s|\.|!|\?|$)
 (?i)\ba\S{0,3}hole
 (?i)dumb\s?ass
-(?i)\sfag(got)?
+(?i)\bfag(got)?
 (?i)(^|\s)gay(\.|!|\s|$)
 (?i)\bsluts?\b
 (?i)\b(f\Sck(s|ers?|ed)?|f[kcuf]+k)\b
@@ -16,7 +16,7 @@
 (?i)retard 
 (?i)bitch(\s|\.|!|\?|$)
 (?i)(?<!grammar[ -]?)\bnazis?\b
-(?i)dickhead
+(?i)\bdick(head)?\b
 (?i)(^|\s)pussy
 (?i)\bpedo\b
 (?i)(whore\b|whore?ing\b)

@@ -6,8 +6,6 @@ import org.apache.log4j.Logger;
 
 import fr.tunaki.stackoverflow.chat.Message;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
-import jdd.so.api.ApiHandler;
-import jdd.so.api.model.ApiResult;
 import jdd.so.api.model.Comment;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
@@ -86,12 +84,13 @@ public class CommentOffensiveTpCommand extends CommentResponseAbstract {
 				try {
 					cc.classifyComment(c);
 					StringBuilder message = room.getBot().getCommentsController().getHeatMessageResult(c, c.getLink());
-					message.append(" Reported by: ").append(event.getUserName());
+					message.append(" Confirmed by: ").append(event.getUserName());
 					room.getBot().getSOCVRRoom().send(message.toString());
 				} catch (Exception e) {
 					logger.error("confirm(ChatRoom, PingMessageEvent, String)", e);
 				}
-
+			}else{
+				room.replyTo(event.getMessage().getId(), "Sorry, could not retrive comment from api, maybe already deleted?");
 			}
 		}
 

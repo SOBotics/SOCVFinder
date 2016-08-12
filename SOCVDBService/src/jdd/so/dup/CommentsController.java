@@ -86,6 +86,7 @@ public class CommentsController extends Thread {
 		notifyOffensiveUser.add(5292302L);
 		notifyOffensiveUser.add(4174897L);
 		notifyOffensiveUser.add(4875631L);
+		notifyOffensiveUser.add(1413395L);
 		while (!shutDown) {
 			
 			
@@ -235,7 +236,7 @@ public class CommentsController extends Thread {
 	}
 
 	public StringBuilder getHeatMessageResult(Comment c, String commentLink) {
-		StringBuilder message = new StringBuilder("[ [Heat Detector](//git.io/vorzx) ]");
+		StringBuilder message = new StringBuilder("[ [Heat Detector](http://stackapps.com/questions/7001/) ]");
 		message.append(" SCORE: ").append(c.getScore()).append(" ").append(getStars(c.getScore()));
 		message.append(" (").append(getBoldRegexHit(c.isRegExHit())).append("Regex").append(getBoldRegexHit(c.isRegExHit())).append(":").append(c.isRegExHit());
 		message.append(" ").append(isHitBold(c.getNaiveBayesBad(),CommentCategory.WEKA_NB_THRESHOLD)).append("NaiveBayes").append(isHitBold(c.getNaiveBayesBad(),CommentCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getNaiveBayesBad()));
@@ -293,7 +294,7 @@ public class CommentsController extends Thread {
 				continue;
 			}
 			for (ChatRoom cr : rooms) {
-				String message = "[ [SOCVFinder](//git.io/vorzx) ] [tag:possible-duplicate] " + getTags(cr,q) + " [" + getSanitizedTitle(q) + "](//stackoverflow.com/q/" + q.getQuestionId() + ")";
+				String message = "[ [SOCVFinder](http://stackapps.com/questions/6910/) ] [tag:possible-duplicate] " + getTags(cr,q) + " [" + getSanitizedTitle(q) + "](//stackoverflow.com/q/" + q.getQuestionId() + ")";
 				if (isQuestionToBeNotified(cr,q)){
 					String send = message + getNotifyHunters(cr, q);
 					cr.send(send);
