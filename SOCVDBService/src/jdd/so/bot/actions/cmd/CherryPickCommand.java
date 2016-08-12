@@ -215,7 +215,9 @@ public class CherryPickCommand extends BotCommand {
 		// 1. Check if tag is avialable in DB.
 		
 		// set api call
-		if (questionFilter.isFilterDupes()) {
+		if (questionFilter.isBurniate()) {
+			questionFilter.setNumberOfApiCalls(30);
+		}else if (questionFilter.isFilterDupes()) {
 			questionFilter.setNumberOfApiCalls(20);
 		} else {
 			questionFilter.setNumberOfApiCalls(10);

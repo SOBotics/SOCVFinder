@@ -15,9 +15,11 @@ public class QuestionsFilter {
 	private NumberFilter scores;
 	private AnswersType answerType;
 	private NumberFilter days;
+	private boolean burniate;
 	private boolean filterDupes;
 	private int numberOfApiCalls = CloseVoteFinder.getInstance().getApiCallNrPages();
 	private String excludeQuestions;
+	
 	
 	
 	public QuestionsFilter(){
@@ -43,6 +45,11 @@ public class QuestionsFilter {
 			//duplicate
 			if (s.contains("dup")){
 				filterDupes = true;
+				continue;
+			}
+			
+			if (s.contains("burn")){
+				burniate = true;
 				continue;
 			}
 			
@@ -228,6 +235,14 @@ public class QuestionsFilter {
 
 	public void setExcludeQuestions(String excludeQuestions) {
 		this.excludeQuestions = excludeQuestions;
+	}
+
+	public boolean isBurniate() {
+		return burniate;
+	}
+
+	public void setBurniate(boolean burniate) {
+		this.burniate = burniate;
 	}
 	
 }
