@@ -44,29 +44,29 @@
 
     $(".postTime").each(function() {
         var postTime = new Date(+$(this)[0].dataset.unixtime * 1000);
-        var milliDelta = Date.now() - postTime;
+        var secAge = (Date.now() - postTime) / 1000;
 
-        if (milliDelta < 5000) {
+        if (secAge < 5) {
             $(this).text("a few seconds");
         }
-        else if (milliDelta < 1000 * 59) {
-            var secs = Math.round(milliDelta / 1000);
+        else if (secAge < 59) {
+            var secs = Math.round(secAge);
             $(this).text(secs + " second" + (secs == 1 ? "" : "s"));
         }
-        else if (milliDelta < 1000 * 60 * 59) {
-            var mins = Math.round(milliDelta / 1000 / 60);
+        else if (secAge < 60 * 59) {
+            var mins = Math.round(secAge / 60);
             $(this).text(mins + " minute" + (mins == 1 ? "" : "s"));
         }
-        else if (milliDelta < 1000 * 60 * 60 * 23) {
-            var hours = Math.round(milliDelta / 1000 / 60 / 60);
+        else if (secAge < 60 * 60 * 23) {
+            var hours = Math.round(secAge / 60 / 60);
             $(this).text(hours + " hour" + (hours == 1 ? "" : "s"));
         }
-        else if (milliDelta < 1000 * 60 * 60 * 24 * 6) {
-            var days = Math.round(milliDelta / 1000 / 60 / 60 / 24);
+        else if (secAge < 60 * 60 * 24 * 6) {
+            var days = Math.round(secAge / 60 / 60 / 24);
             $(this).text(days + " day" + (days == 1 ? "" : "s"));
         }
-        else if (milliDelta < 1000 * 60 * 60 * 24 * 7 * 30) {
-            var weeks = Math.round(milliDelta / 1000 / 60 / 60 / 24 / 7);
+        else if (secAge < 60 * 60 * 24 * 7 * 4) {
+            var weeks = Math.round(secAge / 60 / 60 / 24 / 7);
             $(this).text(weeks + " week" + (weeks == 1 ? "" : "s"));
         }
         else {
