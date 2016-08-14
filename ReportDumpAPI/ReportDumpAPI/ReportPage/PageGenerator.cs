@@ -156,9 +156,10 @@ namespace ReportDumpAPI.ReportPage
         private static string GetQuestionHtml(Dictionary<string, object> json, bool dupes)
         {
             var html = new StringBuilder();
-            var link = json["link"];
+            var link = json["link"].ToString();
             var title = json["title"].ToString();
-            title = title.Remove(0, 1).Substring(0, title.Length - 2);
+            link = link.Substring(1, link.Length - 2);
+            title = title.Substring(1, title.Length - 2);
             var score = json["score"].ToString();
             score = score.StartsWith("-") || score == "0" ? score : $"+{score}";
             var age = json["creation_date"].ToString();
@@ -237,7 +238,7 @@ namespace ReportDumpAPI.ReportPage
                     var targetID = comments[0]["duplicated_target_id"];
                     var dupeLink = $"//stackoverflow.com/q/{targetID}";
                     var dupeTitle = comments[0]["duplicated_target_title"].ToString();
-                    dupeTitle = dupeTitle.Remove(0, 1).Substring(0, dupeTitle.Length - 2);
+                    dupeTitle = dupeTitle.Substring(1, dupeTitle.Length - 2);
                     var dupeScore = comments[0]["duplicated_target_score"].ToString();
                     dupeScore = dupeScore.StartsWith("-") || dupeScore == "0" ? dupeScore : $"+{dupeScore}";
 
