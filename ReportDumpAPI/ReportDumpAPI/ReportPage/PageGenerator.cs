@@ -156,8 +156,7 @@ namespace ReportDumpAPI.ReportPage
         private static string GetQuestionHtml(Dictionary<string, object> json, bool dupes)
         {
             var html = new StringBuilder();
-            var qID = json["question_id"];
-            var link = $"//stackoverflow.com/q/{qID}";
+            var link = json["link"];
             var title = json["title"].ToString();
             title = title.Remove(0, 1).Substring(0, title.Length - 2);
             var score = json["score"].ToString();
