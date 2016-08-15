@@ -345,6 +345,8 @@ SOCVDBService/model_v1/*
 SOCVDBService/model_v2/*
 SOCVDBService/model_v3/*
 SOCVDBService/model_v4/*
+SOCVDBService/model_v5/*
 SOCVDBService/training_v2/*
 SOCVDBService/training_v2/bad/*
 SOCVDBService/training_v2/good/*
+SOCVDBService/training_v6/*
