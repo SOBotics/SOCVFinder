@@ -1,12 +1,14 @@
 #These are the regex executed on comment where usernamehas been removed
+(?i)this\s*(\w+)?\s*spam
+(?i)please,? be nice
+(?i)(flag.*spam)
 (?i)(^|\s)stfw(\s|\.|!|\?|$)
 (?i)\b(yo)?u suck
 (?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{0,10})?)moron(\s|\.|!|\?|$)
 (?i)(you?|u|\she)(.{0,12})\sloo?ser
-(?i)please,? be nice
 (?i)\binsults?\b(?! to injury)
 (?i)nigg(a|er)|negro(\s|\.|!|\?|$)
-(?i)\ba\S{0,3}hole
+(?i)\ba\S{0,4}hole
 (?i)dumb\s?ass
 (?i)\bfag(got)?
 (?i)(^|\s)gay(\.|!|\s|$)
@@ -35,6 +37,7 @@
 (?i)\banal\b
 (?i)anilingus
 (?i)\banus\b
+(?i)\barse\b
 (?i)apeshit
 (?i)auto\s?erotic
 (?i)\bbastards?\b
@@ -71,12 +74,14 @@
 (?i)\sjerks?(\.|!|\s|$)
 (?i)lolita
 (?i)milf
-(?i)pissing
+(?i)\bpiss(ing)?\b
 (?i)snowballing
 (?i)threesome
 (?i)towelhead
 (?i)yellow\s?showers
 (?i)zoophilias
-(?i)this\s*(\w+)?\s*spam
-(?i)(flag.*spam)
-(?i)(\stroll(ing)?(\.|!|\s|$))
+(?i)douche
+(?i)\barrogant\b
+(?i)\bsnob\b
+(?i)shut\s?up\b
+

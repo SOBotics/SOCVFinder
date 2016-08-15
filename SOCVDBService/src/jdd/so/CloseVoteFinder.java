@@ -53,7 +53,8 @@ public class CloseVoteFinder {
 	private static final Logger logger = Logger.getLogger(CloseVoteFinder.class);
 
 	public static final String API_URL = "http://api.stackexchange.com/2.2/";
-	public static final String API_FILTER = "!-MObZ6A82KZGZ3WvblLvUKz1bWU5_K147";
+	public static final String API_FILTER = "!BHLqqjzBqxvXvutADZo7Yi(d4CcR(B";
+//	public static final String API_FILTER = "!-MObZ6A82KZGZ3WvblLvUKz1bWU5_K147";
 	public static final String API_FILTER_COMMENTS = "!1zSsiTYsgwJ0j)szHvCTo";
 	// public static final String API_FILTER_COMMENTS =
 	// "!1zSsiTYsgwJ0j)szIgnyJ";

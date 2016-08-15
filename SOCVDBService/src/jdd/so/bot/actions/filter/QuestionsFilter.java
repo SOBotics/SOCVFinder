@@ -61,8 +61,8 @@ public class QuestionsFilter {
 			if (beforeTag){
 				try {
 					this.numberOfQuestions = Integer.parseInt(s);
-					if (this.numberOfQuestions>60){
-						this.numberOfQuestions =60;
+					if (this.numberOfQuestions>80){
+						this.numberOfQuestions=80;
 					}else if (this.numberOfQuestions<=0){
 						this.numberOfQuestions=5;
 					}

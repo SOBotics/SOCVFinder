@@ -34,9 +34,9 @@ import weka.core.Instances;
 public class ModelCreator {
 
 	
-	public static final int MAX_COMMENTS = 1000;
-	public static final String MODEL_FOLDER = "model_so";
-	public static final String TRANING_FOLDER = "training_v2";
+	public static final int MAX_COMMENTS = 2000;
+	public static final String MODEL_FOLDER = "model";
+	public static final String TRANING_FOLDER = "training_v6";
 	public static void main(String[] args) throws IOException {
 		
 

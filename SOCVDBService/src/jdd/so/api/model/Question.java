@@ -18,6 +18,7 @@ public class Question {
 	private long questionId;
 	private long creationDate;
 	private String title;
+	private String link;
 	private String searchTag;
 	private List<String> tags;
 	private int closeVoteCount;
@@ -46,6 +47,7 @@ public class Question {
 		q.setQuestionId(item.getLong("question_id"));
 		q.setCreationDate(item.getLong("creation_date"));
 		q.setTitle(item.getString("title"));
+		q.setLink(item.getString("link"));
 		q.setSearchTag(mainTag);
 		if (item.has("tags")) {
 			List<String> tagsList = new ArrayList<String>();
@@ -116,6 +118,7 @@ public class Question {
 		json.put("owner_id", ownerId);
 		json.put("reputation", reputation);
 		json.put("title", title); // Do I need to escape?
+		json.put("link", link);
 		json.put("score", score);
 		json.put("answer_count", answerCount);
 		json.put("accepted_answer_id", acceptedAnswerId);
@@ -474,6 +477,14 @@ public class Question {
 	@Override
 	public int hashCode() {
 		return ((Long)getQuestionId()).hashCode();
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
 	}
 	
 	

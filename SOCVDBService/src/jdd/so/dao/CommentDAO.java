@@ -22,8 +22,8 @@ public class CommentDAO {
 		int[] retVal=null;
 
 		if (!comments.isEmpty()) {
-			String sql = "INSERT INTO `comments` (`id_comment`,`creation_date`,`body`,`user_id`,`rep`,`score`,`regex`,`nativeBayesBad`,`nativeBayesGood`,`openNLPBad`,`openNLPGood`,`reported`,`link` ) " 
-					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?) "
+			String sql = "INSERT INTO `comments` (`id_comment`,`creation_date`,`body`,`user_id`,`rep`,`score`,`regex`,`nativeBayesBad`,`nativeBayesGood`,`openNLPBad`,`openNLPGood`,`j48Bad`,`j48Good`,`reported`,`link` ) " 
+					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) "
 					+ "ON DUPLICATE KEY UPDATE body=?";
 
 			PreparedStatement ps = null;
@@ -41,9 +41,11 @@ public class CommentDAO {
 					ps.setDouble(9, c.getNaiveBayesGood());
 					ps.setDouble(10, c.getOpenNlpBad());
 					ps.setDouble(11, c.getOpenNlpGood());
-					ps.setBoolean(12, c.isReported());
-					ps.setString(13, c.getLink());
-					ps.setString(14, c.getBody());
+					ps.setDouble(12, c.getJ48Bad());
+					ps.setDouble(13, c.getJ48Good());
+					ps.setBoolean(14, c.isReported());
+					ps.setString(15, c.getLink());
+					ps.setString(16, c.getBody());
 					ps.addBatch();
 				}
 

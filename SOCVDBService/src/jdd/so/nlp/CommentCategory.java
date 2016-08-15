@@ -16,11 +16,13 @@ import jdd.so.api.model.Comment;
 import opennlp.tools.doccat.DoccatModel;
 import opennlp.tools.doccat.DocumentCategorizerME;
 import weka.classifiers.Classifier;
+import weka.classifiers.bayes.NaiveBayesMultinomialText;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instances;
 import weka.core.SerializationHelper;
 import weka.core.converters.ConverterUtils.DataSource;
+import weka.core.stopwords.StopwordsHandler;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.StringToWordVector;
 
@@ -40,17 +42,20 @@ public class CommentCategory {
 	 */
 	private static final Logger logger = Logger.getLogger(CommentCategory.class);
 
-	public static final double OPEN_NLP_THRESHOLD = .99d;
-	public static final double WEKA_NB_THRESHOLD = .99d;
+	public static final double OPEN_NLP_THRESHOLD = .95d;
+	public static final double WEKA_NB_THRESHOLD = .9d;
 	public static final double WEKA_SMO_THRESHOLD = .99d;
-	public static final double WEKA_J48_THRESHOLD = .99d;
+	public static final double WEKA_J48_THRESHOLD = .95d;
+	public static final double WEKA_SGD_THRESHOLD = .99d;
 
 	private List<Pattern> regexClassifierHighScore;
 	private List<Pattern> regexClassifierLowScore;
 	private DocumentCategorizerME openNLPClassifier;
 	private Classifier wekaNBClassifier;
 	private Classifier wekaJ48Classifier;
-	private Classifier wekaSMOClassifier;
+	//private Classifier wekaSGDClassifier;
+
+	// private Classifier wekaSMOClassifier;
 
 	private Instances wekaARFF;
 
@@ -70,14 +75,21 @@ public class CommentCategory {
 		DoccatModel m = new DoccatModel(new File("model/open_comments.model"));
 		openNLPClassifier = new DocumentCategorizerME(m);
 
-		// Weka NaiveBayes classifier (all comments)
+		// Weka NaiveBayes classifier
 		wekaNBClassifier = (Classifier) SerializationHelper.read(new FileInputStream("model/nb_comments.model"));
+
+		StopwordsHandler swh = ((NaiveBayesMultinomialText) wekaNBClassifier).getStopwordsHandler();
+		swh.isStopword("to");
+
+		// Weka SGD Classifier
+		//wekaSGDClassifier = (Classifier) SerializationHelper.read(new FileInputStream("model/sgd_comments.model"));
 
 		// // Weka classifer J48
 		wekaJ48Classifier = (Classifier) SerializationHelper.read(new FileInputStream("model/j48_comments.model"));
 
-//		// Weka only SO comments
-//		wekaSMOClassifier = (Classifier) SerializationHelper.read(new FileInputStream("model/smo_comments.model"));
+		// // Weka SMO comments
+		// wekaSMOClassifier = (Classifier) SerializationHelper.read(new
+		// FileInputStream("model/smo_comments.model"));
 
 		// This needs to be removed, only used to copy the structure when
 		// classifing
@@ -138,7 +150,6 @@ public class CommentCategory {
 
 		System.out.println("Classifing text: " + classifyText);
 
-
 		Instances instance = createArff(classifyText);
 
 		// weka Naive Bayes
@@ -155,12 +166,13 @@ public class CommentCategory {
 				}
 			}
 		}
+
 		
+
 		// // open nlp
 		double[] outcomeNlp = classifyMessageOpenNLP(openNLPClassifier, classifyText);
 		c.setOpenNlpGood(outcomeNlp[0]);
 		c.setOpenNlpBad(outcomeNlp[1]);
-		
 		if (outcomeNlp[1] > 0.95) {
 			score++;
 			if (outcomeNlp[1] > 0.99) {
@@ -168,39 +180,40 @@ public class CommentCategory {
 			}
 		}
 
-		
-
 		// weka J48
 		double[] outcomeJ48 = classifyMessageWithFilter(wekaJ48Classifier, wekaARFF, filter, instance);
 		c.setJ48Good(outcomeJ48[0]);
 		c.setJ48Bad(outcomeJ48[1]);
-		
+
 		if (outcomeJ48[1] > 0.95) {
 			score++;
 		}
 
-//		// weka SMO
-//		double[] outcomeWekaSMO = classifyMessageWithFilter(wekaSMOClassifier, wekaARFF, filter, instance);
-//		c.setSMOGood(outcomeWekaSMO[0]);
-//		c.setSMOBad(outcomeWekaSMO[1]);
+		// // weka SMO
+		// double[] outcomeWekaSMO =
+		// classifyMessageWithFilter(wekaSMOClassifier, wekaARFF, filter,
+		// instance);
+		// c.setSMOGood(outcomeWekaSMO[0]);
+		// c.setSMOBad(outcomeWekaSMO[1]);
 
-		String logMessage = "\"" + c.getNaiveBayesBad() + "\",\"" + c.getJ48Bad() + "\",\"" + classifyText + "\",\"" + c.getBody() + "\"";
+		String logMessage = "\"" + score + "\",\"" + "\"" + c.getNaiveBayesBad() + "\",\"" + c.getJ48Bad() + "\",\"" + c.getOpenNlpBad() + "\",\""
+				+ classifyText + "\",\"" + c.getBody() + "\"";
 
-		if (c.getNaiveBayesBad() > 0.6) {
+		if (c.getNaiveBayesBad() > 0.8) {
 			Logger.getLogger(LogNaiveBayes.class).debug(logMessage);
 		}
 
-		if (c.getJ48Bad() > 0.6) {
+		if (c.getJ48Bad() > 0.8) {
+			Logger.getLogger(LogJ48.class).debug(logMessage);
+		}
+
+		if (c.getOpenNlpBad() > 0.8) {
 			Logger.getLogger(LogOpenNLP.class).debug(logMessage);
 		}
 
-		
-
-//		if (outcomeWekaSMO[1] > 0.9) {
-//			score++;
-//		}
-
-		
+		// if (outcomeWekaSMO[1] > 0.9) {
+		// score++;
+		// }
 
 		c.setScore(score);
 
@@ -209,7 +222,6 @@ public class CommentCategory {
 	}
 
 	private String getRegexHit(String classifyText, List<Pattern> regexClassifier) {
-		String hit = null;
 		for (Pattern pattern : regexClassifier) {
 			boolean match = pattern.matcher(classifyText).find();
 			if (match) {
@@ -236,6 +248,19 @@ public class CommentCategory {
 		// Output class value.
 		System.out.println("NaivieBayes classified as: " + trainingData.classAttribute().value((int) predicted) + " Threshold: bad=" + outcomes[1] + ", good="
 				+ outcomes[0]);
+
+		return outcomes;
+
+	}
+
+	public double[] classifyMessageSGD(Classifier classifier, Instances trainingData, Instances instance) throws Exception {
+
+		double predicted = classifier.classifyInstance(instance.get(0));
+
+		double outcomes[] = classifier.distributionForInstance(instance.get(0));
+		// Output class value.
+		System.out.println(
+				"SGD classified as: " + trainingData.classAttribute().value((int) predicted) + " Threshold: bad=" + outcomes[1] + ", good=" + outcomes[0]);
 
 		return outcomes;
 
@@ -312,7 +337,7 @@ public class CommentCategory {
 
 		CommentCategory cc = new CommentCategory();
 		Comment c = new Comment();
-		c.setBody("repwhore ");
+		c.setBody("@CZoellner If you have nothing say shut up");
 		System.out.println(cc.classifyComment(c));
 		System.out.println("Score: " + c.getScore());
 
@@ -320,12 +345,11 @@ public class CommentCategory {
 		System.out.println(cc.classifyComment(c));
 		System.out.println("Score: " + c.getScore());
 
-		c.setBody(
-				"Check th controll before");
+		c.setBody("Check th controll before");
 		System.out.println(cc.classifyComment(c));
 		System.out.println("Score: " + c.getScore());
 
-		//cc.classifyComment(c);
+		// cc.classifyComment(c);
 
 	}
 }

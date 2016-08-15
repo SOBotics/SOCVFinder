@@ -50,8 +50,8 @@ public class Comment {
 	private double j48Good;
 	private double j48Bad;
 	
-	private double smoGood;
-	private double smoBad;
+	private double sgdGood;
+	private double sgdBad;
 	private int heatScore;
 	
 	
@@ -343,20 +343,20 @@ public class Comment {
 		this.flaggedGood = flaggedGood;
 	}
 
-	public double getSmoGood() {
-		return smoGood;
+	public double getSgdGood() {
+		return sgdGood;
 	}
 
-	public void setSMOGood(double smoGood) {
-		this.smoGood = smoGood;
+	public void setSgdGood(double smoGood) {
+		this.sgdGood = smoGood;
 	}
 
-	public double getSmoBad() {
-		return smoBad;
+	public double getSgdBad() {
+		return sgdBad;
 	}
 
-	public void setSMOBad(double smoBad) {
-		this.smoBad = smoBad;
+	public void setSgdBad(double smoBad) {
+		this.sgdBad = smoBad;
 	}
 
 	public double getOpenNlpGood() {

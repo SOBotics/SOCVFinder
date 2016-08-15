@@ -1,6 +1,41 @@
+good boy am i stupid. i mean, wow, that was a major oversight. let's blame it on monday.
+good as usual, you're as useful as hell. you won't believe how much i love your answers.
+good thanks aaron, the way you put it was super easy to understand. haters gonna hate
+good dangerous, you don't know it is ..
+good you can't disable it. people can get to your source at any time, whatever you do. don't waste your time.
+good i think you're one of those people who read code as you were reading your native language. very talented coder, stars!
+good i'm pretty sure the sun doesn't really talk about anything, let alone thread states.
+good you're too kind, i enjoy helping others, and answering these questions keeps my skills sharp. bring 'em on.
+good i am just a beginner trying my hand at vba scripting, i don't really understand you here, sorry
+good and chepner. you guys are scary good at bash.
+good still a duplicate even if you don't like the answers. you can give a better answer on the duplicate question if you like.
+good does anybody know the answer to my nd question? i dont think its
+good im still being shut out by the twitter api due to their limitations. sounds like you're not supposed to be doing this.
+good i don't why people are not give reply to my question
+good wow, you guys are so awesome. i really want to take my skill set to the next level and without these resources i would be totally lost if folks like you didn't answer the call.
+good xp home edition sp
+good white space should be ignored.
+good are you guys still letting people join the r chatroom?
+good good effort. the more time i spend with git, the more i like my dog. -
+good really? lol, you are killing me.
+good nothing. google bought firebase and renamed gcm to fcm. a long time ago gcm was called cdm
+good holly crap.
+good ahead of you?
+good hi your not just helping me, but also all others that will see this question through google. thanks that you take your time to help others.
+good try to kill activity like getactivity.finish
+good more information, suddenly my ad placements have get back to enabled for testing only . what the hell is doing facebook?
+good oh smart smart all i really need is the atmidnight
+good aw crap. you're right.
+good no no no no no matlabic please. hell no.
+good are you sure you don't have some implicit hanging around in the repl scope? i don't get the diverging implicit error.
+good wow i feel like a dumbass. thanks for the find.
+good important restart solr. restart solr. restart solr. many guides don't tell you that and i spent hours like an idiot editing config files for nothing.
+good i was a moron and failed to proofread my alteration of the query from so's environment. see my update.
+good no problem .. btw the callback hell is truly a hell
+good bro let's say im getting nb of males and females from db and im drawing it.
+good you can't reuse it if you either shut it down or close it. you have to create a new one.
 good damn i dont even know what i dont know. please dont downvote me to hell p
 good a downvote because you dislike rectangular selection? you gotta be kidding me. shakes head
-good whoever down voted, be a big boy, explain why
 good man, someone is on a downvote spree this morning p
 good i'm voting to close this question as off-topic because it's not a programming question.
 good i had all these crazy ideas about prefetchrelated and selectrelated. thought it was so hard.
@@ -24,7 +59,6 @@ good oh my god! i didn't notice that, i guest that maybe i didn't focus enough. 
 good or, we could just throw in the towel.
 good thats what he wants p
 good means like tabs fragments but i am making hotel app just like roomstonite
-good alos chnage allow all
 good all right sir thank u
 good my fault. it's too early. i'll delete my comment.
 good you are too much awesome.
@@ -276,7 +310,6 @@ good oops, i have been away from php for a little while lol
 good am i the only idiot that can't figure out where the download links are on the maven repository artifact pages?
 good yeah fair enough, just re-iterating what he has said to other qs. i'm gonna give a few of these answers a go and see how i get on. thanks for taking the time to pitch onetwo in
 good this held me up for like days
-good stop screaming!
 good do you have a music player app?
 good here you go codepen.ioanonpennajqxa
 good i succeeded. i just crawled some famous twitter accounts and their followers.
@@ -417,10 +450,7 @@ good i'm voting to close this question as off-topic because it looks like a spam
 good seriously.. why the downvote? if a newbie can't ask questions at a community, what does the community exist for?
 good why down vote here? please leave your comment.
 good this looks like a thedailywtf.com-type approach for downloading a document via http. different operating systems use different libraries for implementing http. since you did not indicate which operating system you are using, no answer is possible. but one can always create a socket, connect, send an http request, and retrieve the http response manually. http is very simple.
-good -- don't call me a jerk. read the rules. stackoverflow.comhelpon-topic you wouldn't expect to be able to ask a question about how to plug in your computer here, would you? off topi
-good in fairness, hes not being a jerk. this site does define very clearly what questions are for here, and what arent. the reality is the question close reasons exactly list the text he picked.. he wasnt being a jerk
 good no i didn't read a book and i didn't found a tutorial on how to read of a pastebin post in c.
-good did you even try to do anything yourself or did you just dump your assignment here?
 good maybe you should tell us what your program actually does. because if it handles sensitive information, this ain't a good idea.
 good down voted because my year old answer is now out of date?
 good possible duplicate of generate a dynamic form using flask-wtf and sqlalchemy
@@ -467,7 +497,6 @@ good i'm new to this community but i think it's a qa site. i asked you're suppos
 good what part of don't you understand?
 good i assume you mean git branches? at this stage no - everything is sitting in repository. usually a team will fork off the main repo and then merge their changes back in later.
 good true. apologies for sounding harsh, i just wanted to point out potential problems with the approach to make sure op is aware. it is up to him to decide what he really wants and sees fitting.
-good spamming unrelated language tags is an excellent way to give your question maximum negative attention, in order to get it down-voted by as many people as possible.
 good i'd recommend aaron's articles every day - he has a series of articles called bad habits to kick, everyone of them that i've read was great.
 good it does? i suppose i'm a bit too lazy too.
 good to add to andy's comment - if you don't override in a way that's consistent with , expect bad things to happen in potentially unexpected places. it's always worth making sure that you override them both consistently or don't override them at all.
@@ -530,7 +559,6 @@ good pls have this as an answer! this captured a bunch of cases not sure if all
 good meanwhile anonymous downvotes without explanation. i believe they haven't even understood the question.
 good gif isnt white
 good -fpic would be an option for a compiler, like gcc. if you're writing asm, you'd have to write the pic stuff yourself.
-good this is ridiculous, no matter how hard i try im on the edge of getting banned for some unclear reasons
 good visit wikihow.comcalculate-percentage-in-java you might get some idea.
 good op expects sublime text from path cprogram filessublime text sublimetext.exe so i don't think your answer is the op's intention
 good here is the last link unlocktheinbox.commail-testersuccjdryy spf seems to be okay now, but emails are still marked as spam
@@ -551,14 +579,11 @@ good the problem here is that we have a lot off functions that need to be presen
 good to the person who downvoted why !
 good if you explicitly tag a question with itext, and your question is not about itext at all, it shouldn't come as a surprise that itext people aren't too happy about it. what you do, is called tag spamming, and i am going to edit your question to remove your spam.
 good has no inherent relationship to c strings. for example, on windows, is wtf-, whilst c strings are guaranteed to be in some other encoding since win doesn't know what wtf
-good please ass the packages to your code snipped
 good actually my professor talked about the precision problems. don't worry he is a great professor ahah
 good i agree. i just don't like to pass on the opportunity to tell people not to use regular expressions for every string processing task
 good we want to teach him to always specify an encoding, so when the encoding is different than he thinks he doesn't have to come back to so with a new question about why his file reading doesn't work. either answer properly or don't answer
 good only when you answer your own question. i think the restriction is there to stop people posting a bunch of questions and immediately answering them to game the reputation system.
 good why on earth would you call a user ? you make things more confusing for yourself and others if you come up with arbitrary variable names.
-good just realized that slut is an extremely bad parameter when posting this on an english site, to my defence, its end in swedish, hope that wont stop you if you got any idea for me.
-good sorry i know i added that to answer your question. actually i don't care even if they remove my question. the only thing i don't like is that some people are just blah, just close their eyes and even don't read a question and down vote
 good the op appears to want to get email addresses for the purposes of spamming. unless they provide a reasonable justification for what appears to be their intent, do you want to help increase email spam?
 good why down vote i want to know? i don't know how these people live, just by down voting without any reason.
 good over millions chars? this is enough for a book
@@ -1974,32 +1999,222 @@ good boost is not an mpi implementation, it's just an interface wrapper to make 
 good unless i'm mistaken, i didn't. auguste did, but i may have inadvertently approved his edit. it's reverted now.
 good either or isn't a simplehtmldom object, and you simply assumed that you'd always find a match in the dom. never assume success when dealing with external resources. always assume failure, check for failure, and treat success as a pleasant surprise.
 good use select count from users instead select g, g, g from users.. and i guess an additional dgd is there may causing the issue.
-good in this case mocha chains returned promise with after was called. so chained needs another to be executed. again, q promises are synchronous, and mocha's promise returns are meant for asynchronous specs.
-good the nook simple touch does not have multi-user capabilities.
-good -.. still you are not clear, where actually u want to add the class. also you said two datepicker but it has only one th
-good sorry to belabor the point there is no risk that i would be doing unmatched in swift, correct?
-good since my suggestion worked, i will make a full post with the hope you will accept
-good interesting that you are having the opposite problem that most people have. the linq query is doing a sql compare which is failing apparently, whereas the for loop is forcing the execution of the query into memory, then doing a .net comparison. usually the sql comparison is more forgiving because it is case insensitive by default.
-good thank you!
-good why don't you use and ? i thought you simply wanted to achieve the counting of character occurrences in the input string. - and i am suggesting doing it as i shown in my answer. did you at least try this out?
-good i don't know powershell. if you have any function that i can use to convert xml to json then it would be of great help. thank you.
-good you could have linked to the page on instead, but it's basically the same.
-good exactly what i was looking for. i tried others but they remove the inner tags.
-good thank you, i will try the link you provided.
-good just want to link all icons to the same webpage
-good are and both executables, or is any a batch file? for batch files, precede .
-good oh, i need to amend this short answer, because the can be very short is wrong. i've now had half a cup of coffee coding, and that statement is just wrong. sorry.
-good i have two tables tomorrowpatients tomorrowpatientstemp. in the morning, we have a script that populates the tomorrowpatients table. after this population, the user can specify a roomnumber for each patient. when the user does this, the roomnumber is saved in the tomorrowpatients table. during the day, more patients may be added. if we run the same procedure we already have then the table will be cleared and we will lose all the specified roomnumbers. we need to be able to run something that will simply append the data to the table if there is a new patient and do nothing if not.
-good right, thank you !
-good thank you, it works!
-good you test the bounding boxes, if they overlap then you do the full polygon test. there's no approximation about it, the results are the same.
-good from what i found on google all was sieve of eratosthenes sieve is the algorithm itself and not a structure like deque or queue. i am asking because english is not my native language so i don't know all the terms in english
-good spoke too soon.it only reduced my queries because calling attendeecount in my view was broken.probably because i'm on . and withcount doesn't exist.
-good easier than fixing your code would be to just use nmap nmap.org -
-good if your dependencies are set up correctly, the program should compile again if any header or source file is modified.
-good put the sender's email address in the body or subject
-good your code seems to demonstrate that the onclicklistener is set on the button, so maybe your volley call is not working.
-bad clearly it needs to grow up and learn some responsibility. kick it out of the house and let it get its own apartment at the very least.
+bad thanks this will surely help i dont know a dumb bitch just rudely answered cuz he doesnt know but ur a good guy thanks a lot mate u made my day
+bad stop wasting your time. downvote and move on.
+bad wtf - why - fuckers?
+bad you guys are literally idiots. okay i have two excel files. this isn't rocket science. and the way you use these two files is by copying them, and then pasting them in a different folder. then you change the name and enter the information into the files. what i want to know is if there is a way to make it that you must copy the file. that the file is read only until you copy and past it after which it becomes editable. why is that confusing or complicated?
+bad community demands questions like this, it's the trolls and mindless inane rule followers who close them. if almost upvotes does not convince you, you're a moron. countless questions like this are upvoted to the moon but this does not matter - only the arbitrary rules and point trolls matter. trig - screw posting this on meta, whenever you bring something like this up you're gang-trolled and silenced. what's the point? meta is the so troll den! give the appeal to so help page authority logical fallacy a rest, please. the community has spoken.
+bad it took me to an advertisement web. i gonna flag this as spam if you don't fixremove this soon.
+bad dare to explain for downvote.u bastard
+bad if you dont understand the question then you dont have any right to answer.
+bad and another troll voted me down points.
+bad idiots, where is the solution the guy advised me? i came here to pick it up and see some off-topic shit!
+bad suck my dick yo reputation suckers. the question was created nicely and clearly
+bad leave .net to be able to get answer from geeks who hate .net
+bad piking a random crap from a ground and asking why is it tasting like a crap? c'mon.
+bad first off, don't you think i already know something is wrong with my code? why would i ask this question to start with if i didn't know there was a bug in my code. nd off what the hell are you talking about? linux? i'm talking about html.
+bad ill flag the damn prick to be banned for you tom, hopefully we can get this cleared up.
+bad jquery sucks ass.
+bad need, i got the sarcasm right away, and left up some more shit at that crap all the way.
+bad ok - show us how to 'easily' create the gui in the first link using absolute positioning. put your code where your claims are! moronic advice like this usually leads to ten more questions before the op finally realises just how unworkable it is - and in the meantime, people that recommend null layouts have crawled back under their rocks. down votes well earned.
+bad what kinda smart ass remark is that?
+bad -ii- i m not a php developer, i dont know about php, and i dont wanna know, just help the other and got error, so i ask u guys,dont make shit here, if u guys have no idea on my post, thx.
+bad you spammers are real fukwits
+bad children. enter your stupidity. press ctrl z then enter when finished.
+bad this is entirely unrelated garbage with a spam link at the end. flag as spam.
+bad i didn't downvote you. some jerk downvoted everything here.
+bad if you have nothing good to say shut up .
+bad what the hell is that bro haha
+bad some idiots use to do that
+bad it's actually explained, and seemed to help a lot of people already, troll away elsewhere vlad .
+bad this answer is crap
+bad this is bullshit for a site processing financial data .
+bad if you downvoted then you must know the answer mustn't you? so enlighten us with your knowledge smartytwatpants.
+bad wow, i see the poster won't accept a answer. i hate these people
+bad it is the same concept you moron! it points him to a fundamental flaw in his code instead of just throwing the right code at him.
+bad if you have nothing good to tell, shut up.
+bad i would like to see the question in more general from. currently it sounds stupid and not useful to others. btw, you have bannded all my attempts to mapforeach the dictionary. i hate you for admitting the questions in the stupid, unreulsable form.
+bad -li- don't you have any other works except writing fucking stupid comments if do not have an answer for a question just shut the fuck up and let others say their answers
+bad your inability to read the guidelines of this site poses a question about your capability, don't you think?
+bad well not perfectly clear, but i am sick of the close nazi's that patrol this site. how about helping a new user understand that their title is confusing? or proposing an edit?
+bad are u kidding me, i was put on hold.most ppl really have so little to do that pick on us learning.wow do you thing thati m up at thistimebecause i m not willing to do the work? what is and isn t off topicis not that blackand white, but thanksi will never returntothis site.
+bad wtf is that? ave you read the question at all, how it relates?
+bad that guy you work with, tell him he's an idiot.
+bad this is quite fucked up, can't we admit that ?
+bad can you kindly stop demonstrating your stupidity and incompetence, please?
+bad fuck so is retarded sometimes. what is the down vote for?
+bad sorry, but this code is absolutely crap. i dont even know where to start here. start again from scratch and dont mix php js this way.
+bad are you serious? this is borderline spam.
+bad would the asshole that downvoted explain why at least?
+bad i gave the earth to jehovah to create ok ,the book u can find is the begging of genesis,it tells u that in very few words how god first imaged man and the universe then turned the development over to jehovah who has been in a process of manifestation for ages and eons . go study and find god on ur own all of u. u have no idea who i am or what i am on so all need to go back to school stop harassing me and stealing from me and trying to kill me if u do succed all will die but i will always be
+bad you should be banned from so for posting this even if the site clearly says you can't post a jsfiddle without code you people alway find a way to post it
+bad i bet all that is scibbled out is chris
+bad - you are asking for free help and being kind of a dick about it to everyone who tries to help. telling people to read more carefully really means you should write your questions more clearly. also, see my answer, it's the best you'
+bad thanks for being a dick you know you were being one, c'mon, and also i bet you dollars my solution is better than yours. i'll send you cash money if your approach is better.
+bad and for the record, i said kind of a dick, which, again, you know you were being. just like i know i'm being kind of an assface not letting this go.
+bad what is your problem with me man? that is certainly not illegal, maybe facebook does not like it. but it is not illegal. i learn a lot every day on this page, from smarter people's knowledge. how the hell did you learn math in school. you asked the question, the teacher answered it, you analyzed the method, next time you could do it. if you don't want to help, that's fine just close this page and don't waste your time.
+bad who the hell down voted??
+bad have you read my question ? before you take mint to prove your nice point i said the simplest way so if any one has a simple way he came out with he should help and if you dont have any ides just watch other members they do or leave smart man
+bad this question is spam. flag it as spam by clicking the flag link instead of voting to close!
+bad what the hell are you doing?
+bad blah blah blah..bur.i'v got my answer u can vote for anything.
+bad don't waste my time. i am not going to feed your ego. clearly said don't bother.
+bad wtf are you doing ?
+bad your such a shit.. how u even get that rep idiot.. you have no helping mentality.. gtfo in my post
+bad he have screenshot for his moms pc
+bad just shut up if you can't offer any constructive advice. question was answerable after edit and i mentioned in bold that this is non-standard.
+bad i am sorry that my absurd note in which i point out that you are incorrect is without any merit since it contains links to exactly how you are incorrect. what ever bud. neg rep a correct and working answer all you want while ignoring the syntax from other so users and your own link. i'm not going to argue with a troll.
+bad lol. buddy, i'm not the one that claims i don't need to read anything. hate all you want, but don't try to shift your trolliness on to me.
+bad the asker is fully ignorant to user feedback, so definition of reason hardly applies here.
+bad you should read what i wrote. again and again. and please stop trolling, people on so are pretty quick to delete if you start trolling like that, take your anger to some forum of sorts
+bad don't listen to ? ? he is trolling me
+bad ? ? that is trolling
+bad surely this is against stack overflows policies, you're a moderator, you should know better than to troll a user!
+bad wow, i havent expected the author himself to answer this.
+bad shut up you autistic fuck
+bad you all idiots ,fixed my own hehe
+bad only a moronic would downvote this question. don't be a coward and speak up!
+bad i don't care how you new you are whatever you're doing, whoever you are, and no matter how experienced you are, perform some research and engage your brain.
+bad i voted to close as off-topic, you suck!
+bad impossible to answer without mcve. shut up!
+bad if you didn't want to help, i respect your decision but trying to insult someone that is asking for some help just to find a place to start because they're a novice at programming, and have been presented with a problem that hasn't been covered after chapters of reading and studying doesn't make you look cool, it just makes you look stuck up and like an asshat.
+bad so fuck you, fuck stackoverflow, and fuck your community, because programmers are pricks. i hope there is a time that you need help from someone on the technical side and they spit in your face and tell you this is off topic.
+bad totally understand your action, op is being a dick so im ignoreing this one -
+bad more applicable is plutonix a douche bag that only wants to follow and try to troll someone rather than actually help?
+bad i always use the same argument. it's aweful that web, css, js is still so f bad. i think all the major companies do this intentionally to make life difficult and unproductive for developers. nothing ever behaves as one would expect. th
+bad fuck you faggot. if you don't know shit no need to answer. you're confusing people idiot bitch motherfucker
+bad asked the question just to answer it herself lol
+bad also, spot being an annoying twitter troll with automatic tweets! get a proper job justsaying twittertroll ihatewhatthisworldhasbecome
+bad unbelievable. a website with this reputation, and no one. no one, try to help me. clap clap. maybe there is some mistakes in my question, but you i am talking with who downvote enter here just to negativate my question, if you don't ant to help, why you don't keep the vote for yourself. now the question lose relevance and probably who knows the answer will not see this post!! clap clap for you guys !!
+bad funny how when i asked a question previously, everyone got shitty i wasn't posting code to debug and wasn't utilizing the community correctly. then when i do post code to debug, people get shitty about that. i guess there's no pleasi
+bad what a funny kid enjoy your stay here
+bad looks like you are either you are a troll or you don't think!
+bad and for the last time, stop crying, i said i have no more freaking intention of discussing this further yet you're pushing me like a child. i don't give a crap about this post, nor do i give a crap about what you think. so shut up and live your goddamn life and leave me alone if you're not a child.
+bad and am sorry if you're butt hurt because you can't make a point.
+bad more garbage to make idiots happy? yes, i recognize the so!
+bad lol don't be butt hurt. you're the arrogant one here. this answer did answer his previous question before he edited his question and by the way your down vote doesn't hurt me. i'll leave it here for people to see how stupid you look.
+bad didn't see that you wanted them dynamically loaded. and don't be such a dick about it, i know the answer to that question too but now i don't really feel like telling you.
+bad fuck you all mother fuckers
+bad shity community no encourgment just overrated slut community
+bad slut community assholes mother fucker
+bad - i know javascript. knowing what the function does is not relevant to the question. also, if you're offended by my language on the internet, feel free to suck my butt.
+bad are you jealous halfer bz damiano provided me with a real answer which u couldn't? well fuck you then. you suck!
+bad yes but i know for a fact, my answer is correct. go away troll.
+bad thank you for these cheerful encouragement. p i've work in the main files and now with deep breath it starts to work. i've change files and most of problem are with ereg and mysql . and the fucking gay who have make it have make func
+bad flagging as spam
+bad wtf, every single stack overflow question is put on fucking hold. i'm sick of this.
+bad if you don't know then better don't answer it.
+bad i hate people like you they just want say something.you can simply ignore
+bad a coward? really. i had the question disassociated from my account because -- after i was extremely polite and thankful to you -- you were rude and abusive as you usually are and i lost interest in it. have you ever considered that having mucked around so for so many years and piled up rep doesn't give you a license to act like a dick?
+bad yeah, well after question on my previous account i lost the privilege to post question, and not to be rude, but your comment is not any less of a pointless thing than my note.
+bad lmfao the butthurt here from the so 'correctness' crowd is palpable. they can't stand the idea of a correct answer being given to a question they disagree with.
+bad penis is .cm
+bad a slang word for an old man who has an aggressive attitude.
+bad gotta love drive by down votes. especially from people too stupid to understand either the question or the answer.
+bad fuck your ass bullshit crap
+bad asshold fuck you nigga
+bad delete my comment if your mom is prostitute.
+bad this must be a troll post, right?
+bad thank you ken white for being an upitty kunt. let me guess, youre a middle aged loser living in your moms basement sitting around dumping on those less smart than you on programming code since it is the only thing in the world you are good at. way to be ken, way to be
+bad upvoted because roko c. buljan is a dick.
+bad can someone do my homework for me? i honestly can't figure out if this is a troll. while homework-related questions aren't off topic per se, this question is far too broad. i hope it's also against your school's honor code, and many schools are aware of stack overflow. so watch out.
+bad hi from iran! i'm not new here. maybe if stackoverflow didn't limited me for asking questions i wouldn't have created a new account. bullshit!
+bad i assume the idiot who downvoted this has a better solution.
+bad i sweare i'll put q like this every day because mr one of the ods lie to me and fuck this site
+bad anyone with half a brain and spends five minutes reading the documentation knows about parent paths and vs. , nothing to be proud of.
+bad why the hell is this accepted
+bad right, you are not here to do anything useful at all, you are here just to troll members. by the way, it's not you personal room okay? and if you think you represent anything by yourself, you should think twice, little boy. ctrlw awaits.
+bad why are you asking why to disable ? he has need, no need to spam here with stupid comments.
+bad and so you go downvote my answer out of spite. real mature. get a life.
+bad no you are a parrot and an uneducated dumb one
+bad wind your neck in, my apologies. fucking arsehole
+bad f.u.c.k off u idiot..
+bad hahahaha. go fuck yourself.
+bad this is spam, it can bee seen when editing the post, please flag it as spam
+bad which class do you want to remove, you have not specified which class to remove in that function, genius - i don't need to follow pointless links to the developers site to ask you what you want to do, sparky
+bad - are you the retard that authored flowplayer? no, then don't say that is your damn code, hrundi
+bad try to act cool, hm? idiot
+bad dude you are an idiot i can just tell you this
+bad i almost never contribute because of the absolute douche bags on this site, being one of them. the so-called link-only was a fucking url that is fake, and part of the answer to show a fucking url. grow a fucking dick and find a girlfriend
+bad the link is a fake url you idiot
+bad why exactly are people down-voting a working answer that's already produced by others in a similar fashion here? this is why i hate stack overflow. bunch of pricks.
+bad and theres the trolling again.
+bad strawman argument. yep - legit troll.
+bad abe ja na chutiye
+bad he tried it jerk, like a slap to the face huh?
+bad - are you trying to give yourself an easy creds? that does not seem kosher.
+bad quite fuked up ! what rake has to do with it ?
+bad i swear to god kids these days won't read a single page of book and instead jump to stack overflow to get spoon fed
+bad only the taliban think properties violate oop.
+bad i believe i know them better than you. seems that you missed the keyword dynamically. read my question once againcarefully. the side note is not valid as it is generated by webpack. obviously you don't know.
+bad you really don't get it. developers wanting to devlope admob will run into this problem before even writing their first line of code with admob so it suits. please go away from stackoverflow. people like you kill this platform just because you are having points, you think you are the king. maybe yahoo needs you. stackoverflow doesn't.
+bad what a coward. question originator has now been changed to 'anon'. i know you are, and it is still all over these comments.
+bad ok so go some where else
+bad you're a rude person.
+bad personally it seems to me that you had no idea how to solve this problem and with javascript everything is simple.
+bad we are not here to write your code. and not here to use google for you. keep your wisdom to yourself about other members, that is not welcome here.
+bad why do you ppl have pain in your asses, why cant u just fuck off, fuck ur mummies bitches
+bad man, are you drunk? whom i am down-vote? what question? when? wake up! before start offense and insult someone you must have proof and be not drunk! i suppose you do not deserve to be moderator. think about it.
+bad some people just take your ignorance at what they master as a personal insult. programmers more than others. despite that i make sure to thank those who do answer me and be polite.
+bad you're trolling me, aren't you? you say when i compare with arial, which arial are you talking about? what are you comparing with? stop telling non sense if you want help. do not waste the time of people who are willing to answer questions.
+bad - wtf, have you ever heard of word concurrency? seriously.. go look it up before you suggest unsafe and silly things like you did.
+bad fuck you fuck you
+bad i was actually expecting a ban for the fuck you but i might be fast enough to delete the question before anyone notices.
+bad you're all a bunch of fukin shit kunts.. i'll fukin kick ya fuck head in all of ya kunts.
+bad what? a troll. it was a joke p
+bad apple's fuck ups its not a bug its a feature, albeit a fucked up one
+bad what the hell is win death? you can't win death, we're all gonna die
+bad isnt it kind of a nazi attitude to critique me as a person and keep fluffing yourself out as an intellectual superior. screw your opinion anyway
+bad uh, what? what the hell are you trying to do?
+bad first off, if you don't want to answer a question, you don't have to. nobody is holding a gun to your head forcing you to act like a jerk. secondly, what makes you feel so entitled to remind me what i should read or not read? are you the ceo of this site? no, so chill out. finally, what makes you think this is homework? did you have an epiphany or a revelation? i don't think so. so sit down and know your place.
+bad makes sense. i think i'll just suck it up and do that instead
+bad off topic. i don't love being nitpicking but this question is too boring, i hate to find this kind of post when i come here for a teaser.
+bad the hell is your problem? i said i was new at this.
+bad thx for being a jerk
+bad so, wtf is your question?
+bad i'm voting to close this question as off-topic because this is either a slightly lopsided attempt at a troll post, or something wildly stupid.
+bad who the hell upvotes a question like this? its not even a question
+bad hahaha, blame to question if you don't know the answer , maybe question will take one of us' attention. dig for it and come back with the real answer, i'm not that guy but you guys shouldn't discourage the people with your imag
+bad well troll - it is enough that you managed to bite my click n drag to visit your scam page.
+bad tom he was being as asshole to you, you are a nice man and a nice answer dont let him it get to you! thanks
+bad i saw your comment about getting a fucking life and flagged it. dude don't go overboard. i sincerely tried helping you but you crapped on me. next time, learn to code and debug your own. don't rub me the wrong way or others for that matter.
+bad can we flag this dude? he is a complete troll why do we even help him?
+bad ? is a beautiful troll
+bad being an asshole is not useful.
+bad rtfm means read the fucking manual.
+bad you're trolling us now, right?
+bad i'm pretty sure they don't want to drive away clients already scared by all the crap they've already served you.
+bad that's nice. good luck with that. did you have a programming question? this site is for questions, not a place to dump your to-do list.
+bad to the idiot who has down-voted my correct answer next time first try and then learn something -
+bad please refresh before you speak up! also answer my comment. kindly open your eyes and see that it is opened!
+bad whoever downvoted the post am gonna find you and am gonna kill you
+bad wow you are rude. i tried to say that i wasn't the one who down vote you. seems like a school here.
+bad are you serious its programming forum go to google and type your query.
+bad dude if you can't help just don't comment
+bad downvoted your answer because such answers do a disservice to the poster. the poster cannot read and understand the r documentation. he should either learn to do it, or his skill in r programming remain low. i is like a small kid who wants his mom to read him a book because he is too lazy to read it himself.
+bad i have been reading plenty of books on c but i made one stupid mistake because i'm tired, by the way only kids call people kids, don't be that guy
+bad grab a book or basic tutorial. then get back to us.
+bad i thought we were supposed to learn how to calculate triangle area's in middle school. apparently not.
+bad you guys don't understand. i asked a question. i don't have any idea about that. either you guys help or ignore. don't act rude.
+bad and how about copy-pasting my answer? you really think this question need more then one trivial answer?
+bad oh god no, we absolutely do expect you to read them all, so yeah, please don't be so lazy.
+bad that really wasn't needed dude. just ask the guy to indent his code.
+bad if you don't have anything nice to say don't say anything at all.
+bad this is the most unhelpful type of answer.
+bad this is a poor answer, in fact i'd go as far as to say it's not an answer at all.
+bad at least the pebcac kinda troll p
+bad please be nice.
+bad please go back to java land and leave javascript to the people that know javascript - i wish i could downvote you a second time for that idiotic comment
+bad rather than comment on the commenter with you obviously dont know c and snides like im very much aware that thers a lot of bad programers out there, better to focus on the commentpostanswer themselves. that is professional and this site has be nice policy.
+bad well, in the end you just insulted, provoked and made ironies. and yet did not even care to explain why my op is weird. and with that you say you are not trolling and you claim that i, by asking a question and just reply
+bad what an idiotic question. i've already answered you. the standard isn't unix, it windows maggot. criminal maggot.
+bad . fools seldom differ. i believe is the end of that quote
+bad you people are so stuck up on this site. firstly, not everyone spends hours on this site a day. don't expect a newcomer to understand every single function of this website. second, i re-posted it because the first time i posted it i was up at am trying to figure it out because i was so lazy, and i thought it would have just been buried, so i posted it again mid-day. perhaps you could explain the rules to people instead of calling them lazy and not to waste peoples tie with crap on a help website.
+bad if you are only a beginner, first read some books and documentation. then improve your english, because it is really bad don't want to insult you. then search in the english part of the net for the things i wrote before. and use your head
+bad ghostcat, really lovely reply.. why do you even bother posting something that has no value at all? almost the same method i used in my other app but just with tokens in each string and it works perfectly. but, you are such smart boy, you have to insult newbies, i know
+bad actually, so far, you've proven to be the only one in this community unwilling to help. while i get that you may have a stick so far up your ass that everything has to be done exactly as someone wrote, i'm not going to go through unne
+bad now, seriously. this site is no forum and especially no forum for people who seem to haven't even done an online search on their topic.
+bad sorry but this is a really silly question. are you seriously asking how to use in javascript? and such a massively long question - you could have found the answer for yourself ten times quicker if you just looked.
 bad best to ignore him, all theory and no practise.
 bad you can suck it, too. plus your downvotes mean nothing to me so feel free to downvote these nuts.
 bad wtf. i spent like hours on this crap for nothing
@@ -2850,7 +3065,6 @@ bad then do it right. op is not helped with 'almost working' code.
 bad nothing useful in this shit
 bad what the actual fuck is this?
 bad then go to hell bro
-bad this is . don't use file use path and files. also there is no guarantee that this will work anyway. why don't you just delete the file yourself?
 bad what is a shits count? number of toilet visits?
 bad yeah. 'how to access content of a folder's file in c?' as the title then blatantly writing c code is not going to go down well at all
 bad my question is very specific and only about a small part of the posted code. you obviously did not read it. pull the stick out of your ass.
@@ -3787,217 +4001,3 @@ bad luxray is the biggest faggot that xrays fucking play legit cunt and you are 
 bad biggest faggot in the world i everything lame ass fuck and when i'm in oakland i'm slapping his ass
 bad seriously the biggest faggot ever
 bad sportstalkjoe is the biggest faggot
-bad silk let's be real you've gotta be the biggest faggot weaboo irl
-bad you're the biggest faggot on social media
-bad is the biggest faggot who ever lived. he is just all talk but no walk, cuz he's too busy getting pounded by his dad.
-bad i don't give a shit i would say sorry but you're the biggest faggot on twitter
-bad dude, that guy is the biggest faggot holy shit.
-bad you are the biggest faggot i have ever met what the fuck is this account get a life or make the hockey team
-bad you are maybe the biggest faggot on twitter
-bad who's the biggest faggot
-bad onrestrictionn has to be the biggest faggot i've ever seen
-bad odell is the biggest faggot i know it's all about him and he can't even win with any class
-bad david gay son male straight american single af video games and thigh highs sleeping and grayza biggest faggot
-bad i hope everyone know dane healis is the biggest faggot ever! i don't follow him but i hope he sees this
-bad biggest faggot i have worked with.
-bad you're literally the biggest faggot
-bad fero is the biggest faggot in this community, i swear.
-bad anyone who says they respect the police is the biggest faggot pussy i know
-bad jarvis and the biggest faggot in the league
-bad vaks is the biggest faggot alive
-bad roses are red, the grass is green, you're the biggest faggot i've ever seen.
-bad i was so honored to award steven biggest faggot in brownsville the other day over the phone i think i really made his day.
-bad - biggest faggot i know
-bad geri, you're the biggest faggot ik.
-bad and you're the biggest faggot that's in california.
-bad chip kelly is the biggest faggot
-bad you are the biggest faggot i have ever seen
-bad coming from the biggest faggot i know
-bad biggest faggot of the internet blaze is flyy from youtube please say in stream
-bad is the biggest faggot i know
-bad you are literally the biggest faggot ive ever seen recruiting people then kickin the nigga for his disability. literally go kys
-bad how kids supposed learn that fire burns, if today's parents blame the fire for being hot. motherfuckers the real world has consequences
-bad i blame the gay jews! cruz he just blames der gays
-bad blame the whores
-bad if ya'll haven't fuckedfucked with every dude or female.. then how can you blame the whole gender.. that's all i ever see on my tl..
-bad septa bus drivers really be fat as shit
-bad already see some hoes hashtagging black lives matter in their butt ugly selfie smh.
-bad damn! that is a butt ugly skank!
-bad you are such a butt ugly non-joke understanding, stupid piece of white trash that gets old dude's to pay for your ugliness sick
-bad i think the video calls him a weak ass, lying scumbag ,cheating bastard with a butt ugly fat ass wife
-bad poor miley she turned butt ugly
-bad when u and yo homie holla at a bitch with a thick body a fat ass but than she turn around and she hella butt ugly
-bad why does there have to be so many fucking butt ugly gaming pc cases?
-bad meth abuse is what you say when you're afraid to say butt ugly.
-bad next semester when i only have to go to tech i'm going to be looking butt ugly because they are the only people that will see me and we fam
-bad dearsantasorryfor getting on your butt ugly list.
-bad butt ugly
-bad corypheus is so butt ugly lmao but he's part darkspawn and they're ugly as hell so it makes sense
-bad i own some butt ugly tshirts.
-bad what a butt-ugly dysfunctional couple.
-bad looking at her butt-ugly face i can see why she says that
-bad cliche thing to say when returning to america after living abroad, but americans are butt ugly fat. fatisnotbeautiful
-bad my latest graphs are going to look butt-ugly because of this damn it
-bad not with kylo ren, i'd get aids every time i looked at his butt ugly face
-bad she's butt ugly has no real talent .. get rid of her trashy sorry ass!!
-bad wordtrumpslogans buy my butt-ugly hats!
-bad your toyota is butt ugly so are you
-bad if you were as butt ugly as that serrell loser you'd spout nonsense too.
-bad do you ever just think wow we're lucky were decent looking girls, there's some girls that are butt ugly -alex pantina
-bad this game is more butt-ugly than nude pics of janet reno.
-bad he just yelled at me saying que change your fucking attitude your attitude is horrible
-bad reminder to myself change your fucking abilities
-bad i get way too chink eyed
-bad scored in straight games. typical patriots hater. chink eyed fuck.
-bad superb dick sucking lips if you ask me though your a bit chink eyed, do you smoke weed beautiful?
-bad proper chink eyed this morning
-bad you should probably stop drinking now. you're all chink eyed like me
-bad zemzo you are ugly asf you light skinned, chink eyed, lil dicked ugly bitch kys
-bad you are awesome guardians. japan rot in hell you chink eyed bastards. fuck you tweettaiji
-bad stfu u chink eyed pig
-bad ol lookin chink eyed lookin nigga
-bad wide eyed n shit, my medicine makes me feel like i go all chink eyed. so i held my eyes like this for minutes lol.
-bad chink eyed to the max
-bad alex is also chink eyed when it comes to his ''cute'' selfies
-bad gettin chink eyed an watchin that star wars tonight me, anyone spoils it for me there ma's from rhyl
-bad i'm lookin at that tweet chink eyed af like what is life.
-bad shut yo chink eyed ass up
-bad chink eyed ass bitch!
-bad lil chink eyed negro
-bad japan is so sick. chink eyed zombies. fuck you. tweettaiji you are the biggest loser ever.
-bad you know i like them chink eyed, thick thighs
-bad just got to the buffet and my stomach starts hurting fml, gotta get my money's worth outta these chink eyed mother fuckers
-bad chink eyed trying to navigate in a backwood blizzard
-bad chink eyed problems
-bad cloud so chink eyed man
-bad doped up.. ima chink eyed fool.
-bad those who want us military out of ph shd start arming selves and fight the chinks in spratlys and mischief. you can't, your balls r fried.
-bad stay n'sync w the hood, gray minks in the hood, we tryna get money like chinks in the hood tdoa
-bad drivin n a see ma pal aw by hersel n picked her up fae the bus stop fuck superman, chinks in toon tae the rescue x
-bad there are chinks in super cam's armour!
-bad because they know their candidate has chinks in his armor, and can't win against my candidate. polls prove it
-bad how can someone drive worse then a stoner. you have to be cheebed out on heroin to drive like the chinks in miramesa sandiegohardcore
-bad was about to torrent football manager but then i realised square tried and fucked it up and ended up with a squad of chinks in tallaght
-bad you're gucci dude, let's see some mean peg chinks in the meantime
-bad i hope there are some fine ass chinks in ur city istg if not i'm done
-bad ..stop allat coon shit
-bad stop all that coon shit
-bad its still coon shit. fuckempire
-bad roddy white is a coon and coons will always do coon shit.
-bad nah that's pure coon shit i know of niggas with the sound effect hands
-bad stop all that coon shit early morning cartoon shit, this is that goon shit
-bad ya boy is on some coon shit lmao
-bad like they really put this coon shit on tv tryna convince me cardi b a star man fomf
-bad does hillary clinton owe donald trump an apology? head nigger and the cunt, we all know that pack of coon shit!
-bad black unemployment all time high. he says when blacks complain.i'm president of all america aka alllivesmatter. coon shit
-bad because those guys know the power of the dollar. we don't make it any better applauding coon shit and giving it shine
-bad i would try and defend steve harvey but he do be on some coon shit
-bad this is that coon shit i don't endorse
-bad stop with that coon shit
-bad he did some coon shit on a white mans show
-bad think about it, the chain allegedly worth k. after they spend all that up on silly coon shit, they back to bein broke.
-bad coon shit
-bad are y'all surprised that a coon did some basic ass coon shit? that's why you don't put coons on tv.
-bad give a damn about slavery and a bunch of more coon shit. now he see he isn't as far removed as he thought.
-bad a. no hbcu is all black. b. even if it was, you too good for your own people? c. leave this coon shit in .
-bad that's straight up coon shit!
-bad if the character doesn't develop and mature in the next two episodes than it is soon coon shit, but the jury is still out me
-bad stop all that coon shit
-bad lmao just did some coon shit with my uncle
-bad stevie harvey definitely did some coon shit
-bad fuck all that coon shit. i just bet its a nice life up there.
-bad steve harvey did some coon shit i know he did
-bad wonder what type of off the wall coon shit steve harvey was saying tonight
-bad too cute to get caught on some coon shit
-bad to them sisters out their get out of them white ways . all that dumb coon shit must come to a end . the.
-bad i got a feeling caine bout to do some coon shit.
-bad i'm black, and i love black people. but we fall for too much coon shit to be complaining about racism. smh
-bad stop all that coon shit
-bad coon shit!
-bad stop all that coon shit
-bad see this coon shit lmao they clearly idiots
-bad coon shit smh, gotta love north.
-bad yea i've seen some real fucked up dune coon shit
-bad to buy tickets in order to get shoes is coon shit.
-bad wanna be a big cop in a small town? fuck off up to the model village
-bad elphaba! i cover your mouth with my hand. shh don't even say that word! i frown. i'm not a whore, okay? i'm pretty--
-bad yo lady, before you cover your car in dumbass bumper stickers, maybe you should learn how to drive st?? gettin a little ahead of yourself..
-bad cover your tits up you infant
-bad i fucking love when stevie and ally bicker it cracks me up omg they get so mad
-bad this dumb bitch cracks me tf up
-bad i really hope you add silent, background laugh as a podcast laugh track. shit cracks me up every time.
-bad i don't be cuffin' these hoes i just be bustin these hoes
-bad cuffin these hoes thats where u went bad at
-bad so to the ft carson niggas that's cuffin these hoes tho, y'all the real mvp
-bad cuffin these hoes that's where you went bad at
-bad fucking these bitches no cuffin these bitches no lovin these bitches they all for the smash
-bad im allergic to cuffin these hoes
-bad ok what's gucci my nigga what's gucci my nigga don't be cuffin these hoes u know they be choosing
-bad i don't be cuffin' these hoes i just be bustin these hoes
-bad i don't be cuffin these hoes ,
-bad never cuffin these hoes
-bad don't be cuffin these bitches you know they choosing!
-bad they might as well since they cuffin these hoes anyway
-bad no cuffin these bitches, i trade em.
-bad dont be cuffin these hoes.
-bad i be cuffin these hoes, i don't be smashing these hoes.
-bad fuckin these bitches no cuffin these bitches no lovin these bitches they all for the smash
-bad cuffin these bitches you niggas is cops
-bad fuck any bitch no cuffin these bitches
-bad we be cuffin these bitches now that's something i cannot do she prolly tryna get you robbed to now god bless both yall achoo!
-bad fuckin' these bitches, no cuffin' these bitches no lovin' these bitches, they all for the smash
-bad we aint cuffin these hoes we aint the police!
-bad u cuffin these hoes u don't know no better
-bad stop cuffin' these hoes in
-bad i ain't cuffin these hoes i neva eva been a cop
-bad u be lookin like stop cuffin these hoes
-bad ion be cuffin these hoes i just be bussin these hoes.
-bad no cuffin these bitches, no lovin' these bitches they all for the smash
-bad y'all niggas really be cuffin these run down whores me my team went thru them
-bad dumb monkey
-bad thanks for erasing my gamer score you incompetent illiterate dumb monkey fucks. fuck sony xbpshitty
-bad on page of of eleanor park, by rainbow rowell white-trash dumb monkey
-bad shut up you dumb monkey fucking nigger, you caused aids.
-bad steveharvey so he made a mistake over a dumb pageant and he's being called a dumb monkey? really? ignorant asses!
-bad answering something wrong in a quiz, thats a mistake. read wrong a simple word when you had plenty of time, not. dumb monkey
-bad they are laughing at you for being a dumb monkey and you must do everything in your power to not be that
-bad yes it's all over. screenshots of so many people calling him a dumb monkey and nigger.
-bad its called stop u dumb monkey
-bad dumb monkey president continues military agitations against china
-bad no it doesn't? you're ad because our genes provide us with better opportunities and more intelligent minds dumb monkey.
-bad i doubt this dumb monkey has ever had a beer or a root or left his village ,yet preaches how to live.
-bad dumb monkey president continues military agitations against china
-bad holy shit you're one dumb monkey fucker.
-bad i laughed. you always coming after ya dumb monkey ass bitch got one more fucking time to call me out my name
-bad dumb monkey
-bad keep smiling dumb monkey. this does no representation to the loudness of the bangs. making whole flat shake.
-bad dumb monkey
-bad get out of my way, you dumb monkey.
-bad dumb monkey
-bad dumb nigger
-bad vm advise is a dumb nigger who complains and oh reds is a dumbass.
-bad irony dumb nigger baby
-bad y'all need to chill about the mistake steve harvey made. calling that man a dumb nigger is uncalled for honestly fuck that pageant
-bad shut the fuck up you dumb nigger
-bad ur a dumb nigger. u never blocked me dumb kyke. ur an irrelevant e girl
-bad fuck up dumb nigger
-bad everybody worrying about missuniverse and how steve harvey is a dumb nigger, but not worrying about what happened to sandrabland
-bad no one asked you to reply you dumb nigger
-bad get cancer you dumb nigger
-bad dumb nigger boy
-bad niqs is a dumb nigger
-bad fucking trash server with dumb nigger staff cant even ban hackers, i fucking died to a hacker who flew i had stuff worth k
-bad get olws dumb nigger
-bad dumb nigger
-bad this age old whitepeoplelogic me shut up white boy white people but if i called you a dumb nigger i'd be racist
-bad you're a better readerwriter? end your racist slurs calling a dumb nigger with a periodexclamation point!
-bad whitey nigger, nigger,dumb nigger me i actually graduated from high school two years early with a . gpa whitey .ya dumb niggers
-bad what do you mean you said you didn't have pp dumb nigger
-bad dumb nigger
-bad got no friend let me try something else go look at buildings dumb nigger
-bad chris rock is a dumb nigger.
-bad you not dumb nigger
-bad your probably a red neck uneducated micro penis idiot. you're getting schooled by a dumb nigger. i can see our difference now.
-bad but she didnt like you back cause you're an ugly ass faggot that recolors packs dumb nigger
-bad you two are fucking retarded and you both should commit suicide you dumb nigger fucks
-bad white people call steve harvey a dumb nigger now switch it up black people call white t.v host a white racist or whatever.

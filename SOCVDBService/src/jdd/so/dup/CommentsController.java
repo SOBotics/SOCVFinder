@@ -201,7 +201,6 @@ public class CommentsController extends Thread {
 			int score = commentCategory.classifyComment(c);
 			hit = score>=4;
 			if (hit){
-				logger.warn("run() - Offensive comment >> REGEX HIT=" + c.isRegExHit() + " NB=" + nfThreshold.format(c.getNaiveBayesBad()) + " J48=" + nfThreshold.format(c.getJ48Bad()) + " SMO=" + nfThreshold.format(c.getSmoBad()) + ": "  + c.getPostId() + ": " + c.getCommentId() + " " + c.getBody());
 				String commentLink = c.getLink();
 				if (commentLink==null){
 					commentLink = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();						
