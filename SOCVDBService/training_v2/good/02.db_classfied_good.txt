@@ -254,3 +254,69 @@ Don&#39;t know why you got a downvote (just like i got one for <a href="http://s
 I&#39;m afraid this is off-topic here. You can look this up in any math textbook.
 Give answer if you know how to solve this instead downvote the question.
 I also have another question a bit off-topic. How do you guys get notified that a question is posted on Stack Overflow. I got your reply very fast.
+Those errors aren&#39;t caused by my answer, they&#39;re a consequence of the compiler going further down its checklist now that I fixed the most pressing error.
+@Divakar It&#39;s on my feed :) I haven&#39;t been answering questions lately though... lots of stuff going on on my end.
+@Patrick -  I don&#39;t have one and I don&#39;t have the time to create one.  If you wan&#39;t to fork your plunker, or create a new one,  and give it a try I will do what I can to help you.
+Yes sorry I managed to solve it, it was the most stupid error I&#39;ve ever done. I put an underscore instead of the dash when naming the file!
+This is fucking awesome. Thanks so much. I understand most of the code, I just have a few questions. Is there a reason why the print method is at the bottom? and how come it replaces the output of the first block? Wouldn&#39;t the code run the main method first and fail?
+ it doesnt matter where the print function is declared  &#39;how come it replaces the output of the first block&#39; wtf? can you write it again * you need to return a variable thats why system.out.println() did not work
+This isn&#39;t hard to understand.  The dropdown is in a container that clips all its content and hides it, but the menu has a high z-index to put it above everything, but that doesn&#39;t help because the container still clips it.  In other words, the menu shouldn&#39;t be in the container at all.  Bootstrap&#39;s menu sucks, because it doesn&#39;t parent the menu to the document above everything, it just leaves it in whatever container it happens to be in.  It&#39;s bad design.
+Both of these solutions work, however when I ctrl c to kill the testtail command my prompt turns red. Any Idea what thats all about?
+1)check the configuration  options--configure texmaker--command--biblatex: bibtex %.aux  2)use the stupid pdflatex-biblatex-pdflatex pdflatex order to compile  3) try to match the bibtex version with the biber version I have now 2.5 and 3.5 so hope something is working i dont know  ....i ve been like 3 days searching for a solution
+Do you know at which place should I applied the code? I replaced the &quot;app&quot; by the actual app id, but it doesn&#39;t seem to work. I think it might be safer to go with option 2 since it will open a new window, there is less chance of something going wrong for the people clicking. And thanks for your first answer! :) Also i should ass that this is dedicated to mobile only, not that it would change a lot of things.
+I&#39;m not sure, but version: true might be interpreted like --version, thus typedoc simply emits the version and quits.
+If is just a part of your messages, you can use internazionalization but adding parameters so you can make it a little bit more dynamic.
+not a shitty calc, just don&#39;t give up :) !
+It was a joke about another post Fred. The one where the guy said you were doing it wrong.
+Your comment however didn&#39;t help me with my question...
+Haha. Don&#39;t worry about it!
+got it...i was stupid that when I add ` url: &quot;{{ url(&#39;/getVariants&#39;) }}&quot;+&#39;/&#39;+ master_id,` it showed me 500 internal error and I thought i must be some other error...when I print some value thn it shows me the response....
+i was so stupid....it was an server error later...
+Exactly what I was looking for. The reasoning why the last day is left out. Still, its a stupid default.
+Okay think you can ignore my stupidness - I&#39;ve found another duplicated StackOverflow post here <a href="http://stackoverflow.com/questions/28999400/swift-uitableview-custom-cell-programatically-documentation" title="swift uitableview custom cell programatically documentation">stackoverflow.com/questions/28999400/&hellip;</a> - will just follow this :)
+Oh thank you very much, i was looking at that stupid gradle example and thinking that keep is something like &quot;dont modify this source cos i might debug it&quot; or similar stuff :)
+Everybody please help me!
+Not at all. But this doesn&#39;t jump to the definition of a struct either, when ctrl+clicking on a struct name
+Oh no... My Playground shows me how many times my &quot;if&quot; statement is true... I put a print(&quot;&quot;) inside my loop and shows me 8 times... I understand now... Sorry for this stupid question :/
+Interfaces are good. But for looser coupling, use broadcast listeners.
+Sorry for giving away the trade secrets, boys.
+Can I move question? Or should I repost it?
+I wanna be like you when I grow up ;)
+How are we supposed to know?
+I really can&#39;t understand the question
+@DavidSchwartz: Further, unless looser semantics have been requested, a compiler should ensure that all register-cached values whose address has been exposed to the outside world are synchronized with their underlying storage before and after any <code>vo
+Besides being a dangling pointer, adding insult to injury this code will attempt to retrieve, randomly, element 1 through 6 from an array that contains elements 0 through 5. 1/6th of a time, this will result in undefined behavior, and a likely crash.
+@ThomasF thanks, I didn&#39;t know that, I only bothered to remember that <code>window.isNaN</code> is a piece of garbage. <code>Number.isNaN</code> is much more usable.
+@PavelMinaev back one year later. I have now accepted it :) Eagle couldn&#39;t be more right in his poetry.
+@YourCommonSense Ok. But How can somebody down vote without knowing the concept :(
+Please read my question carefully. I asked &quot;auto trim&quot;, not &quot;manual trim&quot;
+Old answer, but still very relevant. Code Analysis (as it is now) still has some silly rules (such as this one) which assume coders are idiots. Anyone who even half way understands the language knows what <code>readonly</code> means. First thing I do when setting up a new project is disable a ton of CA rules such as CA2104.
+good to know you manage to resolve
+this community is all about <b>programming</b>, not commandline help
+How silly I am for this stupid question......shame on me.
+To actually add insult to injury: why in the world somebody thought of adding <code>QList&lt;T&gt; QVector&lt;T&gt;::toList()</code>, instead of a ranged constructor?
+Gotta love those people who simply downvote questions without reading them.
+Well if you know what you&#39;re doing, yeah...
+@ThomasKl&#228;ger nevermind, I was able to finally narrow down the problem. The way I have it, is that one of  the ways you can open the <code>JDialog</code> is through a submenu when you right click. However, I kept reading the <code>JMenuItem</code>s w
+I couldn&#39;t so am asking...
+but .......... i dont knw
+@Mike u r right. Thanks for saving my ass :)
+God damn I feel like an idiot now lol; <code>if(count &lt;= -1) {</code>
+Holy jesus. I probably just made the biggest blunder of my life. You&#39;re right!
+Why was this voted down? Vote downs with no explanation are the worst thing about SO.
+Managed to solve it. Ugh, what an idiot. The <code>UIScrollView</code> was sitting inside a <code>UIView</code> which was sitting inside a <code>UIContainerView</code>. I was moving the <code>UIView</code> up on <code>KeyboardWillShow</code>; and this was, whilst visually OK, pushing the <code>UIView</code> outside of its parents boundaries, so touches weren&#39;t registering. Thanks for your help @matt  :)
+Wow thank you I feel like an idiot. Thanks for taking the time!
+no. he told a joke! @Damon
+I see ! You&#39;re good then.
+I don&#39;t why he&#39;s getting minus he asked a decent question.
+btw a great tool for this is Relacy, it allows simulating looser memory models on x86, I wrote up my adventure here <a href="http://www.codersblock.org/blog/2016/6/02/ditching-the-mutex" rel="nofollow">codersblock.org/blog/2016/6/02/ditching-the-mutex</a>
+Do you guys have any idea about this
+If you cannot your self tell from your stack trace what causes the error, you may want to post the stack trace here.
+Don&#39;t ever let anyone tell you that you are not the man because you are THE MAN!
+We are all learning lol; don&#39;t feel bad at all
+You&#39;re the mvp!
+This question with his answer are really useful for those who are not a designer and can&#39;t effort / don&#39;t want to pay one.
+hi @domi, lol you&#39;re hilarious
+I&#39;ll do that. Sorry for wasting people&#39;s time.
+I only wanted to mention it, not to insult you. It does not mater how long you in, but how many different type of tasks you have done. Everyone is learning.
+He is <code>ser.write(chr(int(parameters[counter])).encode(&#39;utf-8&#39;) + chr(int(parameters[counter+1])).encode(&#39;utf-8&#39;))</code> twist, so rape serial port, which incoming first(<b>FIFO</b>), where a query where matched answer? Who clear <code>serial buffer</code>? He send query and try opening file, what is timeout exception ?

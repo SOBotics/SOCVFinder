@@ -188,7 +188,6 @@ What you&#39;ll want to do is stop event propagation when the <code>&lt;form&gt;
 I&#39;m going to upvote you since you put me exactly where I needed to be.  However, in my environment, lookupField.LookupList was a string, specifically the list Title.
 <code>&quot;shell&quot;: &quot;bash&quot;</code> is not a valid <a href="http://docs.sublimetext.info/en/latest/reference/build_systems/exec.html#exec-command-arguments" rel="nofollow">build system option</a>. It should either be <code>true</code> or not present. The items in the <code>&quot;cmd&quot;</code> array need to be individually surrounded by quotes, and separated by commas. If you set the executable bit on your <code>.sh</code> file, you don&#39;t need to call it with <code>sh</code>, you just need to put the name of the file there.
 Right, because you&#39;re calling on a non-static method <code>detect</code> from the static context in <code>main</code>. I would recommend reading up on what <code>static</code> means in java.
-Looks like a homework.
 The operating system won&#39;t change anything. Java is cross-platform by design. The issue here is that <code>â€œâ€�</code> is not the same as <code>&quot;&quot;</code> (notice the curly-ness of your quotes)
 Sorry guys, yes, it&#39;s supposed to be -0.0016. Just edited the question. Thanks for pointing that out.
 <code>Action&lt;T&gt;</code> <i>is</i> contravariant; not covariant.
@@ -205,9 +204,7 @@ Actually an <code>NSTimer</code> will keep its target retained (and the run-loop
 I gotta a feeling you&#39;re not loading the <code>jQuery</code> library before trying to use it.
 jQuery library correctly linked?
 Try adding <code>console.log(typeof $)</code> on the line before, and see what it tells you
-Continue the reading and come back to this point later, sure you will understand it then ;)
 <i>Add a class to <code>X</code> when <code>Y</code> is clicked</i> is an <b>extremely</b> common question on SO and the answer is pretty much the same for any X and Y.  Your X and Y are <i>div</i> and <i>other div</i> ... here is <a href="http://stackoverflow.com/q/11068446/17300">a question</a> where X and Y are <i>parent div</i> and <i>div</i>.
-@JonathanKuhn How&#39;d you read through that mess so quickly?
 @Aurimas Since Ruby is extremely strict about what&#39;s <i>false</i> in a logical sense, <code>|| 7</code> is never going to happen so you may as well abandon that idea: The <i>When in Rome</i> principle applies here. If you&#39;re doing a mapping operation, express it as such. In other languages you can take advantage of zero being a <i>false</i> value so the simplest expression of your desire does vary considerably depending on constraints.
 Your example is not much of one. What explicitly have you tried and/or researched?
 This is a question and answer site, not a free homework completion service. You need to learn to program yourself, not ask internet strangers to program for you.
