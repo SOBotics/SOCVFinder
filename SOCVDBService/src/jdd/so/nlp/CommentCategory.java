@@ -29,9 +29,6 @@ import weka.filters.unsupervised.attribute.StringToWordVector;
 /**
  * Categorize comment
  * 
- * DocumentCategorizerME Code by Technik Empire from this gist
- * https://gist.github.com/TechnikEmpire/4a76aa0b844e15c639f08066655847e7
- * 
  * @author Petter Friberg
  *
  */
@@ -78,9 +75,6 @@ public class CommentCategory {
 		// Weka NaiveBayes classifier
 		wekaNBClassifier = (Classifier) SerializationHelper.read(new FileInputStream("model/nb_comments.model"));
 
-		StopwordsHandler swh = ((NaiveBayesMultinomialText) wekaNBClassifier).getStopwordsHandler();
-		swh.isStopword("to");
-
 		// Weka SGD Classifier
 		//wekaSGDClassifier = (Classifier) SerializationHelper.read(new FileInputStream("model/sgd_comments.model"));
 
@@ -103,6 +97,8 @@ public class CommentCategory {
 
 		Instances trainFiltered = Filter.useFilter(wekaARFF, filter);
 		trainFiltered.setClassIndex(0);
+		
+		System.out.println(filter);
 
 	}
 
@@ -179,6 +175,8 @@ public class CommentCategory {
 				score++;
 			}
 		}
+		
+		instance = createArff(classifyText);
 
 		// weka J48
 		double[] outcomeJ48 = classifyMessageWithFilter(wekaJ48Classifier, wekaARFF, filter, instance);
@@ -337,15 +335,15 @@ public class CommentCategory {
 
 		CommentCategory cc = new CommentCategory();
 		Comment c = new Comment();
-		c.setBody("@CZoellner If you have nothing say shut up");
+		c.setBody("@CZoellner Fuck you you nigga");
 		System.out.println(cc.classifyComment(c));
 		System.out.println("Score: " + c.getScore());
 
-		c.setBody("Yes sorry it's a mistake but it doesn't solve my problem");
+		c.setBody(" Your conclusion has been as clear as wrong since the beginning. Since you make a statement and then refuse to properly argue your position, but instead attempt to blame others for your own actions like a child. I suggest you go back to your reviewing hobby, junior");
 		System.out.println(cc.classifyComment(c));
 		System.out.println("Score: " + c.getScore());
 
-		c.setBody("Check th controll before");
+		c.setBody("Go to hell");
 		System.out.println(cc.classifyComment(c));
 		System.out.println("Score: " + c.getScore());
 

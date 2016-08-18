@@ -3,7 +3,6 @@
 (?i)(you?|(^|\s)he)(\w+\s*){0,3}\sstupid
 (?i)\bass\b
 (?i)\bshit(t?er|head)
-(?i)\bhell\b
 (?i)\bfools?\b
 (?i)\bcrap\b
 (?i)\b(troll(ing)?)\b

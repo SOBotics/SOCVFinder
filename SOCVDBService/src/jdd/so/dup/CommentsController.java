@@ -250,9 +250,13 @@ public class CommentsController extends Thread {
 
 	private String getStars(int score) {
 		String stars ="";
-		
+		int n = 0;
 		for(int i=0;i<(score/2);i++){
 			stars+="★";
+			n++;
+		}
+		for (int i=n;i<5;i++){
+			stars+="☆";
 		}
 		return stars;
 	}

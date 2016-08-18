@@ -527,7 +527,6 @@ good reason for the downvote?
 good i don't see how or where dostuff is every being called here?
 good jerk is the rate of change of acceleration over time, just as velocity if the rate of change in position over time, and as acceleration is the rate of change of velocity over time. because you have a maximum acceleration constraint, this implies that the acceleration is changing over time. thus, jerk is how fast it is changing, and a value that you will set i'd recommend making it specific to different enemies. and as for your acceleration not exceeding a constraint level, i am including that in the answer i am typing right now.
 good omg you found my mistake, thanks to you. really stupid but i sit here and wondered since hour xd
-good oh right so jerk is a different way of expressing car reaches mph in seconds - but rather than using time, you use a rate. is that right? that could work. i suppose! i'd have to see it in action. anyway i'm way overdue for sleep i'm afraid. looking forward to checking-in in about hours. good luck!
 good ok, i am starting to figure out how to control it. you have to use the check boxes. argh. wtf does it let you even edit the code it presents? anywas, thank you for providing a correct answer to my question i still hate computers, though.
 good mostly, car reaches mph is super broad, only mentioning a time and final velocity magnitude. for example, lets say that the car's acceleration from ms to ms in seconds. how did it do this? at seconds, was its acceleration still and then it jumped to ? jerk describes how it increased or in this case, a constant jerk value will make it so that the acceleration increases linearly with time. likewise, this linear accleration increase implies that the velocity increase will be parabolic, and positional change for the car would vary with time.
 good holy crap that was beautiful haha
@@ -545,7 +544,6 @@ good please don't tag-spam. this has nothing to do with c or asp.net-mvc.
 good use a proper installer, don't write your own.
 good interesting. i guess it depends on who your students are. my students humanities need to know how to drive the car, not how to take it apart and put it back together.
 good michael's answer makes full sense to me, so i don't understand the someone's down-vote. up-voting back on.
-good so you think your dropping of requirements will make people send you code? sorry, won't happen.
 good internet archive to the rescue web.archive.orgweb this is still a lazy answer so i downvoted.
 good this is too broad and the question is badly presented. we can't help or assist those who make it hard or impossible.
 good ping one of us if you get anything. moving on
@@ -822,7 +820,6 @@ good i am a little lazy and just want to have a quick answer from experienced pe
 good heck with the down votes . i'm just trying to learn. thanks.
 good read my comment - i never said the question was opinionated. recommendation questions are off-topic because they tend to attract opinionated answers and spam. the link i gave gives some good pointers on how to ask a good recommendation questi
 good deploy the site on google app engine?
-good so how do you guys know that op is taking that course and he is asking this because he has to do the homework?
 good you don't need the cast to - an address will implicitly convert anyway.
 good not anymore. the community shouldn't need to downvote answers to clean up.
 good if you meant the single quotes, i have corrected it. also this might not be a copy-paste soln. beacuse i dont know ur db schema. you can understand the logic and implement.
@@ -1120,7 +1117,6 @@ good try adding on the line before, and see what it tells you
 good add a class to when is clicked is an extremely common question on so and the answer is pretty much the same for any x and y. your x and y are div and other div . here is a question where x and y are parent div and div.
 good since ruby is extremely strict about what's false in a logical sense, is never going to happen so you may as well abandon that idea the when in rome principle applies here. if you're doing a mapping operation, express it as such. in other languages you can take advantage of zero being a false value so the simplest expression of your desire does vary considerably depending on constraints.
 good your example is not much of one. what explicitly have you tried andor researched?
-good this is a question and answer site, not a free homework completion service. you need to learn to program yourself, not ask internet strangers to program for you.
 good it sounds like you might be looking for functionbind but it's hard to say for sure without more detail in your question.
 good what is your specific question?
 good if you are encountering an issue with your code, you should describe the issue and ask for help, not
@@ -1869,7 +1865,6 @@ good you could calculate distances to each, see which is closest, and then use t
 good that error message is unrelated to the plotting command. the message is about mathematical properties of the system itself. i'll work on it later tonight.
 good can't you use values and ?
 good thanks again for your great answer! it seems your regex fails for the fourth and the last one however. do you see any solution? for instance i get for the last one. recall that you can have a on the left or a on the right, not necessarily both
-good stackoverflow is not here to do your homework for you.
 good thanks for the optimisation, but i need it to also read. array.cont. 'string will', 'string will be', . 'will be', 'will be chopped', 'will be chopped up', 'be chopped', 'be chopped up', 'chopped up' i think i've solved it. just going to test this evening and i'll update my question to include the answer. thanks!
 good i can see you're having issues reading my siggestions. if you're getting an error on the copypicture line it must mean yiu didn't follow instructions to put the openpath statement after that line - not before it. if you're going to change things or not copypaste suggestions - then edit your original post and insert your amended code at the bottom with an edit statement.
 good no problem, just did a replace with your code to show what it'd look like.
@@ -1880,7 +1875,6 @@ good you only provide combinations, he also wants permutations. for each combina
 good that wait loop only gets you so far - in the old days of the web it would have been enough, but these days there's often dynamic content which gets loaded only after the main page content has completed.
 good is a string literal, not necessarily a string. true c has blurry terminology.
 good you may have noticed the join is actually correctly attributed in the given sql, so the mapping does not seem to be the problem probably mapped through fluent api
-good did you even read the whole question? how does zebra striping via css come close to solving the op's issue?
 good it is likely that bootstrap's own has diverged enough in the years that this version no longer applies. the version linked above was for bootstrap v... it looks like the eventing in .. has changed a bit, i haven't tested against that version. also, it surely won't work in .x.
 good it seems that function does some kind of aggregation and it returns multiple values combined into a comma separated list. what you want is to split back that list into indyvidual values. the question is - why don't discard that function completely and include it's implementation directly into the query ? you can save a lot of overhead, i bet that this can be even - times faster yes - times . could you append a source code of this function to the question ?
 good is an ? if so, you might need to use instead of .
@@ -1999,6 +1993,12 @@ good boost is not an mpi implementation, it's just an interface wrapper to make 
 good unless i'm mistaken, i didn't. auguste did, but i may have inadvertently approved his edit. it's reverted now.
 good either or isn't a simplehtmldom object, and you simply assumed that you'd always find a match in the dom. never assume success when dealing with external resources. always assume failure, check for failure, and treat success as a pleasant surprise.
 good use select count from users instead select g, g, g from users.. and i guess an additional dgd is there may causing the issue.
+good in this case mocha chains returned promise with after was called. so chained needs another to be executed. again, q promises are synchronous, and mocha's promise returns are meant for asynchronous specs.
+good the nook simple touch does not have multi-user capabilities.
+good -.. still you are not clear, where actually u want to add the class. also you said two datepicker but it has only one th
+good sorry to belabor the point there is no risk that i would be doing unmatched in swift, correct?
+good since my suggestion worked, i will make a full post with the hope you will accept
+good interesting that you are having the opposite problem that most people have. the linq query is doing a sql compare which is failing apparently, whereas the for loop is forcing the execution of the query into memory, then doing a .net comparison. usually the sql comparison is more forgiving because it is case insensitive by default.
 bad thanks this will surely help i dont know a dumb bitch just rudely answered cuz he doesnt know but ur a good guy thanks a lot mate u made my day
 bad stop wasting your time. downvote and move on.
 bad wtf - why - fuckers?
@@ -2304,6 +2304,7 @@ bad thanks so much jorg. i write the code from home for my business. sorry for b
 bad i, personally think you should not receive any help from the people here at so who devote their valuable time to help others. my reason? you haven't explained yourself properly and have a poor attitude.
 bad don't worry though not gonna waste time on this question anymore
 bad this answer really looks like spam.
+bad was writing this question easier than pressing enter?
 bad you convinced me. john deserved the downvotes and i shouldn't have said anything in his defense. in fact, i should have humiliated him myself.
 bad my god please stop thats decent annoying
 bad i take it that the person who downvoted is just an idiot then.
@@ -2350,7 +2351,6 @@ bad i wroted it myself u cyberbullies. stop.
 bad it's just one of the utterly unbelievable things about apple that they haven't fixed this. that, and the fucked-up graphics cards in mbps.
 bad destroction ass!
 bad sorry for the stupid website with all the adds but didnt really want to register anywhere for this
-bad of coufse can code asynchoslu, but rezlize fuckon fo support
 bad you need to create a question it is possible to answer.
 bad did i say that i need your care?! funny. i'm tired of duplicated people like you so it is normal that you do not care and neither do i. your comments to me are nonsense, let alone your down-vote. if you have a good point to throw.
 bad hey guys. wtf
@@ -2458,6 +2458,20 @@ bad if u have answer then give, otherwise u can leave it
 bad if u know the answer just tell it. otherwise just leave it. don't put scene here.
 bad wow, you didn't even bother to write a proper sentence, why should anyone invest any of his time to answer this junk?
 bad tell your manager heshe needs to give the assignment to someone else
+bad i don't think this is even worth asking.. a small google search would of given you the answer.. or just stick with trial and error and experimenting.
+bad ever try google?
+bad is google not installed on your machine?
+bad what the hell is wrong with you ???? d seriously ?
+bad rtfm or ask a new question.
+bad format your code properly first. it looks ugly.
+bad have you tried this yourself? by the way it doesn't work.
+bad so why don't you do your own homework instead of dumping it here?
+bad so what's the question? what's the code? or do you prefer us to provide you with magic out of the air?
+bad you don't know enough sql to create a select query?
+bad did you try anything at all? did you search for this? do you even know javascript?
+bad this question shows zero research effort...
+bad oh dear you don't want to have it so complicated do you?
+bad you seriously don't even know how to write code? kindly check out the tour.
 bad if you think you're being clever you aren't.
 bad mexican police takes a random african animal and pour soda with chili into its nose until it admits that it's an elephant.
 bad just remember that they hate you
@@ -3987,17 +4001,3 @@ bad you are more likely to be killed by those mm's then a syrian refugee.
 bad as i have been walking in d rainthose prepared by corrupt u.s.a governmentofficials as me were followingmehoping i can be killed off today
 bad will you open the book of life has end all the hate killing wars or just let more be killed raped all will know
 bad i'll do worse, i'll have an army of pikmin beat him to a pulp then have them carry his corpse back to the onion-
-bad he beat him last year in the playoff with cardale fucking jones at qb, tells me all i need to know. meyer's the goat.
-bad we were in the violin shop and my uncle called a viola the bass fiddle and i wanted to rip off my arm and beat him with up dead
-bad but on some real shit you're probably the biggest faggot on twitter who doesn't train or workout, plain and simple fanboy
-bad too bad your the biggest faggot to walk this planet
-bad why do i turn in to the biggest faggot when ever i listen to vogue
-bad youre actually the biggest faggot i know but still cute
-bad you are the biggest faggot i have ever seen.
-bad biggest faggot in boxing,openly ducks opponents by faking injuries,twice devon and now chaves,he keeps fighting his
-bad . biggest faggot on the internet?
-bad the guy i kicked was literally the biggest faggot i've ever played with
-bad luxray is the biggest faggot that xrays fucking play legit cunt and you are terrible.
-bad biggest faggot in the world i everything lame ass fuck and when i'm in oakland i'm slapping his ass
-bad seriously the biggest faggot ever
-bad sportstalkjoe is the biggest faggot

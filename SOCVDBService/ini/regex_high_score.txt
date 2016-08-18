@@ -6,6 +6,7 @@
 (?i)\b(yo)?u suck
 (?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{0,10})?)moron(\s|\.|!|\?|$)
 (?i)(you?|u|\she)(.{0,12})\sloo?ser
+(?i)\bgo.{0,8}hell
 (?i)\binsults?\b(?! to injury)
 (?i)nigg(a|er)|negro(\s|\.|!|\?|$)
 (?i)\ba\S{0,4}hole

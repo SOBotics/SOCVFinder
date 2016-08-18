@@ -111,7 +111,7 @@ public class ChatBot {
 		//http://chat.stackoverflow.com/rooms/98569/bin-bash
 		this.joinRoom("stackoverflow.com", 98569, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 		//http://chat.stackoverflow.com/rooms/120759/godaddy-burnination
-		//this.joinRoom("stackoverflow.com", 120759, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
+		this.joinRoom("stackoverflow.com", 120759, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 		
 	}
 	
