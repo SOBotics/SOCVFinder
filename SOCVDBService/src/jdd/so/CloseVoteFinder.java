@@ -85,6 +85,8 @@ public class CloseVoteFinder {
 	private Set<Long> whiteList;
 	private Map<Long,List<String>> roomTags;
 
+	private boolean feedHeat = true;
+	
 	private ConnectionHandler connectionHandler;
 
 	private CloseVoteFinder(Properties properties) {
@@ -535,6 +537,14 @@ public class CloseVoteFinder {
 
 	public void setRoomTags(Map<Long, List<String>> roomTags) {
 		this.roomTags = roomTags;
+	}
+
+	public boolean isFeedHeat() {
+		return feedHeat;
+	}
+
+	public void setFeedHeat(boolean feedHeat) {
+		this.feedHeat = feedHeat;
 	}
 
 	

@@ -85,8 +85,8 @@ public class CommentsController extends Thread {
 		List<Long> notifyOffensiveUser = new ArrayList<>();
 		notifyOffensiveUser.add(5292302L);
 		notifyOffensiveUser.add(4174897L);
-		notifyOffensiveUser.add(4875631L);
-		notifyOffensiveUser.add(1413395L);
+//		notifyOffensiveUser.add(4875631L);
+//		notifyOffensiveUser.add(1413395L);
 		while (!shutDown) {
 			
 			
@@ -200,38 +200,42 @@ public class CommentsController extends Thread {
 		try {
 			int score = commentCategory.classifyComment(c);
 			hit = score>=4;
-			if (hit){
-				String commentLink = c.getLink();
-				if (commentLink==null){
-					commentLink = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();						
-				}
-				
-				StringBuilder message = getHeatMessageResult(c, commentLink);
-				if (!notifyOffensiveUserPresent.isEmpty()){
-					message.append(" cc: ");
-					for (User user : notifyOffensiveUserPresent) {
-						message.append("@").append(user.getName().replaceAll(" ", "")).append(" ");
-						
-					}
-				}
-				socvfinder.send(message.toString());
-				
-				CompletableFuture<Long> mid = socvfinder.send(commentLink);
-				
-				mid.thenAccept(new Consumer<Long>() {
-
-					@Override
-					public void accept(Long t) {
-						EditRudeCommentThread erct = new EditRudeCommentThread(socvfinder, t, c.getLink());
-						erct.start();
-					}
-				});
+			if (hit && CloseVoteFinder.getInstance().isFeedHeat() && !notifyOffensiveUserPresent.isEmpty()){
+				reportComment(socvfinder, notifyOffensiveUserPresent, c);
 			}
 
 		} catch (Exception e) {
 			logger.error("run()", e);
 		}
 		return hit;
+	}
+
+	private void reportComment(ChatRoom socvfinder, List<User> notifyOffensiveUserPresent, Comment c) {
+		String commentLink = c.getLink();
+		if (commentLink==null){
+			commentLink = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();						
+		}
+		
+		StringBuilder message = getHeatMessageResult(c, commentLink);
+		if (!notifyOffensiveUserPresent.isEmpty()){
+			message.append(" cc: ");
+			for (User user : notifyOffensiveUserPresent) {
+				message.append("@").append(user.getName().replaceAll(" ", "")).append(" ");
+				
+			}
+		}
+		socvfinder.send(message.toString());
+		
+		CompletableFuture<Long> mid = socvfinder.send(commentLink);
+		
+		mid.thenAccept(new Consumer<Long>() {
+
+			@Override
+			public void accept(Long t) {
+				EditRudeCommentThread erct = new EditRudeCommentThread(socvfinder, t, c.getLink());
+				erct.start();
+			}
+		});
 	}
 
 	public StringBuilder getHeatMessageResult(Comment c, String commentLink) {

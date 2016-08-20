@@ -30,6 +30,7 @@ import jdd.so.bot.actions.cmd.ShutDownCommand;
 import jdd.so.bot.actions.cmd.StatsMeCommand;
 import jdd.so.bot.actions.cmd.StatsRoomCommand;
 import jdd.so.bot.actions.cmd.StatsTagCommand;
+import jdd.so.bot.actions.cmd.StopStartHeatFeed;
 import jdd.so.bot.actions.cmd.UserListCommand;
 import jdd.so.bot.actions.cmd.WhiteListCommand;
 
@@ -64,6 +65,7 @@ public class BotCommandsRegistry {
 		 * [tag: run (and this is also use in other commands)
 		 */
 		//commands.add(new PingCommand()); //Removing this fun
+		commands.add(new CommentTestCommand());
 		commands.add(new CommandsCommand());
 		commands.add(new HelpCommand());
 		commands.add(new OptInCommand());
@@ -87,10 +89,10 @@ public class BotCommandsRegistry {
 		commands.add(new WhiteListCommand());
 		commands.add(new DuplicateWhiteListCommand());
 		commands.add(new DuplicateConfirmCommand());
+		commands.add(new StopStartHeatFeed());
 		commands.add(new CommentOffensiveTpCommand());
 		commands.add(new CommentOffensiveFpCommand());
 		commands.add(new CommentReportCommand());
-		commands.add(new CommentTestCommand());
 		
 		commands.add(new DeleteCommentCommand());
 		commands.add(new ShutDownCommand());
