@@ -29,11 +29,13 @@ import jdd.so.api.ApiHandler;
 import jdd.so.api.model.ApiResult;
 import jdd.so.api.model.Question;
 import jdd.so.dao.BatchDAO;
+import jdd.so.dao.CommentsNotifyDAO;
 import jdd.so.dao.ConnectionHandler;
 import jdd.so.dao.DuplicateNotificationsDAO;
 import jdd.so.dao.RoomTagDAO;
 import jdd.so.dao.UserDAO;
 import jdd.so.dao.WhitelistDAO;
+import jdd.so.dao.model.CommentsNotify;
 import jdd.so.dao.model.DuplicateNotifications;
 import jdd.so.dao.model.RoomTag;
 import jdd.so.dao.model.User;
@@ -86,6 +88,8 @@ public class CloseVoteFinder {
 	private Map<Long,List<String>> roomTags;
 
 	private boolean feedHeat = true;
+	private List<CommentsNotify> commentsNotify;
+
 	
 	private ConnectionHandler connectionHandler;
 
@@ -114,11 +118,14 @@ public class CloseVoteFinder {
 				loadDupeHunters();
 				loadBatchNumbers();
 				loadWhiteList();
+				loadCommentsNotify();
 			} catch (SQLException e) {
 				logger.error("CloseVoteFinder(Properties)", e);
 			}
 		}
 	}
+
+
 
 	/**
 	 * Init the instance
@@ -240,6 +247,10 @@ public class CloseVoteFinder {
 
 	private void loadBatchNumbers() throws SQLException {
 		batchNumbers = new BatchDAO().getBatchNumbers(this.dbConnection);
+	}
+	
+	private void loadCommentsNotify() throws SQLException {
+		this.commentsNotify = new CommentsNotifyDAO().getCommentsNotify(this.dbConnection);
 	}
 
 	public void shutDown() {
@@ -545,6 +556,23 @@ public class CloseVoteFinder {
 
 	public void setFeedHeat(boolean feedHeat) {
 		this.feedHeat = feedHeat;
+	}
+
+	public List<CommentsNotify> getCommentsNotify() {
+		return commentsNotify;
+	}
+
+
+
+	public CommentsNotify getCommentsNotify(long userId) {
+		if (commentsNotify!=null){
+			for (CommentsNotify cn : commentsNotify) {
+				if (cn.getUserId()==userId){
+					return cn;
+				}
+			}
+		}
+		return null;
 	}
 
 	

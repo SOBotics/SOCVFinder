@@ -2,7 +2,6 @@ package jdd.so.bot.actions.cmd;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 

@@ -16,13 +16,11 @@ import jdd.so.api.model.Comment;
 import opennlp.tools.doccat.DoccatModel;
 import opennlp.tools.doccat.DocumentCategorizerME;
 import weka.classifiers.Classifier;
-import weka.classifiers.bayes.NaiveBayesMultinomialText;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instances;
 import weka.core.SerializationHelper;
 import weka.core.converters.ConverterUtils.DataSource;
-import weka.core.stopwords.StopwordsHandler;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.StringToWordVector;
 

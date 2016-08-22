@@ -5,12 +5,10 @@ import java.io.FileReader;
 
 import weka.classifiers.Classifier;
 import weka.classifiers.bayes.NaiveBayesMultinomialText;
-import weka.classifiers.trees.J48;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
-import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.StringToWordVector;
 
 public class TestWekaClassifier {

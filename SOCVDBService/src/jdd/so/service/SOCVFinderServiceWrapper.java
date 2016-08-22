@@ -1,8 +1,6 @@
 package jdd.so.service;
 
 import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 import org.alicebot.ab.AIMLProcessor;
@@ -15,23 +13,6 @@ import org.tanukisoftware.wrapper.WrapperManager;
 
 import jdd.so.CloseVoteFinder;
 import jdd.so.bot.ChatBot;
-import jdd.so.bot.ChatRoom;
-import jdd.so.bot.actions.BotCommand;
-import jdd.so.bot.actions.cmd.AddUserCommand;
-import jdd.so.bot.actions.cmd.AiChatCommand;
-import jdd.so.bot.actions.cmd.ApiQuotaCommand;
-import jdd.so.bot.actions.cmd.CommandsCommand;
-import jdd.so.bot.actions.cmd.DeleteCommentCommand;
-import jdd.so.bot.actions.cmd.DuplicateConfirmCommand;
-import jdd.so.bot.actions.cmd.DuplicateWhiteListCommand;
-import jdd.so.bot.actions.cmd.HelpCommand;
-import jdd.so.bot.actions.cmd.OptInCommand;
-import jdd.so.bot.actions.cmd.OptOutCommand;
-import jdd.so.bot.actions.cmd.RoomLeaveCommand;
-import jdd.so.bot.actions.cmd.RoomTagAdd;
-import jdd.so.bot.actions.cmd.RoomTagList;
-import jdd.so.bot.actions.cmd.RoomTagRemove;
-import jdd.so.bot.actions.cmd.ShutDownCommand;
 
 public class SOCVFinderServiceWrapper implements WrapperListener {
 	/**

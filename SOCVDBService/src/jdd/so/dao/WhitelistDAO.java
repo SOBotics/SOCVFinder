@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import jdd.so.dao.model.WhiteList;

@@ -30,6 +30,7 @@ import jdd.so.api.model.Question;
 import jdd.so.bot.ChatBot;
 import jdd.so.bot.ChatRoom;
 import jdd.so.dao.CommentDAO;
+import jdd.so.dao.model.CommentsNotify;
 import jdd.so.dao.model.DuplicateNotifications;
 import jdd.so.nlp.CommentCategory;
 
@@ -41,7 +42,7 @@ public class CommentsController extends Thread {
 
 	private static final int MAX_POST_ID_QUE = 10;
 	private ApiHandler apiHandler;
-	private CommentCategory commentCategory; 
+	private CommentCategory commentCategory;
 	private ChatBot cb;
 	private Queue<Long> lastPostIds;
 
@@ -78,27 +79,14 @@ public class CommentsController extends Thread {
 
 		ChatRoom socvfinder = cb.getChatRoom(111347);
 		CommentDAO commentDao = new CommentDAO();
-		
+
 		long highTrafficTime = 3 * 30 * 1000L; // Every 1,5 minute
 		long lowTrafficTime = 4 * 60 * 1000L; // Every four minutes
 		long sleepTime = highTrafficTime;
-		List<Long> notifyOffensiveUser = new ArrayList<>();
-		notifyOffensiveUser.add(5292302L);
-		notifyOffensiveUser.add(4174897L);
-//		notifyOffensiveUser.add(4875631L);
-//		notifyOffensiveUser.add(1413395L);
 		while (!shutDown) {
-			
-			
+
 			try {
-				
-				List<User> notifyOffensiveUserPresent = new ArrayList<>();
-				for (Long id : notifyOffensiveUser) {
-					User user = socvfinder.getUser(id);
-					if (user!=null && user.isCurrentlyInRoom()){
-						notifyOffensiveUserPresent.add(user);
-					}
-				}
+
 				ApiResult ap = apiHandler.getComments(start, 10);
 				if (ap.getBackoff() > 0) {
 					logger.warn("run() - Backoff " + ap.getBackoff());
@@ -135,21 +123,21 @@ public class CommentsController extends Thread {
 					/**
 					 * RUDE OFFENSIVE TEST
 					 */
-					
-					boolean hit = classifyComment(socvfinder,notifyOffensiveUserPresent, c);
-					if (hit){
+
+					boolean hit = classifyComment(socvfinder, c);
+					if (hit) {
 						possibileRude.add(c);
 					}
 				}
-				
-				if (!possibileRude.isEmpty()){
+
+				if (!possibileRude.isEmpty()) {
 					try {
 						commentDao.insertComment(CloseVoteFinder.getInstance().getConnection(), possibileRude);
 					} catch (SQLException e) {
 						logger.error("run()", e);
 					}
 				}
-					
+
 				if (!possibileDupes.isEmpty()) {
 					if (logger.isDebugEnabled()) {
 						logger.debug("run() ----- GET QUESTIONS -----");
@@ -166,7 +154,7 @@ public class CommentsController extends Thread {
 					}
 					ApiResult arQ = apiHandler.getQuestions(qQuery.toString(), null, false, null);
 					List<Question> questions = arQ.getQuestions();
-					//Removed closed questions
+					// Removed closed questions
 					notifyRooms(questions);
 					if (arQ.getBackoff() > 0) {
 						logger.warn("run() - Backoff " + arQ.getBackoff());
@@ -195,13 +183,15 @@ public class CommentsController extends Thread {
 
 	}
 
-	private boolean classifyComment(ChatRoom socvfinder, List<User> notifyOffensiveUserPresent, Comment c) {
+	private boolean classifyComment(ChatRoom socvfinder, Comment c) {
 		boolean hit = false;
 		try {
 			int score = commentCategory.classifyComment(c);
-			hit = score>=4;
-			if (hit && CloseVoteFinder.getInstance().isFeedHeat() && !notifyOffensiveUserPresent.isEmpty()){
-				reportComment(socvfinder, notifyOffensiveUserPresent, c);
+			hit = score >= 4;
+			if (hit && CloseVoteFinder.getInstance().isFeedHeat()) {
+				if (isUserWithScorePresent(socvfinder, score)) {
+					notifyComment(socvfinder, c);
+				}
 			}
 
 		} catch (Exception e) {
@@ -210,24 +200,39 @@ public class CommentsController extends Thread {
 		return hit;
 	}
 
-	private void reportComment(ChatRoom socvfinder, List<User> notifyOffensiveUserPresent, Comment c) {
-		String commentLink = c.getLink();
-		if (commentLink==null){
-			commentLink = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();						
+	private boolean isUserWithScorePresent(ChatRoom socvfinder, int score) {
+		List<CommentsNotify> cnList = CloseVoteFinder.getInstance().getCommentsNotify();
+		for (CommentsNotify cn : cnList) {
+			if (cn.isNotify() && cn.getScore() <= score) {
+				User u = socvfinder.getUser(cn.getUserId());
+				if (u != null && u.isCurrentlyInRoom()) {
+					return true;
+				}
+			}
 		}
-		
+		return false;
+	}
+
+	private void notifyComment(ChatRoom socvfinder, Comment c) {
+		String commentLink = c.getLink();
+		if (commentLink == null) {
+			commentLink = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();
+		}
+
 		StringBuilder message = getHeatMessageResult(c, commentLink);
-		if (!notifyOffensiveUserPresent.isEmpty()){
-			message.append(" cc: ");
-			for (User user : notifyOffensiveUserPresent) {
-				message.append("@").append(user.getName().replaceAll(" ", "")).append(" ");
-				
+		message.append(" cc: ");
+		for (CommentsNotify cn : CloseVoteFinder.getInstance().getCommentsNotify()) {
+			if (cn.isNotify() && cn.getScore() <= c.getScore()) {
+				User u = socvfinder.getUser(cn.getUserId());
+				if (u != null && u.isCurrentlyInRoom()) {
+					message.append("@").append(u.getName().replaceAll(" ", "")).append(" ");
+				}
 			}
 		}
 		socvfinder.send(message.toString());
-		
+
 		CompletableFuture<Long> mid = socvfinder.send(commentLink);
-		
+
 		mid.thenAccept(new Consumer<Long>() {
 
 			@Override
@@ -242,45 +247,47 @@ public class CommentsController extends Thread {
 		StringBuilder message = new StringBuilder("[ [Heat Detector](http://stackapps.com/questions/7001/) ]");
 		message.append(" SCORE: ").append(c.getScore()).append(" ").append(getStars(c.getScore()));
 		message.append(" (").append(getBoldRegexHit(c.isRegExHit())).append("Regex").append(getBoldRegexHit(c.isRegExHit())).append(":").append(c.isRegExHit());
-		message.append(" ").append(isHitBold(c.getNaiveBayesBad(),CommentCategory.WEKA_NB_THRESHOLD)).append("NaiveBayes").append(isHitBold(c.getNaiveBayesBad(),CommentCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getNaiveBayesBad()));
-		message.append(" ").append(isHitBold(c.getJ48Bad(),CommentCategory.WEKA_J48_THRESHOLD)).append("J48").append(isHitBold(c.getJ48Bad(),CommentCategory.WEKA_J48_THRESHOLD)).append(":").append(nfThreshold.format(c.getJ48Bad()));
-		//message.append(" ").append(isHitBold(c.getSmoBad(),CommentCategory.WEKA_SMO_THRESHOLD)).append("SMO").append(isHitBold(c.getSmoBad(),CommentCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getSmoBad()));
-		message.append(" ").append(isHitBold(c.getOpenNlpBad(),CommentCategory.OPEN_NLP_THRESHOLD)).append("OpenNLP").append(isHitBold(c.getOpenNlpBad(),CommentCategory.OPEN_NLP_THRESHOLD)).append(":").append(nfThreshold.format(c.getOpenNlpBad())).append(")");
-		if (commentLink!=null){
+		message.append(" ").append(isHitBold(c.getNaiveBayesBad(), CommentCategory.WEKA_NB_THRESHOLD)).append("NaiveBayes")
+				.append(isHitBold(c.getNaiveBayesBad(), CommentCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getNaiveBayesBad()));
+		message.append(" ").append(isHitBold(c.getJ48Bad(), CommentCategory.WEKA_J48_THRESHOLD)).append("J48")
+				.append(isHitBold(c.getJ48Bad(), CommentCategory.WEKA_J48_THRESHOLD)).append(":").append(nfThreshold.format(c.getJ48Bad()));
+		// message.append("
+		// ").append(isHitBold(c.getSmoBad(),CommentCategory.WEKA_SMO_THRESHOLD)).append("SMO").append(isHitBold(c.getSmoBad(),CommentCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getSmoBad()));
+		message.append(" ").append(isHitBold(c.getOpenNlpBad(), CommentCategory.OPEN_NLP_THRESHOLD)).append("OpenNLP")
+				.append(isHitBold(c.getOpenNlpBad(), CommentCategory.OPEN_NLP_THRESHOLD)).append(":").append(nfThreshold.format(c.getOpenNlpBad())).append(")");
+		if (commentLink != null) {
 			message.append(" [comment](").append(commentLink).append(")");
 		}
 		return message;
 	}
 
 	private String getStars(int score) {
-		String stars ="";
+		String stars = "";
 		int n = 0;
-		for(int i=0;i<(score/2);i++){
-			stars+="★";
+		for (int i = 0; i < (score / 2); i++) {
+			stars += "★";
 			n++;
 		}
-		for (int i=n;i<5;i++){
-			stars+="☆";
+		for (int i = n; i < 5; i++) {
+			stars += "☆";
 		}
 		return stars;
 	}
 
 	private String getBoldRegexHit(boolean regExHit) {
-		if (regExHit){
+		if (regExHit) {
 			return "**";
 		}
 		return "";
 	}
 
 	private String isHitBold(double badThreshold, double threshold) {
-		if (badThreshold>=threshold){
+		if (badThreshold >= threshold) {
 			return "**";
 		}
 		return "";
 	}
-	
-	
-	
+
 	public void addPostIdToQue(long postId) {
 		this.lastPostIds.add(postId);
 		if (this.lastPostIds.size() > MAX_POST_ID_QUE) {
@@ -295,14 +302,15 @@ public class CommentsController extends Thread {
 
 		List<ChatRoom> rooms = new ArrayList<>();
 		rooms.addAll(cb.getRooms().values());
-		
+
 		for (Question q : notifyTheseQuestions) {
-			if (q.isClosed()){
+			if (q.isClosed()) {
 				continue;
 			}
 			for (ChatRoom cr : rooms) {
-				String message = "[ [SOCVFinder](http://stackapps.com/questions/6910/) ] [tag:possible-duplicate] " + getTags(cr,q) + " [" + getSanitizedTitle(q) + "](//stackoverflow.com/q/" + q.getQuestionId() + ")";
-				if (isQuestionToBeNotified(cr,q)){
+				String message = "[ [SOCVFinder](http://stackapps.com/questions/6910/) ] [tag:possible-duplicate] " + getTags(cr, q) + " ["
+						+ getSanitizedTitle(q) + "](//stackoverflow.com/q/" + q.getQuestionId() + ")";
+				if (isQuestionToBeNotified(cr, q)) {
 					String send = message + getNotifyHunters(cr, q);
 					cr.send(send);
 				}
@@ -334,15 +342,15 @@ public class CommentsController extends Thread {
 			boolean inTags = false;
 			for (String tag : q.getTags()) {
 				if (rt.contains(tag)) {
-					inTags= true;
+					inTags = true;
 					break;
 				}
 			}
-			
-			if (!inTags){
+
+			if (!inTags) {
 				return false;
 			}
-			
+
 			List<DuplicateNotifications> dupNotifs = CloseVoteFinder.getInstance().getHunters(cr.getRoomId(), q.getTags());
 			for (DuplicateNotifications dn : dupNotifs) {
 				User u = cr.getUser(dn.getUserId());
@@ -357,9 +365,9 @@ public class CommentsController extends Thread {
 		}
 	}
 
-
 	private String getTags(ChatRoom cr, Question q) {
-		List<String> hammerTags = CloseVoteFinder.getInstance().getHunters(cr.getRoomId(), q.getTags()).stream().map(DuplicateNotifications::getTag).distinct().collect(Collectors.toCollection(ArrayList::new));
+		List<String> hammerTags = CloseVoteFinder.getInstance().getHunters(cr.getRoomId(), q.getTags()).stream().map(DuplicateNotifications::getTag).distinct()
+				.collect(Collectors.toCollection(ArrayList::new));
 		q.getTags().stream().filter(t -> !hammerTags.contains(t)).findFirst().ifPresent(hammerTags::add);
 		return hammerTags.stream().map(t -> "[tag:" + t + "]").collect(Collectors.joining(" "));
 	}

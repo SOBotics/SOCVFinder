@@ -15,6 +15,7 @@ import jdd.so.bot.actions.cmd.CommentOffensiveFpCommand;
 import jdd.so.bot.actions.cmd.CommentOffensiveTpCommand;
 import jdd.so.bot.actions.cmd.CommentReportCommand;
 import jdd.so.bot.actions.cmd.CommentTestCommand;
+import jdd.so.bot.actions.cmd.CommentsNotifyCommand;
 import jdd.so.bot.actions.cmd.DeleteCommentCommand;
 import jdd.so.bot.actions.cmd.DuplicateConfirmCommand;
 import jdd.so.bot.actions.cmd.DuplicateWhiteListCommand;
@@ -89,6 +90,7 @@ public class BotCommandsRegistry {
 		commands.add(new WhiteListCommand());
 		commands.add(new DuplicateWhiteListCommand());
 		commands.add(new DuplicateConfirmCommand());
+		commands.add(new CommentsNotifyCommand());
 		commands.add(new StopStartHeatFeed());
 		commands.add(new CommentOffensiveTpCommand());
 		commands.add(new CommentOffensiveFpCommand());

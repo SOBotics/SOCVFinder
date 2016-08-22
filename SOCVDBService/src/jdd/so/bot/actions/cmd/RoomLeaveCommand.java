@@ -2,7 +2,6 @@ package jdd.so.bot.actions.cmd;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
-import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
