@@ -45,7 +45,7 @@ The [be-nice](http://stackoverflow.com/help/be-nice) policy states fairly clearl
  - [Are “tl;dr” comments considered rude and/or are they discouraged?](http://meta.stackexchange.com/questions/134831/are-tldr-comments-considered-rude-and-or-are-they-discouraged).
  - [What's with all the rude comments recently?](http://meta.stackexchange.com/questions/15143/whats-with-all-the-rude-comments-recently).
  - [The rudeness on Stack Overflow is too damn high](http://meta.stackoverflow.com/questions/262791/the-rudeness-on-stack-overflow-is-too-damn-high).
- - [Are we getting overly aggressive in comments towards homework questions (again)?](href="http://meta.stackoverflow.com/questions/272421/are-we-getting-overly-aggressive-in-comments-towards-homework-questions-again).
+ - [Are we getting overly aggressive in comments towards homework questions (again)?](http://meta.stackoverflow.com/questions/272421/are-we-getting-overly-aggressive-in-comments-towards-homework-questions-again).
  - [Is this constructive or am I just being rude?](http://meta.stackoverflow.com/questions/275689/is-this-constructive-or-am-i-just-being-rude).
       
 it seems fairly clear that these should be flagged as "offensive" or "non-constructive". However the comments above are a selection of comments with a declined non-constructive flags, comments by high-rep users and one is a comment from a moderator (later edited to be less offensive).
