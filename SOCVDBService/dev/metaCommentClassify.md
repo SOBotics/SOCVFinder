@@ -50,7 +50,7 @@ The [be-nice](http://stackoverflow.com/help/be-nice) policy states fairly clearl
       
 it seems fairly clear that these should be flagged as "offensive" or "non-constructive". However the comments above are a selection of comments with a declined non-constructive flags, comments by high-rep users and one is a comment from a moderator (later edited to be less offensive).
 
-***Should such comments be included in the "bad feed" of a classifier or not? Do we want such comments to be considered by an automatic system looking for rudeness?***
+***Should such comments be included in the "bad feed" of a classifier or not? Do we want to hunt down such comments by an automatic system looking for rudeness?***
 
 Whether 'tis nobler in the mind to suffer<br/>
 The slings and arrows of outrageous comments,<br/>
