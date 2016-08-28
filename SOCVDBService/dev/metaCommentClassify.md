@@ -10,6 +10,8 @@ The flame-out comments from new users are often easy to classify but, everyday, 
 
 > Wow, you didn't even bother to write a proper sentence, why should anyone invest any of his time to answer this junk? 
 
+> keep asking crappy duplicate questions and you will be on meta asking why you are question banned next.
+
 > STFW. First result of googling react rails: github.com/reactjs/react-rails 
 
 > my eyessssss they burn
