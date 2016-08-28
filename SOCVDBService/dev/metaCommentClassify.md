@@ -48,7 +48,7 @@ The [be-nice](http://stackoverflow.com/help/be-nice) policy states fairly clearl
  - [Are we getting overly aggressive in comments towards homework questions (again)?](http://meta.stackoverflow.com/questions/272421/are-we-getting-overly-aggressive-in-comments-towards-homework-questions-again).
  - [Is this constructive or am I just being rude?](http://meta.stackoverflow.com/questions/275689/is-this-constructive-or-am-i-just-being-rude).
       
-it seems fairly clear that these should be flagged as "offensive" or "non-constructive". However the comments above are a selection of comments with a declined non-constructive flags, comments by high-rep users and one is a comment from a moderator (later edited to be less offensive).
+it seems fairly clear that these should be flagged as "offensive" or "non-constructive". However the comments above are a selection of comments with declined non-constructive flags, comments by high-rep users and one is a comment from a moderator (later edited to be less offensive).
 
 ***Should such comments be included in the "bad feed" of a classifier or not? Do we want to hunt down such comments by an automatic system looking for rudeness?***
 
