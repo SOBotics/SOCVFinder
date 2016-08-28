@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Queue;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -231,7 +231,7 @@ public class CommentsController extends Thread {
 		}
 		socvfinder.send(message.toString());
 
-		CompletableFuture<Long> mid = socvfinder.send(commentLink);
+		CompletionStage<Long> mid = socvfinder.send(commentLink);
 
 		mid.thenAccept(new Consumer<Long>() {
 
@@ -416,7 +416,7 @@ public class CommentsController extends Thread {
 		String regExTest = "(?i)(cunt|rude|asshole|rape|bitch|whore|gay|nigger|faggot|slut|cock|eat my|dumbass|pussy|vagina|dick|fuck y|(yo)?u('re| are|r)? (an? )?idiot|(yo)?u('re| are|r)? (an? )?retard)";
 		regExTest = "(?is)\\b((yo)?u suck|8={3,}D|nigg(a|er)|ass ?hole|kiss my ass|dumbass|fag(got)?|slut|daf[au][qk]|(mother)?fuc?k+(ing?|e?(r|d)| off+| y(ou|e)(rself)?| u+|tard)?|shit(t?er|head)|dickhead|pedo|whore|(is a )?cunt|cocksucker|ejaculated?|butthurt|(private|pussy) show|lesbo|bitches|suck\\b.{0,20}\\bdick|dee[sz]e? nut[sz])s?\\b|^.{0,250}\\b(shit face)\\b.{0,100}$";
 
-		List<String> list = new ArrayList<String>();
+		List<String> list = new ArrayList<>();
 		Pattern p = Pattern.compile(regExTest);
 		Matcher m = p.matcher(message);
 		while (m.find()) {

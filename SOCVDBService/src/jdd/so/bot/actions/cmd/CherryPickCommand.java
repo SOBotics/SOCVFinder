@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
-import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 import java.util.function.BiConsumer;
 
 import org.apache.log4j.Logger;
@@ -46,7 +46,7 @@ public class CherryPickCommand extends BotCommand {
 	@Override
 	public String getMatchCommandRegex() {
 		return "(?i)(" + getRegexTag() + ")";
-		
+
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class CherryPickCommand extends BotCommand {
 			return;
 		}
 
-		CompletableFuture<Long> sentId = room.send("All right, dear, working on it...");
+		CompletionStage<Long> sentId = room.send("All right, dear, working on it...");
 		// load previous questions displayed
 		String openInOtherBatches = null;
 		if (!message.contains("-all")) {
@@ -126,11 +126,11 @@ public class CherryPickCommand extends BotCommand {
 				}
 				String editMessage = rpl;
 				sentId.thenAccept(messageId -> {
-					room.edit(messageId, editMessage).handleAsync((mId, thr) -> {
-						if (thr != null)
-							return room.replyTo(event.getMessage().getId(), editMessage).join();
-						return mId;
-					});
+					if (room.getRoom().isEditable(messageId)) {
+						room.edit(messageId, editMessage);
+					} else {
+						room.replyTo(event.getMessage().getId(), editMessage);
+					}
 				});
 				return;
 			}
@@ -164,11 +164,8 @@ public class CherryPickCommand extends BotCommand {
 				final String replyMessage = retMsg;
 
 				sentId.thenAccept(messageId -> {
-					room.edit(messageId, editMessage).handleAsync((mId, thr) -> {
-						if (thr != null)
-							return room.replyTo(event.getMessage().getId(), replyMessage).join();
-						return mId;
-					}).thenAccept(mId -> insertBatch(cpr, event.getUserId(), mId));
+					CompletionStage<Long> r = room.getRoom().isEditable(messageId) ? room.edit(messageId, editMessage) : room.replyTo(event.getMessage().getId(), replyMessage);
+					r.thenAccept(mId -> insertBatch(cpr, event.getUserId(), mId));
 				});
 
 			} else {
@@ -205,7 +202,7 @@ public class CherryPickCommand extends BotCommand {
 		}
 		room.send(questions);
 	}
-	
+
 	private String getSanitizedTitle(Question q) {
 		return Parser.unescapeEntities(q.getTitle(), false).replaceAll("(\\[|\\]|_|\\*|`)", "\\\\$1");
 	}
@@ -213,7 +210,7 @@ public class CherryPickCommand extends BotCommand {
 	private CherryPickResult getCherryPick(long chatRoomId, long userId, int batchNumber, String tag, QuestionsFilter questionFilter)
 			throws JSONException, IOException {
 		// 1. Check if tag is avialable in DB.
-		
+
 		// set api call
 		if (questionFilter.isBurniate()) {
 			questionFilter.setNumberOfApiCalls(30);

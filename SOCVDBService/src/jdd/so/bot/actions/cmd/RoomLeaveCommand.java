@@ -1,6 +1,6 @@
 package jdd.so.bot.actions.cmd;
 
-import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 import java.util.function.Consumer;
 
 import org.apache.log4j.Logger;
@@ -42,7 +42,7 @@ public class RoomLeaveCommand extends BotCommand {
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
-		CompletableFuture<Long> mId = room.replyTo(event.getMessage().getId(), "I'm leaving this room, I'll be back if rebooted");
+		CompletionStage<Long> mId = room.replyTo(event.getMessage().getId(), "I'm leaving this room, I'll be back if rebooted");
 		mId.thenAccept(new Consumer<Long>() {
 
 			@Override
@@ -50,7 +50,7 @@ public class RoomLeaveCommand extends BotCommand {
 				room.leave();
 			}
 		});
-		
+
 	}
 
 }

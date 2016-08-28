@@ -1,7 +1,7 @@
 package jdd.so.bot;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 
 import org.alicebot.ab.Chat;
 import org.alicebot.ab.MagicStrings;
@@ -18,23 +18,23 @@ import jdd.so.bot.actions.BotCommand;
  *
  */
 public class ChatRoom {
-	
+
 	public static final int DUPLICATION_NOTIFICATIONS_NONE = 0;
 	public static final int DUPLICATION_NOTIFICATIONS_ALL = 1;
 	public static final int DUPLICATION_NOTIFICATIONS_TAGS = 2;
 	public static final int DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM = 3;
-	
-	
+
+
 	private ChatBot bot;
 	private Room room;
 	private int currentBatchNumber;
 	private long lastPossibleDupComment; //unix time stamp of last comment
 	private boolean enableAi;
 	private Chat chatSession;
-	private CompletableFuture<Long> lastMessage;
+	private CompletionStage<Long> lastMessage;
 	private List<Class<? extends BotCommand>> allowedCommands;
 	private int dupNotifyStrategy;
-	
+
 
 	public ChatRoom(ChatBot bot, Room room, int startBatchNumber, List<Class<? extends BotCommand>> allowedCommands,int dupNotifyStrategy, boolean enableAi){
 		this.bot = bot;
@@ -46,7 +46,7 @@ public class ChatRoom {
 			chatSession =  new Chat(bot.getAiBot());
 		}
 	}
-	
+
 	public String getUnkownCommandResponse(String message,String userName) {
 		if (chatSession==null){
 			return "Sorry I did not recognize your command and the AI functions are disabled";
@@ -74,17 +74,17 @@ public class ChatRoom {
 		return room.getUser(userId);
 	}
 
-	public CompletableFuture<Long> replyTo(long messageId, String message) {
+	public CompletionStage<Long> replyTo(long messageId, String message) {
 		this.lastMessage = room.replyTo(messageId, message);
 		return this.lastMessage;
 	}
 
-	public CompletableFuture<Long> send(String message) {
+	public CompletionStage<Long> send(String message) {
 		this.lastMessage = room.send(message);
 		return this.lastMessage;
 	}
-	
-	public CompletableFuture<Long> edit(long messageId, String message){
+
+	public CompletionStage<Long> edit(long messageId, String message){
 		return room.edit(messageId,message);
 	}
 
@@ -92,10 +92,10 @@ public class ChatRoom {
 		return room.getRoomId();
 	}
 
-	public CompletableFuture<Void> delete(long messageId) {
+	public CompletionStage<Void> delete(long messageId) {
 		return room.delete(messageId);
 	}
-	
+
 	public void leave(){
 		this.room.leave();
 		this.bot.getRooms().remove(getRoomId());
@@ -104,7 +104,7 @@ public class ChatRoom {
 	public int getCurrentBatchNumber() {
 		return currentBatchNumber;
 	}
-	
+
 	public int getNextBatchNumber() {
 		currentBatchNumber++;
 		return currentBatchNumber;
@@ -129,7 +129,7 @@ public class ChatRoom {
 	public void setEnableAi(boolean enableAi) {
 		this.enableAi = enableAi;
 	}
-	
+
 	public String getRoomName(){
 		return room.getThumbs().getName();
 	}
@@ -147,7 +147,7 @@ public class ChatRoom {
 		return null;
 	}
 
-	public CompletableFuture<Long> getLastMessage() {
+	public CompletionStage<Long> getLastMessage() {
 		return lastMessage;
 	}
 
