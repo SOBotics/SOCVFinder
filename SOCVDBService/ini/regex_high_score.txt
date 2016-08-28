@@ -1,14 +1,14 @@
 #These are the regex executed on comment where usernamehas been removed
 (?i)this\s*(\w+)?\s*spam
-(?i)please,? be nice
+(?i)\bbe\snice\b
 (?i)(flag.*spam)
 (?i)(^|\s)stfw(\s|\.|!|\?|$)
 (?i)\b(yo)?u suck
 (?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{0,10})?)moron(\s|\.|!|\?|$)
 (?i)(you?|u|\she)(.{0,12})\sloo?ser
-(?i)\bgo.{0,8}hell
+(?i)\bgo.{0,8}hell\b
 (?i)\binsults?\b(?! to injury)
-(?i)nigg(a|er)|negro(\s|\.|!|\?|$)
+(?i)nigg(a|er)|negro\b
 (?i)\ba\S{0,4}hole
 (?i)dumb\s?ass
 (?i)\bfag(got)?
@@ -72,7 +72,7 @@
 (?i)(^|\s)kill\syou(\.|!|\s|$)
 (?i)jack\soff
 (?i)jail\s?bait
-(?i)\sjerks?(\.|!|\s|$)
+(?i)(?<!knee[ -])\bjerks?\b
 (?i)lolita
 (?i)milf
 (?i)\bpiss(ing)?\b
@@ -85,4 +85,3 @@
 (?i)\barrogant\b
 (?i)\bsnob\b
 (?i)shut\s?up\b
-
