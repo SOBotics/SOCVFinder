@@ -1,6 +1,6 @@
 #To flag, or not to flag- that is the question:
 
-Currently we are running a [StackApp, called Heat Detector,](http://stackapps.com/questions/7001/) using regular expression and NLP (Natural Language Processing) on all your comments. The goal of this project is to identify automatically offensive comments left throughout Stack Overflow.
+Currently we are running a [StackApp, called Heat Detector,](http://stackapps.com/questions/7001/) using regular expression and NLP (Natural Language Processing) on all your comments. The goal of this project is to identify automatically offensive comments in real-time left throughout Stack Overflow.
 
 The flame-out comments from new users are often easy to classify but, everyday, we see a continuous flow of borderline rude comments from the regular users of SO. Here's a sample: 
 
@@ -9,6 +9,8 @@ The flame-out comments from new users are often easy to classify but, everyday, 
 > please go back to reading some basic C# tutorials for beginners
 
 > Wow, you didn't even bother to write a proper sentence, why should anyone invest any of his time to answer this junk? 
+
+> keep asking crappy duplicate questions and you will be on meta asking why you are question banned next.
 
 > STFW. First result of googling react rails: github.com/reactjs/react-rails 
 
