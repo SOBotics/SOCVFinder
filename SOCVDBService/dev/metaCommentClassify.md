@@ -49,10 +49,10 @@ The flame-out comments from new users are often easy to classify but, everyday, 
 The [be-nice](http://stackoverflow.com/help/be-nice) policy states clearly that "If you don't have time to say something politely, just leave it for someone who does". Furthermore, reading all of these Meta posts:
 
  - FAQ on comments: [Etiquette for posting civil and informative comments](http://meta.stackexchange.com/questions/138173/etiquette-for-posting-civil-and-informative-comments).
- - [When should comments be flagged as ìnot constructiveî?](http://meta.stackexchange.com/questions/186308/when-should-comments-be-flagged-as-not-constructive).
+ - [When should comments be flagged as ‚Äúnot constructive‚Äù?](http://meta.stackexchange.com/questions/186308/when-should-comments-be-flagged-as-not-constructive).
  - [At what point are comments classified as rude or offensive for off-topic questions](http://meta.stackexchange.com/questions/184783/at-what-point-are-comments-classified-as-rude-or-offensive-for-off-topic-questio).
  - [What does Stack Overflow do about users who are very rude?](http://meta.stackexchange.com/questions/145222/what-does-stack-overflow-do-about-users-who-are-very-rude).
- - [Are ìtl;drî comments considered rude and/or are they discouraged?](http://meta.stackexchange.com/questions/134831/are-tldr-comments-considered-rude-and-or-are-they-discouraged).
+ - [Are ‚Äútl;dr‚Äù comments considered rude and/or are they discouraged?](http://meta.stackexchange.com/questions/134831/are-tldr-comments-considered-rude-and-or-are-they-discouraged).
  - [What's with all the rude comments recently?](http://meta.stackexchange.com/questions/15143/whats-with-all-the-rude-comments-recently).
  - [The rudeness on Stack Overflow is too damn high](http://meta.stackoverflow.com/questions/262791/the-rudeness-on-stack-overflow-is-too-damn-high).
  - [Are we getting overly aggressive in comments towards homework questions (again)?](http://meta.stackoverflow.com/questions/272421/are-we-getting-overly-aggressive-in-comments-towards-homework-questions-again).
@@ -62,9 +62,9 @@ it seems fairly clear that these should be flagged as "offensive" or "non-constr
 
 ***Should such comments be included in the "bad feed" of a classifier or not? Do we want to hunt down such comments by an automatic system looking for rudeness?***
 
-´ Whether 'tis nobler in the mind to suffer<br/>
+¬´ Whether 'tis nobler in the mind to suffer<br/>
 The slings and arrows of outrageous comments,<br/>
 Or to take arms against a sea of troubles,<br/>
 And by opposing end them? To die, to sleep<br/>
-No more, and by a sleep to say we endª
+No more, and by a sleep to say we end ¬ª
 
