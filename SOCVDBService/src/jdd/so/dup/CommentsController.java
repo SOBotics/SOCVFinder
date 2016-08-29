@@ -249,8 +249,8 @@ public class CommentsController extends Thread {
 		message.append(" (").append(getBoldRegexHit(c.isRegExHit())).append("Regex").append(getBoldRegexHit(c.isRegExHit())).append(":").append(c.isRegExHit());
 		message.append(" ").append(isHitBold(c.getNaiveBayesBad(), CommentCategory.WEKA_NB_THRESHOLD)).append("NaiveBayes")
 				.append(isHitBold(c.getNaiveBayesBad(), CommentCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getNaiveBayesBad()));
-		message.append(" ").append(isHitBold(c.getJ48Bad(), CommentCategory.WEKA_J48_THRESHOLD)).append("J48")
-				.append(isHitBold(c.getJ48Bad(), CommentCategory.WEKA_J48_THRESHOLD)).append(":").append(nfThreshold.format(c.getJ48Bad()));
+//		message.append(" ").append(isHitBold(c.getJ48Bad(), CommentCategory.WEKA_J48_THRESHOLD)).append("J48")
+//				.append(isHitBold(c.getJ48Bad(), CommentCategory.WEKA_J48_THRESHOLD)).append(":").append(nfThreshold.format(c.getJ48Bad()));
 		// message.append("
 		// ").append(isHitBold(c.getSmoBad(),CommentCategory.WEKA_SMO_THRESHOLD)).append("SMO").append(isHitBold(c.getSmoBad(),CommentCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getSmoBad()));
 		message.append(" ").append(isHitBold(c.getOpenNlpBad(), CommentCategory.OPEN_NLP_THRESHOLD)).append("OpenNLP")

@@ -75,8 +75,6 @@ public class PreProcesser {
 		//5-6. Remove intentional repetitions
 		result = removeIntentionalRepetitions(result);
 		
-		//7. Remove stop words
-		result = removeStopWords(result);
 		
 		//8. Remove chars not in sentance
 		result = removeNonSentanceChars(result);
@@ -120,12 +118,7 @@ public class PreProcesser {
 	}
 
 
-	private static String removeStopWords(String result) {
-		// TODO Implement was does this mean?
-		return result;
-	}
-
-
+	
 	private static String removeIntentionalRepetitions(String result) {
 		// TODO Improve implementation
 		//1 first if 3 letter or more
@@ -192,7 +185,7 @@ public class PreProcesser {
 		}
 	}
 	
-	private static void testTweets(String fileName, long readTime) throws IOException, InterruptedException{
+	public static void testTweets(String fileName, long readTime) throws IOException, InterruptedException{
 		CSVParser parser = CSVParser.parse(new File(fileName), Charset.forName("Cp1252"), CSVFormat.DEFAULT);
 		for (CSVRecord r : parser) {
 			String classif = r.get(0);
