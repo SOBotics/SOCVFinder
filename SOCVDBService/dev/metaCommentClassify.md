@@ -42,6 +42,8 @@ The flame-out comments from new users are often easy to classify but, everyday, 
 
 > Your question looks as crap. You should improve your text formatting. Here is a quick tutorial for that.
 
+> we are not here to write your code. And not here to use Google for you. Keep your wisdom to yourself about other members, that is not welcome here.
+
 The [be-nice](http://stackoverflow.com/help/be-nice) policy states clearly that "If you don't have time to say something politely, just leave it for someone who does". Furthermore, reading all of these Meta posts:
 
  - FAQ on comments: [Etiquette for posting civil and informative comments](http://meta.stackexchange.com/questions/138173/etiquette-for-posting-civil-and-informative-comments).
@@ -54,7 +56,7 @@ The [be-nice](http://stackoverflow.com/help/be-nice) policy states clearly that 
  - [Are we getting overly aggressive in comments towards homework questions (again)?](http://meta.stackoverflow.com/questions/272421/are-we-getting-overly-aggressive-in-comments-towards-homework-questions-again).
  - [Is this constructive or am I just being rude?](http://meta.stackoverflow.com/questions/275689/is-this-constructive-or-am-i-just-being-rude).
       
-it seems fairly clear that these should be flagged as "offensive" or "non-constructive". However the comments above are a selection of comments with declined non-constructive flags, comments by high-rep users and one is a comment from a moderator (later edited to be less offensive).
+it seems fairly clear that these should be flagged as "offensive" or "non-constructive", also since if OP can't keep his cool they lead to [flame post](http://meta.stackoverflow.com/questions/332276/i-lost-my-temper-did-i). However the comments above are a selection of comments with declined non-constructive flags, comments by high-rep users and one is a comment from a moderator (later edited to be less offensive).
 
 ***Should such comments be included in the "bad feed" of a classifier or not? Do we want to hunt down such comments by an automatic system looking for rudeness?***
 
