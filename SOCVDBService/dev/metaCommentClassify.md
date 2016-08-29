@@ -1,6 +1,6 @@
-#To flag, or not to flag- that is the question:
+#To nuke, or not to nuke- that is the question:
 
-Currently, we are running a StackApp, [called Heat Detector](http://stackapps.com/questions/7001/), using both regular expressions and NLP (Natural Language Processing) on all your comments. The goal of this project is to identify automatically offensive comments left throughout Stack Overflow. Earlier this year, [we asked for a dump of abusive comments](http://meta.stackoverflow.com/questions/326494/can-i-have-a-dump-of-rude-abusive-comments) and, together with manual classifying on _a lot_ of comments, we are now testing this application.
+Currently, we are running a StackApp, [called Heat Detector](http://stackapps.com/questions/7001/), using both regular expressions and NLP (Natural Language Processing) on all your comments. The goal of this project is to identify automatically offensive comments left throughout Stack Overflow. Earlier this year, [we asked for a dump of abusive comments](http://meta.stackoverflow.com/questions/326494/can-i-have-a-dump-of-rude-abusive-comments) and, together with manual classifying on _a lot_ of comments, we are now testing.
 
 The flame-out comments from new users are often easy to classify but, every single day, we see a continuous flow of borderline rude comments from the regular users of Stack Overflow. Here's a sample of sanitized comments (pings have been removed):
  
@@ -32,7 +32,7 @@ The flame-out comments from new users are often easy to classify but, every sing
 
 > we are not here to write your code. And not here to use Google for you. Keep your wisdom to yourself about other members, that is not welcome here.
 
-The [Be Nice](http://stackoverflow.com/help/be-nice) policy states clearly that "If you don't have time to say something politely, just leave it for someone who does". Furthermore, these Meta and blog posts:
+The [Be Nice](http://stackoverflow.com/help/be-nice) policy states clearly that "If you don't have time to say something politely, just leave it for someone who does". Furthermore, reading these Meta and blog posts:
 
  - FAQ on comments: [Etiquette for posting civil and informative comments](http://meta.stackexchange.com/questions/138173/etiquette-for-posting-civil-and-informative-comments).
  - [When should comments be flagged as “not constructive”?](http://meta.stackexchange.com/questions/186308/when-should-comments-be-flagged-as-not-constructive).
