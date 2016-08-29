@@ -1,6 +1,6 @@
 #To flag, or not to flag- that is the question:
 
-Currently, we are running a StackApp, [called Heat Detector](http://stackapps.com/questions/7001/), using both regular expressions and NLP (Natural Language Processing) on all your comments. The goal of this project is to identify automatically offensive comments left throughout Stack Overflow. Earlier this year, [we asked for a dump of abusive comments](http://meta.stackoverflow.com/questions/326494/can-i-have-a-dump-of-rude-abusive-comments) and, together with manual classifying on _a lot_ of comments, we are now testing this application
+Currently, we are running a StackApp, [called Heat Detector](http://stackapps.com/questions/7001/), using both regular expressions and NLP (Natural Language Processing) on all your comments. The goal of this project is to identify automatically offensive comments left throughout Stack Overflow. Earlier this year, [we asked for a dump of abusive comments](http://meta.stackoverflow.com/questions/326494/can-i-have-a-dump-of-rude-abusive-comments) and, together with manual classifying on _a lot_ of comments, we are now testing this application.
 
 The flame-out comments from new users are often easy to classify but, everyday, we see a continuous flow of borderline rude comments from the regular users of Stack Overflow. Here's a sample: 
 

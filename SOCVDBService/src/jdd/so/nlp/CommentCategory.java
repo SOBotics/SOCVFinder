@@ -351,7 +351,7 @@ public class CommentCategory {
 		System.out.println("Score: " + c.getScore());
 
 		c.setBody(
-				" Your conclusion has been as clear as wrong since the beginning. Since you make a statement and then refuse to properly argue your position, but instead attempt to blame others for your own actions like a child. I suggest you go back to your reviewing hobby, junior");
+				"Your conclusion has been as clear as wrong since the beginning. Since you make a statement and then refuse to properly argue your position, but instead attempt to blame others for your own actions like a child. I suggest you go back to your reviewing hobby, junior");
 		System.out.println(cc.classifyComment(c));
 		System.out.println("Score: " + c.getScore());
 
