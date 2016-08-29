@@ -45,7 +45,7 @@ The [Be Nice](http://stackoverflow.com/help/be-nice) policy states clearly that 
  - [Is this constructive or am I just being rude?](http://meta.stackoverflow.com/questions/275689/is-this-constructive-or-am-i-just-being-rude).
  - [The Hunting of the Snark](http://blog.stackoverflow.com/2012/07/the-hunting-of-the-snark/)
       
-it seems fairly clear that these should be flagged as "offensive" or "non-constructive". Also, if an OP cannot keep their cool, it will eventually lead to [flame posts](http://meta.stackoverflow.com/questions/332276/i-lost-my-temper-did-i). However these comments  were hand-picked because of their frequent appearence on the site (or variations of them) and are comments with declined non-constructive flags, comments by high-rep users and one is a comment from a moderator (later edited to be less offensive).
+it seems fairly clear that these should be flagged as "offensive" or "non-constructive". Also, if an OP cannot keep their cool, it will eventually lead to [flame posts](http://meta.stackoverflow.com/questions/332276/i-lost-my-temper-did-i). However these comments  were hand-picked because of their frequent appearence on the site (or variations of them) and some are with declined non-constructive flags, by high-rep users and one is a comment from a moderator (later edited to be less offensive).
 
 With such a mixed response, the question is:
 
