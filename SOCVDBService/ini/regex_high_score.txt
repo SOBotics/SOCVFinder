@@ -1,6 +1,6 @@
 #These are the regex executed on comment where usernamehas been removed
 (?i)this\s*(\w+)?\s*spam
-(?i)\bbe\snice\b
+(?i)\bbe.?nice\b
 (?i)(flag.*spam)
 (?i)(^|\s)stfw(\s|\.|!|\?|$)
 (?i)\b(yo)?u suck
@@ -14,7 +14,7 @@
 (?i)\bfag(got)?
 (?i)(^|\s)gay(\.|!|\s|$)
 (?i)\bsluts?\b
-(?i)\b(f\Sck(s|ers?|ed)?|f[kcuf]+k)\b
+(?i)\b(f(\W)*ck(s|ers?|ed)?|f[kcuf]+k)\b
 (?i)(^|\s)screw y(\s|\.|!|$)
 (?i)retard 
 (?i)bitch(\s|\.|!|\?|$)
@@ -75,6 +75,7 @@
 (?i)(?<!knee[ -])\bjerks?\b
 (?i)lolita
 (?i)milf
+(?i)shit.?head
 (?i)\bpiss(ing)?\b
 (?i)snowballing
 (?i)threesome

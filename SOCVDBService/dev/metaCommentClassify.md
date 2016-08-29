@@ -44,6 +44,8 @@ The flame-out comments from new users are often easy to classify but, everyday, 
 
 > we are not here to write your code. And not here to use Google for you. Keep your wisdom to yourself about other members, that is not welcome here.
 
+> your conclusion has been as clear as wrong since the beginning. since you make a statement and then refuse to properly argue your position, but instead attempt to blame others for your own actions like a child. i suggest you go back to your reviewing hobby, junior
+
 The [be-nice](http://stackoverflow.com/help/be-nice) policy states clearly that "If you don't have time to say something politely, just leave it for someone who does". Furthermore, reading all of these Meta posts:
 
  - FAQ on comments: [Etiquette for posting civil and informative comments](http://meta.stackexchange.com/questions/138173/etiquette-for-posting-civil-and-informative-comments).

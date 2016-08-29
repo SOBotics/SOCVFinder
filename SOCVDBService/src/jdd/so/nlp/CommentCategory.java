@@ -44,17 +44,18 @@ public class CommentCategory {
 	public static final double WEKA_SGD_THRESHOLD = .99d;
 
 	private List<Pattern> regexClassifierHighScore;
+	private List<Pattern> regexClassifierMediumScore;
 	private List<Pattern> regexClassifierLowScore;
 	private DocumentCategorizerME openNLPClassifier;
 	private Classifier wekaNBClassifier;
-	private Classifier wekaJ48Classifier;
-	//private Classifier wekaSGDClassifier;
+	//private Classifier wekaJ48Classifier;
+	// private Classifier wekaSGDClassifier;
 
 	// private Classifier wekaSMOClassifier;
 
 	private Instances wekaARFF;
 
-	private StringToWordVector filter;
+	//private StringToWordVector filter;
 
 	public CommentCategory() throws Exception {
 		initModel();
@@ -64,6 +65,7 @@ public class CommentCategory {
 
 		// Regex model
 		regexClassifierHighScore = getRegexs("ini/regex_high_score.txt");
+		regexClassifierMediumScore = getRegexs("ini/regex_medium_score.txt");
 		regexClassifierLowScore = getRegexs("ini/regex_low_score.txt");
 
 		// Open NLP classifier
@@ -74,10 +76,11 @@ public class CommentCategory {
 		wekaNBClassifier = (Classifier) SerializationHelper.read(new FileInputStream("model/nb_comments.model"));
 
 		// Weka SGD Classifier
-		//wekaSGDClassifier = (Classifier) SerializationHelper.read(new FileInputStream("model/sgd_comments.model"));
+		// wekaSGDClassifier = (Classifier) SerializationHelper.read(new
+		// FileInputStream("model/sgd_comments.model"));
 
 		// // Weka classifer J48
-		wekaJ48Classifier = (Classifier) SerializationHelper.read(new FileInputStream("model/j48_comments.model"));
+		//wekaJ48Classifier = (Classifier) SerializationHelper.read(new FileInputStream("model/j48_comments.model"));
 
 		// // Weka SMO comments
 		// wekaSMOClassifier = (Classifier) SerializationHelper.read(new
@@ -88,15 +91,15 @@ public class CommentCategory {
 		wekaARFF = getInstancesFromARFF("model/comments.arff");
 		wekaARFF.setClassIndex(wekaARFF.numAttributes() - 1);
 
-		ObjectInputStream oin = new ObjectInputStream(new FileInputStream("model/StringToWordVector.filter"));
-		filter = (StringToWordVector) oin.readObject();
-		oin.close();
-		filter.setInputFormat(wekaARFF);
+//		ObjectInputStream oin = new ObjectInputStream(new FileInputStream("model/StringToWordVector.filter"));
+//		filter = (StringToWordVector) oin.readObject();
+//		oin.close();
+//		filter.setInputFormat(wekaARFF);
+//
+//		Instances trainFiltered = Filter.useFilter(wekaARFF, filter);
+//		trainFiltered.setClassIndex(0);
 
-		Instances trainFiltered = Filter.useFilter(wekaARFF, filter);
-		trainFiltered.setClassIndex(0);
-		
-		System.out.println(filter);
+		//System.out.println(filter);
 
 	}
 
@@ -133,10 +136,18 @@ public class CommentCategory {
 			score += 4;
 			c.setRegExHit(regExHit);
 		} else {
-			regExHit = getRegexHit(regexText, regexClassifierLowScore);
-			c.setRegExHit(regExHit);
+			regExHit = getRegexHit(regexText, regexClassifierMediumScore);
 			if (regExHit != null) {
-				score += 3;
+				c.setRegExHit(regExHit);
+				if (regExHit != null) {
+					score += 3;
+				}
+			} else {
+				regExHit = getRegexHit(regexText, regexClassifierLowScore);
+				c.setRegExHit(regExHit);
+				if (regExHit != null) {
+					score += 2;
+				}
 			}
 		}
 
@@ -151,39 +162,41 @@ public class CommentCategory {
 		c.setNaiveBayesGood(outcomeWeka[0]);
 		c.setNaiveBayesBad(outcomeWeka[1]);
 
-		if (outcomeWeka[1] > 0.9) {
+		if (outcomeWeka[1] > 0.8) {
 			score++;
 			if (outcomeWeka[1] > 0.95) {
 				score++;
-				if (outcomeWeka[1] > 0.995) {
+				if (outcomeWeka[1] > 0.99) {
 					score++;
 				}
 			}
 		}
 
-		
-
 		// // open nlp
 		double[] outcomeNlp = classifyMessageOpenNLP(openNLPClassifier, classifyText);
 		c.setOpenNlpGood(outcomeNlp[0]);
 		c.setOpenNlpBad(outcomeNlp[1]);
-		if (outcomeNlp[1] > 0.95) {
+		if (outcomeNlp[1] > 0.8) {
 			score++;
-			if (outcomeNlp[1] > 0.99) {
+			if (outcomeNlp[1] > 0.95) {
 				score++;
+				if (outcomeNlp[1] > 0.99) {
+					score++;
+				}
 			}
 		}
-		
+
 		instance = createArff(classifyText);
 
-		// weka J48
-		double[] outcomeJ48 = classifyMessageWithFilter(wekaJ48Classifier, wekaARFF, filter, instance);
-		c.setJ48Good(outcomeJ48[0]);
-		c.setJ48Bad(outcomeJ48[1]);
-
-		if (outcomeJ48[1] > 0.95) {
-			score++;
-		}
+		// // weka J48
+		// double[] outcomeJ48 = classifyMessageWithFilter(wekaJ48Classifier,
+		// wekaARFF, filter, instance);
+		// c.setJ48Good(outcomeJ48[0]);
+		// c.setJ48Bad(outcomeJ48[1]);
+		//
+		// if (outcomeJ48[1] > 0.95) {
+		// score++;
+		// }
 
 		// // weka SMO
 		// double[] outcomeWekaSMO =
@@ -337,11 +350,12 @@ public class CommentCategory {
 		System.out.println(cc.classifyComment(c));
 		System.out.println("Score: " + c.getScore());
 
-		c.setBody(" Your conclusion has been as clear as wrong since the beginning. Since you make a statement and then refuse to properly argue your position, but instead attempt to blame others for your own actions like a child. I suggest you go back to your reviewing hobby, junior");
+		c.setBody(
+				" Your conclusion has been as clear as wrong since the beginning. Since you make a statement and then refuse to properly argue your position, but instead attempt to blame others for your own actions like a child. I suggest you go back to your reviewing hobby, junior");
 		System.out.println(cc.classifyComment(c));
 		System.out.println("Score: " + c.getScore());
 
-		c.setBody("Go to hell");
+		c.setBody("I didn't mounted the partition on ro mode. there are the sequence of commands I have ran to fix the issue.umount -f / ; fsck /dev/sda1; mount -a");
 		System.out.println(cc.classifyComment(c));
 		System.out.println("Score: " + c.getScore());
 
