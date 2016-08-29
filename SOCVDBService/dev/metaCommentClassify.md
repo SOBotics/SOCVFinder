@@ -34,15 +34,15 @@ The flame-out comments from new users are often easy to classify but, everyday, 
 
 > Please don&#39;t encourage people who don&#39;t bother to make the slightest effort.
 
-> No. Please stop bothering people to do your homework for you. This isn&#39;t what Stack Overflow is for.
-
 > You have a good rep now, why do you continue to answer the <i>Low hanging fruit</i> questions for people who are too lazy to even try and attempt to do something for themselves
 
 > <b>WHICH CLASS DO YOU WANT TO REMOVE, YOU HAVE NOT SPECIFIED WHICH CLASS TO REMOVE IN THAT FUNCTION, GENIUS</b> - I don&#39;t need to follow pointless links to the developers site to ask <b>YOU</b> what <b>YOU</b> want to do, sparky
 
+> No. Please stop bothering people to do your homework for you. This isn&#39;t what Stack Overflow is for.
+
 > Your question looks as crap. You should improve your text formatting. Here is a quick tutorial for that.
 
-The [be-nice](http://stackoverflow.com/help/be-nice) policy states fairly clearly that "If you don't have time to say something politely, just leave it for someone who does". Furthermore, reading all of these Meta posts:
+The [be-nice](http://stackoverflow.com/help/be-nice) policy states clearly that "If you don't have time to say something politely, just leave it for someone who does". Furthermore, reading all of these Meta posts:
 
  - FAQ on comments: [Etiquette for posting civil and informative comments](http://meta.stackexchange.com/questions/138173/etiquette-for-posting-civil-and-informative-comments).
  - [When should comments be flagged as “not constructive”?](http://meta.stackexchange.com/questions/186308/when-should-comments-be-flagged-as-not-constructive).
