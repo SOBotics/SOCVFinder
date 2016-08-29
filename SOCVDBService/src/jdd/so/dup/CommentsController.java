@@ -319,7 +319,7 @@ public class CommentsController extends Thread {
 	}
 
 	private String getSanitizedTitle(Question q) {
-		return Parser.unescapeEntities(q.getTitle(), false).replaceAll("(\\[|\\]|_|\\*|`)", "\\\\$1");
+		return Parser.unescapeEntities(q.getTitle(), false).replaceAll("(\\[|\\]|_|\\*|`)", "\\\\$1").trim();
 	}
 
 	private boolean isQuestionToBeNotified(ChatRoom cr, Question q) {
