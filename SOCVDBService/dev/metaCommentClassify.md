@@ -22,8 +22,6 @@ The flame-out comments from new users are often easy to classify but, every sing
 
 > if you are only a beginner, first read some books and documentation. Then improve your English, because it is really bad (don&#39;t want to insult you). Then search in the English part of the Net for the things I wrote before. And use your head
 
-> Stop being lazy, stop cheating, and do your own homework.
-
 > But Object Pascal is not your sixties language. If you don't know much about a language (and that you don't is obvious) why comment on it, and even post that as answer? FWIW, you can learn all these things and a lot more with Object Pascal. Encapsulation is one of the most important tenets of OO, BTW. And no, you are not being helpful, nor are you answering the question. This answer should be deleted. 
 
 > Please don&#39;t encourage people who don&#39;t bother to make the slightest effort.
