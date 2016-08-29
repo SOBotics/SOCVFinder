@@ -2,7 +2,7 @@
 
 Currently, we are running a StackApp, [called Heat Detector](http://stackapps.com/questions/7001/), using both regular expressions and NLP (Natural Language Processing) on all your comments. The goal of this project is to identify automatically offensive comments left throughout Stack Overflow. Earlier this year, [we asked for a dump of abusive comments](http://meta.stackoverflow.com/questions/326494/can-i-have-a-dump-of-rude-abusive-comments) and, together with manual classifying on _a lot_ of comments, we are now testing this application.
 
-The flame-out comments from new users are often easy to classify but, every single day, we see a continuous flow of borderline rude comments from the regular users of Stack Overflow. Here's a sample. **Please note**: the following are sanitized comments (pings have been removed) but they were selected because of their frequent appearence on the site (or variations of them).
+The flame-out comments from new users are often easy to classify but, every single day, we see a continuous flow of borderline rude comments from the regular users of Stack Overflow. Here's a sample. **PLEASE NOTE**: the following are sanitized comments (pings have been removed) but they were hand-picked because of their frequent appearence on the site (or variations of them) and are comments with declined non-constructive flags, comments by high-rep users and one is a comment from a moderator (later edited to be less offensive). **PLEASE NOTE AGAIN**: those handful comments are not presented to unearth flame wars!
 
 > This shows remarkably little effort.
 
@@ -44,7 +44,7 @@ The [Be Nice](http://stackoverflow.com/help/be-nice) policy states clearly that 
  - [Are we getting overly aggressive in comments towards homework questions (again)?](http://meta.stackoverflow.com/questions/272421/are-we-getting-overly-aggressive-in-comments-towards-homework-questions-again).
  - [Is this constructive or am I just being rude?](http://meta.stackoverflow.com/questions/275689/is-this-constructive-or-am-i-just-being-rude).
       
-it seems fairly clear that these should be flagged as "offensive" or "non-constructive", also if OP can't keep his cool they will lead to [flame post](http://meta.stackoverflow.com/questions/332276/i-lost-my-temper-did-i). However the comments above are a selection of comments with declined, and helpful, non-constructive flags, comments by high-rep users and one is a comment from a moderator (later edited to be less offensive).
+it seems fairly clear that these should be flagged as "offensive" or "non-constructive". Also, if an OP cannot keep their cool, it will eventually lead to [flame posts](http://meta.stackoverflow.com/questions/332276/i-lost-my-temper-did-i). With such a mixed response, the question is:
 
 ***Should such comments be included in the "bad feed" of a classifier or not? Do we want to hunt down such comments by an automatic system looking for rudeness?***
 
