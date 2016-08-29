@@ -350,3 +350,4 @@ SOCVDBService/training_v2/*
 SOCVDBService/training_v2/bad/*
 SOCVDBService/training_v2/good/*
 SOCVDBService/training_v6/*
+SOCVDBService/hide/*
