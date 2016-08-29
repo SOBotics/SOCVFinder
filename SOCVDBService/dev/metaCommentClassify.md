@@ -18,8 +18,6 @@ The flame-out comments from new users are often easy to classify but, every sing
 
 > Ok. That's nice. Good luck with that. Did you have a programming question? This site is for questions, not a place to dump your christmas wish list
 
-> I thought we were supposed to learn how to calculate triangle area&#39;s in middle school. apparently not...
-
 > if you are only a beginner, first read some books and documentation. Then improve your English, because it is really bad (don&#39;t want to insult you). Then search in the English part of the Net for the things I wrote before. And use your head
 
 > But Object Pascal is not your sixties language. If you don't know much about a language (and that you don't is obvious) why comment on it, and even post that as answer? FWIW, you can learn all these things and a lot more with Object Pascal. Encapsulation is one of the most important tenets of OO, BTW. And no, you are not being helpful, nor are you answering the question. This answer should be deleted. 
