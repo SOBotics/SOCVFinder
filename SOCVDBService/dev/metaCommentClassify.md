@@ -2,11 +2,8 @@
 
 Currently, we are running a StackApp, [called Heat Detector](http://stackapps.com/questions/7001/), using both regular expressions and NLP (Natural Language Processing) on all your comments. The goal of this project is to identify automatically offensive comments left throughout Stack Overflow. Earlier this year, [we asked for a dump of abusive comments](http://meta.stackoverflow.com/questions/326494/can-i-have-a-dump-of-rude-abusive-comments) and, together with manual classifying on _a lot_ of comments, we are now testing this application.
 
-The flame-out comments from new users are often easy to classify but, every single day, we see a continuous flow of borderline rude comments from the regular users of Stack Overflow. Here's a sample.
-
- - **PLEASE NOTE**: the following are sanitized comments (pings have been removed) but they were hand-picked because of their frequent appearence on the site (or variations of them) and are comments with declined non-constructive flags, comments by high-rep users and one is a comment from a moderator (later edited to be less offensive).
- - **PLEASE NOTE AGAIN**: those handful comments are not presented to unearth flame wars.
-
+The flame-out comments from new users are often easy to classify but, every single day, we see a continuous flow of borderline rude comments from the regular users of Stack Overflow. Here's a sample of sanitized comments (pings have been removed):
+ 
 > This shows remarkably little effort.
 
 > please go back to reading some basic C# tutorials for beginners
@@ -35,7 +32,7 @@ The flame-out comments from new users are often easy to classify but, every sing
 
 > we are not here to write your code. And not here to use Google for you. Keep your wisdom to yourself about other members, that is not welcome here.
 
-The [Be Nice](http://stackoverflow.com/help/be-nice) policy states clearly that "If you don't have time to say something politely, just leave it for someone who does". Furthermore, reading all of these Meta posts:
+The [Be Nice](http://stackoverflow.com/help/be-nice) policy states clearly that "If you don't have time to say something politely, just leave it for someone who does". Furthermore, these Meta and blog posts:
 
  - FAQ on comments: [Etiquette for posting civil and informative comments](http://meta.stackexchange.com/questions/138173/etiquette-for-posting-civil-and-informative-comments).
  - [When should comments be flagged as “not constructive”?](http://meta.stackexchange.com/questions/186308/when-should-comments-be-flagged-as-not-constructive).
@@ -46,8 +43,11 @@ The [Be Nice](http://stackoverflow.com/help/be-nice) policy states clearly that 
  - [The rudeness on Stack Overflow is too damn high](http://meta.stackoverflow.com/questions/262791/the-rudeness-on-stack-overflow-is-too-damn-high).
  - [Are we getting overly aggressive in comments towards homework questions (again)?](http://meta.stackoverflow.com/questions/272421/are-we-getting-overly-aggressive-in-comments-towards-homework-questions-again).
  - [Is this constructive or am I just being rude?](http://meta.stackoverflow.com/questions/275689/is-this-constructive-or-am-i-just-being-rude).
+ - [The Hunting of the Snark](http://blog.stackoverflow.com/2012/07/the-hunting-of-the-snark/)
       
-it seems fairly clear that these should be flagged as "offensive" or "non-constructive". Also, if an OP cannot keep their cool, it will eventually lead to [flame posts](http://meta.stackoverflow.com/questions/332276/i-lost-my-temper-did-i). With such a mixed response, the question is:
+it seems fairly clear that these should be flagged as "offensive" or "non-constructive". Also, if an OP cannot keep their cool, it will eventually lead to [flame posts](http://meta.stackoverflow.com/questions/332276/i-lost-my-temper-did-i). However these comments  were hand-picked because of their frequent appearence on the site (or variations of them) and are comments with declined non-constructive flags, comments by high-rep users and one is a comment from a moderator (later edited to be less offensive).
+
+With such a mixed response, the question is:
 
 ***Should such comments be included in the "bad feed" of a classifier or not? Do we want to hunt down such comments by an automatic system looking for rudeness?***
 
