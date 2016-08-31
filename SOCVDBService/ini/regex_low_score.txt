@@ -2,5 +2,8 @@
 (?i)\bshit
 (?i)\bfools?\b
 (?i)\bcrap\b
-(?i)\bchild
-(?i)\bjunior
+(?i)\bchild\b
+(?i)\bjunior\b
+(?i)\bmonkey\b
+(?i)\bsarcasm\b
+(?i)\bhomework\b

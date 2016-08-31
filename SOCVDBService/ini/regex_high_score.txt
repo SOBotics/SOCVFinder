@@ -1,12 +1,12 @@
 #These are the regex executed on comment where usernamehas been removed
 (?i)this\s*(\w+)?\s*spam
-(?i)\bbe.?nice\b
+(?i)be-nice\b
 (?i)(flag.*spam)
 (?i)(^|\s)stfw(\s|\.|!|\?|$)
 (?i)\b(yo)?u suck
-(?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{0,10})?)moron(\s|\.|!|\?|$)
+(?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{1,10})?)moron(\s|\.|!|\?|$)
 (?i)(you?|u|\she)(.{0,12})\sloo?ser
-(?i)\bgo.{0,8}hell\b
+(?i)\bgo.{0,8}\shell\b
 (?i)\binsults?\b(?! to injury)
 (?i)nigg(a|er)|negro\b
 (?i)\ba\S{0,4}hole
@@ -17,7 +17,7 @@
 (?i)\b(f(\W)*ck(s|ers?|ed)?|f[kcuf]+k)\b
 (?i)(^|\s)screw y(\s|\.|!|$)
 (?i)retard 
-(?i)bitch(\s|\.|!|\?|$)
+(?i)\bbitch(es)?\b
 (?i)(?<!grammar[ -]?)\bnazis?\b
 (?i)\bdick(head)?\b
 (?i)(^|\s)pussy
@@ -86,3 +86,4 @@
 (?i)\barrogant\b
 (?i)\bsnob\b
 (?i)shut\s?up\b
+(?i)unlike\syou

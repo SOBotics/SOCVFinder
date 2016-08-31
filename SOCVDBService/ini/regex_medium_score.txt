@@ -3,3 +3,6 @@
 (?i)(you?|(^|\s)he)(\w+\s*){0,3}\sstupid
 (?i)\bass\b
 (?i)\b(troll(ing)?)\b
+(?i)\bhaters?)\b
+(?i)\babus(e|ing)\b
+(?i)\bsilly\b
