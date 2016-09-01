@@ -14,7 +14,7 @@
 (?i)\bfag(got)?
 (?i)(^|\s)gay(\.|!|\s|$)
 (?i)\bsluts?\b
-(?i)\bf(\W*|[kcuf]+)ck(s|ers?|ed)?
+(?i)\bf([\Wkcuf]*)ck(s|ers?|ed)?
 (?i)(^|\s)screw y(\s|\.|!|$)
 (?i)retard 
 (?i)\bbitch(es)?\b
