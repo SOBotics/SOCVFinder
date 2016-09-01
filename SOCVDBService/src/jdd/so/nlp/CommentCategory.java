@@ -234,7 +234,7 @@ public class CommentCategory {
 		for (Pattern pattern : regexClassifier) {
 			boolean match = pattern.matcher(classifyText).find();
 			if (match) {
-				System.out.println(pattern.toString());
+				//System.out.println(pattern.toString());
 				return pattern.toString();
 			}
 		}
@@ -355,7 +355,7 @@ public class CommentCategory {
 		System.out.println(cc.classifyComment(c));
 		System.out.println("Score: " + c.getScore());
 
-		c.setBody("I didn't mounted the partition on ro mode. there are the sequence of commands I have ran to fix the issue.umount -f / ; fsck /dev/sda1; mount -a");
+		c.setBody("be-nice");
 		System.out.println(cc.classifyComment(c));
 		System.out.println("Score: " + c.getScore());
 

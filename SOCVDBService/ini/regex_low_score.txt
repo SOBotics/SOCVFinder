@@ -6,4 +6,3 @@
 (?i)\bjunior\b
 (?i)\bmonkey\b
 (?i)\bsarcasm\b
-(?i)\bhomework\b

@@ -1,10 +1,10 @@
 #These are the regex executed on comment where usernamehas been removed
-(?i)this\s*(\w+)?\s*spam
 (?i)be-nice\b
+(?i)this\s*(\w+)?\s*spam
 (?i)(flag.*spam)
 (?i)(^|\s)stfw(\s|\.|!|\?|$)
 (?i)\b(yo)?u suck
-(?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{1,10})?)moron(\s|\.|!|\?|$)
+(?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{1,10})?)\smoron(\s|\.|!|\?|$)
 (?i)(you?|u|\she)(.{0,12})\sloo?ser
 (?i)\bgo.{0,8}\shell\b
 (?i)\binsults?\b(?! to injury)
@@ -14,7 +14,7 @@
 (?i)\bfag(got)?
 (?i)(^|\s)gay(\.|!|\s|$)
 (?i)\bsluts?\b
-(?i)\b(f(\W)*ck(s|ers?|ed)?|f[kcuf]+k)\b
+(?i)\bf(\W*|[kcuf]+)ck(s|ers?|ed)?
 (?i)(^|\s)screw y(\s|\.|!|$)
 (?i)retard 
 (?i)\bbitch(es)?\b
