@@ -2,7 +2,9 @@
 (?i)\bshit
 (?i)\bfools?\b
 (?i)\bcrap\b
-(?i)\bchild\b
+(?i)\ba\schild\b
 (?i)\bjunior\b
 (?i)\bmonkey\b
 (?i)\bsarcasm\b
+(?i)\bsilly\b
+(?i)gibberish

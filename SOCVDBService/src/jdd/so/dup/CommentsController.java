@@ -189,7 +189,7 @@ public class CommentsController extends Thread {
 			int score = commentCategory.classifyComment(c);
 			hit = score >= 4;
 			if (hit && CloseVoteFinder.getInstance().isFeedHeat()) {
-				if (isUserWithScorePresent(socvfinder, score)) {
+				if (isNotifyComment(socvfinder, score)) {
 					notifyComment(socvfinder, c);
 				}
 			}
@@ -200,7 +200,10 @@ public class CommentsController extends Thread {
 		return hit;
 	}
 
-	private boolean isUserWithScorePresent(ChatRoom socvfinder, int score) {
+	private boolean isNotifyComment(ChatRoom socvfinder, int score) {
+		if (score>=6){
+			return true;
+		}
 		List<CommentsNotify> cnList = CloseVoteFinder.getInstance().getCommentsNotify();
 		for (CommentsNotify cn : cnList) {
 			if (cn.isNotify() && cn.getScore() <= score) {
@@ -220,11 +223,15 @@ public class CommentsController extends Thread {
 		}
 
 		StringBuilder message = getHeatMessageResult(c, commentLink);
-		message.append(" cc: ");
+		boolean ccAp = false;
 		for (CommentsNotify cn : CloseVoteFinder.getInstance().getCommentsNotify()) {
 			if (cn.isNotify() && cn.getScore() <= c.getScore()) {
 				User u = socvfinder.getUser(cn.getUserId());
 				if (u != null && u.isCurrentlyInRoom()) {
+					if (!ccAp){
+						message.append(" cc: ");
+						ccAp = true;
+					}
 					message.append("@").append(u.getName().replaceAll(" ", "")).append(" ");
 				}
 			}

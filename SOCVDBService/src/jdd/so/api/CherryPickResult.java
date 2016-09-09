@@ -57,7 +57,11 @@ public class CherryPickResult {
 		if (questionFilter.isFilterDupes()) {
 			sorter = new PossibleDuplicateComparator();
 		} else {
-			sorter = new CloseVoteComparator();
+			if (questionFilter.isScoreOrder()){
+				sorter = new CVScoreComparator();
+			}else{
+				sorter = new CloseVoteComparator();
+			}
 		}
 		filter(questionFilter, sorter);
 	}

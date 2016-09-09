@@ -87,3 +87,4 @@
 (?i)\bsnob\b
 (?i)shut\s?up\b
 (?i)unlike\syou
+(?i)debil\b

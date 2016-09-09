@@ -19,6 +19,8 @@ public class QuestionsFilter {
 	private boolean filterDupes;
 	private int numberOfApiCalls = CloseVoteFinder.getInstance().getApiCallNrPages();
 	private String excludeQuestions;
+	private boolean scoreOrder;
+	
 	
 	
 	
@@ -50,6 +52,11 @@ public class QuestionsFilter {
 			
 			if (s.contains("burn")){
 				burniate = true;
+				continue;
+			}
+			
+			if (s.contains("worse")||s.contains("worst")){
+				scoreOrder = true;
 				continue;
 			}
 			
@@ -243,6 +250,14 @@ public class QuestionsFilter {
 
 	public void setBurniate(boolean burniate) {
 		this.burniate = burniate;
+	}
+
+	public boolean isScoreOrder() {
+		return scoreOrder;
+	}
+
+	public void setScoreOrder(boolean scoreOrder) {
+		this.scoreOrder = scoreOrder;
 	}
 	
 }
