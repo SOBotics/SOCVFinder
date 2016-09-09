@@ -16,23 +16,21 @@ public abstract class DuplicateResponseAbstract extends BotCommand {
 		String qId = c.substring(startPos + match.length(), c.indexOf(')', startPos + match.length()));
 		return Long.parseLong(qId);
 	}
-	
+
 	public void saveToDatabase(long questionId, long userId, long roomId, boolean confirmed) throws SQLException{
 		DuplicateResponse dr = new DuplicateResponse(questionId,userId,roomId,confirmed,null,System.currentTimeMillis()/1000L);
 		new DuplicateResponseDAO().insertOrUpdate(CloseVoteFinder.getInstance().getConnection(), dr);
-		
+
 	}
-	
+
 	protected String getEdit(PingMessageEvent event, String content, boolean confirm) {
 		String cmd = "k";
 		if (!confirm){
 			cmd = "f";
 		}
-		
+
 		String edit = content;
-		if (edit.contains("@")) {
-			edit = edit.substring(0, edit.indexOf('@')).trim();
-		}
+		edit = edit.substring(0, edit.lastIndexOf(')') + 1).trim();
 		if (edit.contains("--- f") || edit.contains("--- k")) {
 			edit += ", k" + event.getUserName();
 		} else {
@@ -44,5 +42,5 @@ public abstract class DuplicateResponseAbstract extends BotCommand {
 		}
 		return edit;
 	}
-	
+
 }
