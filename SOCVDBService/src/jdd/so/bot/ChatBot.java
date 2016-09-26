@@ -112,7 +112,8 @@ public class ChatBot {
 		this.joinRoom("stackoverflow.com", 98569, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 		//http://chat.stackoverflow.com/rooms/120759/godaddy-burnination
 		this.joinRoom("stackoverflow.com", 120759, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
-		
+		//http://chat.stackoverflow.com/rooms/25767/regex-regular-expressions
+		this.joinRoom("stackoverflow.com", 25767, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 	}
 	
 	
