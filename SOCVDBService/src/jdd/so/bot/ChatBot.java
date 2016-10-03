@@ -19,6 +19,7 @@ import org.alicebot.ab.PCAIMLProcessorExtension;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+import fr.tunaki.stackoverflow.chat.ChatHost;
 import fr.tunaki.stackoverflow.chat.StackExchangeClient;
 import fr.tunaki.stackoverflow.chat.event.EventType;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
@@ -90,30 +91,30 @@ public class ChatBot {
 	
 	public void joinOnlySOCVFinder(){
 		// SOCVFinder
-		this.joinRoom("stackoverflow.com", 111347, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,true);
+		this.joinRoom(ChatHost.STACK_OVERFLOW, 111347, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,true);
 	}
 	
 	public void joinRooms(){
 		// SOCVFinder
-		this.joinRoom("stackoverflow.com", 111347, null, ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM,true);
+		this.joinRoom(ChatHost.STACK_OVERFLOW, 111347, null, ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM,true);
 		// Campagins
-		this.joinRoom("stackoverflow.com", 95290, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
+		this.joinRoom(ChatHost.STACK_OVERFLOW, 95290, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 		// SOCVR 
-		this.joinRoom("stackoverflow.com", 41570, getDupeNotificationsOnlyCommands(), ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM,false);
+		this.joinRoom(ChatHost.STACK_OVERFLOW, 41570, getDupeNotificationsOnlyCommands(), ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM,false);
 		// GMTs 
-		this.joinRoom("stackoverflow.com", 75819, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
+		this.joinRoom(ChatHost.STACK_OVERFLOW, 75819, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
 		//Ruby http://chat.stackoverflow.com/rooms/44914/ruby-sometimes-on-rails
-		this.joinRoom("stackoverflow.com", 44914, getDupeNotificationsOnlyCommands(), ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
+		this.joinRoom(ChatHost.STACK_OVERFLOW, 44914, getDupeNotificationsOnlyCommands(), ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
 		// http://chat.stackoverflow.com/rooms/117458/duplicate-posts
-		this.joinRoom("stackoverflow.com", 117458, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
+		this.joinRoom(ChatHost.STACK_OVERFLOW, 117458, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 		//http://chat.stackoverflow.com/rooms/108192/room-for-bhargav-rao-and-tunaki		
-		this.joinRoom("stackoverflow.com", 108192, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,true);
+		this.joinRoom(ChatHost.STACK_OVERFLOW, 108192, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,true);
 		//http://chat.stackoverflow.com/rooms/98569/bin-bash
-		this.joinRoom("stackoverflow.com", 98569, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
+		this.joinRoom(ChatHost.STACK_OVERFLOW, 98569, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 		//http://chat.stackoverflow.com/rooms/120759/godaddy-burnination
-		this.joinRoom("stackoverflow.com", 120759, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
+		this.joinRoom(ChatHost.STACK_OVERFLOW, 120759, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 		//http://chat.stackoverflow.com/rooms/25767/regex-regular-expressions
-		this.joinRoom("stackoverflow.com", 25767, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
+		this.joinRoom(ChatHost.STACK_OVERFLOW, 25767, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 	}
 	
 	
@@ -158,16 +159,17 @@ public class ChatBot {
 	 *            if to enable AI
 	 * @return
 	 */
-	public boolean joinRoom(String domain, long roomId, List<Class<? extends BotCommand>> allowedCommands, int dupNotifyStrategy, boolean enableAi) {
+	public boolean joinRoom(ChatHost domain, int roomId, List<Class<? extends BotCommand>> allowedCommands, int dupNotifyStrategy, boolean enableAi) {
 		int batchNumber = CloseVoteFinder.getInstance().getBatchNumber(roomId); 
+		
+		
+		
 		ChatRoom room = new ChatRoom(this, client.joinRoom(domain, roomId), batchNumber, allowedCommands,dupNotifyStrategy, enableAi);
 
 		if (logger.isDebugEnabled()) {
 			logger.debug("joinRoom(String, int) - Client joined room: " + roomId);
 		}
 
-		// room.getRoom().addEventListener(EventType.MESSAGE_POSTED, event ->
-		// roomPost(room, event));
 
 		room.getRoom().addEventListener(EventType.MESSAGE_REPLY, event -> roomEvent(room, event, true));
 		room.getRoom().addEventListener(EventType.USER_MENTIONED, event -> roomEvent(room, event, false));
@@ -184,12 +186,12 @@ public class ChatBot {
 			logger.debug("roomEvent(ChatRoom, PingMessageEvent, boolean) - Incomming message: " + event.toString());
 		}
 
-		if (event.getEditCount() > 0) {
+		if (event.getMessage().getEditCount() > 0) {
 			// long parentId = event.getParentMessageId();
 			return; // Ignore edits for now
 		}
 
-		BotCommand bc = BotCommandsRegistry.getInstance().getCommand(event.getMessage(), isReply, event.getEditCount());
+		BotCommand bc = BotCommandsRegistry.getInstance().getCommand(event.getMessage(), isReply, event.getMessage().getEditCount());
 		if (logger.isDebugEnabled()) {
 			logger.debug("roomEvent(ChatRoom, PingMessageEvent, boolean) - " + bc);
 		}
