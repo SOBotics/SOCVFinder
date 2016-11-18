@@ -32,7 +32,8 @@ import jdd.so.bot.ChatRoom;
 import jdd.so.dao.CommentDAO;
 import jdd.so.dao.model.CommentsNotify;
 import jdd.so.dao.model.DuplicateNotifications;
-import jdd.so.nlp.CommentCategory;
+import jdd.so.nlp.CommentCloseCategory;
+import jdd.so.nlp.CommentHeatCategory;
 
 public class CommentsController extends Thread {
 	/**
@@ -42,7 +43,8 @@ public class CommentsController extends Thread {
 
 	private static final int MAX_POST_ID_QUE = 10;
 	private ApiHandler apiHandler;
-	private CommentCategory commentCategory;
+	private CommentHeatCategory commentHeatCategory;
+	private CommentCloseCategory commentCloseCategory;
 	private ChatBot cb;
 	private Queue<Long> lastPostIds;
 
@@ -59,10 +61,17 @@ public class CommentsController extends Thread {
 		nfThreshold.setMaximumFractionDigits(2);
 		nfThreshold.setMinimumFractionDigits(2);
 		try {
-			commentCategory = new CommentCategory();
+			commentHeatCategory = new CommentHeatCategory();
 		} catch (Exception e) {
-			logger.error("DupeHunterComments(ChatBot) - Comment categorizzer could not be instanced", e);
+			logger.error("DupeHunterComments(ChatBot) - Comment heat categorizzer could not be instanced", e);
 		}
+
+		try {
+			commentCloseCategory = new CommentCloseCategory();
+		} catch (Exception e) {
+			logger.error("DupeHunterComments(ChatBot) - Comment close categorizzer could not be instanced", e);
+		}
+
 	}
 
 	@Override
@@ -111,6 +120,7 @@ public class CommentsController extends Thread {
 				logger.info("Number of commments:" + comments.size() + " Number of pages: " + ap.getNrOfPages());
 				List<Comment> possibileDupes = new ArrayList<>();
 				List<Comment> possibileRude = new ArrayList<>();
+				List<Comment> possibileClose = new ArrayList<>();
 				// Test run to find rude comments
 				for (Comment c : comments) {
 					if (c.isPossibleDuplicateComment()) {
@@ -124,10 +134,16 @@ public class CommentsController extends Thread {
 					 * RUDE OFFENSIVE TEST
 					 */
 
-					boolean hit = classifyComment(socvfinder, c);
+					boolean hit = classifyHeatComment(socvfinder, c);
 					if (hit) {
 						possibileRude.add(c);
 					}
+
+					int type = classifyCloseComment(socvfinder, c);
+					if (type != CommentCloseCategory.HIT_NONE) {
+						possibileClose.add(c);
+					}
+
 				}
 
 				if (!possibileRude.isEmpty()) {
@@ -140,7 +156,7 @@ public class CommentsController extends Thread {
 
 				if (!possibileDupes.isEmpty()) {
 					if (logger.isDebugEnabled()) {
-						logger.debug("run() ----- GET QUESTIONS -----");
+						logger.debug("run() ----- DUPE GET QUESTIONS -----");
 					}
 					Thread.sleep(3 * 1000L);
 					if (shutDown) {
@@ -155,11 +171,35 @@ public class CommentsController extends Thread {
 					ApiResult arQ = apiHandler.getQuestions(qQuery.toString(), null, false, null);
 					List<Question> questions = arQ.getQuestions();
 					// Removed closed questions
-					notifyRooms(questions);
+					notifyRoomsForDupes(questions);
 					if (arQ.getBackoff() > 0) {
 						logger.warn("run() - Backoff " + arQ.getBackoff());
 						Thread.sleep(arQ.getBackoff() * 1000L);
 
+					}
+				}
+
+				if (!possibileClose.isEmpty()) {
+					if (logger.isDebugEnabled()) {
+						logger.debug("run() ----- CLOSE GET QUESTIONS -----");
+					}
+					Thread.sleep(3 * 1000L);
+					if (shutDown) {
+						return;
+					}
+					StringBuilder qQuery = new StringBuilder();
+					String sep = "";
+					for (Comment c : possibileClose) {
+						qQuery.append(sep).append(c.getPostId());
+						sep = ";";
+					}
+					ApiResult arQ = apiHandler.getQuestions(qQuery.toString(), null, false, null);
+					List<Question> questions = arQ.getQuestions();
+
+					notifyCloseQuestions(questions,possibileClose,socvfinder);
+					if (arQ.getBackoff() > 0) {
+						logger.warn("run() - Backoff " + arQ.getBackoff());
+						Thread.sleep(arQ.getBackoff() * 1000L);
 					}
 				}
 
@@ -183,14 +223,14 @@ public class CommentsController extends Thread {
 
 	}
 
-	private boolean classifyComment(ChatRoom socvfinder, Comment c) {
+	private boolean classifyHeatComment(ChatRoom socvfinder, Comment c) {
 		boolean hit = false;
 		try {
-			int score = commentCategory.classifyComment(c);
+			int score = commentHeatCategory.classifyComment(c);
 			hit = score >= 4;
 			if (hit && CloseVoteFinder.getInstance().isFeedHeat()) {
 				if (isNotifyComment(socvfinder, score)) {
-					notifyComment(socvfinder, c);
+					notifyHeatComment(socvfinder, c);
 				}
 			}
 
@@ -200,8 +240,19 @@ public class CommentsController extends Thread {
 		return hit;
 	}
 
+	private int classifyCloseComment(ChatRoom socvfinder, Comment c) {
+		int hit = CommentCloseCategory.HIT_NONE;
+		try {
+			hit = commentCloseCategory.classifyComment(c);
+			c.setCloseType(hit);
+		} catch (Exception e) {
+			logger.error("run()", e);
+		}
+		return hit;
+	}
+
 	private boolean isNotifyComment(ChatRoom socvfinder, int score) {
-		if (score>=6){
+		if (score >= 6) {
 			return true;
 		}
 		List<CommentsNotify> cnList = CloseVoteFinder.getInstance().getCommentsNotify();
@@ -216,7 +267,7 @@ public class CommentsController extends Thread {
 		return false;
 	}
 
-	private void notifyComment(ChatRoom socvfinder, Comment c) {
+	private void notifyHeatComment(ChatRoom socvfinder, Comment c) {
 		String commentLink = c.getLink();
 		if (commentLink == null) {
 			commentLink = "http://stackoverflow.com/questions/" + c.getPostId() + "/#comment" + c.getCommentId() + "_" + c.getPostId();
@@ -228,7 +279,7 @@ public class CommentsController extends Thread {
 			if (cn.isNotify() && cn.getScore() <= c.getScore()) {
 				User u = socvfinder.getUser(cn.getUserId());
 				if (u != null && u.isCurrentlyInRoom()) {
-					if (!ccAp){
+					if (!ccAp) {
 						message.append(" cc: ");
 						ccAp = true;
 					}
@@ -254,14 +305,17 @@ public class CommentsController extends Thread {
 		StringBuilder message = new StringBuilder("[ [Heat Detector](http://stackapps.com/questions/7001/) ]");
 		message.append(" SCORE: ").append(c.getScore()).append(" ").append(getStars(c.getScore()));
 		message.append(" (").append(getBoldRegexHit(c.isRegExHit())).append("Regex").append(getBoldRegexHit(c.isRegExHit())).append(":").append(c.isRegExHit());
-		message.append(" ").append(isHitBold(c.getNaiveBayesBad(), CommentCategory.WEKA_NB_THRESHOLD)).append("NaiveBayes")
-				.append(isHitBold(c.getNaiveBayesBad(), CommentCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getNaiveBayesBad()));
-//		message.append(" ").append(isHitBold(c.getJ48Bad(), CommentCategory.WEKA_J48_THRESHOLD)).append("J48")
-//				.append(isHitBold(c.getJ48Bad(), CommentCategory.WEKA_J48_THRESHOLD)).append(":").append(nfThreshold.format(c.getJ48Bad()));
+		message.append(" ").append(isHitBold(c.getNaiveBayesBad(), CommentHeatCategory.WEKA_NB_THRESHOLD)).append("NaiveBayes")
+				.append(isHitBold(c.getNaiveBayesBad(), CommentHeatCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getNaiveBayesBad()));
+		// message.append(" ").append(isHitBold(c.getJ48Bad(),
+		// CommentCategory.WEKA_J48_THRESHOLD)).append("J48")
+		// .append(isHitBold(c.getJ48Bad(),
+		// CommentCategory.WEKA_J48_THRESHOLD)).append(":").append(nfThreshold.format(c.getJ48Bad()));
 		// message.append("
 		// ").append(isHitBold(c.getSmoBad(),CommentCategory.WEKA_SMO_THRESHOLD)).append("SMO").append(isHitBold(c.getSmoBad(),CommentCategory.WEKA_NB_THRESHOLD)).append(":").append(nfThreshold.format(c.getSmoBad()));
-		message.append(" ").append(isHitBold(c.getOpenNlpBad(), CommentCategory.OPEN_NLP_THRESHOLD)).append("OpenNLP")
-				.append(isHitBold(c.getOpenNlpBad(), CommentCategory.OPEN_NLP_THRESHOLD)).append(":").append(nfThreshold.format(c.getOpenNlpBad())).append(")");
+		message.append(" ").append(isHitBold(c.getOpenNlpBad(), CommentHeatCategory.OPEN_NLP_THRESHOLD)).append("OpenNLP")
+				.append(isHitBold(c.getOpenNlpBad(), CommentHeatCategory.OPEN_NLP_THRESHOLD)).append(":").append(nfThreshold.format(c.getOpenNlpBad()))
+				.append(")");
 		if (commentLink != null) {
 			message.append(" [comment](").append(commentLink).append(")");
 		}
@@ -302,7 +356,7 @@ public class CommentsController extends Thread {
 		}
 	}
 
-	private void notifyRooms(List<Question> notifyTheseQuestions) {
+	private void notifyRoomsForDupes(List<Question> notifyTheseQuestions) {
 		if (cb == null) {
 			return;
 		}
@@ -323,6 +377,37 @@ public class CommentsController extends Thread {
 				}
 			}
 		}
+	}
+
+	private void notifyCloseQuestions(List<Question> notifyTheseQuestions, List<Comment> fromComments, ChatRoom sobotics) {
+
+		if (sobotics == null || notifyTheseQuestions.isEmpty()) {
+			return;
+		}
+
+		for (Question q : notifyTheseQuestions) {
+			if (q.isClosed()) {
+				continue;
+			}
+			String typeDescr = "possibile-close";
+			Comment c = getComment(fromComments, q.getQuestionId());
+			if (c!=null){
+				typeDescr = CommentCloseCategory.getDescription(c.getCloseType());
+			}
+			String message = "[ [SOFun](https://www.youtube.com/watch?v=wauzrPn0cfg) ] [tag:" + typeDescr + "] " + getFirstTags(q) + " [" + getSanitizedTitle(q)
+					+ "](//stackoverflow.com/q/" + q.getQuestionId() + ")";
+			sobotics.send(message);
+
+		}
+	}
+
+	private Comment getComment(List<Comment> fromComments, long questionId) {
+		for (Comment c : fromComments) {
+			if (c.getPostId() == questionId) {
+				return c;
+			}
+		}
+		return null;
 	}
 
 	private String getSanitizedTitle(Question q) {
@@ -372,6 +457,10 @@ public class CommentsController extends Thread {
 		}
 	}
 
+	private String getFirstTags(Question q) {
+		return "[tag:" + q.getTags().get(0) + "]";
+	}
+	
 	private String getTags(ChatRoom cr, Question q) {
 		List<String> hammerTags = CloseVoteFinder.getInstance().getHunters(cr.getRoomId(), q.getTags()).stream().map(DuplicateNotifications::getTag).distinct()
 				.collect(Collectors.toCollection(ArrayList::new));
@@ -432,8 +521,8 @@ public class CommentsController extends Thread {
 		System.out.println(list);
 	}
 
-	public CommentCategory getCommentCategory() {
-		return commentCategory;
+	public CommentHeatCategory getCommentHeatCategory() {
+		return commentHeatCategory;
 	}
 
 }

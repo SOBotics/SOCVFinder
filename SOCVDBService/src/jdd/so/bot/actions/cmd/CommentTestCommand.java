@@ -6,7 +6,7 @@ import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.api.model.Comment;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
-import jdd.so.nlp.CommentCategory;
+import jdd.so.nlp.CommentHeatCategory;
 
 public class CommentTestCommand extends BotCommand {
 	/**
@@ -41,7 +41,7 @@ public class CommentTestCommand extends BotCommand {
 
 	@Override
 	public void runCommand(ChatRoom room, PingMessageEvent event) {
-		CommentCategory cc = room.getBot().getCommentCategory();
+		CommentHeatCategory cc = room.getBot().getCommentCategory();
 		if (cc == null){
 			room.replyTo(event.getMessage().getId(),"Comment controller has not been loaded");
 			return;

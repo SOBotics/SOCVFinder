@@ -9,7 +9,7 @@ import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.api.model.Comment;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
-import jdd.so.nlp.CommentCategory;
+import jdd.so.nlp.CommentHeatCategory;
 
 public class CommentOffensiveTpCommand extends CommentResponseAbstract {
 	/**
@@ -79,7 +79,7 @@ public class CommentOffensiveTpCommand extends CommentResponseAbstract {
 		if (event.getMessage().getPlainContent().toUpperCase().contains("SOCVR")) {
 			// Load it from API again
 			Comment c = getCommentFromApi(commentId);
-			CommentCategory cc = room.getBot().getCommentCategory();
+			CommentHeatCategory cc = room.getBot().getCommentCategory();
 			if (c != null && cc != null) {
 				try {
 					cc.classifyComment(c);

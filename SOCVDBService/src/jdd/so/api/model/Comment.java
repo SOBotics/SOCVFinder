@@ -53,7 +53,7 @@ public class Comment {
 	private double sgdGood;
 	private double sgdBad;
 	private int heatScore;
-	
+	private int closeType;
 	
 	
 	//Data feedback
@@ -389,6 +389,14 @@ public class Comment {
 
 	public void setReported(boolean reported) {
 		this.reported = reported;
+	}
+
+	public int getCloseType() {
+		return closeType;
+	}
+
+	public void setCloseType(int closeType) {
+		this.closeType = closeType;
 	}
 	
 	

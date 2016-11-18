@@ -29,11 +29,11 @@ import weka.filters.Filter;
  *
  */
 
-public class CommentCategory {
+public class CommentHeatCategory {
 	/**
 	 * Logger for this class
 	 */
-	private static final Logger logger = Logger.getLogger(CommentCategory.class);
+	private static final Logger logger = Logger.getLogger(CommentHeatCategory.class);
 
 	public static final double OPEN_NLP_THRESHOLD = .95d;
 	public static final double WEKA_NB_THRESHOLD = .9d;
@@ -55,7 +55,7 @@ public class CommentCategory {
 
 	//private StringToWordVector filter;
 
-	public CommentCategory() throws Exception {
+	public CommentHeatCategory() throws Exception {
 		initModel();
 	}
 
@@ -342,7 +342,7 @@ public class CommentCategory {
 	 */
 	public static void main(String[] args) throws Exception {
 
-		CommentCategory cc = new CommentCategory();
+		CommentHeatCategory cc = new CommentHeatCategory();
 		Comment c = new Comment();
 		c.setBody("@CZoellner Fuck you you nigga");
 		System.out.println(cc.classifyComment(c));

@@ -10,7 +10,7 @@ import jdd.so.api.model.Comment;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.dao.CommentDAO;
-import jdd.so.nlp.CommentCategory;
+import jdd.so.nlp.CommentHeatCategory;
 
 public class CommentReportCommand extends CommentResponseAbstract {
 	/**
@@ -65,7 +65,7 @@ public class CommentReportCommand extends CommentResponseAbstract {
 		
 		//Get comment from api
 		c.setReported(true);
-		CommentCategory cc = room.getBot().getCommentCategory();
+		CommentHeatCategory cc = room.getBot().getCommentCategory();
 		if (cc != null) {
 			try {
 				cc.classifyComment(c);

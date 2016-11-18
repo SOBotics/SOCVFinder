@@ -164,8 +164,12 @@ public class CherryPickCommand extends BotCommand {
 				final String replyMessage = retMsg;
 
 				sentId.thenAccept(messageId -> {
-					CompletionStage<Long> r = room.getRoom().isEditable(messageId) ? room.edit(messageId, editMessage) : room.replyTo(event.getMessage().getId(), replyMessage);
-					r.thenAccept(mId -> insertBatch(cpr, event.getUserId(), mId));
+					try {
+						CompletionStage<Long> r = room.getRoom().isEditable(messageId) ? room.edit(messageId, editMessage) : room.replyTo(event.getMessage().getId(), replyMessage);
+						r.thenAccept(mId -> insertBatch(cpr, event.getUserId(), mId));
+					} catch (Exception e) {
+						logger.error("thenAccept(Room, String)", e);
+					}
 				});
 
 			} else {

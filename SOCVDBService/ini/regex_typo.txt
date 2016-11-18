@@ -1,0 +1,4 @@
+#These are the regex executed on comment where username has been removed
+(?i)typo
+(?i)(you?|u)(.{0,5})?missing
+(?i)valid(.{0,10})syntax

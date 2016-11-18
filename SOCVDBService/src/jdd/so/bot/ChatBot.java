@@ -46,7 +46,7 @@ import jdd.so.bot.actions.cmd.ShutDownCommand;
 import jdd.so.dao.UserDAO;
 import jdd.so.dao.model.User;
 import jdd.so.dup.CommentsController;
-import jdd.so.nlp.CommentCategory;
+import jdd.so.nlp.CommentHeatCategory;
 
 /**
  * The main ChatBot handling the ChatRooms
@@ -98,7 +98,7 @@ public class ChatBot {
 		// SOCVFinder
 		this.joinRoom(ChatHost.STACK_OVERFLOW, 111347, null, ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM,true);
 		// Campagins
-		this.joinRoom(ChatHost.STACK_OVERFLOW, 95290, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
+		this.joinRoom(ChatHost.STACK_OVERFLOW, 95290, null, ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM,false);
 		// SOCVR 
 		this.joinRoom(ChatHost.STACK_OVERFLOW, 41570, getDupeNotificationsOnlyCommands(), ChatRoom.DUPLICATION_NOTIFICATIONS_HAMMER_IN_ROOM,false);
 		// GMTs 
@@ -111,8 +111,6 @@ public class ChatBot {
 		this.joinRoom(ChatHost.STACK_OVERFLOW, 108192, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,true);
 		//http://chat.stackoverflow.com/rooms/98569/bin-bash
 		this.joinRoom(ChatHost.STACK_OVERFLOW, 98569, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
-		//http://chat.stackoverflow.com/rooms/120759/godaddy-burnination
-		this.joinRoom(ChatHost.STACK_OVERFLOW, 120759, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 		//http://chat.stackoverflow.com/rooms/25767/regex-regular-expressions
 		this.joinRoom(ChatHost.STACK_OVERFLOW, 25767, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 	}
@@ -160,11 +158,17 @@ public class ChatBot {
 	 * @return
 	 */
 	public boolean joinRoom(ChatHost domain, int roomId, List<Class<? extends BotCommand>> allowedCommands, int dupNotifyStrategy, boolean enableAi) {
+		
+		
 		int batchNumber = CloseVoteFinder.getInstance().getBatchNumber(roomId); 
 		
-		
-		
-		ChatRoom room = new ChatRoom(this, client.joinRoom(domain, roomId), batchNumber, allowedCommands,dupNotifyStrategy, enableAi);
+		ChatRoom room;
+		try {
+			room = new ChatRoom(this, client.joinRoom(domain, roomId), batchNumber, allowedCommands,dupNotifyStrategy, enableAi);
+		} catch (Throwable e) {
+			logger.error("joinRoom() - Could not join room: " + roomId, e);
+			return false;
+		}
 
 		if (logger.isDebugEnabled()) {
 			logger.debug("joinRoom(String, int) - Client joined room: " + roomId);
@@ -290,9 +294,9 @@ public class ChatBot {
 		commentsController.start();
 	}
 	
-	public CommentCategory getCommentCategory(){
+	public CommentHeatCategory getCommentCategory(){
 		if (commentsController!=null){
-			return commentsController.getCommentCategory();
+			return commentsController.getCommentHeatCategory();
 		}
 		return null;
 	}
