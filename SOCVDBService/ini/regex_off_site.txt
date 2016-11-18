@@ -1,11 +1,2 @@
 #These are the regex executed on comment where username has been removed
-(?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{0,10})?)idiot(?![\s-]?proof)
-(?i)(you?|s?he).{0,4}\sstupid
-(?i)\bass\b
-(?i)\b(troll(ing)?)\b
-(?i)\bhaters?\b
-(?i)\babus(e|ing)\b
-(?i)\bplagiarism
-(?i)\brude\b
-(?i)\boffensive\b
-
+(?i)off-site resource
