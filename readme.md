@@ -1,6 +1,6 @@
-#SOCVFinder
+# SOCVFinder
 
-##Background
+## Background
 
 This bot was developed to address the following issues:
 
