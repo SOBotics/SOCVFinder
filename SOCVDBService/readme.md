@@ -25,7 +25,7 @@ To test bot this code can be used:
 
 <code>String htmlCherry = resultCherryPick.getHTML();</code>
 
-<code>//For possibile dupes</code>
+<code>//For possible dupes</code>
 
 <code>CherryPickResult resultPossibileDupes = botCmd.getPossibileDuplicatesBatch(0, 0, tag, 10); </code>
 
