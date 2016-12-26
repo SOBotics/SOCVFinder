@@ -40,11 +40,11 @@ public class CommentCloseCategory {
 	public static String getDescription(int closeType) {
 		switch(closeType){
 		case HIT_TYPO:
-			return "possibile-typo";
+			return "possible-typo";
 		case HIT_OFF_SITE:
-			return "possibile-offsite";
+			return "possible-offsite";
 		default:
-			return "possibile-unkown";
+			return "possible-unknown";
 		}
 	}
 	
