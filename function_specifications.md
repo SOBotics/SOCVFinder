@@ -2,9 +2,9 @@
 
 <h2>Major issue</h2>
 
-Impossibile to filter API  on <code>close_vote_count</code> and <code>close_flag_count</code>, this force the need for a service that fills a database with question of interest
+Impossible to filter API  on <code>close_vote_count</code> and <code>close_flag_count</code>, this force the need for a service that fills a database with question of interest
 
-No information available if question is in review or is closed flag. This makes it impossibile to include a reverse function, flag checking function, that could remove questions from review que if incorrectly flagged, by editing. Futhermore we can not link to the review interface (hence user need to vote from question page)
+No information available if question is in review or is closed flag. This makes it impossible to include a reverse function, flag checking function, that could remove questions from review que if incorrectly flagged, by editing. Futhermore we can not link to the review interface (hence user need to vote from question page)
 
 <h2>Software structure</h2>
 
@@ -36,7 +36,7 @@ Database is need to store questions with close votes/duplicate request and regis
 <td>view_count</td>
 <td>answer_count</td>
 <td>is_answer_accepted</td>
-<td>is_possibile_duplicate</td>
+<td>is_possible_duplicate</td>
 <td>id_user_ignore</td>
 </tr>
 </table>
@@ -63,7 +63,7 @@ The service will execute similar API call: https://api.stackexchange.com/docs/qu
 
 Fill the database with selected questions and then monitor with predefined strategy the questions.
 
-To find possibile duplicates use comments example
+To find possible duplicates use comments example
 
 <code>
 "comments": [
@@ -86,7 +86,7 @@ A test application is under development here <a href="https://github.com/jdd-sof
 
 <h3>Notification</h3>
 
-Monitor database for latest possibile duplicate and notify user in relative room
+Monitor database for latest possible duplicate and notify user in relative room
 
 <h3>Question search function</h3>
 
