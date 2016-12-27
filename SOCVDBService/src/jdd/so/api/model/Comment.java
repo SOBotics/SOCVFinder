@@ -26,6 +26,7 @@ public class Comment {
 
 	private long creationDate;
 	private long userId;
+	private String displayName;
 	private long reputation;
 	private String body;
 	private int score;
@@ -84,6 +85,9 @@ public class Comment {
 			JSONObject o = json.getJSONObject("owner");
 			if (o.has("user_id")) {
 				c.setUserId(o.getLong("user_id"));
+			}
+			if (o.has("display_name")) {
+				c.setDisplayName(o.getString("display_name"));
 			}
 			if (o.has("reputation")) {
 				c.setReputation(o.getLong("reputation"));
@@ -397,6 +401,14 @@ public class Comment {
 
 	public void setCloseType(int closeType) {
 		this.closeType = closeType;
+	}
+
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
 	}
 	
 	

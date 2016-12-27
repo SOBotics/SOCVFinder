@@ -62,7 +62,7 @@ public class IndexCommand extends BotCommand {
 		}
 		boolean tagMonitored = CloseVoteFinder.getInstance().isRoomTag(room.getRoomId(),tag);
 		if (!tagMonitored) {
-			room.replyTo(event.getUserId(),"This tag is not monitored in this room, contact RO for more info");
+			room.replyTo(event.getMessage().getId(),"This tag is not monitored in this room, contact RO for more info");
 			return;
 		}
 

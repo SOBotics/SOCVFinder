@@ -34,6 +34,9 @@ public class ChatRoom {
 	private CompletionStage<Long> lastMessage;
 	private List<Class<? extends BotCommand>> allowedCommands;
 	private int dupNotifyStrategy;
+	
+	private long lastUserId = 0l;
+	private int counter;
 
 
 	public ChatRoom(ChatBot bot, Room room, int startBatchNumber, List<Class<? extends BotCommand>> allowedCommands,int dupNotifyStrategy, boolean enableAi){
@@ -172,5 +175,14 @@ public class ChatRoom {
 
 	public void setDupNotifyStrategy(int duplicationNotifications) {
 		this.dupNotifyStrategy = duplicationNotifications;
+	}
+
+	public boolean increment(long userId) {
+		if (userId!=lastUserId){
+			lastUserId = userId;
+			counter = 0;
+		}
+		counter++;
+		return counter>10;
 	}
 }

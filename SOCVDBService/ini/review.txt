@@ -1,0 +1,2 @@
+#These are the regex executed on comment where username has been removed
+(?i)from review

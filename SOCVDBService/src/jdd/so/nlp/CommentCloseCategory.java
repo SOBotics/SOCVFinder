@@ -120,7 +120,7 @@ public class CommentCloseCategory {
 
 		CommentCloseCategory cc = new CommentCloseCategory();
 		Comment c = new Comment();
-		c.setBody("@CZoellner Fuck you you nigga");
+		c.setBody("@CZoellner meeh");
 		System.out.println(cc.classifyComment(c));
 		System.out.println("Score: " + c.getScore());
 

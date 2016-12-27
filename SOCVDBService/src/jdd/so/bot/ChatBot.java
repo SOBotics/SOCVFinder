@@ -225,6 +225,13 @@ public class ChatBot {
 		// Check access level
 		long userId = event.getUserId();
 		int accessLevel = 0;
+		
+		if (bc instanceof AiChatCommand){
+			if (room.increment(userId)){
+				room.send("That's enough, I'm tired of this");
+				return;
+			}
+		}
 
 		User u = CloseVoteFinder.getInstance().getUsers().get(userId);
 

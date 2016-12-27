@@ -34,6 +34,7 @@ import jdd.so.dao.model.CommentsNotify;
 import jdd.so.dao.model.DuplicateNotifications;
 import jdd.so.nlp.CommentCloseCategory;
 import jdd.so.nlp.CommentHeatCategory;
+import jdd.so.nlp.CommentReviewCategory;
 
 public class CommentsController extends Thread {
 	/**
@@ -45,6 +46,7 @@ public class CommentsController extends Thread {
 	private ApiHandler apiHandler;
 	private CommentHeatCategory commentHeatCategory;
 	private CommentCloseCategory commentCloseCategory;
+	private CommentReviewCategory commentReviewCategory;
 	private ChatBot cb;
 	private Queue<Long> lastPostIds;
 
@@ -72,6 +74,12 @@ public class CommentsController extends Thread {
 			logger.error("DupeHunterComments(ChatBot) - Comment close categorizzer could not be instanced", e);
 		}
 
+		
+		try {
+			commentReviewCategory = new CommentReviewCategory();
+		} catch (Exception e) {
+			logger.error("DupeHunterComments(ChatBot) - Comment review categorizzer could not be instanced", e);
+		}
 	}
 
 	@Override
@@ -121,6 +129,7 @@ public class CommentsController extends Thread {
 				List<Comment> possibileDupes = new ArrayList<>();
 				List<Comment> possibileRude = new ArrayList<>();
 				List<Comment> possibileClose = new ArrayList<>();
+				List<Comment> reviewComment = new ArrayList<>();
 				// Test run to find rude comments
 				for (Comment c : comments) {
 					if (c.isPossibleDuplicateComment()) {
@@ -142,6 +151,10 @@ public class CommentsController extends Thread {
 					int type = classifyCloseComment(socvfinder, c);
 					if (type != CommentCloseCategory.HIT_NONE) {
 						possibileClose.add(c);
+					}
+					boolean hitReview = classifyReviewComment(socvfinder, c);
+					if (hitReview) {
+						reviewComment.add(c);
 					}
 
 				}
@@ -202,6 +215,10 @@ public class CommentsController extends Thread {
 						Thread.sleep(arQ.getBackoff() * 1000L);
 					}
 				}
+				
+				if (!reviewComment.isEmpty()) {
+					notifyReviewComment(reviewComment,socvfinder);
+				}
 
 			} catch (JSONException | IOException | InterruptedException e) {
 				logger.error("run()", e);
@@ -245,6 +262,16 @@ public class CommentsController extends Thread {
 		try {
 			hit = commentCloseCategory.classifyComment(c);
 			c.setCloseType(hit);
+		} catch (Exception e) {
+			logger.error("run()", e);
+		}
+		return hit;
+	}
+	
+	private boolean classifyReviewComment(ChatRoom socvfinder, Comment c) {
+		boolean hit = false;
+		try {
+			hit = commentReviewCategory.classifyComment(c);
 		} catch (Exception e) {
 			logger.error("run()", e);
 		}
@@ -399,6 +426,21 @@ public class CommentsController extends Thread {
 			sobotics.send(message);
 
 		}
+	}
+	
+	private void notifyReviewComment(List<Comment> fromComments, ChatRoom sobotics) {
+
+		if (sobotics == null) {
+			return;
+		}
+		
+		for (Comment comment : fromComments) {
+			String message = "[ [SOReviewers](https://www.youtube.com/watch?v=wauzrPn0cfg) ] [tag:lqpq-review] [Post under review](" + comment.getLink() + ") by [" + comment.getDisplayName() + "](http://stackoverflow.com/users/" + comment.getUserId() + ")";
+			sobotics.send(message);
+
+		}
+
+
 	}
 
 	private Comment getComment(List<Comment> fromComments, long questionId) {
