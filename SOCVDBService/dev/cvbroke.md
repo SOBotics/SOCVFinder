@@ -2,7 +2,7 @@
 
 I'm one of the janitors on SO, monitoring questions, answers and comments with the hope of doing the community good, keeping Stack Overflow useful for future visitors. 
 
-The community and its moderator are good at handling flags on answers and comment.  The flags are handled in relative short time period and in most cases, appropriate actions are taken to keep SO clean for future visitors.
+The community and its moderator are good at handling flags on answers and comments.  The flags are handled in relative short time period and in most cases, appropriate actions are taken to keep SO clean for future visitors.
 
 However the close votes system is **completely broke**.
 
