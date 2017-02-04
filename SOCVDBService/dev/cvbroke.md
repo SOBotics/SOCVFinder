@@ -6,7 +6,7 @@ The community and its moderator are good at handling flags on answers and commen
 
 However the close votes system is **completely broke**.
 
-I will not spend to much time demonstrating this since it probably is common knowledge, most of us can see the close vote review queue. Currently the queue is around 9K and the reason that it's not increasing is simple because the reviews we scatter around on posts age away. Yeah much of the work the community has done goes to waste to keep the number down. Furthermore in low-traffic tag if you do not have >3K almost all your flags will be useless since they also will marked with aged away.
+I will not spend to much time demonstrating this since it probably is common knowledge, most of us can see the close vote review queue. Currently the queue is around 9K and the reason that it's not increasing is simple because the reviews we scatter around on posts age away. Furthermore in low-traffic tag if you do not have >3K almost all your flags will be useless since they also will marked with aged away.
 
 The site is also flooded with duplicates and not even our hammers can keep it clean, there is nothing that encourage them to do it and
 they will only find their questions down-voted (people get upset that they pointed them to the solution). 
@@ -19,7 +19,6 @@ My question is: ***What impact will this have on SO in the future?***
 
  2. SO is being polluted and we are not able clean it, slowly we bury what is gold with a thick layer of dirt, making SO less useful every day.
 
-Whatever is the truth, I feel that it is time that the Community and SE, acknowledge that we have a system that is broke and that it is time for some serious action in either direction.
 
 <sup>**Note:** This question does not directly seek solution to this problem, but like to understand what impact the broken system will have on SO, hence how important is this problem.</sup>
  
