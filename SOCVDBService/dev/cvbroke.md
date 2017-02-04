@@ -21,5 +21,5 @@ My question is: ***What impact will this have on SO in the future?***
 
 Whatever is the truth, I feel that it is time that the Community and SE, acknowledge that we have a system that is broke and that it is time for some serious action in either direction.
 
-<sup>Can someone explain to me why SE do not invest in this, after all it success comes from the high quality content</sup>
+<sup>**Note:** This question does not directly seek solution to this problem, but like to understand what impact the broken system will have on SO, hence how important is this problem.</sup>
  
