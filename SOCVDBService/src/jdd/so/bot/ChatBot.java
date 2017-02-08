@@ -113,6 +113,9 @@ public class ChatBot {
 		this.joinRoom(ChatHost.STACK_OVERFLOW, 98569, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 		//http://chat.stackoverflow.com/rooms/25767/regex-regular-expressions
 		this.joinRoom(ChatHost.STACK_OVERFLOW, 25767, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
+		
+		//http://chat.stackoverflow.com/rooms/127924/apache-spark
+		this.joinRoom(ChatHost.STACK_OVERFLOW, 127924, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS,false);
 	}
 	
 	
