@@ -127,31 +127,10 @@ public class CommentHeatCategory {
 
 		int score = 0;
 
-		String regexText = PreProcesser.preProccesForRegex(comment);
-		// regex it
-		String regExHit = getRegexHit(regexText, regexClassifierHighScore);
-		if (regExHit != null) {
-			score += 4;
-			c.setRegExHit(regExHit);
-		} else {
-			regExHit = getRegexHit(regexText, regexClassifierMediumScore);
-			if (regExHit != null) {
-				c.setRegExHit(regExHit);
-				if (regExHit != null) {
-					score += 3;
-				}
-			} else {
-				regExHit = getRegexHit(regexText, regexClassifierLowScore);
-				c.setRegExHit(regExHit);
-				if (regExHit != null) {
-					score += 2;
-				}
-			}
-		}
 
 		String classifyText = PreProcesser.preProcessComment(comment, false);
 
-		System.out.println("Classifing text: " + classifyText);
+		//System.out.println("Classifing text: " + classifyText);
 
 		Instances instance = createArff(classifyText);
 
@@ -160,7 +139,7 @@ public class CommentHeatCategory {
 		c.setNaiveBayesGood(outcomeWeka[0]);
 		c.setNaiveBayesBad(outcomeWeka[1]);
 
-		if (outcomeWeka[1] > 0.8) {
+		if (outcomeWeka[1] > 0.9) {
 			score++;
 			if (outcomeWeka[1] > 0.95) {
 				score++;
@@ -174,7 +153,7 @@ public class CommentHeatCategory {
 		double[] outcomeNlp = classifyMessageOpenNLP(openNLPClassifier, classifyText);
 		c.setOpenNlpGood(outcomeNlp[0]);
 		c.setOpenNlpBad(outcomeNlp[1]);
-		if (outcomeNlp[1] > 0.8) {
+		if (outcomeNlp[1] > 0.9) {
 			score++;
 			if (outcomeNlp[1] > 0.95) {
 				score++;
@@ -184,7 +163,7 @@ public class CommentHeatCategory {
 			}
 		}
 
-		instance = createArff(classifyText);
+//		instance = createArff(classifyText);
 
 		// // weka J48
 		// double[] outcomeJ48 = classifyMessageWithFilter(wekaJ48Classifier,
@@ -203,25 +182,52 @@ public class CommentHeatCategory {
 		// c.setSMOGood(outcomeWekaSMO[0]);
 		// c.setSMOBad(outcomeWekaSMO[1]);
 
-		String logMessage = "\"" + score + "\",\"" + "\"" + c.getNaiveBayesBad() + "\",\"" + c.getJ48Bad() + "\",\"" + c.getOpenNlpBad() + "\",\""
-				+ classifyText + "\",\"" + c.getBody() + "\"";
-
-		if (c.getNaiveBayesBad() > 0.8) {
-			Logger.getLogger(LogNaiveBayes.class).debug(logMessage);
-		}
-
-		if (c.getJ48Bad() > 0.8) {
-			Logger.getLogger(LogJ48.class).debug(logMessage);
-		}
-
-		if (c.getOpenNlpBad() > 0.8) {
-			Logger.getLogger(LogOpenNLP.class).debug(logMessage);
-		}
+//		String logMessage = "\"" + score + "\",\"" + "\"" + c.getNaiveBayesBad() + "\",\"" + c.getJ48Bad() + "\",\"" + c.getOpenNlpBad() + "\",\""
+//				+ classifyText + "\",\"" + c.getBody() + "\"";
+//
+//		if (c.getNaiveBayesBad() > 0.8) {
+//			Logger.getLogger(LogNaiveBayes.class).debug(logMessage);
+//		}
+//
+//		if (c.getJ48Bad() > 0.8) {
+//			Logger.getLogger(LogJ48.class).debug(logMessage);
+//		}
+//
+//		if (c.getOpenNlpBad() > 0.8) {
+//			Logger.getLogger(LogOpenNLP.class).debug(logMessage);
+//		}
 
 		// if (outcomeWekaSMO[1] > 0.9) {
 		// score++;
 		// }
 
+		
+		String regexText = PreProcesser.preProccesForRegex(comment);
+		// regex it
+		String regExHit = getRegexHit(regexText, regexClassifierHighScore);
+		if (regExHit != null) {
+			score+= 4;
+			if (score<6){
+				score=6;
+			}
+			c.setRegExHit(regExHit);
+		} else {
+			regExHit = getRegexHit(regexText, regexClassifierMediumScore);
+			if (regExHit != null) {
+				c.setRegExHit(regExHit);
+				if (regExHit != null) {
+					score += 3;
+				}
+			} else {
+				regExHit = getRegexHit(regexText, regexClassifierLowScore);
+				c.setRegExHit(regExHit);
+				if (regExHit != null) {
+					score += 2;
+				}
+			}
+		}
+
+		
 		c.setScore(score);
 
 		return score;

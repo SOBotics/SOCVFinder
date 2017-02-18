@@ -152,10 +152,15 @@ public class CommentsController extends Thread {
 					if (type != CommentCloseCategory.HIT_NONE) {
 						possibileClose.add(c);
 					}
-					boolean hitReview = classifyReviewComment(socvfinder, c);
-					if (hitReview) {
-						reviewComment.add(c);
-					}
+					
+					/**
+					 * Disabling review for now
+					 */
+					
+//					boolean hitReview = classifyReviewComment(socvfinder, c);
+//					if (hitReview) {
+//						reviewComment.add(c);
+//					}
 
 				}
 

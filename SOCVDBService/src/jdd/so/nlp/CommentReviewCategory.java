@@ -19,14 +19,6 @@ import jdd.so.api.model.Comment;
  */
 
 public class CommentReviewCategory {
-	/**
-	 * Logger for this class
-	 */
-	private static final Logger logger = Logger.getLogger(CommentReviewCategory.class);
-
-	public static final int HIT_NONE = 0;
-	public static final int HIT_TYPO = 1;
-	public static final int HIT_OFF_SITE = 2;
 
 	private List<Pattern> regexReview;
 
@@ -102,19 +94,8 @@ public class CommentReviewCategory {
 
 		CommentReviewCategory cc = new CommentReviewCategory();
 		Comment c = new Comment();
-		c.setBody("@CZoellner Fuck you you nigga");
+		c.setBody("review");
 		System.out.println(cc.classifyComment(c));
-		System.out.println("Score: " + c.getScore());
-
-		c.setBody("This is off-site resource request");
-		System.out.println(cc.classifyComment(c));
-		System.out.println("Score: " + c.getScore());
-
-		c.setBody("This seems like typo stuff");
-		System.out.println(cc.classifyComment(c));
-		System.out.println("Score: " + c.getScore());
-
-		// cc.classifyComment(c);
 
 	}
 

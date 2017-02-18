@@ -1,5 +1,4 @@
 #These are the regex executed on comment where username has been removed
-(?i)be-nice\b
 (?i)this\s*(\w+)?\s*spam
 (?i)(flag.*spam)
 (?i)(^|\s)stfw(\s|\.|!|\?|$)

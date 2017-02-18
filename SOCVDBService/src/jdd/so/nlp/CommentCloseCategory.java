@@ -27,11 +27,20 @@ public class CommentCloseCategory {
 	public static final int HIT_NONE = 0;
 	public static final int HIT_TYPO = 1;
 	public static final int HIT_OFF_SITE = 2;
+	public static final int HIT_OFF_TOPIC = 3;
+	public static final int HIT_OPINION = 4;
+	public static final int HIT_UNCLEAR = 5;
+	public static final int HIT_TOO_BROAD = 6;
+	public static final int HIT_MCVE = 7;
 	
 	private List<Pattern> regexTypo;
 	private List<Pattern> regexOffSite;
+	private List<Pattern> regexOffTopic;
+	private List<Pattern> regexOpinion;
+	private List<Pattern> regexUnclear;
+	private List<Pattern> regexTooBroad;
+	private List<Pattern> regexMCVE;
 
-	
 	
 	public CommentCloseCategory() throws Exception {
 		initModel();
@@ -43,6 +52,17 @@ public class CommentCloseCategory {
 			return "possible-typo";
 		case HIT_OFF_SITE:
 			return "possible-offsite";
+		case HIT_OFF_TOPIC:
+			return "possible-off-topic";
+		case HIT_OPINION:
+			return "possible-opinion-based";
+		case HIT_UNCLEAR:
+			return "possible-unclear";
+		case HIT_TOO_BROAD:
+			return "possible-too-broad";
+		case HIT_MCVE:
+			return "possible-mcve";
+					
 		default:
 			return "possible-unknown";
 		}
@@ -53,7 +73,12 @@ public class CommentCloseCategory {
 		// Regex model
 		regexTypo = getRegexs("ini/regex_typo.txt");
 		regexOffSite = getRegexs("ini/regex_off_site.txt");
-	
+		regexOffTopic= getRegexs("ini/regex_offtopic.txt");
+		regexOpinion = getRegexs("ini/regex_opinion.txt");
+		regexTooBroad = getRegexs("ini/regex_toobroad.txt");
+		regexUnclear = getRegexs("ini/regex_unclear.txt");
+		regexMCVE= getRegexs("ini/regex_mcve.txt");
+		
 	}
 
 	private List<Pattern> getRegexs(String fileName) throws IOException {
@@ -83,19 +108,50 @@ public class CommentCloseCategory {
 		
 		String regexText = PreProcesser.preProccesForRegex(comment);
 		// regex it
-		String regExHit = getRegexHit(regexText, regexTypo);
-		if (regExHit != null) {
-			c.setRegExHit(regExHit);
-			return HIT_TYPO;
-		} 
 		
-		regExHit = getRegexHit(regexText, regexOffSite);
+		
+		String regExHit = getRegexHit(regexText, regexOffSite);
 		if (regExHit != null) {
 			c.setRegExHit(regExHit);
 			return HIT_OFF_SITE;
 		} 
 		
+		regExHit = getRegexHit(regexText, regexOffTopic);
+		if (regExHit != null) {
+			c.setRegExHit(regExHit);
+			return HIT_OFF_TOPIC;
+		}
 		
+		regExHit = getRegexHit(regexText, regexOpinion);
+		if (regExHit != null) {
+			c.setRegExHit(regExHit);
+			return HIT_OPINION;
+		}
+		
+		regExHit = getRegexHit(regexText, regexTooBroad);
+		if (regExHit != null) {
+			c.setRegExHit(regExHit);
+			return HIT_TOO_BROAD;
+		}
+		
+		regExHit = getRegexHit(regexText, regexTypo);
+		if (regExHit != null) {
+			c.setRegExHit(regExHit);
+			return HIT_TYPO;
+		}
+		
+		regExHit = getRegexHit(regexText, regexUnclear);
+		if (regExHit != null) {
+			c.setRegExHit(regExHit);
+			return HIT_UNCLEAR;
+		} 
+		
+		
+		regExHit = getRegexHit(regexText, regexMCVE);
+		if (regExHit != null) {
+			c.setRegExHit(regExHit);
+			return HIT_MCVE;
+		} 
 		return 0;
 
 	}
@@ -120,20 +176,9 @@ public class CommentCloseCategory {
 
 		CommentCloseCategory cc = new CommentCloseCategory();
 		Comment c = new Comment();
-		c.setBody("@CZoellner meeh");
+		c.setBody("opinion- based question");
 		System.out.println(cc.classifyComment(c));
-		System.out.println("Score: " + c.getScore());
-
-		c.setBody(
-				"Your conclusion has been as clear as wrong since the beginning. Since you make a statement and then refuse to properly argue your position, but instead attempt to blame others for your own actions like a child. I suggest you go back to your reviewing hobby, junior");
-		System.out.println(cc.classifyComment(c));
-		System.out.println("Score: " + c.getScore());
-
-		c.setBody("be-nice");
-		System.out.println(cc.classifyComment(c));
-		System.out.println("Score: " + c.getScore());
-
-		// cc.classifyComment(c);
+		
 
 	}
 
