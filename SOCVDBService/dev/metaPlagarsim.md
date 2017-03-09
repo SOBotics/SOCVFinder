@@ -8,7 +8,7 @@ Currently on SE plagiarized answer are handled with custom mod flag, if the flag
 
 Does an answer need **intent to benefit** from plagiarize to merit the label " plagiarism" or should any answer without correct attribution even if we evaluate it as **no intent to benefit** be considered as plagiarism.
 
-On Stack Overflow it's fairly common (10 x day) with these kind of answers.
+On Stack Overflow it's fairly common with these kind of "non" answers.
 
 > `Copied large block of code or entire post from other answer`
 
