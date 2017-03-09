@@ -24,17 +24,17 @@ or
 
 My "instinct" on these answer has been to flag as NAA (Not An Answer), passing comment as you can see in screen shot, however the attribution part is not correct since it has copied text from [answer](http://stackoverflow.com/a/21842390/5292302)
 
-This brings up some considerations.
+**This brings up some considerations.**
 
-Is intent to benefit from plagiarism needed?
-
-*or*
-
-*"No indication that it is not your own*", are we more tolerant to new users, hence we don't expect them to know how to provide correct attribution, format ecc and in this case we should look at context, when needed we help them to edit and in this case just flag it NAA? 
+- Is intent to benefit from plagiarism needed?
 
 *or*
 
-The correct way to always indicated that they are not providing correct attribution and custom mod flag **all** answers that do not provide correct attribution as plagiarism, in this case skipping the LQP queue.
+- *"No indication that it is not your own*", are we more tolerant to new users, hence we don't expect them to know how to provide correct attribution, format ecc and in this case we should look at context, when needed we help them to edit and in this case just flag it NAA? 
+
+*or*
+
+- The correct way to always indicated that they are not providing correct attribution and custom mod flag **all** answers that do not provide correct attribution as plagiarism, in this case skipping the LQP queue.
 
 Please note:
 I am excluding the case where it can be difficult to see the thanks, please help part, hence it is more helpful to in any case raise a custom mod flag to avoid review queue and help moderator to evaluate it correctly.
