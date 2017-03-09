@@ -10,18 +10,19 @@ Does an answer need **intent to benefit** from plagiarize to merit the label " p
 
 On Stack Overflow it's fairly common (10 x day) with these kind of answers.
 
-> Copied large block of code or entire post from other answer
+> `Copied large block of code or entire post from other answer`
 
-> Thanks Mister, that worked great!!!  
+> Thanks UserName, that worked great!!!  
 
 or
 
-> Copied large block of code or entire post from other answer
+> `Copied large block of code or entire post from other answer`
 
->Stuff not work me... plz help quick, tanks in advantage.
+> Stuff not work me... plz help quick, tanks in advantage.
 
 This question is not merely philosophical, linguistic “How do we define plagiarism” since it also boil down to action that we should take on these posts.
-These Non An Answer that with some good will do not show “Intent to benefit” from the copied content, do we consider them as plagiarized content anyway (since they do not have correct attribution) and should always a moderator flag be raised or do we not consider it as plagiarized content and only an Not An Answer flag should be raised letting the review que handle it?
+
+These Non An Answer that with some good will do not show “Intent to benefit” from the copied content, do we consider them as plagiarized content anyway (since they do not have correct attribution) and should we always raise a moderator flag?; or do we not consider it as plagiarized content and only an Not An Answer flag should be raised letting the review queue handle it?
 
 Please note:
-I'm excluding the case where it can be difficult to see the thanks, please help part, hence it is more helpful to in an case raise a custom mod flag to avoid review que and help moderator to evaluate it correctly.  
+I'm excluding the case where it can be difficult to see the thanks, please help part, hence it is more helpful to in any case raise a custom mod flag to avoid review que and help moderator to evaluate it correctly.  
