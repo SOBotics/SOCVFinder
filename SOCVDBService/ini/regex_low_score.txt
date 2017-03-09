@@ -8,3 +8,4 @@
 (?i)\bsarcasm\b
 (?i)\bsilly\b
 (?i)gibberish
+(?i)\bignorant\b
