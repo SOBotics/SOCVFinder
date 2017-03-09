@@ -1,4 +1,8 @@
 #These are the regex executed on comment where username has been removed
+(?i)shitty\squestion
+(?i)crap\squestion
+(?i)fuck\soff   
+(?i)jerk\soff
 (?i)this\s*(\w+)?\s*spam
 (?i)(flag.*spam)
 (?i)(^|\s)stfw(\s|\.|!|\?|$)
@@ -82,8 +86,6 @@
 (?i)yellow\s?showers
 (?i)zoophilias
 (?i)douche
-(?i)\barrogant\b
 (?i)\bsnob\b
 (?i)shut\s?up\b
-(?i)unlike\syou
 (?i)debil\b

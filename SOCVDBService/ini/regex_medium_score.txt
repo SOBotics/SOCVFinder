@@ -8,4 +8,6 @@
 (?i)\bplagiarism
 (?i)\brude\b
 (?i)\boffensive\b
+(?i)\barrogant\b
+
 
