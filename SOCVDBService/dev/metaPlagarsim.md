@@ -4,7 +4,7 @@ This question is inspired after a long discussion, where no consensus was achiev
 
 > According to Wikipedia, "The idea [of plagiarism] remains problematic with unclear definitions and unclear rules.", and they give [several definitions](https://en.wikipedia.org/wiki/Plagiarism#Academia) of which some include intent to benefit from such act and some say it needs to be deliberate. I think it's fair to say that there are different definitions of it, some mention intent explicitly, some don't.
 
-Currently on SE plagiarized answer are handled with custom mod flag, if the flag is correct the [answer is deleted and moderators may suspend the user for a while](https://meta.stackexchange.com/a/160072/320339)
+Currently on SE plagiarized answer are handled with custom mod flag, if the flag is correct the user will receive a warning (comment or maybe mod message), possibly deletion or suspension.
 
 The discussion in this meta is what is the threshold to consider an answer plagiarized, currently in [help center](http://stackoverflow.com/help/referencing)
 
