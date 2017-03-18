@@ -22,6 +22,7 @@ import org.apache.log4j.PropertyConfigurator;
 import fr.tunaki.stackoverflow.chat.ChatHost;
 import fr.tunaki.stackoverflow.chat.StackExchangeClient;
 import fr.tunaki.stackoverflow.chat.event.EventType;
+import fr.tunaki.stackoverflow.chat.event.MessagePostedEvent;
 import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
 import jdd.so.CloseVoteFinder;
 import jdd.so.bot.actions.BotCommand;
@@ -180,13 +181,22 @@ public class ChatBot {
 
 		room.getRoom().addEventListener(EventType.MESSAGE_REPLY, event -> roomEvent(room, event, true));
 		room.getRoom().addEventListener(EventType.USER_MENTIONED, event -> roomEvent(room, event, false));
+		room.getRoom().addEventListener(EventType.MESSAGE_POSTED, event -> roomEventAlive(room, event));
 
+		
 		long id = room.getRoomId();
 		rooms.put(id, room);
 
 		return id != 0;
 	}
 
+
+	private void roomEventAlive(ChatRoom room, MessagePostedEvent event) {
+		String cnt = event.getMessage().getContent();
+		if (cnt!=null && cnt.toLowerCase().startsWith("@bots")){
+			room.send("[Alive and kicking](https://www.youtube.com/watch?v=ljIQo1OHkTI)");
+		}
+	}
 
 	protected void roomEvent(ChatRoom room, PingMessageEvent event, boolean isReply) {
 		if (logger.isDebugEnabled()) {
