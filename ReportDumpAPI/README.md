@@ -35,7 +35,8 @@ Example:
     [
       {
         "name": "How do I foo the bazzed bars?",
-        "value": "https://stackoverflow.com/questions/123456789"
+        "value": "https://stackoverflow.com/questions/123456789",
+        "specialType": "link"
       },
       {
         "name": "",
@@ -55,7 +56,8 @@ Example:
     [
       {
         "name": "Barring a baz made a foo, why?",
-        "value": "https://stackoverflow.com/questions/1122334455"
+        "value": "https://stackoverflow.com/questions/1122334455",
+        "specialType": "link"
       },
       {
         "name": "",
