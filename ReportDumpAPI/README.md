@@ -5,7 +5,6 @@
 Send a POST request to `{host domain/IP}/api/create-report` with the following JSON data:
 
  - `botName` *string*: the name of your chatbot.<sup>*</sup>
- - `roomId` *int*: the ID of the chat room which this report originated from.<sup>*</sup>
  - `tag` *string*: a common tag which all the posts have.
  - `posts` *object*: an array of `post` objects. <sup>*</sup>
 
@@ -28,7 +27,6 @@ Example:
 ```json
 {
   "botName": "Botty McBotface",
-  "roomId": 123456,
   "tag": "jon-skeet",
   "posts":
   [
