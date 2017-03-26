@@ -16,11 +16,13 @@ A `post` object is an array of sub-objects called `fields`. A `field` represents
  - `value`: the data associated with the field. All primitive types are supported.<sup>*</sup>
  - `specialType` *string*: the name of the special type this field represents.
 
-The `specialType` field tells the API that the `field` object contains special data which needs additional processing before being displayed in the end report. The supported values are currently: "answers" and "date".
+The `specialType` field tells the API that the `field` object contains special data which needs additional processing before being displayed in the end report. The supported values are currently: "answers", "link", and "date".
 
-"answers" type `field`s require the `value` field to be of type *string*. The data must start with an `a` (case-insensitive) to indicate that an answer has been accepted followed by the total number of answers. Example: `A5` tells us there are 5 answers, one of which is accepted. `2` indicated there are 2 answers in total, neither are accepted.
+ - "answers" type `field`s require the `value` field to be of type *string*. The data must start with an `a` (case-insensitive) to indicate that an answer has been accepted followed by the total number of answers. Example: `A5` tells us there are 5 answers, one of which is accepted. `2` indicated there are 2 answers in total, neither are accepted.
 
-"date" type `field`s require the `value` field to be of type *int*. The data must be in unix epoch form.
+ - "date" type `field`s require the `value` field to be of type *int*. The data must be in unix epoch form.
+
+ - "link" type `field`s require the `value` field to be of type *string*. The data must be a URL.
 
 Example:
 
