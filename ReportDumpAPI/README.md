@@ -8,7 +8,7 @@ Send a POST request to `{host domain/IP}/api/create-report` with the following J
  - `tag` *string*: a common tag which all the posts have.
  - `posts` *object*: an array of `post` objects. <sup>*</sup>
 
-A `post` object is an array of sub-objects called `fields`. A `field` represents a single piece of data (with a name of the data). A `post` can contain mutiple `field`s is any order you wish. There is a limit to the number of `field`s a single `post` can contain though.
+A `post` object is an array of sub-objects called `fields`. A `field` represents a single piece of data (with a name of the data). A `post` can contain mutiple `field`s (there is a limit though).
 
 `field`s must contain the following:
 
