@@ -12,7 +12,7 @@ A `post` object is an array of sub-objects called `fields`. A `field` represents
 
 `field`s must contain the following:
 
- - `id` *string*: a unique string which identifies this field from others. This field's value must not change if you wish for a constant report layout.
+ - `id` *string*: a unique string which identifies this field from others. This field's value must not change if you wish for a constant report layout.<sup>*</sup>
  - `name` *string*: the name of the field. This text will be displayed as-is to the end-user.<sup>*</sup>
  - `value`: the data associated with the field. All primitive types are supported.<sup>*</sup>
  - `specialType` *string*: the name of the special type this field represents.
