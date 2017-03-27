@@ -104,6 +104,11 @@ namespace ReportDumpAPI.WebServer
             {
                 var key = file.Remove(0, dir.Length).Replace(Path.DirectorySeparatorChar, '/');
 
+                if (key.StartsWith("/reports"))
+                {
+                    key = key.Remove(0, 8);
+                }
+
                 content[key] = File.ReadAllBytes(file);
             }
         }
