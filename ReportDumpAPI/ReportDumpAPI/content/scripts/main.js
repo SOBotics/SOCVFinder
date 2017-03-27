@@ -42,9 +42,11 @@
         $("body").addClass("bodyDark");
     }
 
-    $(".postTime").each(function() {
-        var postTime = new Date(+$(this)[0].dataset.unixtime * 1000);
-        var secAge = (Date.now() - postTime) / 1000;
+    $(".timestamp").each(function() {
+        var timestamp = new Date(+$(this)[0].dataset.unixtime * 1000);
+        var secAge = (Date.now() - timestamp) / 1000;
+
+        $(this).attr("title", timestamp.toISOString().replace("T", " ").substr(0, 19) + "Z");
 
         if (secAge < 5) {
             $(this).text("a few seconds");
@@ -70,7 +72,10 @@
             $(this).text(weeks + " week" + (weeks == 1 ? "" : "s"));
         }
         else {
-            $(this).text("on " + postTime.toDateString());
+            var md = timestamp.toDateString().slice(4, 15);
+            var y = "'" + md.split(" ")[2].slice(2, 4)
+            var mdy = md.slice(0, 7) + y;
+            $(this).text("on " + mdy);
             return;
         }
 

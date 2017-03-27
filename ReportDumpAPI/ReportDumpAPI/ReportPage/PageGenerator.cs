@@ -209,11 +209,9 @@ namespace ReportDumpAPI.ReportPage
             var outReports = reports;
 
             for (var i = 0; i < reports.Count; i++)
+            for (var j = 0; j < reports[i].Count; j++)
             {
-                for (var j = 0; j < reports[i].Count; j++)
-                {
-                    outReports[i][j].AvgLength = avgVisCharLengths[reports[i][j].Id];
-                }
+                outReports[i][j].AvgLength = avgVisCharLengths[reports[i][j].Id];
             }
 
             reportsWithAvg = outReports;
@@ -323,10 +321,10 @@ namespace ReportDumpAPI.ReportPage
                         {
                             html.AppendLine("<div class=\"reportField\" $STYLE$>");
                             html.AppendLine($"<span class=\"valueName\">{fieldName}</span>: ");
-                            html.AppendLine($"<span class=\"postTime\" data-unixtime=\"{fieldData}\"></span>");
+                            html.AppendLine($"<span class=\"timestamp\" data-unixtime=\"{fieldData}\"></span>");
                             html.AppendLine("</div>");
-                            // 10 chars is the avg length of the friendly representation of a timestamp.
-                            field.Length = fieldName.Length + 10;
+                            // 8 chars is the avg length of the friendly representation of a timestamp.
+                            field.Length = fieldName.Length + 8;
                             field.SpecType = "date";
                             break;
                         }
