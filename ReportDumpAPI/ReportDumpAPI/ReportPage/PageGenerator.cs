@@ -105,12 +105,12 @@ namespace ReportDumpAPI.ReportPage
 
         private static string PatchReportTag(string html, Dictionary<string, object> json)
         {
-            var tagsStr = json["tag"]?.ToString();
-
-            if (tagsStr == null)
+            if (!json.ContainsKey("tag"))
             {
                 return html.Replace("$REPORT_TAG$", "");
             }
+
+            var tagsStr = json["tag"].ToString();
             
             tagsStr = tagsStr.Remove(0, 1).Substring(0, tagsStr.Length - 2);
 
