@@ -12,6 +12,10 @@ h1, h2, h3 {
     font-weight: 400;
 }
 
+h3 {
+    margin: 0;
+}
+
 a:visited {
     color: #3464B7;
 }
@@ -109,7 +113,7 @@ header h1 {
 
 #main {
     padding-bottom: 75px; /* Height of the footer + extra padding */
-    width: 80%;
+    width: 1000px;
     margin: 0 auto;
 }
 
@@ -146,52 +150,16 @@ header h1 {
     margin-bottom: 0;
 }
 
-.reportTitle {
-    display: inline;
+.reportField {
     text-align: left;
-    margin: 0;
 }
 
-.questionScore {
-    display: inline;
+.reportField:last-child {
     text-align: right;
-    margin-left: 15px;
 }
 
 .valueName {
     font-family: QuickSandBold;
-}
-
-.postAge {
-    text-align: left;
-    width: 230px;
-}
-
-.viewCount {
-    text-align: left;
-    width: 125px;
-}
-
-.answerCount {
-    text-align: left;
-    width: 105px;
-}
-
-.closeVotes {
-    text-align: right;
-    width: 120px;
-}
-
-.dupeTargetLink {
-    text-align: left;
-}
-
-.opResponseContainer {
-    text-align: left;
-}
-
-.opResponseComment {
-    font-size: 0.8rem;
 }
 
 
@@ -201,13 +169,13 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 30px; /* Height of the footer */
+    height: 30px;
 }
 
 #footerContainer {
-    width: 80%;
+    width: 1000px;
     margin: 0 auto;
-    font-family: QuickSandBold,sans-serif;
+    font-family: QuickSandBold, sans-serif;
     font-size: 0.75rem;
 }
 

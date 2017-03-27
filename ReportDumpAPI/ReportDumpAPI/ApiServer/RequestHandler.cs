@@ -11,9 +11,8 @@ namespace ReportDumpAPI.ApiServer
     {
         public static string HandleReportRequest(byte[] body, bool zipped, out int statusCode)
         {
-            var roomID = "";
-            var batchID = "";
             var html = "";
+            var reportId = "";
 
             try
             {
@@ -28,11 +27,7 @@ namespace ReportDumpAPI.ApiServer
                     json = Encoding.UTF8.GetString(body);
                 }
 
-                var jObj = JSON.Deserialize<Dictionary<string, object>>(json);
-                roomID = jObj["room_id"].ToString();
-                batchID = jObj["batch_nr"].ToString();
-
-                html = PageGenerator.GenerateReportPage(json);
+                html = PageGenerator.GenerateReportPage(json, out reportId);
             }
             catch (Exception)
             {
@@ -42,24 +37,24 @@ namespace ReportDumpAPI.ApiServer
 
             try
             {
-                var dataDir = Path.Combine(Config.ContentDir, roomID);
+                var dataDir = Path.Combine(Config.ContentDir, "reports");
 
                 if (!Directory.Exists(dataDir))
                 {
                     Directory.CreateDirectory(dataDir);
                 }
 
-                var file = Path.Combine(dataDir, batchID + ".html");
+                var file = Path.Combine(dataDir, reportId + ".html");
 
                 File.WriteAllText(file, html);
 
                 statusCode = 200;
-                return $"http://{Config.FQD}/{roomID}/{batchID}";
+                return $"http://{Config.FQD}/{reportId}";
             }
             catch (Exception)
             {
                 statusCode = 500;
-                return $"An unknown error occurred while processing report {roomID}/{batchID}.";
+                return $"An unknown error occurred while processing report {reportId}.";
             }
         }
     }

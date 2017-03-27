@@ -65,7 +65,7 @@ namespace ReportDumpAPI.WebServer
         {
             var pq = new Uri(reportUrl).PathAndQuery;
             var fileName = (pq + ".html").Replace('/', Path.DirectorySeparatorChar).Remove(0, 1);
-            var file = Path.Combine(Config.ContentDir, fileName);
+            var file = Path.Combine(Config.ContentDir, "reports", fileName);
             var key = pq + ".html";
 
             content[key] = File.ReadAllBytes(file);

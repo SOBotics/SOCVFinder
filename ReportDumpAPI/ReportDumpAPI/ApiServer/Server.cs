@@ -125,7 +125,7 @@ namespace ReportDumpAPI.ApiServer
             {
                 byte[] data;
 
-                if (client.Request.RawUrl != "/api/dump-report" || client.Request.HttpMethod != "POST")
+                if (client.Request.RawUrl != "/api/create-report" || client.Request.HttpMethod != "POST")
                 {
                     var msg = "The requested resource could not be found.";
                     client.SendResponseAndClose(msg, 404);
@@ -133,7 +133,7 @@ namespace ReportDumpAPI.ApiServer
                 }
                 else
                 {
-                    var sc = 200;
+                    var returnStatusCode = 200;
 
                     var reqBytes = new byte[client.Request.ContentLength64];
 
@@ -143,12 +143,12 @@ namespace ReportDumpAPI.ApiServer
                         reqBytes = ms.ToArray();
                     }
                     var isZipped = client.Request.Headers["Content-Encoding"]?.Contains("gzip") ?? false;
-                    var strData = RequestHandler.HandleReportRequest(reqBytes, isZipped, out sc);
+                    var strData = RequestHandler.HandleReportRequest(reqBytes, isZipped, out returnStatusCode);
 
-                    client.Response.StatusCode = sc;
+                    client.Response.StatusCode = returnStatusCode;
                     data = Encoding.UTF8.GetBytes(strData);
 
-                    if (sc == 200)
+                    if (returnStatusCode == 200)
                     {
                         NewReport?.Invoke(strData);
                     }
