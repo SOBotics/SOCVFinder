@@ -1,5 +1,3 @@
-*Under construction...*
-
 # Usage
 
 Send a POST request to `{host domain/IP}/api/create-report` with the following JSON data:
