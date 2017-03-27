@@ -41,7 +41,7 @@ Example:
             "value": "-3"
         }, {
             "id": "postage",
-            "name": "Posted On",
+            "name": "Posted",
             "value": 1289792601,
             "specialType": "date"
         }, {
@@ -61,7 +61,7 @@ Example:
             "value": "5"
         }, {
             "id": "postage",
-            "name": "Posted On",
+            "name": "Posted",
             "value": 2683722661,
             "specialType": "date"
         }, {
