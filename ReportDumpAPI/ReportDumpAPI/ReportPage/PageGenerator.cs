@@ -23,7 +23,7 @@ namespace ReportDumpAPI.ReportPage
 
         private const string validIdChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         private const int idLength = 6;
-        private const int maxVisCharsPerReportContainer = 50;
+        private const int maxVisCharsPerReportContainer = 75;
         private static RandomNumberGenerator rng = RNGCryptoServiceProvider.Create();
         private static readonly string template;
 
@@ -125,29 +125,29 @@ namespace ReportDumpAPI.ReportPage
             var posts = JSON.Deserialize<object[]>(postsJson);
             var htmlBuilder = new StringBuilder("<div>");
 
-            // Start of open all/sort by functions.
-            htmlBuilder.AppendLine("<div class=\"reportHeaderFunctions\">");
+            //// Start of open all/sort by functions.
+            //htmlBuilder.AppendLine("<div class=\"reportHeaderFunctions\">");
 
-            // Open all button.
-            htmlBuilder.AppendLine("<span id=\"openAllReports\">Open all</span>");
+            //// Open all button.
+            //htmlBuilder.AppendLine("<span id=\"openAllReports\">Open all</span>");
 
-            // Sort by select.
-            htmlBuilder.AppendLine("<span>");
-            htmlBuilder.AppendLine("Sort by:");
+            //// Sort by select.
+            //htmlBuilder.AppendLine("<span>");
+            //htmlBuilder.AppendLine("Sort by:");
 
-            htmlBuilder.AppendLine("<select id=\"sortBy\">");
-            htmlBuilder.AppendLine("<option>Age</option>");
-            htmlBuilder.AppendLine("<option>Answers</option>");
-            htmlBuilder.AppendLine("<option selected>Close votes</option>");
-            htmlBuilder.AppendLine("<option>Score</option>");
-            htmlBuilder.AppendLine("<option>Views</option>");
-            htmlBuilder.AppendLine("</select>");
+            //htmlBuilder.AppendLine("<select id=\"sortBy\">");
+            //htmlBuilder.AppendLine("<option>Age</option>");
+            //htmlBuilder.AppendLine("<option>Answers</option>");
+            //htmlBuilder.AppendLine("<option selected>Close votes</option>");
+            //htmlBuilder.AppendLine("<option>Score</option>");
+            //htmlBuilder.AppendLine("<option>Views</option>");
+            //htmlBuilder.AppendLine("</select>");
 
-            // End of sort by select.
-            htmlBuilder.AppendLine("</span>");
+            //// End of sort by select.
+            //htmlBuilder.AppendLine("</span>");
 
-            // End of Report functions.
-            htmlBuilder.AppendLine("</div>");
+            //// End of Report functions.
+            //htmlBuilder.AppendLine("</div>");
 
             var reports = new List<List<Field>>();
             foreach (var p in posts)
@@ -236,8 +236,8 @@ namespace ReportDumpAPI.ReportPage
                     foreach (var layoutField in layer)
                     {
                         var field = r.Single(f => f.Id == layoutField.Key);
-                        // Add 5 for extra padding.
-                        var widthPercent = field.AvgLength / layer.Sum(x => x.Value + 5);
+                        // Add 5 for padding.
+                        var widthPercent = (field.AvgLength + 5) / maxVisCharsPerReportContainer;
                         // 900px is the width of a report div.
                         var width = Math.Round(900 * widthPercent);
                         var style = "";
