@@ -27,6 +27,12 @@ namespace ReportDumpAPI.ApiServer
                     json = Encoding.UTF8.GetString(body);
                 }
 
+                // Remove BOM char if present.
+                if (json[0] == 65279)
+                {
+                    json = json.Remove(0, 1);
+                }
+
                 html = PageGenerator.GenerateReportPage(json, out reportId);
             }
             catch (Exception)
