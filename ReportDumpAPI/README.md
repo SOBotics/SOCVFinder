@@ -73,6 +73,12 @@ Example:
     ]
 }
 ```
+
+If the request is processed successfuly a URL (plain string) of the report will be returned. Example:
+
+```
+http://reports.socvr.org/jS0xsN
+```
  
  -----
  
