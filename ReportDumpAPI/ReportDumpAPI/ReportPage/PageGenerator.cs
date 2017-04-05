@@ -11,6 +11,14 @@ namespace ReportDumpAPI.ReportPage
 {
     public static class PageGenerator
     {
+        public class ParsingException : Exception
+        {
+            public ParsingException(string message) : base(message)
+            {
+
+            }
+        }
+
         private class Field
         {
             public string Id { get; set; }
@@ -95,6 +103,12 @@ namespace ReportDumpAPI.ReportPage
         {
             var name = json["botName"].ToString();
             name = name.Substring(1, name.Length - 2);
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ParsingException("JSON field 'botname' must contain a valid value.");
+            }
+
             return html.Replace("$BOT_NAME$", name);
         }
 
@@ -125,11 +139,11 @@ namespace ReportDumpAPI.ReportPage
             var posts = JSON.Deserialize<object[]>(postsJson);
             var htmlBuilder = new StringBuilder("<div>");
 
-            //// Start of open all/sort by functions.
-            //htmlBuilder.AppendLine("<div class=\"reportHeaderFunctions\">");
+            // Start of open all/sort by functions.
+            htmlBuilder.AppendLine("<div class=\"reportHeaderFunctions\">");
 
-            //// Open all button.
-            //htmlBuilder.AppendLine("<span id=\"openAllReports\">Open all</span>");
+            // Open all button.
+            htmlBuilder.AppendLine("<span id=\"openAllReports\">Open all</span>");
 
             //// Sort by select.
             //htmlBuilder.AppendLine("<span>");
@@ -146,8 +160,8 @@ namespace ReportDumpAPI.ReportPage
             //// End of sort by select.
             //htmlBuilder.AppendLine("</span>");
 
-            //// End of Report functions.
-            //htmlBuilder.AppendLine("</div>");
+            // End of Report functions.
+            htmlBuilder.AppendLine("</div>");
 
             var reports = new List<List<Field>>();
             foreach (var p in posts)

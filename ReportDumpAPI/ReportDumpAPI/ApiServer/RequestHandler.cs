@@ -35,6 +35,11 @@ namespace ReportDumpAPI.ApiServer
 
                 html = PageGenerator.GenerateReportPage(json, out reportId);
             }
+            catch (PageGenerator.ParsingException ex)
+            {
+                statusCode = 400;
+                return ex.Message;
+            }
             catch (Exception)
             {
                 statusCode = 400;
