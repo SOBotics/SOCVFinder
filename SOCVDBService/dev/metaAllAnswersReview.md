@@ -15,7 +15,7 @@ even without that sentence it would have been a plagiarized post, which brings m
 
 > I really can't think of a better UI than that. /review shows you one post at a time (+ the question, for answers) - when that's not enough, open a new tab with the full question and all the answers.
 
-I however think [animuson](https://meta.stackexchange.com/users/141525/animuson) [idea](https://meta.stackexchange.com/questions/172931/please-put-answers-underneath-questions-in-close-review-queue#comment513749_172931)'s or something similar is much more efficient.
+I however think [animuson](https://meta.stackexchange.com/users/141525/animuson)'s [idea](https://meta.stackexchange.com/questions/172931/please-put-answers-underneath-questions-in-close-review-queue#comment513749_172931) or something similar is much more efficient.
 
 > I don't think they should be expanded by default (or maybe only one expanded by default), but I'd like an easy way to import the answers into the same review screen rather than opening another window/tab.
 
