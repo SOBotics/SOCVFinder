@@ -8,7 +8,8 @@ I agree!, the last sentence *"Works for me! Thank you Oleksii !"* should have ma
 
 **but**
 
-even without that sentence it would have been a plagiarized post, which brings me to the conclusion that if you like to review correctly before pressing "Looks Ok" you always need to visit the whole Q/A in a new tab.
+even without that sentence it would have been a plagiarized post, which brings me to the conclusion that if you like to review correctly before pressing "Looks Ok" you always need to visit the whole Q/A in a new tab, to me there is no doubt that seeing the other answers while reviewing Late Answers or Low Quailty Post is useful and can determine the action that needs to be taken.
+
 
 [Shog9](https://meta.stackexchange.com/users/811/shog9) once [stated](https://meta.stackexchange.com/a/153002/320339):
 
