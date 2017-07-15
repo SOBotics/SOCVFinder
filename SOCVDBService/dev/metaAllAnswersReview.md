@@ -1,10 +1,10 @@
 # Show all answers in review queue
 
-*This is request is related specifically to the following queues Low Quality Posts, First Posts and Late Answers, however it could be useful also for other queue as for example the [Close Votes](https://meta.stackexchange.com/questions/172931/please-put-answers-underneath-questions-in-close-review-queue)*
+*This is request is related specifically to the following queues Low Quality Posts, First Posts and Late Answers, however it could also be useful for other queue as for example the [Close Votes Queue](https://meta.stackexchange.com/questions/172931/please-put-answers-underneath-questions-in-close-review-queue)*
 
 I was prompted to ask for this feature after I messed up this [review](https://meta.stackoverflow.com/questions/352198/). 
 
-I agree!, the sentence *"Works for me! Thank you Oleksii !"* should have made me visit the whole Q/A, mea culpa.
+I agree!, the last sentence *"Works for me! Thank you Oleksii !"* should have made me visit the whole Q/A, mea culpa.
 
 **but**
 
