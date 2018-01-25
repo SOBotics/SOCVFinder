@@ -60,13 +60,13 @@ These are the filters reviewer can apply to the cherry pick
 
 It is important to have space between filters, but not inside and include letters so that queen can understand on what attribute the filter is to be applied, see >2**cv**, <=0**s** <2**d**
 
-####Ignore / Delete the batch
+#### Ignore / Delete the batch
 If you do not have time to review or you where only testing you can delete the batch by replying to batch with ignore
 
 `@Queen ignore` - The batch will be delete, questions released for other users and questions will show up in future batch.
 
 
-###Statistics
+### Statistics
 
 The statistics are gather when the reviewer sends **done** command an api call is made to check close vote count and number of closed question. Naturally the Queen can not be sure that reviewer closed the question so if multiple people review same batch the **cv virtual count** reflects all closed votes counted (for hammer this can be 5 for 1 question) and **cv count**, is the maximum 1 vote per question count.
 
