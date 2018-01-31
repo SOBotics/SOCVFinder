@@ -1,5 +1,5 @@
 {
   "ContentDir": ".\\content",
   "FQD": "localhost",
-  "ReportLifeMaxDays": "30"
+  "ReportLifeMaxDays": "90"
 }

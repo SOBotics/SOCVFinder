@@ -145,21 +145,6 @@ namespace ReportDumpAPI.ReportPage
             // Open all button.
             htmlBuilder.AppendLine("<span id=\"openAllReports\">Open all</span>");
 
-            //// Sort by select.
-            //htmlBuilder.AppendLine("<span>");
-            //htmlBuilder.AppendLine("Sort by:");
-
-            //htmlBuilder.AppendLine("<select id=\"sortBy\">");
-            //htmlBuilder.AppendLine("<option>Age</option>");
-            //htmlBuilder.AppendLine("<option>Answers</option>");
-            //htmlBuilder.AppendLine("<option selected>Close votes</option>");
-            //htmlBuilder.AppendLine("<option>Score</option>");
-            //htmlBuilder.AppendLine("<option>Views</option>");
-            //htmlBuilder.AppendLine("</select>");
-
-            //// End of sort by select.
-            //htmlBuilder.AppendLine("</span>");
-
             // End of Report functions.
             htmlBuilder.AppendLine("</div>");
 
@@ -167,6 +152,12 @@ namespace ReportDumpAPI.ReportPage
             foreach (var p in posts)
             {
                 var fields = GetPostReportFieldsHtml(p.ToString());
+
+                if (fields.Count(f => f.SpecType == "link") > 1)
+                {
+                    throw new ParsingException("A report cannot have multiple link fields.");
+                }
+
                 reports.Add(fields);
             }
             var reportsHtml = MergeAllReportHtmlFields(reports);

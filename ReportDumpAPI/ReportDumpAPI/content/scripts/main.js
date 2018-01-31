@@ -10,12 +10,9 @@
     });
 
     $("#openAllReports").click(function() {
-        var regex = /^https?:\/\/(www\.)?([a-z]+\.)?((meta|chat)\.)?(stackexchange|stackoverflow)\.com/;
-        $("a").each(function() {
+        $(".reportField a").each(function() {
             var url = $(this).attr("href");
-            if (regex.test(url)) {
-                window.open(url);
-            }
+            window.open(url);
         });
     });
 
