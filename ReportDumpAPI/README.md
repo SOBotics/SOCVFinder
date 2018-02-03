@@ -1,4 +1,5 @@
-# Usage
+# API v1
+## Usage
 
 Send a POST request to `{host domain/IP}/api/create-report` with the following JSON data:
 
@@ -10,7 +11,7 @@ A `post` object is an array of sub-objects called `fields`. A `field` represents
 
 `field`s can contain the following:
 
- - `id` *string*: a unique string which identifies this field from others. This field's value must not change if you want a constant report layout.<sup>*</sup>
+ - `id` *string*: a unique string which identifies this field from others. This field's value must not change if you want a consistent  report layout.<sup>*</sup>
  - `name` *string*: the name of the field. This text will be displayed as-is to the end-user.<sup>*</sup>
  - `value`: the data associated with the field. All primitive types are supported.<sup>*</sup>
  - `specialType` *string*: the name of the special type this field represents.
