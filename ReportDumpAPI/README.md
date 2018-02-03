@@ -1,3 +1,7 @@
+# API v2
+
+Version 2 of the API has moved to a [new repository](https://github.com/SOBotics/Reports).
+
 # API v1
 ## Usage
 
