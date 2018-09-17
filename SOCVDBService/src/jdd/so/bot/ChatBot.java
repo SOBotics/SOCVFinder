@@ -212,7 +212,7 @@ public class ChatBot {
 		if (cnt != null && cnt.length() > 0) {
 			int cp = Character.codePointAt(cnt, 0);
 			if (cp == 128642 || (cp>=128644 && cp<=128650)) {
-				room.send("[🚃](https://www.youtube.com/watch?v=ljIQo1OHkTI)");
+				room.send("[🚃](https://www.youtube.com/watch?v=joLLEFvFaCA)");
 			}
 //			if (cnt.toLowerCase().contains("feeds @petter")){
 //				room.send("@Kyll and @BhargavRao, table is prepared, remember to first wash your hands");
