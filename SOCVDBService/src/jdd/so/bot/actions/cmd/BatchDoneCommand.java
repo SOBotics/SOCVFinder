@@ -7,8 +7,8 @@ import java.text.NumberFormat;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
 
-import fr.tunaki.stackoverflow.chat.event.MessageReplyEvent;
-import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import org.sobotics.chatexchange.chat.event.MessageReplyEvent;
+import org.sobotics.chatexchange.chat.event.PingMessageEvent;
 import jdd.so.CloseVoteFinder;
 import jdd.so.api.ApiHandler;
 import jdd.so.api.model.ApiResult;

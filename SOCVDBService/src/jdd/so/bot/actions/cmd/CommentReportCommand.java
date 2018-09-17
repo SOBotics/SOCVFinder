@@ -4,12 +4,14 @@ import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
-import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import org.sobotics.chatexchange.chat.event.PingMessageEvent;
 import jdd.so.CloseVoteFinder;
 import jdd.so.api.model.Comment;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.dao.CommentDAO;
+import jdd.so.higgs.FeedBack;
+import jdd.so.higgs.Higgs;
 import jdd.so.nlp.CommentHeatCategory;
 
 public class CommentReportCommand extends CommentResponseAbstract {
@@ -69,6 +71,16 @@ public class CommentReportCommand extends CommentResponseAbstract {
 		if (cc != null) {
 			try {
 				cc.classifyComment(c);
+				if (c.getHiggsReportId()<=0){
+					try{
+						logger.error("runCommand(ChatRoom, PingMessageEvent) sending comment to Higgs");
+						c.setHiggsReportId(Higgs.getInstance().registrerComment(c));
+						sendFeedbackToHiggs(c.getHiggsReportId(), event.getUserId(), FeedBack.FN);
+					} catch (Throwable e) {
+						logger.error("runCommand(ChatRoom, PingMessageEvent) could not send comment to Higgs:" + e.getMessage());
+					}
+				}
+				
 				StringBuilder message = room.getBot().getCommentsController().getHeatMessageResult(c, c.getLink());
 				room.send(message.toString());
 			} catch (Exception e) {

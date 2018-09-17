@@ -1,6 +1,7 @@
 package jdd.so.bot.actions.cmd;
 
-import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import org.sobotics.chatexchange.chat.event.PingMessageEvent;
+
 import jdd.so.CloseVoteFinder;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
@@ -9,7 +10,7 @@ public class ApiQuotaCommand extends BotCommand {
 
 	@Override
 	public String getMatchCommandRegex() {
-		return "(?i)(apiquota|api-quota|api quota)";
+		return "(?i)(apiquota|api-quota|api quota|quota)";
 	}
 
 	@Override

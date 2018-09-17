@@ -1,6 +1,6 @@
 package jdd.so.bot.actions.cmd;
 
-import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import org.sobotics.chatexchange.chat.event.PingMessageEvent;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 
@@ -72,7 +72,8 @@ public class AiChatCommand extends BotCommand {
 			return;
 		}
 		
-		if (room.getAllowedCommands()!=null){
+		//no more AI
+		if (room.getAllowedCommands()!=null||true){
 			return;
 		}
 		

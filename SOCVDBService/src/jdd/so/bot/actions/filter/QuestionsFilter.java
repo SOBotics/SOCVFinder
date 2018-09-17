@@ -148,7 +148,7 @@ public class QuestionsFilter {
 		if (answerType!=null){
 			switch (answerType){
 			case CLICK_FROM_ROOMBA:
-				return q.isAlmostRoomba();
+				return q.isAlmostRoomba() && !q.isRoomba();
 			case HAS_ANSWER:
 				return q.getAnswerCount()>0;
 			case HAS_ACCEPTED_ANSWER:

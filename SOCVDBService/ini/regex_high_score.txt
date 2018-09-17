@@ -1,38 +1,39 @@
 #These are the regex executed on comment where username has been removed
+(?i)your\smouth\sshut
 (?i)shitty\squestion
+(?i)plagiari
 (?i)crap\squestion
-(?i)fuck\soff   
+(?i)f\W*u\W*c\W*k\W*o\W*f
 (?i)jerk\soff
 (?i)this\s*(\w+)?\s*spam
 (?i)(flag.*spam)
 (?i)(^|\s)stfw(\s|\.|!|\?|$)
 (?i)\b(yo)?u suck
-(?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{1,10})?)\smoron(\s|\.|!|\?|$)
+(?i)(?<!i('| a)?m(\s){0,10}(\w{0,50}\s{0,10})?(\w{0,50}\s{1,10})?)\smorons?(\s|\.|!|\?|$)
 (?i)(you?|u|\she)(.{0,12})\sloo?ser
 (?i)\bgo.{0,8}\shell\b
 (?i)\binsults?\b(?! to injury)
 (?i)nigg(a|er)|negro\b
-(?i)\ba\S{0,4}hole
+(?i)\ba\S{0,6}hole
 (?i)dumb\s?ass
-(?i)\bfag(got)?
-(?i)(^|\s)gay(\.|!|\s|$)
+(?i)\bf\W*a\W*g\b
+(?i)\bg\W*a\W*y\b
 (?i)\bsluts?\b
-(?i)\bf([\Wkcuf]*)ck(s|ers?|ed)?
-(?i)(^|\s)screw y(\s|\.|!|$)
+(?i)(f\W{1,4}k|f.{0,2}u.{0,2}c.{0,2}k)\s(of|e.{0,2}r|u|yo)
+(?i)(^|\s)s\W*c\W*r\W*e\W*w y(\s|\.|!|$)
 (?i)retard 
 (?i)\bbitch(es)?\b
 (?i)(?<!grammar[ -]?)\bnazis?\b
-(?i)\bdick(head)?\b
+(?i)\bd\W*i\W*c\W*k\b
 (?i)(^|\s)pussy
 (?i)\bpedo\b
 (?i)(whore\b|whore?ing\b)
 (?i)(^|\s)cunt(\s|\.|!|\?|$)
-(?i)(^|\s)cock(\s|\.|!|\?|$)
-(?i)cocksuk
+(?i)c\W*o\W*c\W*k
 (?i)dildo
 (?i)\bpenis\b
 (?i)(^|\s)(rape|raping|rapist)
-(?i)suck\s(my|it)
+(?i)s\W*u\W*c\W*k\s(my|it)
 (?i)ejaculated
 (?i)butt[\s-]?hurt
 (?i)lesbo(\.|!|\s|$)
@@ -89,3 +90,5 @@
 (?i)\bsnob\b
 (?i)shut\s?up\b
 (?i)debil\b
+(?i)\bbully?(ing)?\b
+

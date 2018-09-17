@@ -1,7 +1,13 @@
 package jdd.so.api.model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -110,55 +116,49 @@ public class Question {
 		return q;
 	}
 
-	public JSONObject getJSONObject(int nr) throws JSONException {
-		JSONObject json = new JSONObject();
-		json.put("nr", nr);
-		json.put("question_id", questionId);
-		json.put("creation_date", creationDate);
-		json.put("owner_id", ownerId);
-		json.put("reputation", reputation);
-		json.put("title", title); // Do I need to escape?
-		json.put("link", link);
-		json.put("score", score);
-		json.put("answer_count", answerCount);
-		json.put("accepted_answer_id", acceptedAnswerId);
-		json.put("view_count", viewCount);
-		json.put("comments_count", commentsCount);
-		json.put("close_vote_count", closeVoteCount);
-		json.put("delete_vote_count", deleteVoteCount);
-
-		if (closedDate > 0) {
-			json.put("close_date", closedDate);
-		}
-		if (closedReason != null) {
-			json.put("closed_reason", closedReason);
-		}
-
-		json.put("is_roomba", isRoomba());
-		json.put("is_click_roomba", isAlmostRoomba());
-
-		// Tags
-		JSONArray jsonTags = new JSONArray();
-		if (tags != null) {
-			for (String tag : tags) {
-				jsonTags.put(tag);
-			}
-		}
-		json.put("tags", jsonTags);
-
-		// Comments if dup
-		if (duplicateCommentIndex >= 0) {
-			JSONArray jsonComments = new JSONArray();
-			Comment cd = comments.get(duplicateCommentIndex);
-			jsonComments.put(cd.getJSONObject());
-			if (duplicateResponseCommentIndex > 0) {
-				Comment cr = comments.get(duplicateResponseCommentIndex);
-				jsonComments.put(cr.getJSONObject());
-			}
-			json.put("comments", jsonComments);
-
-		}
+	public JSONArray getJSONObject(int nr) throws JSONException {
+		JSONArray json = new JSONArray();
+		JSONObject tle = new JSONObject();
+		tle.put("id", "title");
+		tle.put("name", this.title);
+		tle.put("value", this.link);
+		tle.put("type", "link");
+		json.put(tle);
+		JSONObject sc = new JSONObject();
+		sc.put("id", "score");
+		sc.put("name", "Votes");
+		sc.put("value", this.score);
+		json.put(sc);
+		JSONObject postage = new JSONObject();
+		postage.put("id", "postage");
+		postage.put("name", "Posted");
+		Calendar cal = new GregorianCalendar(Locale.ENGLISH);
+		cal.setTime(new Date(creationDate*1000));
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", Locale.ENGLISH);
+		df.setTimeZone(TimeZone.getTimeZone("GMT"));
+		postage.put("value", df.format(cal.getTime()));
+		postage.put("type", "date");
+		json.put(postage);
+		JSONObject at = new JSONObject();
+		at.put("id", "answercount");
+		at.put("name", "Answer");
+		at.put("value", getHasAnswer() + answerCount);
+		at.put("type", "answers");
+		json.put(at);
+		
+		JSONObject cv = new JSONObject();
+		cv.put("id", "cv");
+		cv.put("name", "Close votes");
+		cv.put("value", getCloseVoteCount());
+		json.put(cv);
 		return json;
+	}
+
+	private String getHasAnswer() {
+		if (acceptedAnswerId > 0) {
+			return "A";
+		}
+		return "";
 	}
 
 	public boolean isMonitor() {
@@ -269,16 +269,16 @@ public class Question {
 	}
 
 	public boolean isPossibleDuplicate() {
-		if (duplicateCommentIndex<0){
+		if (duplicateCommentIndex < 0) {
 			return false;
 		}
 		Comment c = comments.get(duplicateCommentIndex);
-		return c.getDuplicateQuestionID()>0;
+		return c.getDuplicateQuestionID() > 0;
 	}
 
 	public String getPossibibleDuplicateComment() {
 		Comment c = getDuplicatedComment();
-		if (c!=null) {
+		if (c != null) {
 			return c.getBody();
 		}
 		return null;
@@ -307,9 +307,9 @@ public class Question {
 	public void setClosedReason(String closedReason) {
 		this.closedReason = closedReason;
 	}
-	
-	public boolean isClosed(){
-		return closedDate>0;
+
+	public boolean isClosed() {
+		return closedDate > 0;
 	}
 
 	public long getOwnerId() {
@@ -428,7 +428,7 @@ public class Question {
 		if (duplicateCommentIndex >= 0) {
 			Comment cd = comments.get(duplicateCommentIndex);
 			html.append("<tr><td>&nbsp;</td><td colspan=7 style=\"font-size:70%\">&nbsp;&nbsp;<sup>" + cd.getScore() + "</sup> " + cd.getBody());
-			if (cd.getDuplicateTargetTitle()!=null){
+			if (cd.getDuplicateTargetTitle() != null) {
 				html.append("--> <b>" + cd.getDuplicateTargetTitle() + " " + formatScore(cd.getDuplicateTargetScore()) + "</b>");
 			}
 			if (duplicateResponseCommentIndex > 0) {
@@ -465,18 +465,18 @@ public class Question {
 	public void setAcceptedAnswerId(long acceptedAnswerId) {
 		this.acceptedAnswerId = acceptedAnswerId;
 	}
-	
+
 	@Override
-	public boolean equals(Object q){
-		if (q instanceof Question){
-			return this.getQuestionId()==((Question)q).getQuestionId();
+	public boolean equals(Object q) {
+		if (q instanceof Question) {
+			return this.getQuestionId() == ((Question) q).getQuestionId();
 		}
 		return true;
 	}
 
 	@Override
 	public int hashCode() {
-		return ((Long)getQuestionId()).hashCode();
+		return ((Long) getQuestionId()).hashCode();
 	}
 
 	public String getLink() {
@@ -486,7 +486,5 @@ public class Question {
 	public void setLink(String link) {
 		this.link = link;
 	}
-	
-	
 
 }

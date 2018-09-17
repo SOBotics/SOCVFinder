@@ -2,7 +2,7 @@ package jdd.so.bot.actions.cmd;
 
 import java.sql.SQLException;
 
-import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import org.sobotics.chatexchange.chat.event.PingMessageEvent;
 import jdd.so.CloseVoteFinder;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.dao.DuplicateResponseDAO;

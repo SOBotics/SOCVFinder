@@ -107,19 +107,19 @@ public class PreProcesser {
 		return result;
 	}
 	
-	private static String removeDoubleSpaces(String result) {
+	public static String removeDoubleSpaces(String result) {
 		return result.replaceAll("[ ]{2,}", " ").trim();
 	}
 
 
-	private static String removeNonSentanceChars(String result) {
+	public static String removeNonSentanceChars(String result) {
 		//Valid chars are a-zA-z ' ’ - 
 		return result.replaceAll("[^a-zA-Z'’,.?!\\- \r\n]", "");
 	}
 
 
 	
-	private static String removeIntentionalRepetitions(String result) {
+	public static String removeIntentionalRepetitions(String result) {
 		// TODO Improve implementation
 		//1 first if 3 letter or more
 		//2 if word contains 2 letters in sequenze and is over threshold
@@ -127,23 +127,23 @@ public class PreProcesser {
 	}
 
 
-	private static String removeHastags(String result) {
+	public static String removeHastags(String result) {
 		// Remove only the hastag for now, maybe if tweet remove also text
 		return result.replaceAll("#", "");
 	}
 
 
-	private static String removeUrls(String result) {
+	public static String removeUrls(String result) {
 		return result.replaceAll("((https?|ftp|gopher|telnet|file|http):((//)|(\\\\))+[\\w\\d:#@%/;$()~_?\\+-=\\\\\\.&]*)", "");
 	}
 
 
-	private static String removeUserNames(String result) {
+	public static String removeUserNames(String result) {
 		return result.replaceAll("@(\\S+)?", "");
 	}
 
 
-	private static String removeHtml(String result) {
+	public static String removeHtml(String result) {
 		return Jsoup.parse(result).text();
 	}
 

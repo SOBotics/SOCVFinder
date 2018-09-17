@@ -3,16 +3,16 @@ package jdd.so.bot.actions.cmd;
 import java.util.Collections;
 import java.util.List;
 
-import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import org.sobotics.chatexchange.chat.event.PingMessageEvent;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 import jdd.so.bot.actions.BotCommandsRegistry;
 
-public class CommandsCommand extends  BotCommand {
+public class CommandsCommand extends BotCommand {
 
 	@Override
 	public String getMatchCommandRegex() {
-		return "(?i)(command|commands|cmd|cmds)";
+		return "(?i)(command|commands)";
 	}
 
 	@Override

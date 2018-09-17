@@ -27,7 +27,17 @@ public class ApiHandler {
 	 * Logger for this class
 	 */
 	private static final Logger logger = Logger.getLogger(ApiHandler.class);
+	private boolean forceIncludeAll;
 
+	public ApiHandler(){
+		this(false);
+	}
+	
+	public ApiHandler(boolean forceIncludeAll){
+		this.forceIncludeAll = forceIncludeAll;
+		
+	}
+	
 	/**
 	 * Get the questions by date
 	 * 
@@ -75,7 +85,7 @@ public class ApiHandler {
 	public ApiResult getQuestions(String questions, long fromDate, long toDate, String tag, int totPages, boolean loadDupTarget, NotifyMe notifyMe)
 			throws JSONException, IOException {
 		boolean includeAll = questions!=null&&questions.trim().length()>0; //If you send me questionIds I return all
-		ApiResult qr = new ApiResult(includeAll);
+		ApiResult qr = new ApiResult(includeAll||forceIncludeAll);
 		int page = 1;
 		while (page <= totPages && (page <= CloseVoteFinder.MAX_PAGES) && qr.isHasMore()) {
 			addQuestions(qr, questions, page, fromDate, toDate, tag, notifyMe);
@@ -195,9 +205,21 @@ public class ApiHandler {
 		
 	}
 	
-	public ApiResult getComments(String comments) throws JSONException, IOException{
+	public ApiResult getComments(String questionsIds, int maxPages) throws JSONException, IOException{
 		ApiResult qr = new ApiResult(true);
-		addComments(qr, 1, 0, comments);
+		int page = 1;
+		while (page <= maxPages && (page <= CloseVoteFinder.MAX_PAGES) && qr.isHasMore()) {
+			addComments(qr, page, questionsIds);
+			qr.setNrOfPages(page);
+			page++;
+		}
+		return qr;
+		
+	}
+	
+	public ApiResult getComments(String commentsId) throws JSONException, IOException{
+		ApiResult qr = new ApiResult(true);
+		addComments(qr, 1, 0, commentsId);
 		return qr;
 		
 	}
@@ -205,6 +227,12 @@ public class ApiHandler {
 	private void addComments(ApiResult ar,int page, long fromDate, String commentsIds)
 			throws JSONException, IOException {
 		String url = CloseVoteFinder.getInstance().getApiUrlComments(page,fromDate,commentsIds);
+		addComments(ar, url);
+	}
+	
+	private void addComments(ApiResult ar,int page, String questionIds)
+			throws JSONException, IOException {
+		String url = CloseVoteFinder.getInstance().getApiUrlComments(page,questionIds);
 		addComments(ar, url);
 	}
 

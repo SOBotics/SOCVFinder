@@ -7,9 +7,9 @@ import org.alicebot.ab.Chat;
 import org.alicebot.ab.MagicStrings;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
+import org.sobotics.chatexchange.chat.Room;
+import org.sobotics.chatexchange.chat.User;
 
-import fr.tunaki.stackoverflow.chat.Room;
-import fr.tunaki.stackoverflow.chat.User;
 import jdd.so.bot.actions.BotCommand;
 
 /**
@@ -73,7 +73,7 @@ public class ChatRoom {
 		return room;
 	}
 
-	public fr.tunaki.stackoverflow.chat.User getUser(long userId) {
+	public org.sobotics.chatexchange.chat.User getUser(long userId) {
 		return room.getUser(userId);
 	}
 

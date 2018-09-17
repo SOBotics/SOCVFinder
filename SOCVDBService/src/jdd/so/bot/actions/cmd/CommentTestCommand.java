@@ -2,7 +2,7 @@ package jdd.so.bot.actions.cmd;
 
 import org.apache.log4j.Logger;
 
-import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import org.sobotics.chatexchange.chat.event.PingMessageEvent;
 import jdd.so.api.model.Comment;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
@@ -56,7 +56,7 @@ public class CommentTestCommand extends BotCommand {
 		try {
 			cc.classifyComment(c);
 			StringBuilder message = room.getBot().getCommentsController().getHeatMessageResult(c, null);
-			room.replyTo(event.getMessage().getId(),message.toString());
+			room.send(message.toString());
 			return;
 		} catch (Exception e) {
 			logger.error("runCommand(ChatRoom, PingMessageEvent)", e);

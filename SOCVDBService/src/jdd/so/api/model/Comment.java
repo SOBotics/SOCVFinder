@@ -15,6 +15,8 @@ import org.jsoup.Jsoup;
 
 import jdd.so.CloseVoteFinder;
 import jdd.so.api.ApiHandler;
+import jdd.so.nlp.PerspectiveResult;
+import jdd.so.nlp.PreProcesser;
 
 /**
  * A comment on questiton
@@ -42,6 +44,7 @@ public class Comment {
 	
 	//Classification attribute
 	private String regExHit;
+	private int regExHitValue;
 	private double naiveBayesGood;
 	private double naiveBayesBad;
 	
@@ -56,12 +59,19 @@ public class Comment {
 	private int heatScore;
 	private int closeType;
 	
+	//Set externally
+	private String questionTitle;
 	
 	//Data feedback
 	private boolean deleted;
 	private boolean flaggedBad;
 	private boolean flaggedGood;
 	private boolean reported;
+	
+	private int higgsReportId;
+	
+	
+	private PerspectiveResult perspectiveResult;
 
 	
 	public static Comment getComment(JSONObject json) throws JSONException {
@@ -94,6 +104,25 @@ public class Comment {
 			}
 		}
 		return c;
+	}
+	
+	public JSONObject getJSONPerspective() throws JSONException{
+		JSONObject json = new JSONObject();
+		JSONObject comment = new JSONObject();
+		json.put("comment",comment);
+		comment.put("text", PreProcesser.removeHtml(this.getBody()));
+		
+		JSONObject req = new JSONObject();
+		json.put("requestedAttributes", req);
+		req.put("TOXICITY",new JSONObject());
+		//req.put("OBSCENE",new JSONObject());
+		//req.put("ATTACK_ON_AUTHOR",new JSONObject());
+		//req.put("ATTACK_ON_COMMENTER",new JSONObject());
+		//req.put("INFLAMMATORY",new JSONObject());
+		//req.put("UNSUBSTANTIAL",new JSONObject());
+		
+		
+		return json;
 	}
 
 	public JSONObject getJSONObject() throws JSONException {
@@ -409,6 +438,39 @@ public class Comment {
 
 	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
+	}
+
+	public void setPerspectiveResult(PerspectiveResult result) {
+		this.perspectiveResult = result;
+		
+	}
+
+	public PerspectiveResult getPerspectiveResult() {
+		return perspectiveResult;
+	}
+
+	public String getQuestionTitle() {
+		return questionTitle;
+	}
+
+	public void setQuestionTitle(String questionTitle) {
+		this.questionTitle = questionTitle;
+	}
+
+	public int getHiggsReportId() {
+		return higgsReportId;
+	}
+
+	public void setHiggsReportId(int higgsReportId) {
+		this.higgsReportId = higgsReportId;
+	}
+
+	public int getRegExHitValue() {
+		return regExHitValue;
+	}
+
+	public void setRegExHitValue(int regExHitValue) {
+		this.regExHitValue = regExHitValue;
 	}
 	
 	

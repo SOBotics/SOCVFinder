@@ -2,8 +2,10 @@ package jdd.so.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +24,8 @@ public class CommentDAO {
 		int[] retVal=null;
 
 		if (!comments.isEmpty()) {
-			String sql = "INSERT INTO `comments` (`id_comment`,`creation_date`,`body`,`user_id`,`rep`,`score`,`regex`,`nativeBayesBad`,`nativeBayesGood`,`openNLPBad`,`openNLPGood`,`j48Bad`,`j48Good`,`reported`,`link` ) " 
-					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) "
+			String sql = "INSERT INTO `comments` (`id_comment`,`creation_date`,`body`,`user_id`,`rep`,`score`,`regex`,`nativeBayesBad`,`nativeBayesGood`,`openNLPBad`,`openNLPGood`,`TOXICITY`,`OBSCENE`,`reported`,`link`,`higgsId` ) " 
+					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) "
 					+ "ON DUPLICATE KEY UPDATE body=?";
 
 			PreparedStatement ps = null;
@@ -41,11 +43,27 @@ public class CommentDAO {
 					ps.setDouble(9, c.getNaiveBayesGood());
 					ps.setDouble(10, c.getOpenNlpBad());
 					ps.setDouble(11, c.getOpenNlpGood());
-					ps.setDouble(12, c.getJ48Bad());
-					ps.setDouble(13, c.getJ48Good());
+					double sT = Double.NaN;
+					double sO = Double.NaN;
+					if (c.getPerspectiveResult()!=null){
+						sT = c.getPerspectiveResult().getScoreToxiCity();
+						sO = c.getPerspectiveResult().getScoreObscene();
+						
+					}
+					if (Double.isNaN(sT)){
+						ps.setNull(12, Types.DOUBLE);
+					}else{
+						ps.setDouble(12, sT);
+					}
+					if (Double.isNaN(sO)){
+						ps.setNull(13, Types.DOUBLE);
+					}else{
+						ps.setDouble(13, sO);
+					}
 					ps.setBoolean(14, c.isReported());
 					ps.setString(15, c.getLink());
-					ps.setString(16, c.getBody());
+					ps.setInt(16, c.getHiggsReportId());
+					ps.setString(17, c.getBody());
 					ps.addBatch();
 				}
 
@@ -59,6 +77,35 @@ public class CommentDAO {
 
 		return retVal;
 
+	}
+	
+	/**
+	 * 
+	 * @param connection
+	 * @param idComment
+	 * @return 0 if not found
+	 * @throws SQLException
+	 */
+	public int getHiggsReportId(Connection connection, long idComment) throws SQLException{
+		int id = 0;
+		String sql = "SELECT higgsId from comments where id_comment=" + idComment;
+		Statement std = null;
+		ResultSet rs = null;
+		try {
+			std = connection.createStatement();
+			rs = std.executeQuery(sql);
+			if (rs.next()) {
+				id = rs.getInt(1);
+			}
+		} finally {
+			if (rs!=null){
+				rs.close();
+			}
+			if (std!=null){
+				std.close();
+			}
+		}
+		return id;
 	}
 
 	public void tpComment(Connection connection, long idComment) throws SQLException{

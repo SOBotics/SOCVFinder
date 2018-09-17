@@ -9,3 +9,5 @@
 (?i)\bsilly\b
 (?i)gibberish
 (?i)\bignorant\b
+(?i)\bf([\Wkcuf]*)ck(s|ers?|ed)?
+

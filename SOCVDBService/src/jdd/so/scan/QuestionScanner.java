@@ -21,16 +21,22 @@ import jdd.so.dao.QuestionIndexDao;
 public class QuestionScanner {
 	
 	public ApiResult scan(String tag, int nrDays , int minCvCount) throws JSONException, IOException, SQLException{
+		int maxPages = 200;
 		Calendar cal = new GregorianCalendar();
 		cal.add(Calendar.DATE, -1); //lets move back one day...
 		long ed = cal.getTimeInMillis()/1000L;
-		cal.add(Calendar.DATE, -nrDays);
+		if (nrDays>0){
+			cal.add(Calendar.DATE, -nrDays);
+		}else{
+			maxPages = 250;
+			cal.add(Calendar.DATE, -4000);
+		}
 		long sd = cal.getTimeInMillis()/1000L;
 		
 		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		System.out.println("Scanning from " + df.format(new Date(sd*1000L)) + " to " +  df.format(new Date(ed*1000L)));
 		
-		ApiResult ar = new ApiHandler().getQuestions(sd,ed, 200,tag, false);
+		ApiResult ar = new ApiHandler().getQuestions(sd,ed, maxPages,tag, false);
 		
 		System.out.println("Number of question scanned: " + ar.getNrOfQuestionScanned());
 		

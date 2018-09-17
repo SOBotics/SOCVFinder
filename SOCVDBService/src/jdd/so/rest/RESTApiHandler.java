@@ -8,11 +8,13 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.Scanner;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 import org.apache.log4j.Logger;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import jdd.so.CloseVoteFinder;
 import jdd.so.api.CherryPickResult;
@@ -36,19 +38,22 @@ public class RESTApiHandler {
 	public String getRemoteURL(CherryPickResult result) throws IOException {
 
 		HttpURLConnection conn=null;
-		GZIPOutputStream gos=null;
+		//GZIPOutputStream gos=null;
+		
 		GZIPInputStream gis=null;
 		ByteArrayOutputStream bos=null;
 		try {
 			String url = CloseVoteFinder.getInstance().getRestApi();
-			if (logger.isDebugEnabled()) {
-				logger.debug("getRemoteURL(CherryPickResult) - Connecting to: " + url);
+			if (logger.isInfoEnabled()) {
+				logger.info("getRemoteURL(CherryPickResult) - Connecting to: " + url);
 			}
 			conn = getConnection(url);
 
 			String output = result.getJSONObject().toString();
 			
-			gos = new GZIPOutputStream(conn.getOutputStream());
+			OutputStream gos = conn.getOutputStream();
+			
+			
 			
 			if (logger.isInfoEnabled()) {
 				logger.info("getRemoteURL(CherryPickResult) - Sending gzipped json: " + output);
@@ -60,7 +65,14 @@ public class RESTApiHandler {
 			closeStream(gos);
 
 			if (conn.getResponseCode() != 200) {
+				try {
+					Scanner s = new Scanner(conn.getInputStream()).useDelimiter("\\A");
+					String e = s.hasNext() ? s.next() : "";
+					s.close();
+					logger.error("getRemoteURL(CherryPickResult) - error retrived: " + e);
+				} catch (Throwable e) {}
 				throw new IOException("Incorrect response code, HTTP error code : " + conn.getResponseCode());
+				
 			}
 			gis = new GZIPInputStream(conn.getInputStream());
 			
@@ -79,7 +91,10 @@ public class RESTApiHandler {
 			if (logger.isDebugEnabled()) {
 				logger.debug("getRemoteURL(CherryPickResult) - Incomming response: " + response);
 			}
-			return response;
+			
+			JSONObject json = new JSONObject(response);
+			
+			return json.getString("reportURL");
 
 		} catch (IOException|JSONException e) {
 			logger.error("getRemoteURL(CherryPickResult)", e);

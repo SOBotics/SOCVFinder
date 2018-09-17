@@ -25,6 +25,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import io.swagger.client.ApiException;
 import jdd.so.api.ApiHandler;
 import jdd.so.api.model.ApiResult;
 import jdd.so.api.model.Question;
@@ -39,6 +40,7 @@ import jdd.so.dao.model.CommentsNotify;
 import jdd.so.dao.model.DuplicateNotifications;
 import jdd.so.dao.model.RoomTag;
 import jdd.so.dao.model.User;
+import jdd.so.higgs.Higgs;
 import jdd.so.swing.NotifyMe;
 
 /**
@@ -54,6 +56,8 @@ public class CloseVoteFinder {
 	 */
 	private static final Logger logger = Logger.getLogger(CloseVoteFinder.class);
 
+	public static final String VERSION = "6.1.0"; 
+	
 	public static final String API_URL = "http://api.stackexchange.com/2.2/";
 	public static final String API_FILTER = "!BHLqqjzBqxvXvutADZo7Yi(d4CcR(B";
 //	public static final String API_FILTER = "!-MObZ6A82KZGZ3WvblLvUKz1bWU5_K147";
@@ -67,10 +71,14 @@ public class CloseVoteFinder {
 	public static final String API_KEY_PROPERTY = "API_KEY";
 	public static final String THROTTLE_PROPERTY = "THROTTLE";
 	private static final String REST_API_PROPERTY = "REST_API";
+	private static final String PERSPECTIVE_KEY_PROPERTY = "PERSPECTIVE_KEY";
+	private static final String HIGGS_URL_PROPERTY = "HIGGS_URL";
+	private static final String HIGGS_KEY_PROPERTY = "HIGGS_KEY";
 
 	private long throttle = 1L * 1000L; // ms
 	private long backOffUntil = 0L;
-	private String apiKey = null;
+	private String apiKey;
+	private String perspectiveKey;
 	private String restApi = "http://socvr.org:222/api/socv-finder/dump-report";
 
 	private static CloseVoteFinder instance;
@@ -96,6 +104,7 @@ public class CloseVoteFinder {
 	private CloseVoteFinder(Properties properties) {
 		if (properties != null) {
 			apiKey = properties.getProperty(API_KEY_PROPERTY, null);
+			perspectiveKey = properties.getProperty(PERSPECTIVE_KEY_PROPERTY,null);
 			String ts = properties.getProperty(THROTTLE_PROPERTY, null);
 			if (ts != null) {
 				try {
@@ -110,6 +119,13 @@ public class CloseVoteFinder {
 			}
 			connectionHandler = new ConnectionHandler(properties.getProperty("db_driver"), properties.getProperty("db_url"), properties.getProperty("db_user"),
 					properties.getProperty("db_password"));
+			
+			try {
+				logger.info("CloseVoteFinder(Properties) - Instance Higgs");
+				Higgs.initInstance(properties.getProperty(HIGGS_URL_PROPERTY, ""), properties.getProperty(HIGGS_KEY_PROPERTY, ""));
+			} catch (ApiException e1) {
+				logger.error("CloseVoteFinder(Properties) - Higgs could not be instanced", e1);
+			}
 
 			try {
 				dbConnection = connectionHandler.getConnection();
@@ -363,6 +379,23 @@ public class CloseVoteFinder {
 		return url.toString();
 	}
 	
+	public String getApiUrlComments(int page, String questionIds) {
+		StringBuilder url = new StringBuilder(API_URL);
+		url.append("questions/");
+		url.append(questionIds);
+		url.append("/comments");
+		url.append("?");
+		url.append("page=" + page + "&pagesize=100");
+		
+
+		url.append("&order=desc&sort=creation");
+		url.append("&site=stackoverflow&filter=" + API_FILTER_COMMENTS);
+		if (apiKey != null) {
+			url.append("&key=" + apiKey);
+		}
+		return url.toString();
+	}
+	
 	/**
 	 * Get the data from url as a JSON object with trottle implementation to
 	 * avoid calling to often SO
@@ -574,6 +607,13 @@ public class CloseVoteFinder {
 		}
 		return null;
 	}
+
+
+
+	public String getPerspectiveKey() {
+		return perspectiveKey;
+	}
+
 
 	
 

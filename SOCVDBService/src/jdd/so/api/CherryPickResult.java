@@ -3,17 +3,23 @@ package jdd.so.api;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
+import org.apache.log4j.helpers.ISO8601DateFormat;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import jdd.so.api.model.ApiResult;
 import jdd.so.api.model.Question;
+import jdd.so.bot.ChatBot;
 import jdd.so.bot.actions.filter.QuestionsFilter;
 import jdd.so.dao.model.Batch;
 import jdd.so.rest.RESTApiHandler;
@@ -127,20 +133,20 @@ public class CherryPickResult {
 	 */
 	public JSONObject getJSONObject() throws JSONException {
 		JSONObject json = new JSONObject();
-		json.put("timestamp", getTimestamp());
-		json.put("room_id", getRoomId());
-		json.put("batch_nr", getBatchNumber());
-		if (getSearchTag() != null) {
-			json.put("search_tag", getSearchTag());
-		}
-		json.put("is_filtered_duplicates", isFilteredOnDuplicates());
-		json.put("api_quota", getApiResult().getQuotaRemaining());
-
+		json.put("appName", "SOCVFinder");
+		json.put("appURL", "https://stackapps.com/questions/6910/");
+		Calendar cal = new GregorianCalendar();
+		cal.add(Calendar.DATE,1);
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", Locale.ENGLISH);
+		df.setTimeZone(TimeZone.getTimeZone("GMT"));
+		json.put("expiresAt", df.format(cal.getTime()));
+		
+		
 		JSONArray questions = new JSONArray();
-		json.put("questions", questions);
+		json.put("fields", questions);
 		int n = 1;
 		for (Question q : getFilterdQuestions()) {
-			JSONObject qj = q.getJSONObject(n);
+			JSONArray qj = q.getJSONObject(n);
 			questions.put(qj);
 			n++;
 		}
@@ -217,6 +223,12 @@ public class CherryPickResult {
 
 	public void setFilter(QuestionsFilter filter) {
 		this.filter = filter;
+	}
+	
+	public static void main(String[] args) {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", Locale.ENGLISH);
+		df.setTimeZone(TimeZone.getTimeZone("GMT"));
+		System.out.println(df.format(new GregorianCalendar(Locale.ENGLISH).getTime()));
 	}
 
 }

@@ -8,6 +8,7 @@ import org.alicebot.ab.MagicStrings;
 import org.alicebot.ab.PCAIMLProcessorExtension;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.sobotics.redunda.PingService;
 import org.tanukisoftware.wrapper.WrapperListener;
 import org.tanukisoftware.wrapper.WrapperManager;
 
@@ -75,7 +76,7 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 		// Load AI interface
 		AIMLProcessor.extension = new PCAIMLProcessorExtension();
 		MagicStrings.root_path = System.getProperty("user.dir");
-		MagicStrings.default_bot_name = "Queen";
+		MagicStrings.default_bot_name = ChatBot.BOT_NAME;
 
 		// Load properties file an instance the CloseVoteFinder
 
@@ -84,6 +85,14 @@ public class SOCVFinderServiceWrapper implements WrapperListener {
 			Properties properties = new Properties();
 			properties.load(new FileInputStream("ini/SOCVService.properties"));
 			CloseVoteFinder.initInstance(properties);
+			
+			//Redunda service
+			if (logger.isInfoEnabled()) {
+				logger.info("Starting redunda ping service");
+			}
+			PingService redunda = new PingService("b2f12d074632a1d9b2f55c3955326cf2c44b6d0f2210717bb467b18006161f91", CloseVoteFinder.VERSION);
+			redunda.start();
+			
 			cb = new ChatBot(properties, null);
 			SOLoginThread login = new SOLoginThread(); // takes to much time
 			login.start();

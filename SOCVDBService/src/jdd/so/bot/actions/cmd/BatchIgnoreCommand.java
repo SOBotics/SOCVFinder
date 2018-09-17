@@ -4,8 +4,8 @@ import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
-import fr.tunaki.stackoverflow.chat.event.MessageReplyEvent;
-import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import org.sobotics.chatexchange.chat.event.MessageReplyEvent;
+import org.sobotics.chatexchange.chat.event.PingMessageEvent;
 import jdd.so.CloseVoteFinder;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;

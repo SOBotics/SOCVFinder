@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 
 import org.apache.log4j.Logger;
 
-import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import org.sobotics.chatexchange.chat.event.PingMessageEvent;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 

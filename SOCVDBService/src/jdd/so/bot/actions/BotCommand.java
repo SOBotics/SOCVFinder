@@ -3,8 +3,9 @@ package jdd.so.bot.actions;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import fr.tunaki.stackoverflow.chat.Message;
-import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import org.sobotics.chatexchange.chat.Message;
+import org.sobotics.chatexchange.chat.event.PingMessageEvent;
+
 import jdd.so.bot.ChatRoom;
 
 /**

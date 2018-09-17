@@ -3,7 +3,8 @@ package jdd.so.bot.actions;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.tunaki.stackoverflow.chat.Message;
+import org.sobotics.chatexchange.chat.Message;
+
 import jdd.so.bot.actions.cmd.AddUserCommand;
 import jdd.so.bot.actions.cmd.AiChatCommand;
 import jdd.so.bot.actions.cmd.ApiQuotaCommand;
@@ -11,8 +12,7 @@ import jdd.so.bot.actions.cmd.BatchDoneCommand;
 import jdd.so.bot.actions.cmd.BatchIgnoreCommand;
 import jdd.so.bot.actions.cmd.CherryPickCommand;
 import jdd.so.bot.actions.cmd.CommandsCommand;
-import jdd.so.bot.actions.cmd.CommentOffensiveFpCommand;
-import jdd.so.bot.actions.cmd.CommentOffensiveTpCommand;
+import jdd.so.bot.actions.cmd.CommentFeedBackCommand;
 import jdd.so.bot.actions.cmd.CommentReportCommand;
 import jdd.so.bot.actions.cmd.CommentTestCommand;
 import jdd.so.bot.actions.cmd.CommentsNotifyCommand;
@@ -27,11 +27,13 @@ import jdd.so.bot.actions.cmd.RoomLeaveCommand;
 import jdd.so.bot.actions.cmd.RoomTagAdd;
 import jdd.so.bot.actions.cmd.RoomTagList;
 import jdd.so.bot.actions.cmd.RoomTagRemove;
+import jdd.so.bot.actions.cmd.SearchCommentForCV;
 import jdd.so.bot.actions.cmd.ShutDownCommand;
 import jdd.so.bot.actions.cmd.StatsMeCommand;
 import jdd.so.bot.actions.cmd.StatsRoomCommand;
 import jdd.so.bot.actions.cmd.StatsTagCommand;
 import jdd.so.bot.actions.cmd.StopStartHeatFeed;
+import jdd.so.bot.actions.cmd.TestPlain;
 import jdd.so.bot.actions.cmd.UserListCommand;
 import jdd.so.bot.actions.cmd.WhiteListCommand;
 
@@ -66,8 +68,11 @@ public class BotCommandsRegistry {
 		 * [tag: run (and this is also use in other commands)
 		 */
 		//commands.add(new PingCommand()); //Removing this fun
+		commands.add(new CommentFeedBackCommand());
+		commands.add(new CommentReportCommand());
 		commands.add(new CommentTestCommand());
 		commands.add(new CommandsCommand());
+		commands.add(new SearchCommentForCV());
 		commands.add(new HelpCommand());
 		commands.add(new OptInCommand());
 		commands.add(new OptOutCommand());
@@ -92,12 +97,12 @@ public class BotCommandsRegistry {
 		commands.add(new DuplicateConfirmCommand());
 		commands.add(new CommentsNotifyCommand());
 		commands.add(new StopStartHeatFeed());
-		commands.add(new CommentOffensiveTpCommand());
-		commands.add(new CommentOffensiveFpCommand());
-		commands.add(new CommentReportCommand());
+		
+		
 		
 		commands.add(new DeleteCommentCommand());
 		commands.add(new ShutDownCommand());
+		commands.add(new TestPlain());
 	}
 
 	public synchronized BotCommand getCommand(Message message, boolean reply, int messageEdits) {	

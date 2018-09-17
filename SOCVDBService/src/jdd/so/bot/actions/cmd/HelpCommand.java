@@ -1,6 +1,6 @@
 package jdd.so.bot.actions.cmd;
 
-import fr.tunaki.stackoverflow.chat.event.PingMessageEvent;
+import org.sobotics.chatexchange.chat.event.PingMessageEvent;
 import jdd.so.bot.ChatRoom;
 import jdd.so.bot.actions.BotCommand;
 
@@ -8,7 +8,7 @@ public class HelpCommand extends  BotCommand{
 
 	@Override
 	public String getMatchCommandRegex() {
-		return "(?i)(help)";
+		return "(?i)\\shelp\\b";
 	}
 
 	@Override
