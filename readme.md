@@ -41,19 +41,19 @@ The bot won't return previously reviewed questions.
 
 Leverage the community's work, don't let it go to waste and have some fun doing it.
 
-## 2.1 What can make reviewing enjoyable?
+### 2.1 What can make reviewing enjoyable?
 
  - Knowing that your vote counts;
  - Cherry-picking questions;
  - Getting statistics on reviewing (users/tags/rooms).
 
-## 2.2 How can you make your vote count?
+### 2.2 How can you make your vote count?
  
  - Review questions that already have high or low close vote count.
  - Review questions that will not go to the roomba.
  - Review questions together with others
 
-## 2.3 Cherry-pick your questions
+### 2.3 Cherry-pick your questions
 
 Query the bot for the desired number of questions in tags of choice, with the possibility to specify a desired CV count, question score, if not roomba, if has answers, if has accepted answer etc. The bot won't return questions already reviewed.
 
@@ -61,7 +61,7 @@ Screen-shot of an example of a cherry-pick request with a filter "3 close-votes"
 
 [![enter image description here][2]][2]
 
-##2.4 Enjoyable statistics
+### 2.4 Enjoyable statistics
 
 Query the bot for some statistics so you can enjoy your efforts and see the status of your favorite tags.
 
