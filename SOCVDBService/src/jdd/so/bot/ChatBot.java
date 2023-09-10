@@ -127,6 +127,9 @@ public class ChatBot {
 		//https://chat.stackoverflow.com/rooms/174431/burnination-progress-for-the-ibm-tag
 		this.joinRoom(ChatHost.STACK_OVERFLOW, 174431, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
 		
+		// R Collective
+		this.joinRoom(ChatHost.STACK_OVERFLOW, 252171, null, ChatRoom.DUPLICATION_NOTIFICATIONS_TAGS, false);
+		
 		/**
 		 * REQUERST LIMIT
 		 */
